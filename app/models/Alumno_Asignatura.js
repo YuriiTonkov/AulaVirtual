@@ -18,35 +18,15 @@ exports.definition = {
 	extendModel: function(Model) {		
 		_.extend(Model.prototype, {
 			// extended functions and properties go here
-		Klass : function (){
-		    return Model;
-		}});
+		});
 		
 		return Model;
 	},
 	extendCollection: function(Collection) {		
 		_.extend(Collection.prototype, {
 			// extended functions and properties go here
-		Klass : function (){
-            return Model;
-        },
-         /**
-             * cleanup function to remove all of the objects.
-             * 
-             * added this for testing purposes
-             */
-            cleanup : function() {
-                var regex = new RegExp("^(" + this.config.adapter.collection_name + ")\\-(.+)$");
-                var TAP = Ti.App.Properties;
-                _.each(TAP.listProperties(), function(prop) {
-                    var match = prop.match(regex);
-                    if (match) {
-                        TAP.removeProperty(prop);
-                        Ti.API.info('deleting old model ' + prop);
-                    }
-                });
  
-            }});
+            });
 		
 		return Collection;
 	}

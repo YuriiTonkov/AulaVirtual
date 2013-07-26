@@ -1,0 +1,7 @@
+<Alloy>
+    <Window class="container">
+        <Label class="label" top="5%">Introduzca el nombre de la evaluacion</Label>
+        <TextField class="textbox" top="20%" id="txtNombreEvaluacion"></TextField>
+        <Button class="button" top="35%" id="btnGuardar" title="Guardar" onClick="GuardarEvaluacion"></Button>
+    </Window>
+</Alloy>

@@ -4,11 +4,11 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId31 = Alloy.createController("WinGrupos", {
-        id: "__alloyId31"
+    $.__views.__alloyId38 = Alloy.createController("WinGrupos", {
+        id: "__alloyId38"
     });
     $.__views.TabPrincipal = Ti.UI.createTab({
-        window: $.__views.__alloyId31.getViewEx({
+        window: $.__views.__alloyId38.getViewEx({
             recurse: true
         }),
         title: "Menu principal",

@@ -10,12 +10,12 @@ function Controller() {
         id: "NuevaAsignatura"
     });
     $.__views.NuevaAsignatura && $.addTopLevelView($.__views.NuevaAsignatura);
-    $.__views.__alloyId22 = Ti.UI.createLabel({
+    $.__views.__alloyId28 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId22"
+        id: "__alloyId28"
     });
-    $.__views.NuevaAsignatura.add($.__views.__alloyId22);
+    $.__views.NuevaAsignatura.add($.__views.__alloyId28);
     $.__views.txtNombreClase = Ti.UI.createTextField({
         top: "20%",
         id: "txtNombreClase"

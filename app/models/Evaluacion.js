@@ -2,6 +2,7 @@ exports.definition = {
 	config: {
 		columns: {
 		    "IdEvaluacion": "int",
+		    "Nombre":"string",
 		    "AlumnoAsignatura": "int",
 		    "Calificacion": "float",
 		    "FechaInicio": "date"

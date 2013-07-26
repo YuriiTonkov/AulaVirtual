@@ -6,7 +6,7 @@ function Controller() {
     var exports = {};
     $.__views.tblAsignaturaRow = Ti.UI.createTableViewRow({
         editable: "true",
-        data: "undefined" != typeof $model.__transform["IdAlumnoAsignatura"] ? $model.__transform["IdAlumnoAsignatura"] : $model.get("IdAlumnoAsignatura"),
+        data: "undefined" != typeof $model.__transform["IdEvaluacion"] ? $model.__transform["IdEvaluacion"] : $model.get("IdEvaluacion"),
         hasChild: "true",
         id: "tblAsignaturaRow"
     });
@@ -17,18 +17,11 @@ function Controller() {
         textAlign: "center",
         id: "lblAsignatura",
         text: "undefined" != typeof $model.__transform["Nombre"] ? $model.__transform["Nombre"] : $model.get("Nombre"),
-        textid: "undefined" != typeof $model.__transform["IdAlumnoAsignatura"] ? $model.__transform["IdAlumnoAsignatura"] : $model.get("IdAlumnoAsignatura")
+        textid: "undefined" != typeof $model.__transform["IdEvaluacion"] ? $model.__transform["IdEvaluacion"] : $model.get("IdEvaluacion")
     });
     $.__views.tblAsignaturaRow.add($.__views.lblAsignatura);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.lblAsignatura.addEventListener("click", function(e) {
-        var tabAsignaturasController = Alloy.createController("WinEvaluacion", {
-            IdAlumnoAsignatura: e.source.textid,
-            Nombre: e.source.text
-        });
-        Alloy.Globals.tabGroup.open(tabAsignaturasController.getView());
-    });
     _.extend($, exports);
 }
 

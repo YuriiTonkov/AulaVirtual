@@ -1,0 +1,8 @@
+<Alloy>	
+			<Window id="WinEvaluacionesAlumno" title="Evaluaciones">	
+				<TableView dataCollection="Evaluacion" dataFilter="filtrado" id="TablaEvaluaciones">
+					<Require src="EvaluacionRow"/>
+				</TableView>
+				<Button id="addEvaluacion" title="Nueva" top="-50dp" onClick="NuevoEvaluacion"></Button>
+			</Window>
+</Alloy>

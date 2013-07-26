@@ -1,0 +1,9 @@
+".container": {
+	backgroundColor: "white"
+},
+".label": {
+	width:"80%"
+},
+".textbox": {
+	borderColor:"#000", width:"70%"
+}

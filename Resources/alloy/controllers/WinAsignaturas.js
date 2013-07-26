@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId41() {
-        var models = filtrado(__alloyId40);
+    function __alloyId48() {
+        var models = filtrado(__alloyId47);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId38 = models[i];
-            __alloyId38.__transform = {};
-            var __alloyId39 = Alloy.createController("AsignaturaRow", {
-                $model: __alloyId38
+            var __alloyId45 = models[i];
+            __alloyId45.__transform = {};
+            var __alloyId46 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId45
             });
-            rows.push(__alloyId39.getViewEx({
+            rows.push(__alloyId46.getViewEx({
                 recurse: true
             }));
         }
@@ -43,8 +43,8 @@ function Controller() {
         id: "TablaAsignaturasByAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
-    var __alloyId40 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId40.on("fetch destroy change add remove reset", __alloyId41);
+    var __alloyId47 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId47.on("fetch destroy change add remove reset", __alloyId48);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -53,7 +53,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId40.off("fetch destroy change add remove reset", __alloyId41);
+        __alloyId47.off("fetch destroy change add remove reset", __alloyId48);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
@@ -65,6 +65,7 @@ function Controller() {
     AsignaturasAlumno.fetch();
     $.TablaAsignaturasByAlumno.addEventListener("delete", function(e) {
         var Asignaturas = Alloy.Collections.Alumno_Asignatura;
+        Asignaturas.fetch();
         var model = Asignaturas.get(e.rowData.data);
         model.destroy();
         Asignaturas.remove(model);

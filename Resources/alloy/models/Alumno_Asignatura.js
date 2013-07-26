@@ -16,30 +16,11 @@ exports.definition = {
         }
     },
     extendModel: function(Model) {
-        _.extend(Model.prototype, {
-            Klass: function() {
-                return Model;
-            }
-        });
+        _.extend(Model.prototype, {});
         return Model;
     },
     extendCollection: function(Collection) {
-        _.extend(Collection.prototype, {
-            Klass: function() {
-                return Model;
-            },
-            cleanup: function() {
-                var regex = new RegExp("^(" + this.config.adapter.collection_name + ")\\-(.+)$");
-                var TAP = Ti.App.Properties;
-                _.each(TAP.listProperties(), function(prop) {
-                    var match = prop.match(regex);
-                    if (match) {
-                        TAP.removeProperty(prop);
-                        Ti.API.info("deleting old model " + prop);
-                    }
-                });
-            }
-        });
+        _.extend(Collection.prototype, {});
         return Collection;
     }
 };

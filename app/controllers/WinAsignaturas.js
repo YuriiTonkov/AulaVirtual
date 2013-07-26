@@ -34,6 +34,7 @@ $.TablaAsignaturasByAlumno.addEventListener('delete', function(e)
 {
     //console.debug("recogemos:"+e.rowData.data);
     var Asignaturas = Alloy.Collections.Alumno_Asignatura;
+    Asignaturas.fetch();
     var model = Asignaturas.get(e.rowData.data);
     
     model.destroy();

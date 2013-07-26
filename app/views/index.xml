@@ -5,6 +5,8 @@
 	<Collection src="Alumno">
 	<Collection src="VW_Alumno_Asignatura_Asignatura">
 	<Collection src="Alumno_Asignatura">
+	<Collection src="Evaluacion">
+	<Collection src="Examen">
 	<TabGroup>
 		<Require src="TabPrincipal"/>
 	</TabGroup>
