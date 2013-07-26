@@ -11,17 +11,24 @@ function Controller() {
         id: "tblAsignaturaRow"
     });
     $.__views.tblAsignaturaRow && $.addTopLevelView($.__views.tblAsignaturaRow);
-    $.__views.lblAsignatura = Ti.UI.createLabel({
+    $.__views.lblEvaluacion = Ti.UI.createLabel({
         width: "100%",
         height: "40dp",
         textAlign: "center",
-        id: "lblAsignatura",
+        id: "lblEvaluacion",
         text: "undefined" != typeof $model.__transform["Nombre"] ? $model.__transform["Nombre"] : $model.get("Nombre"),
         textid: "undefined" != typeof $model.__transform["IdEvaluacion"] ? $model.__transform["IdEvaluacion"] : $model.get("IdEvaluacion")
     });
-    $.__views.tblAsignaturaRow.add($.__views.lblAsignatura);
+    $.__views.tblAsignaturaRow.add($.__views.lblEvaluacion);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.lblEvaluacion.addEventListener("click", function(e) {
+        var tabEvaluacionesController = Alloy.createController("WinExamenes", {
+            IdEvaluacion: e.source.textid,
+            Nombre: e.source.text
+        });
+        Alloy.Globals.tabGroup.open(tabEvaluacionesController.getView());
+    });
     _.extend($, exports);
 }
 
