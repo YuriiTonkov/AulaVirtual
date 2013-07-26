@@ -1,0 +1,54 @@
+exports.definition = {
+	config: {
+		columns: {
+		    "IdAlumnoAsignatura": "int",
+		    "Alumno": "int",
+		    "Asignatura": "int",
+		    "FechaInicio": "date"
+		},
+		adapter: {
+			type: "sql",
+			collection_name: "Alumno_Asignatura",
+            db_file: "/AulaVirtual_v"+ require("Alloy").CFG.databaseversion +".sqlite",
+            db_name: "AulaVirtual",
+            idAttribute: "IdAlumnoAsignatura",
+            remoteBackup:"false"
+		}
+	},		
+	extendModel: function(Model) {		
+		_.extend(Model.prototype, {
+			// extended functions and properties go here
+		Klass : function (){
+		    return Model;
+		}});
+		
+		return Model;
+	},
+	extendCollection: function(Collection) {		
+		_.extend(Collection.prototype, {
+			// extended functions and properties go here
+		Klass : function (){
+            return Model;
+        },
+         /**
+             * cleanup function to remove all of the objects.
+             * 
+             * added this for testing purposes
+             */
+            cleanup : function() {
+                var regex = new RegExp("^(" + this.config.adapter.collection_name + ")\\-(.+)$");
+                var TAP = Ti.App.Properties;
+                _.each(TAP.listProperties(), function(prop) {
+                    var match = prop.match(regex);
+                    if (match) {
+                        TAP.removeProperty(prop);
+                        Ti.API.info('deleting old model ' + prop);
+                    }
+                });
+ 
+            }});
+		
+		return Collection;
+	}
+}
+

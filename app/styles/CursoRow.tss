@@ -1,0 +1,12 @@
+".container": {
+	"backgroundColor": "white"
+},
+".rowTitle": {
+	"width": "100%",
+	"height": "40dp",
+	"textAlign": "center"
+},
+".eliminar": {
+	"width": "10%",
+	"right":"5%"
+}

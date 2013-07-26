@@ -1,0 +1,7 @@
+<Alloy>	
+			<Window id="WinCursos" title="Cursos">
+				<TableView dataCollection="Curso" dataFilter="filtrado" id="TablaCursos">
+					<Require src="CursoRow"/>
+				</TableView>
+			</Window>
+</Alloy>

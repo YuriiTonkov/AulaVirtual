@@ -1,0 +1,7 @@
+<Alloy>
+			<Window id="winGrados" title="Grados">
+				<TableView dataCollection="Grado" id="TablaGrados">
+					<Require src="GradoRow"/>
+				</TableView>
+			</Window>
+</Alloy>

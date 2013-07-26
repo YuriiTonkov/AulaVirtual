@@ -1,0 +1,5 @@
+<Alloy>
+<Window class="container">
+		<Label class="label" top ="2%" width="20%">Detalle de alumno</Label>
+		</Window>
+</Alloy>

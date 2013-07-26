@@ -1,0 +1,11 @@
+<Alloy>
+	<Collection src="Grado">
+	<Collection src="Curso">
+	<Collection src="Clase">
+	<Collection src="Alumno">
+	<Collection src="VW_Alumno_Asignatura_Asignatura">
+	<Collection src="Alumno_Asignatura">
+	<TabGroup>
+		<Require src="TabPrincipal"/>
+	</TabGroup>
+</Alloy>

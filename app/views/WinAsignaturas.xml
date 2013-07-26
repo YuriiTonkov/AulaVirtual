@@ -1,0 +1,8 @@
+<Alloy>	
+			<Window id="WinAsignaturasAlumno" title="Asignaturas">	
+				<TableView dataCollection="VW_Alumno_Asignatura_Asignatura" dataFilter="filtrado" id="TablaAsignaturasByAlumno">
+					<Require src="AsignaturaRow"/>
+				</TableView>
+				<Button id="addAsignatura" title="Añadir" top="-50dp" onClick="NuevoAsignatura"></Button>
+			</Window>
+</Alloy>

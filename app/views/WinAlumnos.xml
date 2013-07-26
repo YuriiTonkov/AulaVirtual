@@ -1,0 +1,8 @@
+<Alloy>	
+			<Window id="WinAlumnos" title="Alumnos">	
+				<TableView dataCollection="Alumno" dataTransform="nombrecompleto" dataFilter="filtrado" id="TablaAlumnos">
+					<Require src="AlumnoRow"/>
+				</TableView>
+				<Button id="addAlumno" title="Nuevo" top="-50dp" onClick="NuevoAlumno"></Button>
+			</Window>
+</Alloy>

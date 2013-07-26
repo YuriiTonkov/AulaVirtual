@@ -1,0 +1,5 @@
+<Alloy>
+	<TableViewRow class="row" hasChild="true" id="tblCursosRow">
+		<Label class="rowTitle" id="lblCurso" text="{Nombre}" textid="{IdCurso}"/>
+	</TableViewRow>
+</Alloy>
