@@ -8,4 +8,5 @@ $.tblAlumnoRow.addEventListener("click", function(e){
     var tabAsignaturasController = Alloy.createController("WinAsignaturas", {"IdAlumno":e.source.textid, "Nombre":e.source.text});
     Alloy.Globals.tabGroup.open(tabAsignaturasController.getView());
     }
+    //COmentario para añadir una nueva version al github
 });
