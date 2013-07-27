@@ -9,7 +9,7 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
-
+// Prueba actualizacion github
 Alloy.Globals.databaseversion = "1";
 
 
