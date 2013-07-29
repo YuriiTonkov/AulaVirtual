@@ -22,12 +22,12 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.winNuevoAlumno = Ti.UI.createWindow({
+    $.__views.NuevoAlumno = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "winNuevoAlumno"
+        id: "NuevoAlumno"
     });
-    $.__views.winNuevoAlumno && $.addTopLevelView($.__views.winNuevoAlumno);
-    $.__views.__alloyId42 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno && $.addTopLevelView($.__views.NuevoAlumno);
+    $.__views.__alloyId31 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -35,9 +35,9 @@ function Controller() {
         },
         text: "Nombre",
         top: "2%",
-        id: "__alloyId42"
+        id: "__alloyId31"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId42);
+    $.__views.NuevoAlumno.add($.__views.__alloyId31);
     $.__views.txtNombre = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -45,8 +45,8 @@ function Controller() {
         top: "2%",
         id: "txtNombre"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtNombre);
-    $.__views.__alloyId43 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno.add($.__views.txtNombre);
+    $.__views.__alloyId32 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -54,9 +54,9 @@ function Controller() {
         },
         text: "1er Apellido",
         top: "10%",
-        id: "__alloyId43"
+        id: "__alloyId32"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId43);
+    $.__views.NuevoAlumno.add($.__views.__alloyId32);
     $.__views.txtApellido1 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -64,8 +64,8 @@ function Controller() {
         top: "10%",
         id: "txtApellido1"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtApellido1);
-    $.__views.__alloyId44 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno.add($.__views.txtApellido1);
+    $.__views.__alloyId33 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -73,9 +73,9 @@ function Controller() {
         },
         text: "2o Apellido",
         top: "18%",
-        id: "__alloyId44"
+        id: "__alloyId33"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId44);
+    $.__views.NuevoAlumno.add($.__views.__alloyId33);
     $.__views.txtApellido2 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -83,8 +83,8 @@ function Controller() {
         top: "18%",
         id: "txtApellido2"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtApellido2);
-    $.__views.__alloyId45 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno.add($.__views.txtApellido2);
+    $.__views.__alloyId34 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -92,9 +92,9 @@ function Controller() {
         },
         text: "Direccion",
         top: "26%",
-        id: "__alloyId45"
+        id: "__alloyId34"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId45);
+    $.__views.NuevoAlumno.add($.__views.__alloyId34);
     $.__views.txtDireccion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -102,8 +102,8 @@ function Controller() {
         top: "26%",
         id: "txtDireccion"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtDireccion);
-    $.__views.__alloyId46 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno.add($.__views.txtDireccion);
+    $.__views.__alloyId35 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -111,9 +111,9 @@ function Controller() {
         },
         text: "Cod.Postal",
         top: "34%",
-        id: "__alloyId46"
+        id: "__alloyId35"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId46);
+    $.__views.NuevoAlumno.add($.__views.__alloyId35);
     $.__views.txtCodPostal = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -121,8 +121,8 @@ function Controller() {
         top: "34%",
         id: "txtCodPostal"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtCodPostal);
-    $.__views.__alloyId47 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno.add($.__views.txtCodPostal);
+    $.__views.__alloyId36 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -130,9 +130,9 @@ function Controller() {
         },
         text: "Telefono",
         top: "42%",
-        id: "__alloyId47"
+        id: "__alloyId36"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId47);
+    $.__views.NuevoAlumno.add($.__views.__alloyId36);
     $.__views.txtTelefono = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -140,8 +140,8 @@ function Controller() {
         top: "42%",
         id: "txtTelefono"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtTelefono);
-    $.__views.__alloyId48 = Ti.UI.createLabel({
+    $.__views.NuevoAlumno.add($.__views.txtTelefono);
+    $.__views.__alloyId37 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -149,9 +149,9 @@ function Controller() {
         },
         text: "Email",
         top: "50%",
-        id: "__alloyId48"
+        id: "__alloyId37"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId48);
+    $.__views.NuevoAlumno.add($.__views.__alloyId37);
     $.__views.txtEmail = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -159,21 +159,20 @@ function Controller() {
         top: "50%",
         id: "txtEmail"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtEmail);
+    $.__views.NuevoAlumno.add($.__views.txtEmail);
     $.__views.btnGuardar = Ti.UI.createButton({
-        top: "-50dp",
+        top: "60%",
         id: "btnGuardar",
         title: "Guardar"
     });
-    $.__views.winNuevoAlumno.add($.__views.btnGuardar);
+    $.__views.NuevoAlumno.add($.__views.btnGuardar);
     GuardarAlumno ? $.__views.btnGuardar.addEventListener("click", GuardarAlumno) : __defers["$.__views.btnGuardar!click!GuardarAlumno"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
     var data = [];
     data = arg1;
-    $.winNuevoAlumno.title = data.Nombre;
-    $.winNuevoAlumno.setRightNavButton($.btnGuardar);
+    $.NuevoAlumno.title = data.Nombre;
     __defers["$.__views.btnGuardar!click!GuardarAlumno"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumno);
     _.extend($, exports);
 }

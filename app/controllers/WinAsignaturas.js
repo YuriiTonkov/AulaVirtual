@@ -21,8 +21,8 @@ function filtrado (collection){
     return coleccion_filtrada;
 }
 function NuevoAsignatura (){
-    var tabAsignaturaController = Alloy.createController("NuevaAsignatura", {"IdAlumno":data.IdAlumno, "Nombre":data.Nombre});
-    Alloy.Globals.tabGroup.open(tabAsignaturaController.getView());
+    var tabClasesController = Alloy.createController("NuevaAsignatura", {"IdAlumno":data.IdAlumno, "Nombre":data.Nombre});
+    Alloy.Globals.tabGroup.open(tabClasesController.getView());
     
 }
 
