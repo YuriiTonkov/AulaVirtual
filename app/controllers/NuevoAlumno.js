@@ -2,8 +2,7 @@ var arg1 = arguments[0] || {};
 var data = [];
 data = arg1;
 
-$.winNuevoAlumno.title = data.Nombre;
-$.winNuevoAlumno.setRightNavButton($.btnGuardar);
+$.NuevoAlumno.title = data.Nombre;
 
 function GuardarAlumno(){
     var alumno = Alloy.createModel('Alumno',{Nombre:$.txtNombre.value, 
