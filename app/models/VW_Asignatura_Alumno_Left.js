@@ -33,7 +33,7 @@ exports.definition = {
                    this.fetch({query: query1});                     
                 }catch (err){
                     Ti.API.info('ERROR: ' + JSON.stringify(err))
-                }   
+                }   //proba, non vaia a ser..
 			}
 		});
 		
