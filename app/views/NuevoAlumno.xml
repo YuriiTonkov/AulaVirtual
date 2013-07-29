@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container">
+	<Window id="winNuevoAlumno" class="container">
 		<Label class="label" top ="2%" width="20%">Nombre </Label>
 		<TextField top ="2%" class="textbox" id="txtNombre" ></TextField>
 		<Label class="label" top ="10%" width="20%">1er Apellido </Label>
@@ -14,6 +14,6 @@
 		<TextField class="textbox" top ="42%" id="txtTelefono"></TextField>
 		<Label class="label" top ="50%" width="20%">Email </Label>
 		<TextField class="textbox" top ="50%" id="txtEmail"></TextField>
-		<Button top="60%" class="button" id="btnGuardar" title="Guardar" onClick="GuardarAlumno"></Button>
+		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAlumno"></Button>
 	</Window>
 </Alloy>

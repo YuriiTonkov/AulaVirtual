@@ -4,9 +4,11 @@
 	<Collection src="Clase">
 	<Collection src="Alumno">
 	<Collection src="VW_Alumno_Asignatura_Asignatura">
+	<Collection src="VW_Asignatura_Alumno_Left">
 	<Collection src="Alumno_Asignatura">
 	<Collection src="Evaluacion">
 	<Collection src="Examen">
+	<Collection src="Asignatura">
 	<TabGroup>
 		<Require src="TabPrincipal"/>
 	</TabGroup>

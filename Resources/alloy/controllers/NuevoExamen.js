@@ -23,12 +23,12 @@ function Controller() {
         id: "NuevoExamen"
     });
     $.__views.NuevoExamen && $.addTopLevelView($.__views.NuevoExamen);
-    $.__views.__alloyId38 = Ti.UI.createLabel({
+    $.__views.__alloyId49 = Ti.UI.createLabel({
         text: "Introduzca la fecha del examen",
         top: "5%",
-        id: "__alloyId38"
+        id: "__alloyId49"
     });
-    $.__views.NuevoExamen.add($.__views.__alloyId38);
+    $.__views.NuevoExamen.add($.__views.__alloyId49);
     $.__views.DtExamen = Ti.UI.createPicker({
         id: "DtExamen",
         type: "PICKER_TYPE_DATE"
