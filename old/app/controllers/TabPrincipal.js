@@ -1,1 +1,0 @@
-Alloy.Globals.tabGroup = $.TabPrincipal;

@@ -1,5 +1,0 @@
-<Alloy>
-	<TableViewRow id="tblGradosRow" class="row" hasChild="true">
-		<Label id="lblGrado"  class="rowTitle" text="{NombreGrado}" textid="{IdGrado}">
-	</TableViewRow>
-</Alloy>

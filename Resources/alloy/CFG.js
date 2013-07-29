@@ -1,4 +1,4 @@
 module.exports = {
     dependencies: {},
-    databaseversion: "8"
+    databaseversion: "11"
 };

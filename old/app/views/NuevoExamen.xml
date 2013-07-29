@@ -1,7 +1,0 @@
-<Alloy>  
-    <Window class="container">
-        <Label class="label" top="5%">Introduzca la fecha del examen</Label>
-        <Picker  id="DtExamen" type="PICKER_TYPE_DATE"/>
-        <Button class="button" top="35%" id="btnGuardar" title="Guardar" onClick="GuardarExamen"></Button>
-    </Window>
-</Alloy>
