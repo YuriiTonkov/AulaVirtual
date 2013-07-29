@@ -23,6 +23,7 @@ function Controller() {
         id: "NuevaEvaluacion"
     });
     $.__views.NuevaEvaluacion && $.addTopLevelView($.__views.NuevaEvaluacion);
+<<<<<<< HEAD
     $.__views.__alloyId30 = Ti.UI.createLabel({
         width: "80%",
         text: "Introduzca el nombre de la evaluacion",
@@ -30,6 +31,15 @@ function Controller() {
         id: "__alloyId30"
     });
     $.__views.NuevaEvaluacion.add($.__views.__alloyId30);
+=======
+    $.__views.__alloyId37 = Ti.UI.createLabel({
+        width: "80%",
+        text: "Introduzca el nombre de la evaluacion",
+        top: "5%",
+        id: "__alloyId37"
+    });
+    $.__views.NuevaEvaluacion.add($.__views.__alloyId37);
+>>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
     $.__views.txtNombreEvaluacion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "70%",

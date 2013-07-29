@@ -1,4 +1,5 @@
 function Controller() {
+<<<<<<< HEAD
     function __alloyId55() {
         var models = filtrado(__alloyId54);
         var len = models.length;
@@ -10,6 +11,19 @@ function Controller() {
                 $model: __alloyId52
             });
             rows.push(__alloyId53.getViewEx({
+=======
+    function __alloyId62() {
+        var models = filtrado(__alloyId61);
+        var len = models.length;
+        var rows = [];
+        for (var i = 0; len > i; i++) {
+            var __alloyId59 = models[i];
+            __alloyId59.__transform = NombreClase(__alloyId59);
+            var __alloyId60 = Alloy.createController("ClaseRow", {
+                $model: __alloyId59
+            });
+            rows.push(__alloyId60.getViewEx({
+>>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
                 recurse: true
             }));
         }
@@ -48,8 +62,13 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);
+<<<<<<< HEAD
     var __alloyId54 = Alloy.Collections["Clase"] || Clase;
     __alloyId54.on("fetch destroy change add remove reset", __alloyId55);
+=======
+    var __alloyId61 = Alloy.Collections["Clase"] || Clase;
+    __alloyId61.on("fetch destroy change add remove reset", __alloyId62);
+>>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
     $.__views.addClase = Ti.UI.createButton({
         id: "addClase",
         title: "Nueva",
@@ -58,7 +77,11 @@ function Controller() {
     $.__views.WinClases.add($.__views.addClase);
     NuevaClase ? $.__views.addClase.addEventListener("click", NuevaClase) : __defers["$.__views.addClase!click!NuevaClase"] = true;
     exports.destroy = function() {
+<<<<<<< HEAD
         __alloyId54.off("fetch destroy change add remove reset", __alloyId55);
+=======
+        __alloyId61.off("fetch destroy change add remove reset", __alloyId62);
+>>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

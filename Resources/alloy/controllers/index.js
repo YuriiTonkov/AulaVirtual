@@ -15,10 +15,17 @@ function Controller() {
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
     });
+<<<<<<< HEAD
     $.__views.__alloyId27 = Alloy.createController("TabPrincipal", {
         id: "__alloyId27"
     });
     $.__views.index.addTab($.__views.__alloyId27.getViewEx({
+=======
+    $.__views.__alloyId30 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId30"
+    });
+    $.__views.index.addTab($.__views.__alloyId30.getViewEx({
+>>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
         recurse: true
     }));
     $.__views.index && $.addTopLevelView($.__views.index);
