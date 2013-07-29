@@ -1,8 +1,10 @@
 <Alloy>
 	<Window id="winNuevaAsignatura" class="container">
 		<Label class="label" top="5%">Seleccione la asignatura</Label>
-		<TableView dataCollection="Asignatura" id="TablaAsignaturas" allowsSelection="true">
-			<TableViewRow  class="fila" data="{IdAsignatura}" id="rowAsignaturas" title="{Nombre}"></TableViewRow>
+		<TableView dataCollection="VW_Asignatura_Alumno_Left" id="TablaAsignaturas"  allowsSelection="true">
+			<TableViewRow  editable="true" data="{IdAsignatura}"  id="AsignaturaRow">
+				<Label class="rowTitle" id="lblAsignatura" text="{Nombre}" textid="{IdAsignatura}"/>
+			</TableViewRow>
 		</TableView>
 		<Button class="button" id="btnGuardar" top="-50dp"title="Guardar" onClick="GuardarAsignatura"></Button>
 	</Window>
