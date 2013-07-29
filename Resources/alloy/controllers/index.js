@@ -9,23 +9,18 @@ function Controller() {
     Alloy.Collections.instance("Clase");
     Alloy.Collections.instance("Alumno");
     Alloy.Collections.instance("VW_Alumno_Asignatura_Asignatura");
+    Alloy.Collections.instance("VW_Asignatura_Alumno_Left");
     Alloy.Collections.instance("Alumno_Asignatura");
     Alloy.Collections.instance("Evaluacion");
     Alloy.Collections.instance("Examen");
+    Alloy.Collections.instance("Asignatura");
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
     });
-<<<<<<< HEAD
-    $.__views.__alloyId27 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId27"
+    $.__views.__alloyId33 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId33"
     });
-    $.__views.index.addTab($.__views.__alloyId27.getViewEx({
-=======
-    $.__views.__alloyId30 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId30"
-    });
-    $.__views.index.addTab($.__views.__alloyId30.getViewEx({
->>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
+    $.__views.index.addTab($.__views.__alloyId33.getViewEx({
         recurse: true
     }));
     $.__views.index && $.addTopLevelView($.__views.index);

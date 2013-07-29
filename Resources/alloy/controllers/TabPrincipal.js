@@ -4,19 +4,11 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-<<<<<<< HEAD
-    $.__views.__alloyId40 = Alloy.createController("WinGrupos", {
-        id: "__alloyId40"
+    $.__views.__alloyId51 = Alloy.createController("WinGrupos", {
+        id: "__alloyId51"
     });
     $.__views.TabPrincipal = Ti.UI.createTab({
-        window: $.__views.__alloyId40.getViewEx({
-=======
-    $.__views.__alloyId47 = Alloy.createController("WinGrupos", {
-        id: "__alloyId47"
-    });
-    $.__views.TabPrincipal = Ti.UI.createTab({
-        window: $.__views.__alloyId47.getViewEx({
->>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
+        window: $.__views.__alloyId51.getViewEx({
             recurse: true
         }),
         title: "Menu principal",

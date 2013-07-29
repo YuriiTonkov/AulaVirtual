@@ -1,5 +1,5 @@
 {
-	"global": {"databaseversion":"6"}, 
+	"global": {"databaseversion":"8"}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 

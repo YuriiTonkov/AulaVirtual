@@ -1,29 +1,15 @@
 function Controller() {
-<<<<<<< HEAD
-    function __alloyId60() {
-        var models = filtrado(__alloyId59);
+    function __alloyId71() {
+        var models = filtrado(__alloyId70);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId57 = models[i];
-            __alloyId57.__transform = {};
-            var __alloyId58 = Alloy.createController("CursoRow", {
-                $model: __alloyId57
+            var __alloyId68 = models[i];
+            __alloyId68.__transform = {};
+            var __alloyId69 = Alloy.createController("CursoRow", {
+                $model: __alloyId68
             });
-            rows.push(__alloyId58.getViewEx({
-=======
-    function __alloyId67() {
-        var models = filtrado(__alloyId66);
-        var len = models.length;
-        var rows = [];
-        for (var i = 0; len > i; i++) {
-            var __alloyId64 = models[i];
-            __alloyId64.__transform = {};
-            var __alloyId65 = Alloy.createController("CursoRow", {
-                $model: __alloyId64
-            });
-            rows.push(__alloyId65.getViewEx({
->>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
+            rows.push(__alloyId69.getViewEx({
                 recurse: true
             }));
         }
@@ -49,17 +35,10 @@ function Controller() {
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);
-<<<<<<< HEAD
-    var __alloyId59 = Alloy.Collections["Curso"] || Curso;
-    __alloyId59.on("fetch destroy change add remove reset", __alloyId60);
+    var __alloyId70 = Alloy.Collections["Curso"] || Curso;
+    __alloyId70.on("fetch destroy change add remove reset", __alloyId71);
     exports.destroy = function() {
-        __alloyId59.off("fetch destroy change add remove reset", __alloyId60);
-=======
-    var __alloyId66 = Alloy.Collections["Curso"] || Curso;
-    __alloyId66.on("fetch destroy change add remove reset", __alloyId67);
-    exports.destroy = function() {
-        __alloyId66.off("fetch destroy change add remove reset", __alloyId67);
->>>>>>> parent of 0504347... Task #199990: Pantalla Nueva Asignatura
+        __alloyId70.off("fetch destroy change add remove reset", __alloyId71);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
