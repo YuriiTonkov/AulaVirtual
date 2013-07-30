@@ -1,28 +1,56 @@
 function Controller() {
-    function __alloyId39() {
-        var models = __alloyId38.models;
+    function __alloyId41() {
+        var models = __alloyId40.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId35 = models[i];
-            __alloyId35.__transform = {};
-            var __alloyId36 = Ti.UI.createTableViewRow({
+            var __alloyId37 = models[i];
+            __alloyId37.__transform = {};
+            var __alloyId38 = Ti.UI.createTableViewRow({
                 editable: "true",
-                data: "undefined" != typeof __alloyId35.__transform["IdAsignatura"] ? __alloyId35.__transform["IdAsignatura"] : __alloyId35.get("IdAsignatura")
+                data: "undefined" != typeof __alloyId37.__transform["IdAsignatura"] ? __alloyId37.__transform["IdAsignatura"] : __alloyId37.get("IdAsignatura")
             });
-            rows.push(__alloyId36);
-            var __alloyId37 = Ti.UI.createLabel({
+            rows.push(__alloyId38);
+            var __alloyId39 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "center",
-                text: "undefined" != typeof __alloyId35.__transform["Nombre"] ? __alloyId35.__transform["Nombre"] : __alloyId35.get("Nombre"),
-                textid: "undefined" != typeof __alloyId35.__transform["IdAsignatura"] ? __alloyId35.__transform["IdAsignatura"] : __alloyId35.get("IdAsignatura")
+                text: "undefined" != typeof __alloyId37.__transform["Nombre"] ? __alloyId37.__transform["Nombre"] : __alloyId37.get("Nombre"),
+                textid: "undefined" != typeof __alloyId37.__transform["IdAsignatura"] ? __alloyId37.__transform["IdAsignatura"] : __alloyId37.get("IdAsignatura")
             });
-            __alloyId36.add(__alloyId37);
+            __alloyId38.add(__alloyId39);
         }
         $.__views.TablaAsignaturas.setData(rows);
     }
-    function GuardarAsignatura() {}
+    function getDate() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+        var month = currentTime.getMonth() + 1;
+        var day = currentTime.getDate();
+        var year = currentTime.getFullYear();
+        10 > hours && (hours = "0" + hours);
+        10 > minutes && (minutes = "0" + minutes);
+        10 > seconds && (seconds = "0" + seconds);
+        return month + "/" + day + "/" + year + " -  " + hours + ":" + minutes + ":" + seconds;
+    }
+    function GuardarAsignatura() {
+        for (var i = 0; $.TablaAsignaturas.data[0].rows.length > i; i++) if ($.TablaAsignaturas.data[0].rows[i].selected) {
+            var AlumnoAsignatura = Alloy.createModel("Alumno_Asignatura", {
+                Alumno: data.IdAlumno,
+                Asignatura: $.TablaAsignaturas.data[0].rows[i].data,
+                FechaInicio: getDate()
+            });
+            var coleccionAlumnoAsignatura = Alloy.Collections.Alumno_Asignatura;
+            coleccionAlumnoAsignatura.add(AlumnoAsignatura);
+            AlumnoAsignatura.save();
+        }
+        coleccionAlumnoAsignatura.fetch();
+        var AsignaturasAlumno = Alloy.Collections.VW_Alumno_Asignatura_Asignatura;
+        AsignaturasAlumno.fetch();
+        $.winNuevaAsignatura.close();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -34,19 +62,19 @@ function Controller() {
         id: "winNuevaAsignatura"
     });
     $.__views.winNuevaAsignatura && $.addTopLevelView($.__views.winNuevaAsignatura);
-    $.__views.__alloyId34 = Ti.UI.createLabel({
+    $.__views.__alloyId36 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId34"
+        id: "__alloyId36"
     });
-    $.__views.winNuevaAsignatura.add($.__views.__alloyId34);
+    $.__views.winNuevaAsignatura.add($.__views.__alloyId36);
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
         id: "TablaAsignaturas",
         allowsSelection: "true"
     });
     $.__views.winNuevaAsignatura.add($.__views.TablaAsignaturas);
-    var __alloyId38 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId38.on("fetch destroy change add remove reset", __alloyId39);
+    var __alloyId40 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId40.on("fetch destroy change add remove reset", __alloyId41);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -55,7 +83,7 @@ function Controller() {
     $.__views.winNuevaAsignatura.add($.__views.btnGuardar);
     GuardarAsignatura ? $.__views.btnGuardar.addEventListener("click", GuardarAsignatura) : __defers["$.__views.btnGuardar!click!GuardarAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId38.off("fetch destroy change add remove reset", __alloyId39);
+        __alloyId40.off("fetch destroy change add remove reset", __alloyId41);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
@@ -64,6 +92,15 @@ function Controller() {
     $.winNuevaAsignatura.setRightNavButton($.btnGuardar);
     var Asignaturas = Alloy.Collections.VW_Asignatura_Alumno_Left;
     Asignaturas.filtraAsignatura(data.IdAlumno);
+    $.TablaAsignaturas.addEventListener("click", function(e) {
+        if (e.row.selected) {
+            e.row.backgroundColor = "#fff";
+            e.row.selected = 0;
+        } else {
+            e.row.backgroundColor = "#003b6f";
+            e.row.selected = 1;
+        }
+    });
     __defers["$.__views.btnGuardar!click!GuardarAsignatura"] && $.__views.btnGuardar.addEventListener("click", GuardarAsignatura);
     _.extend($, exports);
 }

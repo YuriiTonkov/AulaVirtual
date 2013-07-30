@@ -10,17 +10,64 @@ $.winNuevaAsignatura.setRightNavButton($.btnGuardar);
 
 //-----------------------------------------
 
-//var query1 = 'SELECT * FROM VW_ASIGNATURA_ALUMNO_LEFT WHERE IdAlumno=' + data.IdAlumno + ' AND  IdAsignatura NOT IN (SELECT Asignatura FROM VW_ALUMNO_ASIGNATURA_ASIGNATURA WHERE Alumno=' + data.IdAlumno+')'
-//console.info("recogemos: "+query1);
-//var Asignaturas = Alloy.createCollection('VW_Asignatura_Alumno_Left');
+
 var Asignaturas = Alloy.Collections.VW_Asignatura_Alumno_Left;
-//Asignaturas.fetch({query:query1});
-//Asignaturas.fetch();
 Asignaturas.filtraAsignatura(data.IdAlumno);
+
+
+
 //Funciones--------------------------
+function getDate() {
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+    var month = currentTime.getMonth() + 1;
+    var day = currentTime.getDate();
+    var year = currentTime.getFullYear();
+ 
+    if (hours < 10) { hours = "0" + hours}; 
+    if (minutes < 10) { minutes = "0" + minutes};
+    if (seconds < 10) { seconds = "0" + seconds};
+ 
+    return month + "/" + day + "/" + year + " -  " + hours + ":" + minutes + ":" + seconds;
+ 
+    }
 
 
+function GuardarAsignatura(){
+ 
+   for (var i=0;i<$.TablaAsignaturas.data[0].rows.length;i++){
+       if ($.TablaAsignaturas.data[0].rows[i].selected){
+            var AlumnoAsignatura = Alloy.createModel('Alumno_Asignatura',{Alumno:data.IdAlumno, 
+                                            Asignatura:$.TablaAsignaturas.data[0].rows[i].data,   
+                                            FechaInicio: getDate()});
+            var coleccionAlumnoAsignatura = Alloy.Collections.Alumno_Asignatura;
+            coleccionAlumnoAsignatura.add(AlumnoAsignatura);
+            AlumnoAsignatura.save();
+       }
+   } 
+   
+ 
+    coleccionAlumnoAsignatura.fetch();
+    //refrescamos la colección de la vista.
+    var AsignaturasAlumno = Alloy.Collections.VW_Alumno_Asignatura_Asignatura;
+    AsignaturasAlumno.fetch();
+    //cerramos esta ventana
+    $.winNuevaAsignatura.close(); 
+    
+}
 
-function GuardarAsignatura(){}
+//-Listeners-------------------------------
 
-//--------------------------------
+$.TablaAsignaturas.addEventListener('click',function(e){
+
+   if(!e.row.selected) {
+      e.row.backgroundColor = '#003b6f';
+      e.row.selected = 1;
+   }
+   else{
+      e.row.backgroundColor = '#fff';
+      e.row.selected = 0;
+   }
+});

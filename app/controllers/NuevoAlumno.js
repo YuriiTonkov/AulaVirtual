@@ -19,5 +19,5 @@ function GuardarAlumno(){
     alumno.save();
  
     coleccionAlumnos.fetch();
-    $.NuevoAlumno.close();
+    $.winNuevoAlumno.close();
 }

@@ -5,7 +5,8 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.tblCursosRow = Ti.UI.createTableViewRow({
-        hasChild: "true",
+        data: "undefined" != typeof $model.__transform["IdCurso"] ? $model.__transform["IdCurso"] : $model.get("IdCurso"),
+        hasDetail: "true",
         id: "tblCursosRow"
     });
     $.__views.tblCursosRow && $.addTopLevelView($.__views.tblCursosRow);
@@ -20,12 +21,19 @@ function Controller() {
     $.__views.tblCursosRow.add($.__views.lblCurso);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.lblCurso.addEventListener("click", function(e) {
-        var tabClasesController = Alloy.createController("WinClases", {
-            IdCurso: e.source.textid,
-            Nombre: e.source.text
-        });
-        Alloy.Globals.tabGroup.open(tabClasesController.getView());
+    $.tblCursosRow.addEventListener("click", function(e) {
+        if (1 == e.detail) {
+            var tabNuevaAsignaturaController = Alloy.createController("winCrearAsignatura", {
+                Curso: e.source.data
+            });
+            Alloy.Globals.tabGroup.open(tabNuevaAsignaturaController.getView());
+        } else {
+            var tabClasesController = Alloy.createController("WinClases", {
+                IdCurso: e.source.textid,
+                Nombre: e.source.text
+            });
+            Alloy.Globals.tabGroup.open(tabClasesController.getView());
+        }
     });
     _.extend($, exports);
 }

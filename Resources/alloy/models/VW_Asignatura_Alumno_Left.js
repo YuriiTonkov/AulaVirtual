@@ -24,7 +24,6 @@ exports.definition = {
             filtraAsignatura: function(idAlumno) {
                 try {
                     var query1 = "SELECT * FROM VW_ASIGNATURA_ALUMNO_LEFT WHERE IdAlumno=" + idAlumno + " AND  IdAsignatura NOT IN (SELECT Asignatura FROM VW_ALUMNO_ASIGNATURA_ASIGNATURA WHERE Alumno=" + idAlumno + ")";
-                    Ti.API.info("Recogemos: " + query1);
                     this.fetch({
                         query: query1
                     });
