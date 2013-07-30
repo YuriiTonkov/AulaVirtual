@@ -2,6 +2,7 @@ function Controller() {
     function GuardarAsignatura() {
         var Asignatura = Alloy.createModel("Asignatura", {
             Nombre: $.txtNombreAsignatura.value,
+            Curso: data.IdCurso,
             Descripcion: $.txtDescripcion.value,
             Optativa: $.swtOptativa.value ? 1 : 0
         });
@@ -48,7 +49,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "Descripcion",
-        top: "25%",
+        top: "15%",
         id: "__alloyId1"
     });
     $.__views.winCrearAsignatura.add($.__views.__alloyId1);
@@ -56,14 +57,26 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "25%",
+        top: "15%",
         id: "txtDescripcion"
     });
     $.__views.winCrearAsignatura.add($.__views.txtDescripcion);
+    $.__views.__alloyId2 = Ti.UI.createLabel({
+        width: "30%",
+        left: "2%",
+        font: {
+            fontSize: "11dp"
+        },
+        text: "Asignatura Optativa",
+        top: "25%",
+        id: "__alloyId2"
+    });
+    $.__views.winCrearAsignatura.add($.__views.__alloyId2);
     $.__views.swtOptativa = Ti.UI.createSwitch({
         title: "Optativa",
+        value: "false",
         visible: "true",
-        top: "45%",
+        top: "25%",
         id: "swtOptativa"
     });
     $.__views.winCrearAsignatura.add($.__views.swtOptativa);

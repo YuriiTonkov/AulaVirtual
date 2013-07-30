@@ -2,6 +2,9 @@ var arg1 = arguments[0] || {};
 var data = [];
 data = arg1;
 
+//Elementos de Interfaz
+//$.WinClases.title = data.Nombre;
+$.winNuevaEvaluacion.setRightNavButton($.btnGuardar);
 
 function GuardarEvaluacion(){
     if ($.txtNombreEvaluacion.value == "") 
@@ -15,6 +18,6 @@ function GuardarEvaluacion(){
             coleccionEvaluaciones.add(Evaluacion);
             Evaluacion.save();
             coleccionEvaluaciones.fetch();
-            $.NuevaEvaluacion.close();
+            $.winNuevaEvaluacion.close();
     }
 }

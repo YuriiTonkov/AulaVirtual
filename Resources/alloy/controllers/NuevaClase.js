@@ -9,7 +9,7 @@ function Controller() {
             coleccionClases.add(clase);
             clase.save();
             coleccionClases.fetch();
-            $.NuevaClase.close();
+            $.winNuevaClase.close();
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -18,37 +18,38 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.NuevaClase = Ti.UI.createWindow({
+    $.__views.winNuevaClase = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "NuevaClase"
+        id: "winNuevaClase"
     });
-    $.__views.NuevaClase && $.addTopLevelView($.__views.NuevaClase);
-    $.__views.__alloyId42 = Ti.UI.createLabel({
+    $.__views.winNuevaClase && $.addTopLevelView($.__views.winNuevaClase);
+    $.__views.__alloyId43 = Ti.UI.createLabel({
         width: "80%",
         text: "Introduzca el nombre de la clase",
         top: "5%",
-        id: "__alloyId42"
+        id: "__alloyId43"
     });
-    $.__views.NuevaClase.add($.__views.__alloyId42);
+    $.__views.winNuevaClase.add($.__views.__alloyId43);
     $.__views.txtNombreClase = Ti.UI.createTextField({
         borderColor: "#000",
         width: "70%",
         top: "20%",
         id: "txtNombreClase"
     });
-    $.__views.NuevaClase.add($.__views.txtNombreClase);
+    $.__views.winNuevaClase.add($.__views.txtNombreClase);
     $.__views.btnGuardar = Ti.UI.createButton({
-        top: "35%",
+        top: "-50dp",
         id: "btnGuardar",
         title: "Guardar"
     });
-    $.__views.NuevaClase.add($.__views.btnGuardar);
+    $.__views.winNuevaClase.add($.__views.btnGuardar);
     GuardarClase ? $.__views.btnGuardar.addEventListener("click", GuardarClase) : __defers["$.__views.btnGuardar!click!GuardarClase"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
     var data = [];
     data = arg1;
+    $.winNuevaClase.setRightNavButton($.btnGuardar);
     __defers["$.__views.btnGuardar!click!GuardarClase"] && $.__views.btnGuardar.addEventListener("click", GuardarClase);
     _.extend($, exports);
 }

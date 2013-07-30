@@ -8,7 +8,7 @@ $.winCrearAsignatura.setRightNavButton($.btnGuardar);
 
 function GuardarAsignatura(){
     
-            var Asignatura = Alloy.createModel('Asignatura',{Nombre:$.txtNombreAsignatura.value, Descripcion:$.txtDescripcion.value, Optativa:($.swtOptativa.value?1:0)});
+            var Asignatura = Alloy.createModel('Asignatura',{Nombre:$.txtNombreAsignatura.value, Curso:data.IdCurso, Descripcion:$.txtDescripcion.value, Optativa:($.swtOptativa.value?1:0)});
             var coleccionAsignaturas = Alloy.Collections.Asignatura;
             coleccionAsignaturas.add(Asignatura);
             Asignatura.save();

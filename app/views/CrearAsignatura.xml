@@ -2,9 +2,10 @@
 	<Window id="winCrearAsignatura" class="container">
 		<Label class="label" top="5%">Nombre</Label>
 		<TextField class="textbox" top="5%" id="txtNombreAsignatura"></TextField>
-		<Label class="label" top="25%">Descripcion</Label>
-		<TextField class="textbox" top="25%" id="txtDescripcion"></TextField>
-		<Switch title="Optativa" visible="true" top="45%" id="swtOptativa">EI</Switch>
+		<Label class="label" top="15%">Descripcion</Label>
+		<TextField class="textbox" top="15%" id="txtDescripcion"></TextField>
+		<Label class="label" top="25%">Asignatura Optativa</Label>
+		<Switch title="Optativa" value="false" visible="true" top="25%" id="swtOptativa"/>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAsignatura"></Button>
 	</Window>
 </Alloy>

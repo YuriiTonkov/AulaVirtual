@@ -17,10 +17,10 @@ function Controller() {
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
     });
-    $.__views.__alloyId35 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId35"
+    $.__views.__alloyId36 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId36"
     });
-    $.__views.index.addTab($.__views.__alloyId35.getViewEx({
+    $.__views.index.addTab($.__views.__alloyId36.getViewEx({
         recurse: true
     }));
     $.__views.index && $.addTopLevelView($.__views.index);
