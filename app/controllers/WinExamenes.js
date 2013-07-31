@@ -15,6 +15,11 @@ Examenes.fetch();
 
 //Funciones--------------------------
 
+function TextoFila (model){
+    var transform = model.toJSON();
+    transform.TextoFila = "Examen: "+transform.FechaExamen+"   Nota: "+transform.Nota;
+    return transform
+}
 
 function filtrado (collection){
     var coleccion_filtrada = collection.where({Evaluacion: data.IdEvaluacion});

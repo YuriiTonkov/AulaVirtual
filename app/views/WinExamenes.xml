@@ -1,6 +1,6 @@
 <Alloy>	
 			<Window id="WinExamenes" title="Examenes">	
-				<TableView dataCollection="Examen" dataFilter="filtrado" id="TablaExamenes">
+				<TableView dataCollection="Examen" dataTransform="TextoFila" dataFilter="filtrado" id="TablaExamenes">
 					<Require src="ExamenRow"/>
 				</TableView>
 				<Button id="addExamen" title="Nuevo" top="-50dp" onClick="NuevoExamen"></Button>

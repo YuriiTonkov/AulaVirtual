@@ -1,7 +1,11 @@
 <Alloy>  
-    <Window class="container">
-        <Label class="label" top="5%">Introduzca la fecha del examen</Label>
-        <Picker  id="DtExamen" type="PICKER_TYPE_DATE"/>
-        <Button class="button" top="35%" id="btnGuardar" title="Guardar" onClick="GuardarExamen"></Button>
+    <Window id="winNuevoExamen" class="container">
+        <Label class="label" top="15%">Fecha Examen:</Label>
+        <Label class="label2" top="15%" text="Pulse aqui" id="dateTextField"/>
+        <Label class="label" top="25%">Nota:</Label>
+        <TextField class="textbox" top="25%" id="txtNota" keyboardType=KEYBOARD_DECIMAL_PAD/>
+        <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarExamen"></Button>
+        <Button class="button" top="-90dp" id="cancel" title="Cancelar" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
+        <Button class="button" top="-100dp" id="done" title="Hecho" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
     </Window>
 </Alloy>

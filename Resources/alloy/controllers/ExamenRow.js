@@ -12,8 +12,11 @@ function Controller() {
     });
     $.__views.tblExamenRow && $.addTopLevelView($.__views.tblExamenRow);
     $.__views.lblExamen = Ti.UI.createLabel({
+        width: "100%",
+        height: "40dp",
+        textAlign: "center",
         id: "lblExamen",
-        text: "undefined" != typeof $model.__transform["FechaExamen"] ? $model.__transform["FechaExamen"] : $model.get("FechaExamen"),
+        text: "undefined" != typeof $model.__transform["TextoFila"] ? $model.__transform["TextoFila"] : $model.get("TextoFila"),
         textid: "undefined" != typeof $model.__transform["IdExamen"] ? $model.__transform["IdExamen"] : $model.get("IdExamen")
     });
     $.__views.tblExamenRow.add($.__views.lblExamen);

@@ -5,7 +5,7 @@ function Controller() {
         var rows = [];
         for (var i = 0; len > i; i++) {
             var __alloyId86 = models[i];
-            __alloyId86.__transform = {};
+            __alloyId86.__transform = TextoFila(__alloyId86);
             var __alloyId87 = Alloy.createController("ExamenRow", {
                 $model: __alloyId86
             });
@@ -14,6 +14,11 @@ function Controller() {
             }));
         }
         $.__views.TablaExamenes.setData(rows);
+    }
+    function TextoFila(model) {
+        var transform = model.toJSON();
+        transform.TextoFila = "Examen " + transform.FechaExamen + " - Nota: " + transform.Nota;
+        return transform;
     }
     function filtrado(collection) {
         var coleccion_filtrada = collection.where({
