@@ -1,0 +1,5 @@
+<Alloy>
+	<Tab title="Configuracion" icon="KS_nav_views.png">
+		<Require src="WinProfile">
+	</Tab>
+</Alloy>

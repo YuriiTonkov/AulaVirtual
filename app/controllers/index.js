@@ -45,7 +45,7 @@ if (Ti.App.Properties.getString('Login')==undefined){
 btnGuardar.addEventListener("click", function(){
     Ti.App.Properties.setString("Login",txtLogin.value);
     Ti.App.Properties.setString("Pass", txtPass.value);
-    Ti.App.Properties.setString("Email", emailField);
+    Ti.App.Properties.setString("Email", emailField.value);
     window.close();
 });
 

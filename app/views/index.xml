@@ -11,5 +11,6 @@
 	<Collection src="Asignatura">
 	<TabGroup>
 		<Require src="TabPrincipal"/>
+		<Require src="TabConfiguracion"/>
 	</TabGroup>
 </Alloy>

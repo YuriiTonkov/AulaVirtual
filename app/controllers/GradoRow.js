@@ -5,4 +5,5 @@ $.lblGrado.addEventListener("click", function(e){
 	
 	Alloy.Globals.tabGroup.open(tabCursosController.getView());
 	
+	
 });

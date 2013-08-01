@@ -1,0 +1,9 @@
+".container": {
+	backgroundColor: "white"
+},
+".label": {
+	width:"40%", left:"2%", font:{ fontSize:"13dp"}
+},
+".textbox": {
+	borderColor:"#000", height:"20dp",textAlign:"center", width:"50%", left:"42%",font:{ fontSize:"13dp"}
+}

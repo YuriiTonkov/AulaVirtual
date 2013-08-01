@@ -23,6 +23,12 @@ function Controller() {
     $.__views.index.addTab($.__views.__alloyId36.getViewEx({
         recurse: true
     }));
+    $.__views.__alloyId38 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId38"
+    });
+    $.__views.index.addTab($.__views.__alloyId38.getViewEx({
+        recurse: true
+    }));
     $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
@@ -153,7 +159,7 @@ function Controller() {
     btnGuardar.addEventListener("click", function() {
         Ti.App.Properties.setString("Login", txtLogin.value);
         Ti.App.Properties.setString("Pass", txtPass.value);
-        Ti.App.Properties.setString("Email", emailField);
+        Ti.App.Properties.setString("Email", emailField.value);
         window.close();
     });
     btnLogin.addEventListener("click", function() {
