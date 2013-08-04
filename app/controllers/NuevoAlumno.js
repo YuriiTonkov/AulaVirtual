@@ -23,7 +23,9 @@ if (data.IdAlumno == undefined){
     }
 
 function GuardarAlumno(){
+    var coleccionAlumnos = Alloy.Collections.Alumno;
     if (data.IdAlumno == undefined){
+        //Al venir a undefined el IdAlumno quiere decir que es la creación de un nuevo alumno
         var alumno = Alloy.createModel('Alumno',{Nombre:$.txtNombre.value, 
                                             Apellido1:$.txtApellido1.value,   
                                             Apellido2:$.txtApellido2.value, 
@@ -32,13 +34,14 @@ function GuardarAlumno(){
                                             TelContacto:$.txtTelefono.value,
                                             Email:$.txtEmail.value,
                                             Clase:data.IdClase});
-        var coleccionAlumnos = Alloy.Collections.Alumno;
+       
         coleccionAlumnos.add(alumno);
-        alumno.save();
- 
-        coleccionAlumnos.fetch();
-        $.winNuevoAlumno.close();
+        alumno.save();     
     }else{
-    
+    //Al venir idAlumno con un valor quiere decir que es una actualizacion
+        coleccionAlumnos.updateAlumno(data.IdAlumno, $.txtNombre.value, $.txtApellido1.value,$.txtApellido2.value, $.txtDireccion.value,$.txtCodPostal.value,$.txtTelefono.value, $.txtEmail.value);
+        coleccionAlumnos.fetch();
     }
+    coleccionAlumnos.fetch();
+    $.winNuevoAlumno.close();
 }

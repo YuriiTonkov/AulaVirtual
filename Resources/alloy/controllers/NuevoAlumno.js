@@ -1,5 +1,6 @@
 function Controller() {
     function GuardarAlumno() {
+        var coleccionAlumnos = Alloy.Collections.Alumno;
         if (void 0 == data.IdAlumno) {
             var alumno = Alloy.createModel("Alumno", {
                 Nombre: $.txtNombre.value,
@@ -11,12 +12,14 @@ function Controller() {
                 Email: $.txtEmail.value,
                 Clase: data.IdClase
             });
-            var coleccionAlumnos = Alloy.Collections.Alumno;
             coleccionAlumnos.add(alumno);
             alumno.save();
+        } else {
+            coleccionAlumnos.updateAlumno(data.IdAlumno, $.txtNombre.value, $.txtApellido1.value, $.txtApellido2.value, $.txtDireccion.value, $.txtCodPostal.value, $.txtTelefono.value, $.txtEmail.value);
             coleccionAlumnos.fetch();
-            $.winNuevoAlumno.close();
         }
+        coleccionAlumnos.fetch();
+        $.winNuevoAlumno.close();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;

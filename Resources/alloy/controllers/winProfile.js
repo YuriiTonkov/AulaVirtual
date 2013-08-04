@@ -1,4 +1,13 @@
 function Controller() {
+    function refreshScreen() {
+        void 0 != Ti.App.Properties.getString("Nombre") && ($.txtNombre.value = Ti.App.Properties.getString("Nombre"));
+        void 0 != Ti.App.Properties.getString("Apellido1") && ($.txtApellido1.value = Ti.App.Properties.getString("Apellido1"));
+        void 0 != Ti.App.Properties.getString("Apellido2") && ($.txtApellido2.value = Ti.App.Properties.getString("Apellido2"));
+        void 0 != Ti.App.Properties.getString("Direccion") && ($.txtDireccion.value = Ti.App.Properties.getString("Direccion"));
+        void 0 != Ti.App.Properties.getString("CP") && ($.txtCodPostal.value = Ti.App.Properties.getString("CP"));
+        void 0 != Ti.App.Properties.getString("Telefono") && ($.txtTelefono.value = Ti.App.Properties.getString("Telefono"));
+        void 0 != Ti.App.Properties.getString("Email") && ($.txtEmail.value = Ti.App.Properties.getString("Email"));
+    }
     function Guardar() {
         if (Ti.App.Properties.getString("Pass") == $.txtPass.value) {
             Ti.App.Properties.setString("Nombre", $.txtNombre.value);
@@ -15,7 +24,6 @@ function Controller() {
             $.lblError.visible = true;
         }
     }
-    function Reset() {}
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -239,26 +247,13 @@ function Controller() {
     });
     $.__views.winUsuario.add($.__views.btnGuardar);
     Guardar ? $.__views.btnGuardar.addEventListener("click", Guardar) : __defers["$.__views.btnGuardar!click!Guardar"] = true;
-    $.__views.btnReset = Ti.UI.createButton({
-        top: "-100dp",
-        id: "btnReset",
-        title: "Reset"
-    });
-    $.__views.winUsuario.add($.__views.btnReset);
-    Reset ? $.__views.btnReset.addEventListener("click", Reset) : __defers["$.__views.btnReset!click!Reset"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.winUsuario.setRightNavButton($.btnGuardar);
-    $.winUsuario.setLeftNavButton($.btnReset);
-    void 0 != Ti.App.Properties.getString("Nombre") && ($.txtNombre.value = Ti.App.Properties.getString("Nombre"));
-    void 0 != Ti.App.Properties.getString("Apellido1") && ($.txtApellido1.value = Ti.App.Properties.getString("Apellido1"));
-    void 0 != Ti.App.Properties.getString("Apellido2") && ($.txtApellido2.value = Ti.App.Properties.getString("Apellido2"));
-    void 0 != Ti.App.Properties.getString("Direccion") && ($.txtDireccion.value = Ti.App.Properties.getString("Direccion"));
-    void 0 != Ti.App.Properties.getString("CP") && ($.txtCodPostal.value = Ti.App.Properties.getString("CP"));
-    void 0 != Ti.App.Properties.getString("Telefono") && ($.txtTelefono.value = Ti.App.Properties.getString("Telefono"));
-    void 0 != Ti.App.Properties.getString("Email") && ($.txtEmail.value = Ti.App.Properties.getString("Email"));
+    $.winUsuario.addEventListener("focus", function() {
+        refreshScreen();
+    });
     __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
-    __defers["$.__views.btnReset!click!Reset"] && $.__views.btnReset.addEventListener("click", Reset);
     _.extend($, exports);
 }
 

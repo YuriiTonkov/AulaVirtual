@@ -56,7 +56,6 @@ function Controller() {
         clases.fetch();
     });
     $.WinClases.addEventListener("focus", function() {
-        Ti.API.info("ENTRO EN EL FOCUS");
         var clase = Alloy.Collections.VW_Clases_Favoritas;
         clase.fetch();
     });

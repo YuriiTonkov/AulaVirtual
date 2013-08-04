@@ -28,13 +28,11 @@ exports.definition = {
         _.extend(Collection.prototype, {
             updateAlumno: function(idAlumno, Nombre, Apellido1, Apellido2, Direccion, CodPostal, TelContacto, Email) {
                 try {
-                    var query1 = "UPDATE ALLUMNO SET Nombre = " + Nombre + ", Apellido1 = " + Apellido1 + ", Apellido2 = " + Apellido2 + ", Direccion = " + Direccion + ", CodPostal=" + CodPostal + ", TelContacto=" + TelContacto + ", Email=" + Email + " WHERE IdAlumno= " + idAlumno;
+                    var query1 = "UPDATE ALUMNO SET Nombre ='" + Nombre + "', Apellido1 = '" + Apellido1 + "', Apellido2 = '" + Apellido2 + "', Direccion = '" + Direccion + "', CodPostal=" + CodPostal + ", TelContacto=" + TelContacto + ", Email='" + Email + "' WHERE IdAlumno= " + idAlumno;
                     this.fetch({
                         query: query1
                     });
-                } catch (err) {
-                    Ti.API.info("ERROR: " + JSON.stringify(err));
-                }
+                } catch (err) {}
             }
         });
         return Collection;

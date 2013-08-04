@@ -18,6 +18,5 @@
 		<TextField class="textbox" passwordMask="true" top ="60%" id="txtPass"></TextField>
 		<Label id="lblError" class="label" visible="false" top ="68%"/>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
-		<Button class="button" top="-100dp" id="btnReset" title="Reset" onClick="Reset"></Button>
 	</Window>
 </Alloy>
