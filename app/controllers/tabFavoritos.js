@@ -1,0 +1,1 @@
+Alloy.Globals.tabGroup3 = $.tabFavoritos;

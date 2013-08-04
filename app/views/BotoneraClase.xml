@@ -1,0 +1,10 @@
+<Alloy>
+	<View  borderRadius="5dp" height="30dp" width="50dp" id="botones" class="container">
+		<ButtonBar borderRadius="5dp" height="100%" width="100%" id="btnBar">
+			<Labels>
+				<Label id="addAlumno">+</Label>
+				<Label id="favoritar">*</Label>
+			</Labels>
+		</ButtonBar>
+	</View>
+</Alloy>

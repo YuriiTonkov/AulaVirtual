@@ -22,7 +22,7 @@ function filtrado (collection){
 }
 function NuevaAsignatura (){
     var tabAsignaturaController = Alloy.createController("CrearAsignatura", {"IdCurso":data.Curso});
-    Alloy.Globals.tabGroup.open(tabAsignaturaController.getView());
+    Alloy.Globals.GrupoTab.activeTab.open(tabAsignaturaController.getView());
     
 }
 

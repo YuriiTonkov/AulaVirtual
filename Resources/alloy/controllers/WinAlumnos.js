@@ -1,26 +1,19 @@
 function Controller() {
-    function __alloyId62() {
-        var models = filtrado(__alloyId61);
+    function __alloyId71() {
+        var models = filtrado(__alloyId70);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId59 = models[i];
-            __alloyId59.__transform = nombrecompleto(__alloyId59);
-            var __alloyId60 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId59
+            var __alloyId68 = models[i];
+            __alloyId68.__transform = nombrecompleto(__alloyId68);
+            var __alloyId69 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId68
             });
-            rows.push(__alloyId60.getViewEx({
+            rows.push(__alloyId69.getViewEx({
                 recurse: true
             }));
         }
         $.__views.TablaAlumnos.setData(rows);
-    }
-    function NuevoAlumno() {
-        var tabAlumnosController = Alloy.createController("NuevoAlumno", {
-            IdClase: data.IdClase,
-            Nombre: data.Nombre
-        });
-        Alloy.Globals.tabGroup.open(tabAlumnosController.getView());
     }
     function filtrado(collection) {
         var coleccion_filtrada = collection.where({
@@ -38,7 +31,6 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.WinAlumnos = Ti.UI.createWindow({
         id: "WinAlumnos",
         title: "Alumnos"
@@ -48,24 +40,20 @@ function Controller() {
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId61 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId61.on("fetch destroy change add remove reset", __alloyId62);
-    $.__views.addAlumno = Ti.UI.createButton({
-        id: "addAlumno",
-        title: "Nuevo",
-        top: "-50dp"
-    });
-    $.__views.WinAlumnos.add($.__views.addAlumno);
-    NuevoAlumno ? $.__views.addAlumno.addEventListener("click", NuevoAlumno) : __defers["$.__views.addAlumno!click!NuevoAlumno"] = true;
+    var __alloyId70 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId70.on("fetch destroy change add remove reset", __alloyId71);
     exports.destroy = function() {
-        __alloyId61.off("fetch destroy change add remove reset", __alloyId62);
+        __alloyId70.off("fetch destroy change add remove reset", __alloyId71);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
     var data = [];
     data = arg1;
     $.WinAlumnos.title = data.Nombre;
-    $.WinAlumnos.setRightNavButton($.addAlumno);
+    var tab = Alloy.createController("BotoneraClase", {
+        IdClase: data.IdClase
+    });
+    $.WinAlumnos.setRightNavButton(tab.getView());
     var alumnos = Alloy.Collections.Alumno;
     alumnos.fetch();
     $.TablaAlumnos.addEventListener("delete", function(e) {
@@ -75,7 +63,6 @@ function Controller() {
         alumnos.remove(model);
         alumnos.fetch();
     });
-    __defers["$.__views.addAlumno!click!NuevoAlumno"] && $.__views.addAlumno.addEventListener("click", NuevoAlumno);
     _.extend($, exports);
 }
 

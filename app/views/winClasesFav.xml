@@ -1,0 +1,8 @@
+<Alloy>	
+			<Window id="WinClases" title="Clases">	
+				<TableView dataCollection="VW_Clases_Favoritas" dataTransform="NombreClase" dataFilter="filtrado" id="TablaClases">
+					<Require src="ClaseRow"/>
+				</TableView>
+				
+			</Window>
+</Alloy>

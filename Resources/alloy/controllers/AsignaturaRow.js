@@ -27,7 +27,7 @@ function Controller() {
             IdAlumnoAsignatura: e.source.textid,
             Nombre: e.source.text
         });
-        Alloy.Globals.tabGroup.open(tabAsignaturasController.getView());
+        Alloy.Globals.GrupoTab.activeTab.open(tabAsignaturasController.getView());
     });
     _.extend($, exports);
 }

@@ -27,7 +27,7 @@ function Controller() {
             IdEvaluacion: e.source.textid,
             Nombre: e.source.text
         });
-        Alloy.Globals.tabGroup.open(tabEvaluacionesController.getView());
+        Alloy.Globals.GrupoTab.activeTab.open(tabEvaluacionesController.getView());
     });
     _.extend($, exports);
 }

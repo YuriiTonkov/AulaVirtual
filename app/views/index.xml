@@ -9,8 +9,10 @@
 	<Collection src="Evaluacion">
 	<Collection src="Examen">
 	<Collection src="Asignatura">
-	<TabGroup>
+	<Collection src="VW_Clases_Favoritas">
+	<TabGroup id="GrupoTab">
 		<Require src="TabPrincipal"/>
 		<Require src="TabConfiguracion"/>
+		<Require src="tabFavoritos"/>
 	</TabGroup>
 </Alloy>

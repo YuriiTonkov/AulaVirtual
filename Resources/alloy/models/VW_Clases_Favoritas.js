@@ -2,14 +2,13 @@ exports.definition = {
     config: {
         columns: {
             IdClase: "int",
-            Nombre: "string",
-            NumAlumnos: "int",
-            Curso: "int",
-            Favorita: "int"
+            NombreClase: "string",
+            NombreCurso: "string",
+            NombreGrado: "string"
         },
         adapter: {
             type: "sql",
-            collection_name: "Clase",
+            collection_name: "VW_Clases_Favoritas",
             db_file: "/AulaVirtual_v" + require("Alloy").CFG.databaseversion + ".sqlite",
             db_name: "AulaVirtual",
             idAttribute: "IdClase",
@@ -21,25 +20,16 @@ exports.definition = {
         return Model;
     },
     extendCollection: function(Collection) {
-        _.extend(Collection.prototype, {
-            updateFavorito: function(idClase, favorito) {
-                try {
-                    var query1 = "UPDATE CLASE SET FAVORITA = " + favorito + " WHERE IdClase= " + idClase;
-                    this.fetch({
-                        query: query1
-                    });
-                } catch (err) {}
-            }
-        });
+        _.extend(Collection.prototype, {});
         return Collection;
     }
 };
 
 var Alloy = require("alloy"), _ = require("alloy/underscore")._, model, collection;
 
-model = Alloy.M("Clase", exports.definition, []);
+model = Alloy.M("VW_Clases_Favoritas", exports.definition, []);
 
-collection = Alloy.C("Clase", exports.definition, model);
+collection = Alloy.C("VW_Clases_Favoritas", exports.definition, model);
 
 exports.Model = model;
 

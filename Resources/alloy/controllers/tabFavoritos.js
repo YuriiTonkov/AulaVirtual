@@ -4,21 +4,21 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId66 = Alloy.createController("WinGrupos", {
-        id: "__alloyId66"
+    $.__views.__alloyId65 = Alloy.createController("winClasesFav", {
+        id: "__alloyId65"
     });
-    $.__views.TabPrincipal = Ti.UI.createTab({
-        window: $.__views.__alloyId66.getViewEx({
+    $.__views.tabFavoritos = Ti.UI.createTab({
+        window: $.__views.__alloyId65.getViewEx({
             recurse: true
         }),
-        title: "Menu principal",
+        title: "Favoritos",
         icon: "KS_nav_ui.png",
-        id: "TabPrincipal"
+        id: "tabFavoritos"
     });
-    $.__views.TabPrincipal && $.addTopLevelView($.__views.TabPrincipal);
+    $.__views.tabFavoritos && $.addTopLevelView($.__views.tabFavoritos);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.tabGroup = $.TabPrincipal;
+    Alloy.Globals.tabGroup3 = $.tabFavoritos;
     _.extend($, exports);
 }
 

@@ -3,6 +3,6 @@ $.lblClases.addEventListener("click", function(e){
     
     var tabAlumnosController = Alloy.createController("WinAlumnos", {"IdClase":e.source.textid, "Nombre":e.source.text});
     
-    Alloy.Globals.tabGroup.open(tabAlumnosController.getView());
+    Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
     
 });

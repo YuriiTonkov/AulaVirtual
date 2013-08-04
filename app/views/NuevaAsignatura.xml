@@ -6,6 +6,6 @@
 				<Label class="rowTitle" id="lblAsignatura" text="{Nombre}" textid="{IdAsignatura}"/>
 			</TableViewRow>
 		</TableView>
-		<Button class="button" id="btnGuardar" top="-50dp"title="Guardar" onClick="GuardarAsignatura"></Button>
+		<Button class="button" id="btnGuardar" top="-50dp" title="Guardar" onClick="GuardarAsignatura"></Button>
 	</Window>
 </Alloy>

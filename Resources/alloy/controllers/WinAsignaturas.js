@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId67() {
-        var models = filtrado(__alloyId66);
+    function __alloyId76() {
+        var models = filtrado(__alloyId75);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId64 = models[i];
-            __alloyId64.__transform = {};
-            var __alloyId65 = Alloy.createController("AsignaturaRow", {
-                $model: __alloyId64
+            var __alloyId73 = models[i];
+            __alloyId73.__transform = {};
+            var __alloyId74 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId73
             });
-            rows.push(__alloyId65.getViewEx({
+            rows.push(__alloyId74.getViewEx({
                 recurse: true
             }));
         }
@@ -26,7 +26,7 @@ function Controller() {
             IdAlumno: data.IdAlumno,
             Nombre: data.Nombre
         });
-        Alloy.Globals.tabGroup.open(tabAsignaturaController.getView());
+        Alloy.Globals.GrupoTab.activeTab.open(tabAsignaturaController.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -43,8 +43,8 @@ function Controller() {
         id: "TablaAsignaturasByAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
-    var __alloyId66 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId66.on("fetch destroy change add remove reset", __alloyId67);
+    var __alloyId75 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId75.on("fetch destroy change add remove reset", __alloyId76);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -53,7 +53,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId66.off("fetch destroy change add remove reset", __alloyId67);
+        __alloyId75.off("fetch destroy change add remove reset", __alloyId76);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -6,7 +6,8 @@ data = arg1;
 
 //Elementos de Interfaz
 $.WinAlumnos.title = data.Nombre;
-$.WinAlumnos.setRightNavButton($.addAlumno);
+var tab = Alloy.createController("BotoneraClase", {"IdClase":data.IdClase});
+$.WinAlumnos.setRightNavButton(tab.getView());
 //-----------------------------------------
 
 
@@ -14,10 +15,6 @@ var alumnos = Alloy.Collections.Alumno;
 alumnos.fetch();
 
 //Funciones--------------------------
-function NuevoAlumno (){
-    var tabAlumnosController = Alloy.createController("NuevoAlumno", {"IdClase":data.IdClase, "Nombre":data.Nombre});
-    Alloy.Globals.tabGroup.open(tabAlumnosController.getView());  
-}
 
 function filtrado (collection){
     var coleccion_filtrada = collection.where({Clase: data.IdClase});
@@ -45,5 +42,6 @@ $.TablaAlumnos.addEventListener('delete', function(e)
     alumnos.remove(model);
     alumnos.fetch();
 });
+
 
 //--------------------------------

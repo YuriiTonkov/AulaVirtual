@@ -24,16 +24,16 @@ function Controller() {
     _.extend($, $.__views);
     $.tblAlumnoRow.addEventListener("click", function(e) {
         if (1 == e.detail) {
-            var tabAlumnosController = Alloy.createController("DetailAlumno", {
-                IdAlumno: e.source.textid
+            var tabAlumnosController = Alloy.createController("NuevoAlumno", {
+                IdAlumno: e.source.data
             });
-            Alloy.Globals.tabGroup.open(tabAlumnosController.getView());
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
         } else {
             var tabAsignaturasController = Alloy.createController("WinAsignaturas", {
                 IdAlumno: e.source.textid,
                 Nombre: e.source.text
             });
-            Alloy.Globals.tabGroup.open(tabAsignaturasController.getView());
+            Alloy.Globals.GrupoTab.activeTab.open(tabAsignaturasController.getView());
         }
     });
     _.extend($, exports);

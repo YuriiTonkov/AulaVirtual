@@ -27,7 +27,7 @@ function filtrado (collection){
 }
 function NuevoExamen (){
     var tabExamenController = Alloy.createController("NuevoExamen", {"Evaluacion":data.IdEvaluacion, "Nombre":data.FechaExamen});
-    Alloy.Globals.tabGroup.open(tabExamenController.getView());
+    Alloy.Globals.GrupoTab.activeTab.open(tabExamenController.getView());
     
 }
 

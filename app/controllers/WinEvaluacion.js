@@ -22,7 +22,7 @@ function filtrado (collection){
 }
 function NuevoEvaluacion (){
     var tabEvaluacionController = Alloy.createController("NuevaEvaluacion", {"AlumnoAsignatura":data.IdAlumnoAsignatura, "Nombre":data.Nombre});
-    Alloy.Globals.tabGroup.open(tabEvaluacionController.getView());
+    Alloy.Globals.GrupoTab.activeTab.open(tabEvaluacionController.getView());
     
 }
 

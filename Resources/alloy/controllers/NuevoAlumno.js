@@ -1,20 +1,22 @@
 function Controller() {
     function GuardarAlumno() {
-        var alumno = Alloy.createModel("Alumno", {
-            Nombre: $.txtNombre.value,
-            Apellido1: $.txtApellido1.value,
-            Apellido2: $.txtApellido2.value,
-            Direccion: $.txtDireccion.value,
-            CodPostal: $.txtCodPostal.value,
-            TelContacto: $.txtTelefono.value,
-            Email: $.txtEmail.value,
-            Clase: data.IdClase
-        });
-        var coleccionAlumnos = Alloy.Collections.Alumno;
-        coleccionAlumnos.add(alumno);
-        alumno.save();
-        coleccionAlumnos.fetch();
-        $.winNuevoAlumno.close();
+        if (void 0 == data.IdAlumno) {
+            var alumno = Alloy.createModel("Alumno", {
+                Nombre: $.txtNombre.value,
+                Apellido1: $.txtApellido1.value,
+                Apellido2: $.txtApellido2.value,
+                Direccion: $.txtDireccion.value,
+                CodPostal: $.txtCodPostal.value,
+                TelContacto: $.txtTelefono.value,
+                Email: $.txtEmail.value,
+                Clase: data.IdClase
+            });
+            var coleccionAlumnos = Alloy.Collections.Alumno;
+            coleccionAlumnos.add(alumno);
+            alumno.save();
+            coleccionAlumnos.fetch();
+            $.winNuevoAlumno.close();
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -27,7 +29,7 @@ function Controller() {
         id: "winNuevoAlumno"
     });
     $.__views.winNuevoAlumno && $.addTopLevelView($.__views.winNuevoAlumno);
-    $.__views.__alloyId47 = Ti.UI.createLabel({
+    $.__views.__alloyId55 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -35,9 +37,9 @@ function Controller() {
         },
         text: "Nombre",
         top: "2%",
-        id: "__alloyId47"
+        id: "__alloyId55"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId47);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId55);
     $.__views.txtNombre = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -46,7 +48,7 @@ function Controller() {
         id: "txtNombre"
     });
     $.__views.winNuevoAlumno.add($.__views.txtNombre);
-    $.__views.__alloyId48 = Ti.UI.createLabel({
+    $.__views.__alloyId56 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -54,9 +56,9 @@ function Controller() {
         },
         text: "1er Apellido",
         top: "10%",
-        id: "__alloyId48"
+        id: "__alloyId56"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId48);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId56);
     $.__views.txtApellido1 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -65,7 +67,7 @@ function Controller() {
         id: "txtApellido1"
     });
     $.__views.winNuevoAlumno.add($.__views.txtApellido1);
-    $.__views.__alloyId49 = Ti.UI.createLabel({
+    $.__views.__alloyId57 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -73,9 +75,9 @@ function Controller() {
         },
         text: "2o Apellido",
         top: "18%",
-        id: "__alloyId49"
+        id: "__alloyId57"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId49);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId57);
     $.__views.txtApellido2 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -84,7 +86,7 @@ function Controller() {
         id: "txtApellido2"
     });
     $.__views.winNuevoAlumno.add($.__views.txtApellido2);
-    $.__views.__alloyId50 = Ti.UI.createLabel({
+    $.__views.__alloyId58 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -92,9 +94,9 @@ function Controller() {
         },
         text: "Direccion",
         top: "26%",
-        id: "__alloyId50"
+        id: "__alloyId58"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId50);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId58);
     $.__views.txtDireccion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -103,7 +105,7 @@ function Controller() {
         id: "txtDireccion"
     });
     $.__views.winNuevoAlumno.add($.__views.txtDireccion);
-    $.__views.__alloyId51 = Ti.UI.createLabel({
+    $.__views.__alloyId59 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -111,9 +113,9 @@ function Controller() {
         },
         text: "Cod.Postal",
         top: "34%",
-        id: "__alloyId51"
+        id: "__alloyId59"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId51);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId59);
     $.__views.txtCodPostal = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -122,7 +124,7 @@ function Controller() {
         id: "txtCodPostal"
     });
     $.__views.winNuevoAlumno.add($.__views.txtCodPostal);
-    $.__views.__alloyId52 = Ti.UI.createLabel({
+    $.__views.__alloyId60 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -130,9 +132,9 @@ function Controller() {
         },
         text: "Telefono",
         top: "42%",
-        id: "__alloyId52"
+        id: "__alloyId60"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId52);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId60);
     $.__views.txtTelefono = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -141,7 +143,7 @@ function Controller() {
         id: "txtTelefono"
     });
     $.__views.winNuevoAlumno.add($.__views.txtTelefono);
-    $.__views.__alloyId53 = Ti.UI.createLabel({
+    $.__views.__alloyId61 = Ti.UI.createLabel({
         width: "20%",
         left: "2%",
         font: {
@@ -149,9 +151,9 @@ function Controller() {
         },
         text: "Email",
         top: "50%",
-        id: "__alloyId53"
+        id: "__alloyId61"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId53);
+    $.__views.winNuevoAlumno.add($.__views.__alloyId61);
     $.__views.txtEmail = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -174,6 +176,19 @@ function Controller() {
     data = arg1;
     $.winNuevoAlumno.title = data.Nombre;
     $.winNuevoAlumno.setRightNavButton($.btnGuardar);
+    if (void 0 == data.IdAlumno) ; else {
+        var alumno = Alloy.createCollection("Alumno");
+        alumno.fetch();
+        var model = alumno.get(data.IdAlumno);
+        var datos = model.toJSON();
+        $.txtNombre.value = datos.Nombre;
+        $.txtApellido1.value = datos.Apellido1;
+        $.txtApellido2.value = datos.Apellido2;
+        $.txtDireccion.value = datos.Direccion;
+        $.txtCodPostal.value = datos.CodPostal;
+        $.txtTelefono.value = datos.TelContacto;
+        $.txtEmail.value = datos.Email;
+    }
     __defers["$.__views.btnGuardar!click!GuardarAlumno"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumno);
     _.extend($, exports);
 }

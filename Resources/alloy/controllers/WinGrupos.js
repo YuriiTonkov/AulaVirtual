@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId97() {
-        var models = __alloyId96.models;
+    function __alloyId111() {
+        var models = __alloyId110.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId94 = models[i];
-            __alloyId94.__transform = {};
-            var __alloyId95 = Alloy.createController("GradoRow", {
-                $model: __alloyId94
+            var __alloyId108 = models[i];
+            __alloyId108.__transform = {};
+            var __alloyId109 = Alloy.createController("GradoRow", {
+                $model: __alloyId108
             });
-            rows.push(__alloyId95.getViewEx({
+            rows.push(__alloyId109.getViewEx({
                 recurse: true
             }));
         }
@@ -29,10 +29,10 @@ function Controller() {
         id: "TablaGrados"
     });
     $.__views.winGrados.add($.__views.TablaGrados);
-    var __alloyId96 = Alloy.Collections["Grado"] || Grado;
-    __alloyId96.on("fetch destroy change add remove reset", __alloyId97);
+    var __alloyId110 = Alloy.Collections["Grado"] || Grado;
+    __alloyId110.on("fetch destroy change add remove reset", __alloyId111);
     exports.destroy = function() {
-        __alloyId96.off("fetch destroy change add remove reset", __alloyId97);
+        __alloyId110.off("fetch destroy change add remove reset", __alloyId111);
     };
     _.extend($, $.__views);
     var grados = Alloy.Collections.Grado;

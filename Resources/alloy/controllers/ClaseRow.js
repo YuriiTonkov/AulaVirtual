@@ -27,7 +27,7 @@ function Controller() {
             IdClase: e.source.textid,
             Nombre: e.source.text
         });
-        Alloy.Globals.tabGroup.open(tabAlumnosController.getView());
+        Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
     });
     _.extend($, exports);
 }

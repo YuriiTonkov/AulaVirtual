@@ -14,25 +14,33 @@ function Controller() {
     Alloy.Collections.instance("Evaluacion");
     Alloy.Collections.instance("Examen");
     Alloy.Collections.instance("Asignatura");
-    $.__views.index = Ti.UI.createTabGroup({
-        id: "index"
+    Alloy.Collections.instance("VW_Clases_Favoritas");
+    $.__views.GrupoTab = Ti.UI.createTabGroup({
+        id: "GrupoTab"
     });
-    $.__views.__alloyId36 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId36"
+    $.__views.__alloyId42 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId42"
     });
-    $.__views.index.addTab($.__views.__alloyId36.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId42.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId38 = Alloy.createController("TabConfiguracion", {
-        id: "__alloyId38"
+    $.__views.__alloyId44 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId44"
     });
-    $.__views.index.addTab($.__views.__alloyId38.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId44.getViewEx({
         recurse: true
     }));
-    $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.__alloyId46 = Alloy.createController("tabFavoritos", {
+        id: "__alloyId46"
+    });
+    $.__views.GrupoTab.addTab($.__views.__alloyId46.getViewEx({
+        recurse: true
+    }));
+    $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.index.open();
+    $.GrupoTab.open();
+    Alloy.Globals.GrupoTab = $.GrupoTab;
     var btnGuardar = Ti.UI.createButton({
         title: "Alta",
         style: Ti.UI.iPhone.SystemButton.SAVE

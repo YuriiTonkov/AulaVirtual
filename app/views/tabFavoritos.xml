@@ -1,0 +1,5 @@
+<Alloy>
+	<Tab title="Favoritos" icon="KS_nav_ui.png">
+		<Require src="winClasesFav">
+	</Tab>
+</Alloy>

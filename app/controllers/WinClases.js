@@ -7,6 +7,7 @@ data = arg1;
 //Elementos de Interfaz
 $.WinClases.title = data.Nombre;
 $.WinClases.setRightNavButton($.addClase);
+
 //-----------------------------------------
 
 
@@ -28,9 +29,11 @@ function filtrado (collection){
 
 function NuevaClase (){
     var tabClasesController = Alloy.createController("NuevaClase", {"IdCurso":data.IdCurso, "Nombre":data.Nombre});
-    Alloy.Globals.tabGroup.open(tabClasesController.getView());
+    Alloy.Globals.GrupoTab.activeTab.open(tabClasesController.getView());
     
 }
+
+
 
 //-----------------------------------------
 

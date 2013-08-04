@@ -3,6 +3,6 @@ $.lblEvaluacion.addEventListener("click", function(e){
     
     var tabEvaluacionesController = Alloy.createController("WinExamenes", {"IdEvaluacion":e.source.textid, "Nombre":e.source.text});
     
-    Alloy.Globals.tabGroup.open(tabEvaluacionesController.getView());
+    Alloy.Globals.GrupoTab.activeTab.open(tabEvaluacionesController.getView());
     
 });

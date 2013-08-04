@@ -1,4 +1,6 @@
-$.index.open();
+$.GrupoTab.open();
+Alloy.Globals.GrupoTab = $.GrupoTab;
+
 var btnGuardar = Ti.UI.createButton({title: 'Alta',style:Ti.UI.iPhone.SystemButton.SAVE});
 var btnLogin = Ti.UI.createButton({title: 'Login',style:Ti.UI.iPhone.SystemButton.SAVE});
 

@@ -4,7 +4,8 @@ exports.definition = {
 		    "IdClase": "int",
 		    "Nombre": "string",
 		    "NumAlumnos": "int",
-		    "Curso": "int"
+		    "Curso": "int",
+		    "Favorita": "int"
 		},
 		adapter: {
 			type: "sql",
@@ -25,6 +26,15 @@ exports.definition = {
 	extendCollection: function(Collection) {		
 		_.extend(Collection.prototype, {
 			// extended functions and properties go here
+			updateFavorito: function(idClase, favorito){
+			    try{
+                   var query1 = "UPDATE CLASE SET FAVORITA = "+favorito+" WHERE IdClase= " + idClase;
+                   this.fetch({query: query1});
+                                       
+                }catch (err){
+                  //  Ti.API.info('ERROR: ' + JSON.stringify(err))
+                }   
+			}
 		});
 		
 		return Collection;
