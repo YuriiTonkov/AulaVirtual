@@ -52,7 +52,7 @@ function Controller() {
     if (void 0 == Ti.App.Properties.getString("Login")) {
         var window = Titanium.UI.createWindow({
             title: "Nuevo usuario",
-            backgroundColor: "#fff"
+            backgroundImage: "backGround320x416.png"
         });
         window.open({
             modal: true,
@@ -65,7 +65,14 @@ function Controller() {
             top: 15,
             left: 5,
             width: 100,
-            height: "auto"
+            height: "auto",
+            font: {
+                fontSize: 42
+            },
+            font: {
+                fontStyle: "italic"
+            },
+            font: "Helvetica Neue"
         });
         var lblPass = Titanium.UI.createLabel({
             color: "#000",

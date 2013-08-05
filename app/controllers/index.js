@@ -5,10 +5,10 @@ var btnGuardar = Ti.UI.createButton({title: 'Alta',style:Ti.UI.iPhone.SystemButt
 var btnLogin = Ti.UI.createButton({title: 'Login',style:Ti.UI.iPhone.SystemButton.SAVE});
 
 if (Ti.App.Properties.getString('Login')==undefined){
-   var window = Titanium.UI.createWindow({title:"Nuevo usuario",backgroundColor:"#fff"});
+   var window = Titanium.UI.createWindow({title:"Nuevo usuario",backgroundImage:"backGround320x416.png"});
    window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
     
-    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:15,left:5,width:100,height:'auto'});
+    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:15,left:5,width:100,height:'auto',font: {fontSize:42},font: {fontStyle:'italic'},font:"Helvetica Neue"});
     var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:60,left:5,width:100,height:'auto'});
     var lblEmail = Titanium.UI.createLabel({color:"#000",text:'Email:',top:105,left:5,width:100,height:'auto'});
     var txtLogin = Titanium.UI.createTextField({top:15,left:110,width:180,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
