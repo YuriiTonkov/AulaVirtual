@@ -8,8 +8,12 @@ exports.definition = {
             Direccion: "string",
             CodPostal: "int",
             TelContacto: "integer",
+            TelContacto2: "integer",
             Email: "string",
-            Clase: "int"
+            Clase: "int",
+            Padre: "string",
+            Madre: "string",
+            Email2: "string"
         },
         adapter: {
             type: "sql",

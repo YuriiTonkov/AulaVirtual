@@ -74,12 +74,10 @@ function Controller() {
             width: 100,
             height: "auto",
             font: {
-                fontSize: 42
-            },
-            font: {
-                fontStyle: "italic"
-            },
-            font: "Helvetica Neue"
+                fontSize: "35",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var lblPass = Titanium.UI.createLabel({
             color: "#000",
@@ -126,7 +124,7 @@ function Controller() {
     } else {
         var window = Titanium.UI.createWindow({
             title: "Login",
-            backgroundColor: "#fff"
+            backgroundImage: "backGround320x416.png"
         });
         window.open({
             modal: true,
@@ -136,39 +134,64 @@ function Controller() {
         var lblLogin = Titanium.UI.createLabel({
             color: "#000",
             text: "Usuario:",
-            top: 15,
-            left: 5,
+            top: 103,
+            left: 35,
             width: 100,
-            height: "auto"
+            height: "auto",
+            font: {
+                fontSize: "15dp",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var lblPass = Titanium.UI.createLabel({
             color: "#000",
             text: "Contraseña:",
-            top: 60,
-            left: 5,
+            top: 138,
+            left: 35,
             width: 100,
-            height: "auto"
+            height: "auto",
+            font: {
+                fontSize: "15dp",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var lblError = Titanium.UI.createLabel({
             color: "#f00",
             visible: "false",
             top: 105,
-            left: 5,
+            left: 35,
             width: "100%",
-            height: "auto"
+            height: "auto",
+            font: {
+                fontSize: "15dp",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var txtLogin = Titanium.UI.createTextField({
-            top: 15,
-            left: 110,
-            width: 180,
-            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+            top: 100,
+            left: 140,
+            width: 130,
+            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+            font: {
+                fontSize: "15dp",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var txtPass = Titanium.UI.createTextField({
-            top: 60,
-            left: 110,
-            width: 180,
+            top: 135,
+            left: 140,
+            width: 130,
             passwordMask: "true",
-            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+            font: {
+                fontSize: "15dp",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         window.add(lblLogin);
         window.add(lblPass);

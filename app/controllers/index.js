@@ -8,7 +8,7 @@ if (Ti.App.Properties.getString('Login')==undefined){
    var window = Titanium.UI.createWindow({title:"Nuevo usuario",backgroundImage:"backGround320x416.png"});
    window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
     
-    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:15,left:5,width:100,height:'auto',font: {fontSize:42},font: {fontStyle:'italic'},font:"Helvetica Neue"});
+    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:15,left:5,width:100,height:'auto',font: {fontSize:"35", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
     var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:60,left:5,width:100,height:'auto'});
     var lblEmail = Titanium.UI.createLabel({color:"#000",text:'Email:',top:105,left:5,width:100,height:'auto'});
     var txtLogin = Titanium.UI.createTextField({top:15,left:110,width:180,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
@@ -23,14 +23,14 @@ if (Ti.App.Properties.getString('Login')==undefined){
     window.add(emailField)
     window.setRightNavButton(btnGuardar);
 }else{
-    var window = Titanium.UI.createWindow({title:"Login",backgroundColor:"#fff"});
+    var window = Titanium.UI.createWindow({title:"Login",backgroundImage:"backGround320x416.png"});
     window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
     
-    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:15,left:5,width:100,height:'auto'});
-    var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:60,left:5,width:100,height:'auto'});
-    var lblError = Titanium.UI.createLabel({color:"#f00", visible:"false", top:105,left:5,width:"100%",height:'auto'});
-    var txtLogin = Titanium.UI.createTextField({top:15,left:110,width:180,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
-    var txtPass = Titanium.UI.createTextField({top:60,left:110,width:180, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
+    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:103,left:35,width:100,height:'auto',font: {fontSize:"15dp", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
+    var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:138,left:35,width:100,height:'auto',font: {fontSize:"15dp", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
+    var lblError = Titanium.UI.createLabel({color:"#f00", visible:"false", top:105,left:35,width:"100%",height:'auto',font: {fontSize:"15dp", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
+    var txtLogin = Titanium.UI.createTextField({top:100,left:140,width:130,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
+    var txtPass = Titanium.UI.createTextField({top:135,left:140,width:130, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
     //var emailField = Titanium.UI.createTextField({top:105,left:110, width:180,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
     
     window.add(lblLogin);

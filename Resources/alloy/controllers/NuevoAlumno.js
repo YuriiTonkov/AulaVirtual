@@ -39,7 +39,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "Nombre",
-        top: "2%",
+        top: "12%",
         id: "__alloyId70"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId70);
@@ -47,7 +47,7 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "2%",
+        top: "12%",
         id: "txtNombre"
     });
     $.__views.winNuevoAlumno.add($.__views.txtNombre);
@@ -58,7 +58,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "1er Apellido",
-        top: "10%",
+        top: "20%",
         id: "__alloyId71"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId71);
@@ -66,7 +66,7 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "10%",
+        top: "20%",
         id: "txtApellido1"
     });
     $.__views.winNuevoAlumno.add($.__views.txtApellido1);
@@ -77,7 +77,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "2o Apellido",
-        top: "18%",
+        top: "28%",
         id: "__alloyId72"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId72);
@@ -85,7 +85,7 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "18%",
+        top: "28%",
         id: "txtApellido2"
     });
     $.__views.winNuevoAlumno.add($.__views.txtApellido2);
@@ -96,7 +96,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "Direccion",
-        top: "26%",
+        top: "36%",
         id: "__alloyId73"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId73);
@@ -104,7 +104,7 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "26%",
+        top: "36%",
         id: "txtDireccion"
     });
     $.__views.winNuevoAlumno.add($.__views.txtDireccion);
@@ -115,7 +115,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "Cod.Postal",
-        top: "34%",
+        top: "44%",
         id: "__alloyId74"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId74);
@@ -123,7 +123,7 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "34%",
+        top: "44%",
         id: "txtCodPostal"
     });
     $.__views.winNuevoAlumno.add($.__views.txtCodPostal);
@@ -134,7 +134,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "Telefono",
-        top: "42%",
+        top: "52%",
         id: "__alloyId75"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId75);
@@ -142,7 +142,7 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "42%",
+        top: "52%",
         id: "txtTelefono"
     });
     $.__views.winNuevoAlumno.add($.__views.txtTelefono);
@@ -153,7 +153,7 @@ function Controller() {
             fontSize: "11dp"
         },
         text: "Email",
-        top: "50%",
+        top: "60%",
         id: "__alloyId76"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId76);
@@ -161,10 +161,30 @@ function Controller() {
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "50%",
+        top: "60%",
         id: "txtEmail"
     });
     $.__views.winNuevoAlumno.add($.__views.txtEmail);
+    $.__views.btnAnotacion = Ti.UI.createButton({
+        top: "2%",
+        borderRadius: "5dp",
+        left: "15dp",
+        height: "25dp",
+        width: "125dp",
+        id: "btnAnotacion",
+        title: "Anotaciones"
+    });
+    $.__views.winNuevoAlumno.add($.__views.btnAnotacion);
+    $.__views.btnFoto = Ti.UI.createButton({
+        top: "2%",
+        borderRadius: "5dp",
+        left: "150dp",
+        height: "25dp",
+        width: "125dp",
+        id: "btnFoto",
+        title: "Foto"
+    });
+    $.__views.winNuevoAlumno.add($.__views.btnFoto);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
