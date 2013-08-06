@@ -3,6 +3,9 @@ exports.definition = {
         columns: {
             IdAlumnoAsignatura: "integer",
             Alumno: "integer",
+            NombreAlumno: "string",
+            Apellido1: "string",
+            Apellido2: "string",
             Asignatura: "integer",
             Nombre: "string"
         },

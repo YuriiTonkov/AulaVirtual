@@ -1,0 +1,11 @@
+<Alloy>
+	<Window id="addAlumno" class="container">
+		<Label class="label" top="5%">Seleccione la asignatura</Label>
+		<TableView dataCollection="VW_Asignatura_Alumno_Left" dataTransform="nombrecompleto" id="TablaAlumnos"  allowsSelection="true">
+			<TableViewRow  editable="true" data="{IdAlumno}"  id="AlumnoRow">
+				<Label class="rowTitle" id="lblAlumno" text="{nombrecompleto}" textid="{IdAlumno}"/>
+			</TableViewRow>
+		</TableView>
+		<Button class="button" id="btnGuardar" top="-50dp" title="Guardar" onClick="GuardarAlumnos"></Button>
+	</Window>
+</Alloy>

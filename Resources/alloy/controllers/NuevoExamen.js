@@ -24,7 +24,7 @@ function Controller() {
         id: "winNuevoExamen"
     });
     $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);
-    $.__views.__alloyId62 = Ti.UI.createLabel({
+    $.__views.__alloyId77 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -32,9 +32,9 @@ function Controller() {
         },
         text: "Fecha Examen:",
         top: "15%",
-        id: "__alloyId62"
+        id: "__alloyId77"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId62);
+    $.__views.winNuevoExamen.add($.__views.__alloyId77);
     $.__views.dateTextField = Ti.UI.createLabel({
         borderColor: "#000",
         height: "16dp",
@@ -50,7 +50,7 @@ function Controller() {
         id: "dateTextField"
     });
     $.__views.winNuevoExamen.add($.__views.dateTextField);
-    $.__views.__alloyId63 = Ti.UI.createLabel({
+    $.__views.__alloyId78 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -58,9 +58,9 @@ function Controller() {
         },
         text: "Nota:",
         top: "25%",
-        id: "__alloyId63"
+        id: "__alloyId78"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId63);
+    $.__views.winNuevoExamen.add($.__views.__alloyId78);
     $.__views.txtNota = Ti.UI.createTextField({
         borderColor: "#000",
         height: "16dp",

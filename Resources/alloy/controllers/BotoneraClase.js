@@ -12,19 +12,19 @@ function Controller() {
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
-    var __alloyId1 = [];
-    var __alloyId2 = {
+    var __alloyId11 = [];
+    var __alloyId12 = {
         title: "+",
         ns: "Alloy.Abstract"
     };
-    __alloyId1.push(__alloyId2);
-    var __alloyId3 = {
+    __alloyId11.push(__alloyId12);
+    var __alloyId13 = {
         title: "*",
         ns: "Alloy.Abstract"
     };
-    __alloyId1.push(__alloyId3);
+    __alloyId11.push(__alloyId13);
     $.__views.btnBar = Ti.UI.createButtonBar({
-        labels: __alloyId1,
+        labels: __alloyId11,
         borderRadius: "5dp",
         height: "100%",
         width: "100%",

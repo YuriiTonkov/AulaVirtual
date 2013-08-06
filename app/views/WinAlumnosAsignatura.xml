@@ -1,0 +1,8 @@
+<Alloy>	
+			<Window id="WinAsignaturasAlumno" title="Asignaturas">	
+				<TableView dataCollection="VW_Alumno_Asignatura_Asignatura" dataTransform="nombrecompleto" dataFilter="filtrado" id="TablaAlumnosByAsignatura">
+					<Require src="AlumnosAsignaturaRow"/>
+				</TableView>
+				
+			</Window>
+</Alloy>

@@ -1,0 +1,8 @@
+<Alloy>	
+			<Window id="WinAsignaturasFav" title="Mis Asignaturas">	
+				<TableView dataCollection="VW_Asignaturas_Favoritas" dataTransform="NombreAsignatura" dataFilter="filtrado" id="TablaAsignaturasFav">
+						<Require src="AsignaturaFavRow"></Require>
+				</TableView>
+				
+			</Window>
+</Alloy>

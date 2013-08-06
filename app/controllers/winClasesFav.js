@@ -1,7 +1,7 @@
 
 
 //Elementos de Interfaz
-$.WinClases.title = "Clases Favoritas";
+$.WinClasesFav.title = "Clases Favoritas";
 //$.WinClases.setRightNavButton($.addClase);
 
 //-----------------------------------------
@@ -39,7 +39,7 @@ $.TablaClases.addEventListener('delete', function(e)
     
 });
 
-$.WinClases.addEventListener('focus',function(e){
+$.WinClasesFav.addEventListener('focus',function(e){
     // Ti.API.info('ENTRO EN EL FOCUS');
      var clase = Alloy.Collections.VW_Clases_Favoritas;
      clase.fetch();

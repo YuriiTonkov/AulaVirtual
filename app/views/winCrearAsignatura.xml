@@ -1,9 +1,7 @@
 <Alloy>	
-			<Window id="WinAsignaturas" title="Asignaturas">	
-				<TableView dataCollection="Asignatura"  dataFilter="filtrado" id="TablaAsignaturas">				
-					<TableViewRow  editable="true" data="{IdAsignatura}"  id="tblAsignaturaRow">
-						<Label class="rowTitle" id="lblAsignatura" text="{Nombre}" textid="{IdAsignatura}"></Label>
-					</TableViewRow>
+			<Window id="WinAsignaturasAlumno" title="Asignaturas">	
+				<TableView dataCollection="Asignatura"  dataFilter="filtrado" id="TablaAsignaturasAlumno">				
+					<Require src="AsignaturaAlumnoRow"/>
 				</TableView>
 				<Button id="addAsignatura" title="Añadir" top="-50dp" onClick="NuevaAsignatura"></Button>
 			</Window>

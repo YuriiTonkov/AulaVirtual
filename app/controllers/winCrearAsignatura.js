@@ -5,8 +5,8 @@ data = arg1;
 //----------------------------
 
 //Elementos de Interfaz
-$.WinAsignaturas.title = "Asignaturas";
-$.WinAsignaturas.setRightNavButton($.addAsignatura);
+$.WinAsignaturasAlumno.title = "Asignaturas";
+$.WinAsignaturasAlumno.setRightNavButton($.addAsignatura);
 //-----------------------------------------
 
 
@@ -30,7 +30,7 @@ function NuevaAsignatura (){
 
 //Listeners-----------------------------
 
-$.TablaAsignaturas.addEventListener('delete', function(e) 
+$.TablaAsignaturasAlumno.addEventListener('delete', function(e) 
 {
     //console.debug("recogemos:"+e.rowData.data);
     var Asignaturas = Alloy.Collections.Asignatura;

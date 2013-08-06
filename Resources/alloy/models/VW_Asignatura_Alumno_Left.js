@@ -3,6 +3,9 @@ exports.definition = {
         columns: {
             IdCurso: "integer",
             IdAlumno: "integer",
+            NombreAlumno: "integer",
+            Apellido1: "integer",
+            Apellido2: "integer",
             IdAsignatura: "integer",
             Nombre: "string"
         },
@@ -24,6 +27,16 @@ exports.definition = {
             filtraAsignatura: function(idAlumno) {
                 try {
                     var query1 = "SELECT * FROM VW_ASIGNATURA_ALUMNO_LEFT WHERE IdAlumno=" + idAlumno + " AND  IdAsignatura NOT IN (SELECT Asignatura FROM VW_ALUMNO_ASIGNATURA_ASIGNATURA WHERE Alumno=" + idAlumno + ")";
+                    this.fetch({
+                        query: query1
+                    });
+                } catch (err) {
+                    Ti.API.info("ERROR: " + JSON.stringify(err));
+                }
+            },
+            filtraAlumno: function(idAsignatura) {
+                try {
+                    var query1 = "SELECT * FROM VW_ASIGNATURA_ALUMNO_LEFT WHERE IdAsignatura=" + idAsignatura + " AND  IdAlumno NOT IN (SELECT Alumno FROM VW_ALUMNO_ASIGNATURA_ASIGNATURA WHERE Asignatura=" + idAsignatura + ")";
                     this.fetch({
                         query: query1
                     });

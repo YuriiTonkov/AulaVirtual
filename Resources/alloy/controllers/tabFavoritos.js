@@ -4,14 +4,14 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId65 = Alloy.createController("winClasesFav", {
-        id: "__alloyId65"
+    $.__views.__alloyId81 = Alloy.createController("winClasesFav", {
+        id: "__alloyId81"
     });
     $.__views.tabFavoritos = Ti.UI.createTab({
-        window: $.__views.__alloyId65.getViewEx({
+        window: $.__views.__alloyId81.getViewEx({
             recurse: true
         }),
-        title: "Favoritos",
+        title: "Mis Clases",
         icon: "KS_nav_ui.png",
         id: "tabFavoritos"
     });

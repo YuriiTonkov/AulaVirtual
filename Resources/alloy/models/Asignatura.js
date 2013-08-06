@@ -5,7 +5,8 @@ exports.definition = {
             Nombre: "string",
             Descripcion: "string",
             Optativa: "boolean",
-            Curso: "int"
+            Curso: "int",
+            Favorita: "int"
         },
         adapter: {
             type: "sql",
@@ -21,7 +22,16 @@ exports.definition = {
         return Model;
     },
     extendCollection: function(Collection) {
-        _.extend(Collection.prototype, {});
+        _.extend(Collection.prototype, {
+            updateFavorito: function(idAsignatura, favorito) {
+                try {
+                    var query1 = "UPDATE ASIGNATURA SET FAVORITA = " + favorito + " WHERE IdAsignatura= " + idAsignatura;
+                    this.fetch({
+                        query: query1
+                    });
+                } catch (err) {}
+            }
+        });
         return Collection;
     }
 };

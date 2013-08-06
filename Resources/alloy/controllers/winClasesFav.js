@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId86() {
-        var models = filtrado(__alloyId85);
+    function __alloyId112() {
+        var models = filtrado(__alloyId111);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId83 = models[i];
-            __alloyId83.__transform = NombreClase(__alloyId83);
-            var __alloyId84 = Alloy.createController("ClaseRow", {
-                $model: __alloyId83
+            var __alloyId109 = models[i];
+            __alloyId109.__transform = NombreClase(__alloyId109);
+            var __alloyId110 = Alloy.createController("ClaseRow", {
+                $model: __alloyId109
             });
-            rows.push(__alloyId84.getViewEx({
+            rows.push(__alloyId110.getViewEx({
                 recurse: true
             }));
         }
@@ -31,22 +31,22 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    $.__views.WinClases = Ti.UI.createWindow({
-        id: "WinClases",
+    $.__views.WinClasesFav = Ti.UI.createWindow({
+        id: "WinClasesFav",
         title: "Clases"
     });
-    $.__views.WinClases && $.addTopLevelView($.__views.WinClases);
+    $.__views.WinClasesFav && $.addTopLevelView($.__views.WinClasesFav);
     $.__views.TablaClases = Ti.UI.createTableView({
         id: "TablaClases"
     });
-    $.__views.WinClases.add($.__views.TablaClases);
-    var __alloyId85 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
-    __alloyId85.on("fetch destroy change add remove reset", __alloyId86);
+    $.__views.WinClasesFav.add($.__views.TablaClases);
+    var __alloyId111 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
+    __alloyId111.on("fetch destroy change add remove reset", __alloyId112);
     exports.destroy = function() {
-        __alloyId85.off("fetch destroy change add remove reset", __alloyId86);
+        __alloyId111.off("fetch destroy change add remove reset", __alloyId112);
     };
     _.extend($, $.__views);
-    $.WinClases.title = "Clases Favoritas";
+    $.WinClasesFav.title = "Clases Favoritas";
     var clases = Alloy.Collections.VW_Clases_Favoritas;
     clases.fetch();
     $.TablaClases.addEventListener("delete", function(e) {
@@ -55,7 +55,7 @@ function Controller() {
         colClase.fetch();
         clases.fetch();
     });
-    $.WinClases.addEventListener("focus", function() {
+    $.WinClasesFav.addEventListener("focus", function() {
         var clase = Alloy.Collections.VW_Clases_Favoritas;
         clase.fetch();
     });
