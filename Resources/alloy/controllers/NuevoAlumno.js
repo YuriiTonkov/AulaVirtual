@@ -21,6 +21,20 @@ function Controller() {
         coleccionAlumnos.fetch();
         $.winNuevoAlumno.close();
     }
+    function sacarFoto() {
+        Titanium.Media.showCamera({
+            success: function(event) {
+                event.cropRect;
+                var image = event.media;
+                var d = new Date();
+                var filename = d.getTime() + pictype + ".png";
+                var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
+                f.write(image);
+                Titanium.API.info("taken picture.. path is;-");
+                Titanium.API.info(f.nativePath);
+            }
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -185,6 +199,7 @@ function Controller() {
         title: "Foto"
     });
     $.__views.winNuevoAlumno.add($.__views.btnFoto);
+    sacarFoto ? $.__views.btnFoto.addEventListener("click", sacarFoto) : __defers["$.__views.btnFoto!click!sacarFoto"] = true;
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -212,6 +227,7 @@ function Controller() {
         $.txtTelefono.value = datos.TelContacto;
         $.txtEmail.value = datos.Email;
     }
+    __defers["$.__views.btnFoto!click!sacarFoto"] && $.__views.btnFoto.addEventListener("click", sacarFoto);
     __defers["$.__views.btnGuardar!click!GuardarAlumno"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumno);
     _.extend($, exports);
 }

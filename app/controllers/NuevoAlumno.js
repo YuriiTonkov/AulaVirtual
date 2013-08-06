@@ -45,3 +45,20 @@ function GuardarAlumno(){
     coleccionAlumnos.fetch();
     $.winNuevoAlumno.close();
 }
+
+function sacarFoto(){
+    Titanium.Media.showCamera({
+      success:function(event)
+      {
+            var cropRect = event.cropRect;
+            var image = event.media;
+            var d=new Date();
+            var filename = d.getTime() + pictype + ".png";
+            var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,filename);
+            f.write(image);
+         
+            Titanium.API.info('taken picture.. path is;-');
+            Titanium.API.info(f.nativePath);
+    }
+});
+}

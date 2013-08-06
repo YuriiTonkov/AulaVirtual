@@ -16,7 +16,7 @@
 			<Label class="label" top ="60%" width="20%">Email </Label>
 			<TextField class="textbox" top ="60%" id="txtEmail"></TextField>
 		<Button class="button" top="2%" borderRadius="5dp" left="15dp" height="25dp" width="125dp" id="btnAnotacion" title="Anotaciones"></Button>
-		<Button class="button" top="2%" borderRadius="5dp" left="150dp" height="25dp" width="125dp" id="btnFoto" title="Foto"></Button>
+		<Button class="button" top="2%" borderRadius="5dp" left="150dp" height="25dp" onClick="sacarFoto" width="125dp" id="btnFoto" title="Foto"></Button>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAlumno"></Button>
 	</Window>
 </Alloy>
