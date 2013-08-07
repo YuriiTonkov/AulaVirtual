@@ -18,7 +18,7 @@ clases.fetch();
 
 function NombreClase (model){
     var transform = model.toJSON();
-    transform.nombreCompleto = "Sección " + transform.Nombre;
+    transform.nombreCompleto = "Grupo " + transform.Nombre;
     return transform
 }
 
@@ -48,6 +48,20 @@ $.TablaClases.addEventListener('delete', function(e)
     model.destroy();
     clases.remove(model);
     clases.fetch();
+});
+
+$.WinClases.addEventListener('focus',function(e){
+    // Ti.API.info('ENTRO EN EL FOCUS');
+    if (Ti.App.Properties.getString('Ayuda')=='1'){
+        //Creamos la ayuda que saldrá en caso de estar activada
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar los grupos pertenecientes a "+data.Nombre+". A través de esta tabla se puede acceder a los diferentes Alumnos de cada grupo.",
+                buttonNames: ['OK'],
+                cancel:0
+            });
+            alertDialog.show();
+    }
 });
 
 //--------------------------------

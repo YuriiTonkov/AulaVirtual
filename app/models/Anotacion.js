@@ -1,20 +1,20 @@
 exports.definition = {
 	config: {
 		columns: {
-		    "IdEvaluacion": "int",
-		    "Nombre":"string",
-		    "AlumnoAsignatura": "int",
-		    "Calificacion": "float",
-		    "FechaInicio": "date",
-		    "Peso":"int"
+		    "IdAnotacion": "integer",
+		    "IdAlumno": "integer",
+		    "IdClase": "integer",
+		    "IdAsignatura": "integer",
+		    "Fecha": "date",
+		    "Comentario": "string"
 		},
 		adapter: {
 			type: "sql",
-			collection_name: "Evaluacion",
+            collection_name: "Anotacion",
             db_file: "/AulaVirtual_v"+ require("Alloy").CFG.databaseversion +".sqlite",
-			db_name: "AulaVirtual",
-			idAttribute: "IdEvaluacion",
-			remoteBackup:"false"
+            db_name: "AulaVirtual",
+            idAttribute: "IdAlumnoAsignatura",
+            remoteBackup:"false"
 		}
 	},		
 	extendModel: function(Model) {		

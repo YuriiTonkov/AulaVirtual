@@ -17,7 +17,7 @@ function Controller() {
     }
     function NombreClase(model) {
         var transform = model.toJSON();
-        transform.nombreCompleto = "Sección " + transform.Nombre;
+        transform.nombreCompleto = "Grupo " + transform.Nombre;
         return transform;
     }
     function filtrado(collection) {
@@ -74,6 +74,17 @@ function Controller() {
         model.destroy();
         clases.remove(model);
         clases.fetch();
+    });
+    $.WinClases.addEventListener("focus", function() {
+        if ("1" == Ti.App.Properties.getString("Ayuda")) {
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar los grupos pertenecientes a " + data.Nombre + ". A través de esta tabla se puede acceder a los diferentes Alumnos de cada grupo.",
+                buttonNames: [ "OK" ],
+                cancel: 0
+            });
+            alertDialog.show();
+        }
     });
     __defers["$.__views.addClase!click!NuevaClase"] && $.__views.addClase.addEventListener("click", NuevaClase);
     _.extend($, exports);

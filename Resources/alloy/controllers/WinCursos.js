@@ -47,6 +47,17 @@ function Controller() {
     $.WinCursos.title = data.NombreGrado;
     var cursos = Alloy.Collections.Curso;
     cursos.fetch();
+    $.WinCursos.addEventListener("focus", function() {
+        if ("1" == Ti.App.Properties.getString("Ayuda")) {
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar los cursos pertenecientes a " + data.NombreGrado + ". Se puede acceder a los diferentes grupos del curso o a través del detalle a las asignaturas existentes para ese curso.",
+                buttonNames: [ "OK" ],
+                cancel: 0
+            });
+            alertDialog.show();
+        }
+    });
     _.extend($, exports);
 }
 

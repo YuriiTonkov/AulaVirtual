@@ -1,18 +1,19 @@
 exports.definition = {
     config: {
         columns: {
-            IdExamen: "int",
-            Evaluacion: "int",
-            Nota: "float",
-            FechaExamen: "date",
-            Peso: "int"
+            IdAnotacion: "integer",
+            IdAlumno: "integer",
+            IdClase: "integer",
+            IdAsignatura: "integer",
+            Fecha: "date",
+            Comentario: "string"
         },
         adapter: {
             type: "sql",
-            collection_name: "Examen",
+            collection_name: "Anotacion",
             db_file: "/AulaVirtual_v" + require("Alloy").CFG.databaseversion + ".sqlite",
             db_name: "AulaVirtual",
-            idAttribute: "IdExamen",
+            idAttribute: "IdAlumnoAsignatura",
             remoteBackup: "false"
         }
     },
@@ -28,9 +29,9 @@ exports.definition = {
 
 var Alloy = require("alloy"), _ = require("alloy/underscore")._, model, collection;
 
-model = Alloy.M("Examen", exports.definition, []);
+model = Alloy.M("Anotacion", exports.definition, []);
 
-collection = Alloy.C("Examen", exports.definition, model);
+collection = Alloy.C("Anotacion", exports.definition, model);
 
 exports.Model = model;
 

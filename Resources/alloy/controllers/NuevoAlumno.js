@@ -35,6 +35,7 @@ function Controller() {
             }
         });
     }
+    function TomarAnotacion() {}
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -182,17 +183,18 @@ function Controller() {
     $.__views.btnAnotacion = Ti.UI.createButton({
         top: "2%",
         borderRadius: "5dp",
-        left: "15dp",
+        left: "30dp",
         height: "25dp",
         width: "125dp",
         id: "btnAnotacion",
         title: "Anotaciones"
     });
     $.__views.winNuevoAlumno.add($.__views.btnAnotacion);
+    TomarAnotacion ? $.__views.btnAnotacion.addEventListener("click", TomarAnotacion) : __defers["$.__views.btnAnotacion!click!TomarAnotacion"] = true;
     $.__views.btnFoto = Ti.UI.createButton({
         top: "2%",
         borderRadius: "5dp",
-        left: "150dp",
+        left: "165dp",
         height: "25dp",
         width: "125dp",
         id: "btnFoto",
@@ -227,6 +229,91 @@ function Controller() {
         $.txtTelefono.value = datos.TelContacto;
         $.txtEmail.value = datos.Email;
     }
+    $.txtNombre.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca el nombre",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtNombre.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtApellido1.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca el primer apellido",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: -1
+        });
+        dialog.addEventListener("click", function(e) {
+            $.txtApellido1.value = e.text;
+        });
+        dialog.show();
+    });
+    $.txtApellido2.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca el segundo apellido",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: -1
+        });
+        dialog.addEventListener("click", function(e) {
+            $.txtApellido2.value = e.text;
+        });
+        dialog.show();
+    });
+    $.txtDireccion.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca la direccion",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: -1
+        });
+        dialog.addEventListener("click", function(e) {
+            $.txtDireccion.value = e.text;
+        });
+        dialog.show();
+    });
+    $.txtCodPostal.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca el código postal",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: -1
+        });
+        dialog.addEventListener("click", function(e) {
+            $.txtCodPostal.value = e.text;
+        });
+        dialog.show();
+    });
+    $.txtTelefono.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca el teléfono",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: -1
+        });
+        dialog.addEventListener("click", function(e) {
+            $.txtTelefono.value = e.text;
+        });
+        dialog.show();
+    });
+    $.txtEmail.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduczca el correo electrónico",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: -1
+        });
+        dialog.addEventListener("click", function(e) {
+            $.txtEmail.value = e.text;
+        });
+        dialog.show();
+    });
+    __defers["$.__views.btnAnotacion!click!TomarAnotacion"] && $.__views.btnAnotacion.addEventListener("click", TomarAnotacion);
     __defers["$.__views.btnFoto!click!sacarFoto"] && $.__views.btnFoto.addEventListener("click", sacarFoto);
     __defers["$.__views.btnGuardar!click!GuardarAlumno"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumno);
     _.extend($, exports);

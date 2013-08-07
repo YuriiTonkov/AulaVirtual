@@ -5,7 +5,8 @@ exports.definition = {
             Nombre: "string",
             AlumnoAsignatura: "int",
             Calificacion: "float",
-            FechaInicio: "date"
+            FechaInicio: "date",
+            Peso: "int"
         },
         adapter: {
             type: "sql",

@@ -22,6 +22,8 @@ if (data.IdAlumno == undefined){
     $.txtEmail.value = datos.Email
     }
 
+//Funciones --------------------------------------------------------------------------------------------------------
+
 function GuardarAlumno(){
     var coleccionAlumnos = Alloy.Collections.Alumno;
     if (data.IdAlumno == undefined){
@@ -62,3 +64,128 @@ function sacarFoto(){
     }
 });
 }
+
+function TomarAnotacion(){
+    
+}
+//Listeners -------------------------------------------------------------------------------------------------
+
+$.txtNombre.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca el nombre',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            //Ti.API.info('e.text: ' + e.text);
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtNombre.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtApellido1.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca el primer apellido',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtApellido1.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtApellido2.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca el segundo apellido',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtApellido2.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtDireccion.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca la direccion',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtDireccion.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtCodPostal.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca el código postal',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtCodPostal.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtTelefono.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca el teléfono',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtTelefono.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtEmail.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduczca el correo electrónico',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtEmail.value = e.text;
+            }
+        });
+        dialog.show();
+});

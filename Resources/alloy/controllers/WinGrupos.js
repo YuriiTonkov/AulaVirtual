@@ -37,6 +37,17 @@ function Controller() {
     _.extend($, $.__views);
     var grados = Alloy.Collections.Grado;
     grados.fetch();
+    $.winGrados.addEventListener("focus", function() {
+        if ("1" == Ti.App.Properties.getString("Ayuda")) {
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar los Grados disponibles de acuerdo a la LOCE",
+                buttonNames: [ "OK" ],
+                cancel: 0
+            });
+            alertDialog.show();
+        }
+    });
     _.extend($, exports);
 }
 

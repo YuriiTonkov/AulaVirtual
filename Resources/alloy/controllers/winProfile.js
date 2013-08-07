@@ -7,6 +7,7 @@ function Controller() {
         void 0 != Ti.App.Properties.getString("CP") && ($.txtCodPostal.value = Ti.App.Properties.getString("CP"));
         void 0 != Ti.App.Properties.getString("Telefono") && ($.txtTelefono.value = Ti.App.Properties.getString("Telefono"));
         void 0 != Ti.App.Properties.getString("Email") && ($.txtEmail.value = Ti.App.Properties.getString("Email"));
+        void 0 != Ti.App.Properties.getString("Ayuda") && ($.chkAyuda.value = Ti.App.Properties.getString("Ayuda"));
     }
     function Guardar() {
         if (Ti.App.Properties.getString("Pass") == $.txtPass.value) {
@@ -17,6 +18,7 @@ function Controller() {
             Ti.App.Properties.setString("CP", $.txtCodPostal.value);
             Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
             Ti.App.Properties.setString("Email", $.txtEmail.value);
+            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
             $.lblError.text = "Se han modificado los datos de registro";
             $.lblError.visible = true;
         } else {
@@ -229,6 +231,24 @@ function Controller() {
         id: "txtPass"
     });
     $.__views.winUsuario.add($.__views.txtPass);
+    $.__views.__alloyId146 = Ti.UI.createLabel({
+        width: "40%",
+        left: "2%",
+        font: {
+            fontSize: "13dp"
+        },
+        text: "Ayuda activa",
+        top: "73%",
+        id: "__alloyId146"
+    });
+    $.__views.winUsuario.add($.__views.__alloyId146);
+    $.__views.chkAyuda = Ti.UI.createSwitch({
+        enabled: "true",
+        top: "70%",
+        left: "42%",
+        id: "chkAyuda"
+    });
+    $.__views.winUsuario.add($.__views.chkAyuda);
     $.__views.lblError = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
@@ -237,7 +257,7 @@ function Controller() {
         },
         id: "lblError",
         visible: "false",
-        top: "68%"
+        top: "80%"
     });
     $.__views.winUsuario.add($.__views.lblError);
     $.__views.btnGuardar = Ti.UI.createButton({

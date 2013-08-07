@@ -29,6 +29,10 @@ function refreshScreen(){
     if (Ti.App.Properties.getString('Email')!=undefined){
         $.txtEmail.value = Ti.App.Properties.getString('Email');
     };
+    
+    if (Ti.App.Properties.getString('Ayuda')!=undefined){
+        $.chkAyuda.value = Ti.App.Properties.getString('Ayuda');
+    };
 }
 
 function Guardar(){
@@ -40,6 +44,7 @@ function Guardar(){
             Ti.App.Properties.setString("CP", $.txtCodPostal.value);
             Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
             Ti.App.Properties.setString("Email", $.txtEmail.value);
+            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
             $.lblError.text = "Se han modificado los datos de registro";
             $.lblError.visible= true;
       } else {

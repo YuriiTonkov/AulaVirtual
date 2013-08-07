@@ -16,7 +16,9 @@
 		<TextField class="textbox" top ="50%" id="txtEmail"></TextField>
 		<Label class="label" top ="60%">Contraseña</Label>
 		<TextField class="textbox" passwordMask="true" top ="60%" id="txtPass"></TextField>
-		<Label id="lblError" class="label" visible="false" top ="68%"/>
+		<Label class="label" top ="73%">Ayuda activa</Label>
+		<Switch enabled="true" top ="70%" left="42%" id="chkAyuda"/>		
+		<Label id="lblError" class="label" visible="false" top ="80%"/>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
 	</Window>
 </Alloy>

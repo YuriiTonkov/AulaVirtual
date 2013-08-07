@@ -4,7 +4,8 @@ exports.definition = {
 		    "IdExamen": "int",
 		    "Evaluacion": "int",
 		    "Nota": "float",
-		    "FechaExamen": "date"
+		    "FechaExamen": "date",
+		    "Peso":"int"
 		},
 		adapter: {
 			type: "sql",

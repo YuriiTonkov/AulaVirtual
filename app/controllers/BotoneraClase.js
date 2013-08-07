@@ -32,11 +32,11 @@ $.btnBar.addEventListener("click", function(e){
         $.btnBar.labels=buttons;
         //Creamos aviso de que se ha guardado en favoritos
         var alertDialog = Ti.UI.createAlertDialog({
-        title: "Aviso",
-        message: "La clase se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
-        buttonNames: ['OK'],
-        cancel:0
-    });
+            title: "Aviso",
+            message: "La clase se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
+            buttonNames: ['OK'],
+            cancel:0
+        });
     alertDialog.show();
     }
 });
