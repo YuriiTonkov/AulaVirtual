@@ -70,49 +70,59 @@ function Controller() {
         var lblLogin = Titanium.UI.createLabel({
             color: "#000",
             text: "Usuario:",
-            top: 15,
-            left: 5,
+            top: 60,
+            left: 35,
             width: 100,
             height: "auto",
             font: {
-                fontSize: "35",
-                fontStyle: "italic",
+                fontSize: "15",
+                fontStyle: "UltraLight",
                 fontFamily: "Helvetica Neue"
             }
         });
         var lblPass = Titanium.UI.createLabel({
             color: "#000",
             text: "Contraseña:",
-            top: 60,
-            left: 5,
-            width: 100,
-            height: "auto"
+            top: 130,
+            left: 35,
+            width: 140,
+            height: "auto",
+            font: {
+                fontSize: "15",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var lblEmail = Titanium.UI.createLabel({
             color: "#000",
             text: "Email:",
-            top: 105,
-            left: 5,
+            top: 200,
+            left: 35,
             width: 100,
-            height: "auto"
+            height: "auto",
+            font: {
+                fontSize: "15",
+                fontStyle: "italic",
+                fontFamily: "Helvetica Neue"
+            }
         });
         var txtLogin = Titanium.UI.createTextField({
-            top: 15,
-            left: 110,
-            width: 180,
+            top: 90,
+            left: 35,
+            width: 240,
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
         });
         var txtPass = Titanium.UI.createTextField({
-            top: 60,
-            left: 110,
-            width: 180,
+            top: 160,
+            left: 35,
+            width: 240,
             passwordMask: "true",
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
         });
         var emailField = Titanium.UI.createTextField({
-            top: 105,
-            left: 110,
-            width: 180,
+            top: 230,
+            left: 35,
+            width: 240,
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
         });
         window.add(lblLogin);

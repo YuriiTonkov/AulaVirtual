@@ -246,10 +246,10 @@ function Controller() {
             title: "Introduczca el primer apellido",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: -1
+            cancel: 1
         });
         dialog.addEventListener("click", function(e) {
-            $.txtApellido1.value = e.text;
+            e.index === e.source.cancel || ($.txtApellido1.value = e.text);
         });
         dialog.show();
     });
@@ -258,10 +258,10 @@ function Controller() {
             title: "Introduczca el segundo apellido",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: -1
+            cancel: 1
         });
         dialog.addEventListener("click", function(e) {
-            $.txtApellido2.value = e.text;
+            e.index === e.source.cancel || ($.txtApellido2.value = e.text);
         });
         dialog.show();
     });
@@ -270,10 +270,10 @@ function Controller() {
             title: "Introduczca la direccion",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: -1
+            cancel: 1
         });
         dialog.addEventListener("click", function(e) {
-            $.txtDireccion.value = e.text;
+            e.index === e.source.cancel || ($.txtDireccion.value = e.text);
         });
         dialog.show();
     });
@@ -282,10 +282,10 @@ function Controller() {
             title: "Introduczca el código postal",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: -1
+            cancel: 1
         });
         dialog.addEventListener("click", function(e) {
-            $.txtCodPostal.value = e.text;
+            e.index === e.source.cancel || ($.txtCodPostal.value = e.text);
         });
         dialog.show();
     });
@@ -294,10 +294,10 @@ function Controller() {
             title: "Introduczca el teléfono",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: -1
+            cancel: 1
         });
         dialog.addEventListener("click", function(e) {
-            $.txtTelefono.value = e.text;
+            e.index === e.source.cancel || ($.txtTelefono.value = e.text);
         });
         dialog.show();
     });
@@ -306,10 +306,10 @@ function Controller() {
             title: "Introduczca el correo electrónico",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: -1
+            cancel: 1
         });
         dialog.addEventListener("click", function(e) {
-            $.txtEmail.value = e.text;
+            e.index === e.source.cancel || ($.txtEmail.value = e.text);
         });
         dialog.show();
     });

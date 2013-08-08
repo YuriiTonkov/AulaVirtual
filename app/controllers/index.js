@@ -9,12 +9,12 @@ if (Ti.App.Properties.getString('Login')==undefined){
    var window = Titanium.UI.createWindow({title:"Nuevo usuario",backgroundImage:"backGround320x416.png"});
    window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
     
-    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:15,left:5,width:100,height:'auto',font: {fontSize:"35", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
-    var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:60,left:5,width:100,height:'auto'});
-    var lblEmail = Titanium.UI.createLabel({color:"#000",text:'Email:',top:105,left:5,width:100,height:'auto'});
-    var txtLogin = Titanium.UI.createTextField({top:15,left:110,width:180,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
-    var txtPass = Titanium.UI.createTextField({top:60,left:110,width:180, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
-    var emailField = Titanium.UI.createTextField({top:105,left:110, width:180,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
+    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:60,left:35,width:100,height:'auto',font: {fontSize:"15", fontStyle:'UltraLight',fontFamily:"Helvetica Neue"}});
+    var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:130,left:35,width:140,height:'auto',font: {fontSize:"15", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
+    var lblEmail = Titanium.UI.createLabel({color:"#000",text:'Email:',top:200,left:35,width:100,height:'auto',font: {fontSize:"15", fontStyle:'italic',fontFamily:"Helvetica Neue"}});
+    var txtLogin = Titanium.UI.createTextField({top:90,left:35,width:240,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
+    var txtPass = Titanium.UI.createTextField({top:160,left:35,width:240, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
+    var emailField = Titanium.UI.createTextField({top:230,left:35, width:240,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED});
 
     window.add(lblLogin);
     window.add(lblPass);
