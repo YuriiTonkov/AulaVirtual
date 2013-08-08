@@ -76,8 +76,7 @@ function Controller() {
             height: "auto",
             font: {
                 fontSize: "15",
-                fontStyle: "UltraLight",
-                fontFamily: "Helvetica Neue"
+                fontFamily: "Comic Zine OT"
             }
         });
         var lblPass = Titanium.UI.createLabel({
@@ -151,8 +150,7 @@ function Controller() {
             height: "auto",
             font: {
                 fontSize: "15dp",
-                fontStyle: "italic",
-                fontFamily: "Helvetica Neue"
+                fontFamily: "Comic Zine OT"
             }
         });
         var lblPass = Titanium.UI.createLabel({
