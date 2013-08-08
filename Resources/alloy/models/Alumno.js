@@ -37,6 +37,27 @@ exports.definition = {
                         query: query1
                     });
                 } catch (err) {}
+            },
+            getAlumnosFromClase: function(idClase) {
+                var consulta = "SELECT * FROM ALUMNO WHERE Clase=" + idClase;
+                this.fetch({
+                    query: consulta
+                });
+                return this;
+            },
+            getElement: function() {
+                return this.currentElement;
+            },
+            setElement: function(model) {
+                this.currentElement = model;
+            },
+            next: function() {
+                this.setElement(this.at(this.indexOf(this.getElement()) + 1));
+                return this;
+            },
+            prev: function() {
+                this.setElement(this.at(this.indexOf(this.getElement()) - 1));
+                return this;
             }
         });
         return Collection;

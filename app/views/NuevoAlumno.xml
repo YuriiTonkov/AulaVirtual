@@ -18,5 +18,7 @@
 		<Button class="button" top="2%" borderRadius="5dp" left="30dp" height="25dp" width="125dp" onClick="TomarAnotacion" id="btnAnotacion" title="Anotaciones"></Button>
 		<Button class="button" top="2%" borderRadius="5dp" left="165dp" height="25dp" onClick="sacarFoto" width="125dp" id="btnFoto" title="Foto"></Button>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAlumno"></Button>
+		<Button class="button" bottom="2%" borderRadius="5dp" left="30dp" height="25dp" width="125dp" onClick="AnteriorAlumno" id="btnAnterior" title="Anterior"></Button>
+		<Button class="button" bottom="2%" borderRadius="5dp" left="165dp" height="25dp" width="125dp" onClick="SiguienteAlumno" width="125dp" id="btnSiguiente" title="Siguiente"></Button>
 	</Window>
 </Alloy>

@@ -24,8 +24,13 @@ function Controller() {
     _.extend($, $.__views);
     $.tblAlumnoRow.addEventListener("click", function(e) {
         if (1 == e.detail) {
+            var alumnos = Alloy.Collections.Alumno;
+            var idAlu = e.source.data;
+            var model = alumnos.get(idAlu);
+            var array = model.toJSON();
             var tabAlumnosController = Alloy.createController("NuevoAlumno", {
-                IdAlumno: e.source.data
+                IdAlumno: idAlu,
+                IdClase: array.Clase
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
         } else {

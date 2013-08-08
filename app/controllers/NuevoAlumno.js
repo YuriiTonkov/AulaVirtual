@@ -4,22 +4,29 @@ data = arg1;
 
 $.winNuevoAlumno.title = data.Nombre;
 $.winNuevoAlumno.setRightNavButton($.btnGuardar);
+var alumno = Alloy.Collections.Alumno;
+var coleccion_filtrada = alumno.getAlumnosFromClase(data.IdClase);
+
 
 if (data.IdAlumno == undefined){
     
 }else{
     //Si viene un idalumno, la pantalla debe ser de actualizacion, se deben mostrar los datos
-    var alumno = Alloy.createCollection("Alumno");
-    alumno.fetch();
-    var model = alumno.get(data.IdAlumno);
+    
+    //alumno.fetch();
+    
+    var model = coleccion_filtrada.get(data.IdAlumno);
     var datos = model.toJSON();
+    coleccion_filtrada.setElement(model);
+    
     $.txtNombre.value = datos.Nombre;
     $.txtApellido1.value = datos.Apellido1;
     $.txtApellido2.value = datos.Apellido2;
     $.txtDireccion.value = datos.Direccion;
     $.txtCodPostal.value = datos.CodPostal;
     $.txtTelefono.value = datos.TelContacto;
-    $.txtEmail.value = datos.Email
+    $.txtEmail.value = datos.Email;
+
     }
 
 //Funciones --------------------------------------------------------------------------------------------------------
@@ -68,11 +75,58 @@ function sacarFoto(){
 function TomarAnotacion(){
     
 }
+
+function AnteriorAlumno(){
+    var modelPrev = coleccion_filtrada.prev().getElement();
+    if (modelPrev != undefined){
+        var datos = modelPrev.toJSON();
+        coleccion_filtrada.setElement(modelPrev);
+        $.txtNombre.value = datos.Nombre;
+        $.txtApellido1.value = datos.Apellido1;
+        $.txtApellido2.value = datos.Apellido2;
+        $.txtDireccion.value = datos.Direccion;
+        $.txtCodPostal.value = datos.CodPostal;
+        $.txtTelefono.value = datos.TelContacto;
+        $.txtEmail.value = datos.Email; 
+    }else{
+        var dialog2 = Ti.UI.createAlertDialog({
+            title: 'Ha llegado al principio de la lista de alumnos',
+            style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
+            buttonNames: ['Aceptar'],
+             });
+            dialog2.show();
+    }
+}
+
+function SiguienteAlumno(){
+   
+    var modelNext = coleccion_filtrada.next().getElement();
+    if (modelNext != undefined){
+        var datos = modelNext.toJSON();
+        coleccion_filtrada.setElement(modelNext);
+        $.txtNombre.value = datos.Nombre;
+        $.txtApellido1.value = datos.Apellido1;
+        $.txtApellido2.value = datos.Apellido2;
+        $.txtDireccion.value = datos.Direccion;
+        $.txtCodPostal.value = datos.CodPostal;
+        $.txtTelefono.value = datos.TelContacto;
+        $.txtEmail.value = datos.Email; 
+    }
+    else {
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Ha llegado al final de la lista de alumnos',
+            style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
+            buttonNames: ['Aceptar'],
+             });
+            dialog.show();
+    }
+}
+
 //Listeners -------------------------------------------------------------------------------------------------
 
 $.txtNombre.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca el nombre',
+            title: 'Introduzca el nombre',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -90,7 +144,7 @@ $.txtNombre.addEventListener("click", function(){
 
 $.txtApellido1.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca el primer apellido',
+            title: 'Introduzca el primer apellido',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -107,7 +161,7 @@ $.txtApellido1.addEventListener("click", function(){
 
 $.txtApellido2.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca el segundo apellido',
+            title: 'Introduzca el segundo apellido',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -124,7 +178,7 @@ $.txtApellido2.addEventListener("click", function(){
 
 $.txtDireccion.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca la direccion',
+            title: 'Introduzca la direccion',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -141,7 +195,7 @@ $.txtDireccion.addEventListener("click", function(){
 
 $.txtCodPostal.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca el código postal',
+            title: 'Introduzca el código postal',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -158,7 +212,7 @@ $.txtCodPostal.addEventListener("click", function(){
 
 $.txtTelefono.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca el teléfono',
+            title: 'Introduzca el teléfono',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -175,7 +229,7 @@ $.txtTelefono.addEventListener("click", function(){
 
 $.txtEmail.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduczca el correo electrónico',
+            title: 'Introduzca el correo electrónico',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
