@@ -2,9 +2,9 @@
 	backgroundColor: "white"
 },
 ".label": {
-	width:"30%", left:"2%", font:{ fontSize:"11dp"}
+	width:"40%", left:"10%", font:{ fontSize:"12dp"}
 },
 ".textbox": {
-	borderColor:"#000", width:"60%", left:"35%"
+	borderColor:"#000", width:"50%", left:"40%",height:"17dp",font:{ fontSize:"12dp"}
 }
 

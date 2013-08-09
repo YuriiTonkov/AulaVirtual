@@ -35,6 +35,7 @@ exports.definition = {
                   //  Ti.API.info('ERROR: ' + JSON.stringify(err))
                 }   
 			}
+			
 		});
 		
 		return Collection;

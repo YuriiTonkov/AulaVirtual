@@ -1,20 +1,28 @@
 <Alloy>
 	
 	<Window id="winNuevoAlumno" class="container">
-		 	<Label class="label" top ="12%" width="20%">Nombre </Label>
-			<TextField top ="12%"  class="textbox" id="txtNombre" ></TextField>
-			<Label class="label" top ="20%" width="20%">1er Apellido </Label>
-			<TextField class="textbox" top ="20%" id="txtApellido1"></TextField>
-			<Label class="label" top ="28%" width="20%">2o Apellido </Label>
-			<TextField class="textbox" top ="28%" id="txtApellido2"></TextField>
-			<Label class="label" top ="36%" width="20%">Direccion </Label>
-			<TextField class="textbox" top ="36%" id="txtDireccion"></TextField>
-			<Label class="label" top ="44%" width="20%">Cod.Postal </Label>
-			<TextField class="textbox" top ="44%" id="txtCodPostal"></TextField>
-			<Label class="label" top ="52%" width="20%">Telefono </Label>
-			<TextField class="textbox" top ="52%" id="txtTelefono"></TextField>
-			<Label class="label" top ="60%" width="20%">Email </Label>
-			<TextField class="textbox" top ="60%" id="txtEmail"></TextField>
+		 	<Label class="label" top ="10%" >Nombre </Label>
+			<TextField top ="10%"  class="textbox" id="txtNombre" ></TextField>
+			<Label class="label" top ="17%">1er Apellido </Label>
+			<TextField class="textbox" top ="17%" id="txtApellido1"></TextField>
+			<Label class="label" top ="24%">2o Apellido </Label>
+			<TextField class="textbox" top ="24%" id="txtApellido2"></TextField>
+			<Label class="label" top ="31%">Direccion </Label>
+			<TextField class="textbox" top ="31%" id="txtDireccion"></TextField>
+			<Label class="label" top ="38%">Cod.Postal </Label>
+			<TextField class="textbox" top ="38%" id="txtCodPostal"></TextField>
+			<Label class="label" top ="45%">Telefono </Label>
+			<TextField class="textbox" top ="45%" id="txtTelefono"></TextField>
+			<Label class="label" top ="52%">Telefono2 </Label>
+			<TextField class="textbox" top ="52%" id="txtTelefono2"></TextField>
+			<Label class="label" top ="59%">Email </Label>
+			<TextField class="textbox" top ="59%" id="txtEmail"></TextField>
+			<Label class="label" top ="66%">Email2 </Label>
+			<TextField class="textbox" top ="66%" id="txtEmail2"></TextField>
+			<Label class="label" top ="73%">Nombre Padre </Label>
+			<TextField class="textbox" top ="73%" id="txtPadre"></TextField>
+			<Label class="label" top ="80%">Nombre Madre </Label>
+			<TextField class="textbox" top ="80%" id="txtMadre"></TextField>
 		<Button class="button" top="2%" borderRadius="5dp" left="30dp" height="25dp" width="125dp" onClick="TomarAnotacion" id="btnAnotacion" title="Anotaciones"></Button>
 		<Button class="button" top="2%" borderRadius="5dp" left="165dp" height="25dp" onClick="sacarFoto" width="125dp" id="btnFoto" title="Foto"></Button>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAlumno"></Button>

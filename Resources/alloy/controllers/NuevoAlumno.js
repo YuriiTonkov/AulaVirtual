@@ -9,19 +9,40 @@ function Controller() {
                 Direccion: $.txtDireccion.value,
                 CodPostal: $.txtCodPostal.value,
                 TelContacto: $.txtTelefono.value,
+                TelContacto2: $.txtTelefono2.value,
                 Email: $.txtEmail.value,
+                Email2: $.txtEmail2.value,
+                Padre: $.txtPadre.value,
+                Madre: $.txtMadre.value,
                 Clase: data.IdClase
             });
             coleccionAlumnos.add(alumno);
             alumno.save();
+            coleccionAlumnos.fetch();
         } else {
             var modelActual = coleccion_filtrada.getElement();
-            var datos = modelActual.toJSON();
-            coleccionAlumnos.updateAlumno(datos.IdAlumno, $.txtNombre.value, $.txtApellido1.value, $.txtApellido2.value, $.txtDireccion.value, $.txtCodPostal.value, $.txtTelefono.value, $.txtEmail.value);
-            coleccionAlumnos.fetch();
+            modelActual.set({
+                Nombre: $.txtNombre.value,
+                Apellido1: $.txtApellido1.value,
+                Apellido2: $.txtApellido2.value,
+                Direccion: $.txtDireccion.value,
+                CodPostal: $.txtCodPostal.value,
+                TelContacto: $.txtTelefono.value,
+                TelContacto2: $.txtTelefono2.value,
+                Email: $.txtEmail.value,
+                Email2: $.txtEmail2.value,
+                Padre: $.txtPadre.value,
+                Madre: $.txtMadre.value,
+                Clase: data.IdClase
+            });
+            modelActual.save();
+            var dialog = Ti.UI.createAlertDialog({
+                title: "La información del alumno se ha almacenado correctamente.",
+                style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
+                buttonNames: [ "Aceptar" ]
+            });
+            dialog.show();
         }
-        coleccionAlumnos.fetch();
-        $.winNuevoAlumno.close();
     }
     function sacarFoto() {
         Titanium.Media.showCamera({
@@ -94,138 +115,258 @@ function Controller() {
     });
     $.__views.winNuevoAlumno && $.addTopLevelView($.__views.winNuevoAlumno);
     $.__views.__alloyId70 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
         text: "Nombre",
-        top: "12%",
+        top: "10%",
         id: "__alloyId70"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId70);
     $.__views.txtNombre = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "12%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "10%",
         id: "txtNombre"
     });
     $.__views.winNuevoAlumno.add($.__views.txtNombre);
     $.__views.__alloyId71 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
         text: "1er Apellido",
-        top: "20%",
+        top: "17%",
         id: "__alloyId71"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId71);
     $.__views.txtApellido1 = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "20%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "17%",
         id: "txtApellido1"
     });
     $.__views.winNuevoAlumno.add($.__views.txtApellido1);
     $.__views.__alloyId72 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
         text: "2o Apellido",
-        top: "28%",
+        top: "24%",
         id: "__alloyId72"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId72);
     $.__views.txtApellido2 = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "28%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "24%",
         id: "txtApellido2"
     });
     $.__views.winNuevoAlumno.add($.__views.txtApellido2);
     $.__views.__alloyId73 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
         text: "Direccion",
-        top: "36%",
+        top: "31%",
         id: "__alloyId73"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId73);
     $.__views.txtDireccion = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "36%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "31%",
         id: "txtDireccion"
     });
     $.__views.winNuevoAlumno.add($.__views.txtDireccion);
     $.__views.__alloyId74 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
         text: "Cod.Postal",
-        top: "44%",
+        top: "38%",
         id: "__alloyId74"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId74);
     $.__views.txtCodPostal = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "44%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "38%",
         id: "txtCodPostal"
     });
     $.__views.winNuevoAlumno.add($.__views.txtCodPostal);
     $.__views.__alloyId75 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
         text: "Telefono",
-        top: "52%",
+        top: "45%",
         id: "__alloyId75"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId75);
     $.__views.txtTelefono = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "52%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "45%",
         id: "txtTelefono"
     });
     $.__views.winNuevoAlumno.add($.__views.txtTelefono);
     $.__views.__alloyId76 = Ti.UI.createLabel({
-        width: "20%",
-        left: "2%",
+        width: "40%",
+        left: "10%",
         font: {
-            fontSize: "11dp"
+            fontSize: "12dp"
         },
-        text: "Email",
-        top: "60%",
+        text: "Telefono2",
+        top: "52%",
         id: "__alloyId76"
     });
     $.__views.winNuevoAlumno.add($.__views.__alloyId76);
+    $.__views.txtTelefono2 = Ti.UI.createTextField({
+        borderColor: "#000",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "52%",
+        id: "txtTelefono2"
+    });
+    $.__views.winNuevoAlumno.add($.__views.txtTelefono2);
+    $.__views.__alloyId77 = Ti.UI.createLabel({
+        width: "40%",
+        left: "10%",
+        font: {
+            fontSize: "12dp"
+        },
+        text: "Email",
+        top: "59%",
+        id: "__alloyId77"
+    });
+    $.__views.winNuevoAlumno.add($.__views.__alloyId77);
     $.__views.txtEmail = Ti.UI.createTextField({
         borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "60%",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "59%",
         id: "txtEmail"
     });
     $.__views.winNuevoAlumno.add($.__views.txtEmail);
+    $.__views.__alloyId78 = Ti.UI.createLabel({
+        width: "40%",
+        left: "10%",
+        font: {
+            fontSize: "12dp"
+        },
+        text: "Email2",
+        top: "66%",
+        id: "__alloyId78"
+    });
+    $.__views.winNuevoAlumno.add($.__views.__alloyId78);
+    $.__views.txtEmail2 = Ti.UI.createTextField({
+        borderColor: "#000",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "66%",
+        id: "txtEmail2"
+    });
+    $.__views.winNuevoAlumno.add($.__views.txtEmail2);
+    $.__views.__alloyId79 = Ti.UI.createLabel({
+        width: "40%",
+        left: "10%",
+        font: {
+            fontSize: "12dp"
+        },
+        text: "Nombre Padre",
+        top: "73%",
+        id: "__alloyId79"
+    });
+    $.__views.winNuevoAlumno.add($.__views.__alloyId79);
+    $.__views.txtPadre = Ti.UI.createTextField({
+        borderColor: "#000",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "73%",
+        id: "txtPadre"
+    });
+    $.__views.winNuevoAlumno.add($.__views.txtPadre);
+    $.__views.__alloyId80 = Ti.UI.createLabel({
+        width: "40%",
+        left: "10%",
+        font: {
+            fontSize: "12dp"
+        },
+        text: "Nombre Madre",
+        top: "80%",
+        id: "__alloyId80"
+    });
+    $.__views.winNuevoAlumno.add($.__views.__alloyId80);
+    $.__views.txtMadre = Ti.UI.createTextField({
+        borderColor: "#000",
+        width: "50%",
+        left: "40%",
+        height: "17dp",
+        font: {
+            fontSize: "12dp"
+        },
+        top: "80%",
+        id: "txtMadre"
+    });
+    $.__views.winNuevoAlumno.add($.__views.txtMadre);
     $.__views.btnAnotacion = Ti.UI.createButton({
         top: "2%",
         borderRadius: "5dp",
@@ -296,7 +437,11 @@ function Controller() {
         $.txtDireccion.value = datos.Direccion;
         $.txtCodPostal.value = datos.CodPostal;
         $.txtTelefono.value = datos.TelContacto;
+        $.txtTelefono2.value = datos.TelContacto2;
         $.txtEmail.value = datos.Email;
+        $.txtEmail2.value = datos.Email2;
+        $.txtPadre.value = datos.Padre;
+        $.txtMadre.value = datos.Madre;
     }
     $.txtNombre.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
@@ -370,6 +515,18 @@ function Controller() {
         });
         dialog.show();
     });
+    $.txtTelefono2.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el teléfono",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtTelefono2.value = e.text);
+        });
+        dialog.show();
+    });
     $.txtEmail.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
             title: "Introduzca el correo electrónico",
@@ -379,6 +536,42 @@ function Controller() {
         });
         dialog.addEventListener("click", function(e) {
             e.index === e.source.cancel || ($.txtEmail.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtEmail2.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el correo electrónico",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtEmail2.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtPadre.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el nombre del padre",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtPadre.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtMadre.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el nombre de la madre",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtMadre.value = e.text);
         });
         dialog.show();
     });

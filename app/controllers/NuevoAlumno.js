@@ -25,7 +25,11 @@ if (data.IdAlumno == undefined){
     $.txtDireccion.value = datos.Direccion;
     $.txtCodPostal.value = datos.CodPostal;
     $.txtTelefono.value = datos.TelContacto;
+    $.txtTelefono2.value = datos.TelContacto2;
     $.txtEmail.value = datos.Email;
+    $.txtEmail2.value = datos.Email2;
+    $.txtPadre.value = datos.Padre;
+    $.txtMadre.value = datos.Madre;
 
     }
 
@@ -34,6 +38,7 @@ if (data.IdAlumno == undefined){
 function GuardarAlumno(){
     var coleccionAlumnos = Alloy.Collections.Alumno;
     if (data.IdAlumno == undefined){
+        
         //Al venir a undefined el IdAlumno quiere decir que es la creación de un nuevo alumno
         var alumno = Alloy.createModel('Alumno',{Nombre:$.txtNombre.value, 
                                             Apellido1:$.txtApellido1.value,   
@@ -41,20 +46,43 @@ function GuardarAlumno(){
                                             Direccion:$.txtDireccion.value, 
                                             CodPostal:$.txtCodPostal.value,
                                             TelContacto:$.txtTelefono.value,
+                                            TelContacto2:$.txtTelefono2.value,
                                             Email:$.txtEmail.value,
+                                            Email2:$.txtEmail2.value,
+                                            Padre:$.txtPadre.value,
+                                            Madre:$.txtMadre.value,
                                             Clase:data.IdClase});
        
         coleccionAlumnos.add(alumno);
-        alumno.save();     
+        alumno.save();
+        coleccionAlumnos.fetch();     
     }else{
     //Al venir idAlumno con un valor quiere decir que es una actualizacion
         var modelActual = coleccion_filtrada.getElement();
-        var datos = modelActual.toJSON();
-        coleccionAlumnos.updateAlumno(datos.IdAlumno, $.txtNombre.value, $.txtApellido1.value,$.txtApellido2.value, $.txtDireccion.value,$.txtCodPostal.value,$.txtTelefono.value, $.txtEmail.value);
-        coleccionAlumnos.fetch();
+        modelActual.set({Nombre:$.txtNombre.value, 
+                       Apellido1:$.txtApellido1.value,   
+                       Apellido2:$.txtApellido2.value, 
+                       Direccion:$.txtDireccion.value, 
+                       CodPostal:$.txtCodPostal.value,
+                       TelContacto:$.txtTelefono.value,
+                       TelContacto2:$.txtTelefono2.value,
+                       Email:$.txtEmail.value,
+                       Email2:$.txtEmail2.value,
+                       Padre:$.txtPadre.value,
+                       Madre:$.txtMadre.value,
+                       Clase:data.IdClase});
+        modelActual.save();
+        
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'La información del alumno se ha almacenado correctamente.',
+            style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
+            buttonNames: ['Aceptar'],
+             });
+            dialog.show();
     }
-    coleccionAlumnos.fetch();
-    $.winNuevoAlumno.close();
+    
+    
+    
 }
 
 function sacarFoto(){
@@ -234,6 +262,23 @@ $.txtTelefono.addEventListener("click", function(){
         dialog.show();
 });
 
+$.txtTelefono2.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el teléfono',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtTelefono2.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
 $.txtEmail.addEventListener("click", function(){
         var dialog = Ti.UI.createAlertDialog({
             title: 'Introduzca el correo electrónico',
@@ -246,6 +291,57 @@ $.txtEmail.addEventListener("click", function(){
      
             }else{
                 $.txtEmail.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtEmail2.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el correo electrónico',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtEmail2.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtPadre.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el nombre del padre',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtPadre.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtMadre.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el nombre de la madre',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+            if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtMadre.value = e.text;
             }
         });
         dialog.show();

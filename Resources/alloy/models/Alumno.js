@@ -30,14 +30,6 @@ exports.definition = {
     },
     extendCollection: function(Collection) {
         _.extend(Collection.prototype, {
-            updateAlumno: function(idAlumno, Nombre, Apellido1, Apellido2, Direccion, CodPostal, TelContacto, Email) {
-                try {
-                    var query1 = "UPDATE ALUMNO SET Nombre ='" + Nombre + "', Apellido1 = '" + Apellido1 + "', Apellido2 = '" + Apellido2 + "', Direccion = '" + Direccion + "', CodPostal=" + CodPostal + ", TelContacto=" + TelContacto + ", Email='" + Email + "' WHERE IdAlumno= " + idAlumno;
-                    this.fetch({
-                        query: query1
-                    });
-                } catch (err) {}
-            },
             getAlumnosFromClase: function(idClase) {
                 var consulta = "SELECT * FROM ALUMNO WHERE Clase=" + idClase;
                 this.fetch({
