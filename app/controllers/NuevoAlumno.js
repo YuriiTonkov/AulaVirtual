@@ -48,7 +48,9 @@ function GuardarAlumno(){
         alumno.save();     
     }else{
     //Al venir idAlumno con un valor quiere decir que es una actualizacion
-        coleccionAlumnos.updateAlumno(data.IdAlumno, $.txtNombre.value, $.txtApellido1.value,$.txtApellido2.value, $.txtDireccion.value,$.txtCodPostal.value,$.txtTelefono.value, $.txtEmail.value);
+        var modelActual = coleccion_filtrada.getElement();
+        var datos = modelActual.toJSON();
+        coleccionAlumnos.updateAlumno(datos.IdAlumno, $.txtNombre.value, $.txtApellido1.value,$.txtApellido2.value, $.txtDireccion.value,$.txtCodPostal.value,$.txtTelefono.value, $.txtEmail.value);
         coleccionAlumnos.fetch();
     }
     coleccionAlumnos.fetch();
@@ -77,10 +79,12 @@ function TomarAnotacion(){
 }
 
 function AnteriorAlumno(){
+    var modelActual = coleccion_filtrada.getElement();
     var modelPrev = coleccion_filtrada.prev().getElement();
+    
     if (modelPrev != undefined){
         var datos = modelPrev.toJSON();
-        coleccion_filtrada.setElement(modelPrev);
+       //coleccion_filtrada.setElement(modelPrev);
         $.txtNombre.value = datos.Nombre;
         $.txtApellido1.value = datos.Apellido1;
         $.txtApellido2.value = datos.Apellido2;
@@ -89,6 +93,7 @@ function AnteriorAlumno(){
         $.txtTelefono.value = datos.TelContacto;
         $.txtEmail.value = datos.Email; 
     }else{
+        coleccion_filtrada.setElement(modelActual);
         var dialog2 = Ti.UI.createAlertDialog({
             title: 'Ha llegado al principio de la lista de alumnos',
             style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
@@ -99,11 +104,12 @@ function AnteriorAlumno(){
 }
 
 function SiguienteAlumno(){
-   
+    var modelActual = coleccion_filtrada.getElement();
     var modelNext = coleccion_filtrada.next().getElement();
+   
     if (modelNext != undefined){
         var datos = modelNext.toJSON();
-        coleccion_filtrada.setElement(modelNext);
+        //coleccion_filtrada.setElement(modelNext);
         $.txtNombre.value = datos.Nombre;
         $.txtApellido1.value = datos.Apellido1;
         $.txtApellido2.value = datos.Apellido2;
@@ -113,6 +119,7 @@ function SiguienteAlumno(){
         $.txtEmail.value = datos.Email; 
     }
     else {
+        coleccion_filtrada.setElement(modelActual);
         var dialog = Ti.UI.createAlertDialog({
             title: 'Ha llegado al final de la lista de alumnos',
             style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
