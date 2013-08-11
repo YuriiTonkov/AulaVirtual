@@ -12,7 +12,7 @@ function Controller() {
             recurse: true
         }),
         title: "Mis asignaturas",
-        icon: "KS_nav_ui.png",
+        icon: "KS_nav_Exams.png",
         id: "TabAsignaturasFavoritas"
     });
     $.__views.TabAsignaturasFavoritas && $.addTopLevelView($.__views.TabAsignaturasFavoritas);

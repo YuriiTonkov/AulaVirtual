@@ -1,5 +1,5 @@
 <Alloy>
-	<Tab title="Mis Clases" icon="KS_nav_ui.png">
+	<Tab title="Mis Clases" icon="KS_nav_Class.png">
 		<Require src="winClasesFav">
 	</Tab>
 </Alloy>

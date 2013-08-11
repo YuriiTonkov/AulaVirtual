@@ -1,0 +1,3 @@
+".grouped": {
+  style: Ti.UI.iPhone.TableViewStyle.GROUPED
+}

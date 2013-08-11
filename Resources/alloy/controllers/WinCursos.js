@@ -32,6 +32,8 @@ function Controller() {
     });
     $.__views.WinCursos && $.addTopLevelView($.__views.WinCursos);
     $.__views.TablaCursos = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);

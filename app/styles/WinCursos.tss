@@ -1,3 +1,6 @@
 ".container": {
-	"backgroundColor": "white"
+}
+".form": {
+  style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+  backgroundImage: "backGround320x416Base.png"
 }

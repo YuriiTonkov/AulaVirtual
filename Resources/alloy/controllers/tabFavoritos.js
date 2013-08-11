@@ -12,7 +12,7 @@ function Controller() {
             recurse: true
         }),
         title: "Mis Clases",
-        icon: "KS_nav_ui.png",
+        icon: "KS_nav_Class.png",
         id: "tabFavoritos"
     });
     $.__views.tabFavoritos && $.addTopLevelView($.__views.tabFavoritos);

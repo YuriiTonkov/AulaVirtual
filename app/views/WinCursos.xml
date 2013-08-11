@@ -1,6 +1,6 @@
 <Alloy>	
 			<Window id="WinCursos" title="Cursos">
-				<TableView dataCollection="Curso" dataFilter="filtrado" id="TablaCursos">
+				<TableView dataCollection="Curso" dataFilter="filtrado" id="TablaCursos" class="form">
 					<Require src="CursoRow"/>
 				</TableView>
 			</Window>

@@ -26,6 +26,7 @@ function Controller() {
     });
     $.__views.winGrados && $.addTopLevelView($.__views.winGrados);
     $.__views.TablaGrados = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         id: "TablaGrados"
     });
     $.__views.winGrados.add($.__views.TablaGrados);

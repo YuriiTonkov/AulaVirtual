@@ -12,7 +12,7 @@ function Controller() {
             recurse: true
         }),
         title: "Configuracion",
-        icon: "KS_nav_views.png",
+        icon: "KS_nav_Config.png",
         id: "TabConfiguracion"
     });
     $.__views.TabConfiguracion && $.addTopLevelView($.__views.TabConfiguracion);
