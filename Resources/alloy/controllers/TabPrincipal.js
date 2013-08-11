@@ -12,7 +12,7 @@ function Controller() {
             recurse: true
         }),
         title: "Menu principal",
-        icon: "KS_nav_ui.png",
+        icon: "KS_nav_Menu.png",
         id: "TabPrincipal"
     });
     $.__views.TabPrincipal && $.addTopLevelView($.__views.TabPrincipal);

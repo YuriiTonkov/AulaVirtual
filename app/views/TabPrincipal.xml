@@ -1,5 +1,5 @@
 <Alloy>
-	<Tab title="Menu principal" icon="KS_nav_ui.png">
+	<Tab title="Menu principal" icon="KS_nav_Menu.png">
 		<Require src="WinGrupos">
 	</Tab>
 </Alloy>
