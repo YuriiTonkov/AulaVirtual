@@ -2,8 +2,8 @@
 	backgroundColor: "white"
 },
 ".label": {
-	width:"80%"
+	width:"40%"
 },
 ".textbox": {
-	borderColor:"#000", width:"70%"
+	borderColor:"#000", left:"40%", width:"50%"
 }

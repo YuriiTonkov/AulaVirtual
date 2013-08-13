@@ -1,7 +1,9 @@
 <Alloy>
     <Window id="winNuevaEvaluacion" class="container">
-        <Label class="label" top="5%">Introduzca el nombre de la evaluacion</Label>
-        <TextField class="textbox" top="20%" id="txtNombreEvaluacion"></TextField>
+        <Label class="label" top="10%">Nombre</Label>
+        <TextField class="textbox" top="10%" id="txtNombreEvaluacion"></TextField>
+        <Label class="label" top="10%">Fecha Inicio</Label>
+        <Label class="textbox" top="10%" id="lblFecha"></Label>
         <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarEvaluacion"></Button>
     </Window>
 </Alloy>

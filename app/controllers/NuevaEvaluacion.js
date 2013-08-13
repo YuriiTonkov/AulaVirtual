@@ -6,6 +6,19 @@ data = arg1;
 //$.WinClases.title = data.Nombre;
 $.winNuevaEvaluacion.setRightNavButton($.btnGuardar);
 
+if (data.IdEvaluacion == undefined){
+    
+    
+} else {
+    var colEvaluaciones = Alloy.Collections.Evaluacion;
+    colEvaluaciones.fetch();
+    var model = colEvaluaciones.get(data.IdEvaluacion);
+    var modelArray = model.toJSON();
+    $.txtNombreEvaluacion.value = modelArray.Nombre;
+    
+    
+}
+
 function GuardarEvaluacion(){
     if ($.txtNombreEvaluacion.value == "") 
         {
