@@ -1,8 +1,8 @@
-$.lblEvaluacion.addEventListener("click", function(e){
+$.tblAsignaturaRow.addEventListener("click", function(e){
     //console.debug("Añadimos el handler para el evento de click");
     if (e.detail==1){
 
-        var tabAlumnosController = Alloy.createController("NuevaEvaluacion", {"IdEvaluacion":e.source.textid});
+        var tabAlumnosController = Alloy.createController("NuevaEvaluacion", {"IdEvaluacion":e.source.data});
         Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
     }
     else{

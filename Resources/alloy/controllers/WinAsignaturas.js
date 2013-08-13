@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId101() {
-        var models = filtrado(__alloyId100);
+    function __alloyId104() {
+        var models = filtrado(__alloyId103);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId98 = models[i];
-            __alloyId98.__transform = {};
-            var __alloyId99 = Alloy.createController("AsignaturaRow", {
-                $model: __alloyId98
+            var __alloyId101 = models[i];
+            __alloyId101.__transform = {};
+            var __alloyId102 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId101
             });
-            rows.push(__alloyId99.getViewEx({
+            rows.push(__alloyId102.getViewEx({
                 recurse: true
             }));
         }
@@ -43,8 +43,8 @@ function Controller() {
         id: "TablaAsignaturasByAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
-    var __alloyId100 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId100.on("fetch destroy change add remove reset", __alloyId101);
+    var __alloyId103 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId103.on("fetch destroy change add remove reset", __alloyId104);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -53,7 +53,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId100.off("fetch destroy change add remove reset", __alloyId101);
+        __alloyId103.off("fetch destroy change add remove reset", __alloyId104);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

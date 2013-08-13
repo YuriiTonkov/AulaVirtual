@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId91() {
-        var models = filtrado(__alloyId90);
+    function __alloyId94() {
+        var models = filtrado(__alloyId93);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId88 = models[i];
-            __alloyId88.__transform = nombrecompleto(__alloyId88);
-            var __alloyId89 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId88
+            var __alloyId91 = models[i];
+            __alloyId91.__transform = nombrecompleto(__alloyId91);
+            var __alloyId92 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId91
             });
-            rows.push(__alloyId89.getViewEx({
+            rows.push(__alloyId92.getViewEx({
                 recurse: true
             }));
         }
@@ -40,10 +40,10 @@ function Controller() {
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId90 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId90.on("fetch destroy change add remove reset", __alloyId91);
+    var __alloyId93 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId93.on("fetch destroy change add remove reset", __alloyId94);
     exports.destroy = function() {
-        __alloyId90.off("fetch destroy change add remove reset", __alloyId91);
+        __alloyId93.off("fetch destroy change add remove reset", __alloyId94);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
