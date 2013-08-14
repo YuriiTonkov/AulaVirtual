@@ -1,5 +1,6 @@
 <Alloy>
 	<TableViewRow class="row"  data ="{IdCurso}" hasDetail="true" id="tblCursosRow">
 		<Label class="rowTitle" id="lblCurso" text="{Nombre}" textid="{IdCurso}"/>
+		<Label class="rowSubTitle" id="lblInfo" text="{Grupos}" textid="{IdCurso}"/>
 	</TableViewRow>
 </Alloy>

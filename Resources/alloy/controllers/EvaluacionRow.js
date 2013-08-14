@@ -14,7 +14,8 @@ function Controller() {
     $.__views.lblEvaluacion = Ti.UI.createLabel({
         width: "100%",
         height: "40dp",
-        textAlign: "center",
+        textAlign: "left",
+        left: "10dp",
         id: "lblEvaluacion",
         text: "undefined" != typeof $model.__transform["Nombre"] ? $model.__transform["Nombre"] : $model.get("Nombre"),
         textid: "undefined" != typeof $model.__transform["IdEvaluacion"] ? $model.__transform["IdEvaluacion"] : $model.get("IdEvaluacion")

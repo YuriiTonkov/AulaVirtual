@@ -1,16 +1,49 @@
 function Controller() {
+    function Guardar() {
+        GuardarEvaluacion();
+        $.winNuevaEvaluacion.close();
+    }
     function GuardarEvaluacion() {
-        if ("" == $.txtNombreEvaluacion.value) alert("Tiene que introducir un nombre de la evaluacion."); else {
+        calcularMedia();
+        var coleccionEvaluaciones = Alloy.Collections.Evaluacion;
+        if (void 0 == data.IdEvaluacion) if ("" == $.txtNombreEvaluacion.value) alert("Tiene que introducir un nombre de la evaluacion."); else {
             var Evaluacion = Alloy.createModel("Evaluacion", {
                 Nombre: $.txtNombreEvaluacion.value,
-                AlumnoAsignatura: data.AlumnoAsignatura
+                AlumnoAsignatura: data.AlumnoAsignatura,
+                Nota: $.txtNota.text,
+                Peso: $.txtPeso.value,
+                FechaInicio: $.lblFecha.text
             });
-            var coleccionEvaluaciones = Alloy.Collections.Evaluacion;
             coleccionEvaluaciones.add(Evaluacion);
             Evaluacion.save();
             coleccionEvaluaciones.fetch();
             $.winNuevaEvaluacion.close();
+        } else {
+            coleccionEvaluaciones.fetch();
+            var modelEvaluacion = coleccionEvaluaciones.get(data.IdEvaluacion);
+            modelEvaluacion.set({
+                Nombre: $.txtNombreEvaluacion.value,
+                Evaluacion: data.IdEvaluacion,
+                Calificacion: $.txtNota.text,
+                Peso: $.txtPeso.value,
+                FechaInicio: $.lblFecha.text
+            });
+            modelEvaluacion.save();
+            coleccionEvaluaciones.fetch();
         }
+    }
+    function calcularMedia() {
+        var colExamenes = Alloy.createCollection("Examen");
+        colExamenes.fetch();
+        var modelExamen = colExamenes.where({
+            Evaluacion: data.IdEvaluacion
+        });
+        var nota = 0;
+        for (var i = 0; modelExamen.length > i; i++) {
+            var datos = modelExamen[i].toJSON();
+            nota += datos.Nota * datos.Peso / 100;
+        }
+        $.txtNota.text = nota;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -49,7 +82,7 @@ function Controller() {
     $.__views.winNuevaEvaluacion.add($.__views.__alloyId70);
     $.__views.lblFecha = Ti.UI.createLabel({
         borderColor: "#000",
-        height: "16dp",
+        height: "20dp",
         textAlign: "center",
         width: "40%",
         left: "50%",
@@ -87,7 +120,7 @@ function Controller() {
     $.__views.winNuevaEvaluacion.add($.__views.__alloyId72);
     $.__views.txtNota = Ti.UI.createLabel({
         borderColor: "#000",
-        height: "16dp",
+        height: "20dp",
         textAlign: "center",
         width: "40%",
         left: "50%",
@@ -105,7 +138,7 @@ function Controller() {
         title: "Guardar"
     });
     $.__views.winNuevaEvaluacion.add($.__views.btnGuardar);
-    GuardarEvaluacion ? $.__views.btnGuardar.addEventListener("click", GuardarEvaluacion) : __defers["$.__views.btnGuardar!click!GuardarEvaluacion"] = true;
+    Guardar ? $.__views.btnGuardar.addEventListener("click", Guardar) : __defers["$.__views.btnGuardar!click!Guardar"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
         id: "cancel",
@@ -132,19 +165,9 @@ function Controller() {
         var modelEvaluacion = colEvaluaciones.get(data.IdEvaluacion);
         var ArrayEvaluacion = modelEvaluacion.toJSON();
         $.txtNombreEvaluacion.value = ArrayEvaluacion.Nombre;
-        $.lblFecha.value = ArrayEvaluacion.FechaInicio;
+        $.lblFecha.text = ArrayEvaluacion.FechaInicio;
         $.txtPeso.value = ArrayEvaluacion.Peso;
-        var colExamenes = Alloy.createCollection("Examen");
-        colExamenes.fetch();
-        var modelExamen = colExamenes.where({
-            Evaluacion: data.IdEvaluacion
-        });
-        var nota = 0;
-        for (var i = 0; modelExamen.length > i; i++) {
-            var datos = modelExamen[i].toJSON();
-            nota += datos.Nota * datos.Peso / 100;
-        }
-        $.txtNota.text = nota;
+        GuardarEvaluacion();
     }
     var slide_in = Titanium.UI.createAnimation({
         bottom: 0
@@ -178,7 +201,6 @@ function Controller() {
     picker_view.add(picker);
     picker_view.add(toolbar);
     $.lblFecha.addEventListener("click", function() {
-        $.txtNota.blur();
         $.winNuevaEvaluacion.add(picker_view);
         picker_view.animate(slide_in);
     });
@@ -193,7 +215,7 @@ function Controller() {
         $.lblFecha.text = dateValue.getMonth() + 1 + "/" + dateValue.getDate() + "/" + dateValue.getFullYear();
         picker_view.animate(slide_out);
     });
-    __defers["$.__views.btnGuardar!click!GuardarEvaluacion"] && $.__views.btnGuardar.addEventListener("click", GuardarEvaluacion);
+    __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
     _.extend($, exports);
 }
 

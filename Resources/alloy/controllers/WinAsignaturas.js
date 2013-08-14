@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId104() {
-        var models = filtrado(__alloyId103);
+    function __alloyId105() {
+        var models = filtrado(__alloyId104);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId101 = models[i];
-            __alloyId101.__transform = {};
-            var __alloyId102 = Alloy.createController("AsignaturaRow", {
-                $model: __alloyId101
+            var __alloyId102 = models[i];
+            __alloyId102.__transform = {};
+            var __alloyId103 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId102
             });
-            rows.push(__alloyId102.getViewEx({
+            rows.push(__alloyId103.getViewEx({
                 recurse: true
             }));
         }
@@ -40,11 +40,13 @@ function Controller() {
     });
     $.__views.WinAsignaturasAlumno && $.addTopLevelView($.__views.WinAsignaturasAlumno);
     $.__views.TablaAsignaturasByAlumno = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAsignaturasByAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
-    var __alloyId103 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId103.on("fetch destroy change add remove reset", __alloyId104);
+    var __alloyId104 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId104.on("fetch destroy change add remove reset", __alloyId105);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -53,7 +55,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId103.off("fetch destroy change add remove reset", __alloyId104);
+        __alloyId104.off("fetch destroy change add remove reset", __alloyId105);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

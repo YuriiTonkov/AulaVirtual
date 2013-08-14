@@ -64,13 +64,17 @@ function Controller() {
         var modelPrev = coleccion_filtrada.prev().getElement();
         if (void 0 != modelPrev) {
             var datos = modelPrev.toJSON();
-            $.txtNombre.value = datos.Nombre;
-            $.txtApellido1.value = datos.Apellido1;
-            $.txtApellido2.value = datos.Apellido2;
-            $.txtDireccion.value = datos.Direccion;
-            $.txtCodPostal.value = datos.CodPostal;
-            $.txtTelefono.value = datos.TelContacto;
-            $.txtEmail.value = datos.Email;
+            $.txtNombre.value = void 0 == datos.Nombre ? "" : datos.Nombre;
+            $.txtApellido1.value = void 0 == datos.Apellido1 ? "" : datos.Apellido1;
+            $.txtApellido2.value = void 0 == datos.Apellido2 ? "" : datos.Apellido2;
+            $.txtDireccion.value = void 0 == datos.Direccion ? "" : datos.Direccion;
+            $.txtCodPostal.value = void 0 == datos.CodPostal ? "" : datos.CodPostal;
+            $.txtTelefono.value = void 0 == datos.TelContacto ? "" : datos.TelContacto;
+            $.txtEmail.value = void 0 == datos.Email ? "" : datos.Email;
+            $.txtTelefono2.value = void 0 == datos.TelContacto2 ? "" : datos.TelContacto2;
+            $.txtEmail2.value = void 0 == datos.Email2 ? "" : datos.Email2;
+            $.txtPadre.value = void 0 == datos.Padre ? "" : datos.Padre;
+            $.txtMadre.value = void 0 == datos.Madre ? "" : datos.Madre;
         } else {
             coleccion_filtrada.setElement(modelActual);
             var dialog2 = Ti.UI.createAlertDialog({
@@ -86,13 +90,17 @@ function Controller() {
         var modelNext = coleccion_filtrada.next().getElement();
         if (void 0 != modelNext) {
             var datos = modelNext.toJSON();
-            $.txtNombre.value = datos.Nombre;
-            $.txtApellido1.value = datos.Apellido1;
-            $.txtApellido2.value = datos.Apellido2;
-            $.txtDireccion.value = datos.Direccion;
-            $.txtCodPostal.value = datos.CodPostal;
-            $.txtTelefono.value = datos.TelContacto;
-            $.txtEmail.value = datos.Email;
+            $.txtNombre.value = void 0 == datos.Nombre ? "" : datos.Nombre;
+            $.txtApellido1.value = void 0 == datos.Apellido1 ? "" : datos.Apellido1;
+            $.txtApellido2.value = void 0 == datos.Apellido2 ? "" : datos.Apellido2;
+            $.txtDireccion.value = void 0 == datos.Direccion ? "" : datos.Direccion;
+            $.txtCodPostal.value = void 0 == datos.CodPostal ? "" : datos.CodPostal;
+            $.txtTelefono.value = void 0 == datos.TelContacto ? "" : datos.TelContacto;
+            $.txtEmail.value = void 0 == datos.Email ? "" : datos.Email;
+            $.txtTelefono2.value = void 0 == datos.TelContacto2 ? "" : datos.TelContacto2;
+            $.txtEmail2.value = void 0 == datos.Email2 ? "" : datos.Email2;
+            $.txtPadre.value = void 0 == datos.Padre ? "" : datos.Padre;
+            $.txtMadre.value = void 0 == datos.Madre ? "" : datos.Madre;
         } else {
             coleccion_filtrada.setElement(modelActual);
             var dialog = Ti.UI.createAlertDialog({

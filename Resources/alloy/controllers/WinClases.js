@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId114() {
-        var models = filtrado(__alloyId113);
+    function __alloyId115() {
+        var models = filtrado(__alloyId114);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId111 = models[i];
-            __alloyId111.__transform = NombreClase(__alloyId111);
-            var __alloyId112 = Alloy.createController("ClaseRow", {
-                $model: __alloyId111
+            var __alloyId112 = models[i];
+            __alloyId112.__transform = NombreClase(__alloyId112);
+            var __alloyId113 = Alloy.createController("ClaseRow", {
+                $model: __alloyId112
             });
-            rows.push(__alloyId112.getViewEx({
+            rows.push(__alloyId113.getViewEx({
                 recurse: true
             }));
         }
@@ -45,11 +45,13 @@ function Controller() {
     });
     $.__views.WinClases && $.addTopLevelView($.__views.WinClases);
     $.__views.TablaClases = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);
-    var __alloyId113 = Alloy.Collections["Clase"] || Clase;
-    __alloyId113.on("fetch destroy change add remove reset", __alloyId114);
+    var __alloyId114 = Alloy.Collections["Clase"] || Clase;
+    __alloyId114.on("fetch destroy change add remove reset", __alloyId115);
     $.__views.addClase = Ti.UI.createButton({
         id: "addClase",
         title: "Nueva",
@@ -58,7 +60,7 @@ function Controller() {
     $.__views.WinClases.add($.__views.addClase);
     NuevaClase ? $.__views.addClase.addEventListener("click", NuevaClase) : __defers["$.__views.addClase!click!NuevaClase"] = true;
     exports.destroy = function() {
-        __alloyId113.off("fetch destroy change add remove reset", __alloyId114);
+        __alloyId114.off("fetch destroy change add remove reset", __alloyId115);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

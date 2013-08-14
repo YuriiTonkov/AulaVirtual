@@ -5,6 +5,7 @@ exports.definition = {
 		    "Evaluacion": "int",
 		    "Nota": "float",
 		    "FechaExamen": "date",
+		    "Descripcion": "string",
 		    "Peso":"int"
 		},
 		adapter: {

@@ -38,7 +38,7 @@ function Controller() {
         title: "Perfil usuario"
     });
     $.__views.winUsuario && $.addTopLevelView($.__views.winUsuario);
-    $.__views.__alloyId145 = Ti.UI.createLabel({
+    $.__views.__alloyId146 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -46,9 +46,9 @@ function Controller() {
         },
         text: "Nombre",
         top: "2%",
-        id: "__alloyId145"
+        id: "__alloyId146"
     });
-    $.__views.winUsuario.add($.__views.__alloyId145);
+    $.__views.winUsuario.add($.__views.__alloyId146);
     $.__views.txtNombre = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -62,7 +62,7 @@ function Controller() {
         id: "txtNombre"
     });
     $.__views.winUsuario.add($.__views.txtNombre);
-    $.__views.__alloyId146 = Ti.UI.createLabel({
+    $.__views.__alloyId147 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -70,9 +70,9 @@ function Controller() {
         },
         text: "1er Apellido",
         top: "10%",
-        id: "__alloyId146"
+        id: "__alloyId147"
     });
-    $.__views.winUsuario.add($.__views.__alloyId146);
+    $.__views.winUsuario.add($.__views.__alloyId147);
     $.__views.txtApellido1 = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -86,7 +86,7 @@ function Controller() {
         id: "txtApellido1"
     });
     $.__views.winUsuario.add($.__views.txtApellido1);
-    $.__views.__alloyId147 = Ti.UI.createLabel({
+    $.__views.__alloyId148 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -94,9 +94,9 @@ function Controller() {
         },
         text: "2o Apellido",
         top: "18%",
-        id: "__alloyId147"
+        id: "__alloyId148"
     });
-    $.__views.winUsuario.add($.__views.__alloyId147);
+    $.__views.winUsuario.add($.__views.__alloyId148);
     $.__views.txtApellido2 = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -110,7 +110,7 @@ function Controller() {
         id: "txtApellido2"
     });
     $.__views.winUsuario.add($.__views.txtApellido2);
-    $.__views.__alloyId148 = Ti.UI.createLabel({
+    $.__views.__alloyId149 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -118,9 +118,9 @@ function Controller() {
         },
         text: "Direccion",
         top: "26%",
-        id: "__alloyId148"
+        id: "__alloyId149"
     });
-    $.__views.winUsuario.add($.__views.__alloyId148);
+    $.__views.winUsuario.add($.__views.__alloyId149);
     $.__views.txtDireccion = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -134,7 +134,7 @@ function Controller() {
         id: "txtDireccion"
     });
     $.__views.winUsuario.add($.__views.txtDireccion);
-    $.__views.__alloyId149 = Ti.UI.createLabel({
+    $.__views.__alloyId150 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -142,9 +142,9 @@ function Controller() {
         },
         text: "Cod.Postal",
         top: "34%",
-        id: "__alloyId149"
+        id: "__alloyId150"
     });
-    $.__views.winUsuario.add($.__views.__alloyId149);
+    $.__views.winUsuario.add($.__views.__alloyId150);
     $.__views.txtCodPostal = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -158,7 +158,7 @@ function Controller() {
         id: "txtCodPostal"
     });
     $.__views.winUsuario.add($.__views.txtCodPostal);
-    $.__views.__alloyId150 = Ti.UI.createLabel({
+    $.__views.__alloyId151 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -166,9 +166,9 @@ function Controller() {
         },
         text: "Telefono",
         top: "42%",
-        id: "__alloyId150"
+        id: "__alloyId151"
     });
-    $.__views.winUsuario.add($.__views.__alloyId150);
+    $.__views.winUsuario.add($.__views.__alloyId151);
     $.__views.txtTelefono = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -182,7 +182,7 @@ function Controller() {
         id: "txtTelefono"
     });
     $.__views.winUsuario.add($.__views.txtTelefono);
-    $.__views.__alloyId151 = Ti.UI.createLabel({
+    $.__views.__alloyId152 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -190,9 +190,9 @@ function Controller() {
         },
         text: "Email",
         top: "50%",
-        id: "__alloyId151"
+        id: "__alloyId152"
     });
-    $.__views.winUsuario.add($.__views.__alloyId151);
+    $.__views.winUsuario.add($.__views.__alloyId152);
     $.__views.txtEmail = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -206,7 +206,7 @@ function Controller() {
         id: "txtEmail"
     });
     $.__views.winUsuario.add($.__views.txtEmail);
-    $.__views.__alloyId152 = Ti.UI.createLabel({
+    $.__views.__alloyId153 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -214,9 +214,9 @@ function Controller() {
         },
         text: "Contraseña",
         top: "60%",
-        id: "__alloyId152"
+        id: "__alloyId153"
     });
-    $.__views.winUsuario.add($.__views.__alloyId152);
+    $.__views.winUsuario.add($.__views.__alloyId153);
     $.__views.txtPass = Ti.UI.createTextField({
         borderColor: "#000",
         height: "20dp",
@@ -231,7 +231,7 @@ function Controller() {
         id: "txtPass"
     });
     $.__views.winUsuario.add($.__views.txtPass);
-    $.__views.__alloyId153 = Ti.UI.createLabel({
+    $.__views.__alloyId154 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -239,9 +239,9 @@ function Controller() {
         },
         text: "Ayuda activa",
         top: "73%",
-        id: "__alloyId153"
+        id: "__alloyId154"
     });
-    $.__views.winUsuario.add($.__views.__alloyId153);
+    $.__views.winUsuario.add($.__views.__alloyId154);
     $.__views.chkAyuda = Ti.UI.createSwitch({
         enabled: "true",
         top: "70%",

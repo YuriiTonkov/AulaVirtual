@@ -15,37 +15,57 @@ if (data.IdEvaluacion == undefined){
     var modelEvaluacion = colEvaluaciones.get(data.IdEvaluacion);
     var ArrayEvaluacion = modelEvaluacion.toJSON();
     $.txtNombreEvaluacion.value = ArrayEvaluacion.Nombre;
-    $.lblFecha.value = ArrayEvaluacion.FechaInicio;
+    $.lblFecha.text = ArrayEvaluacion.FechaInicio;
     $.txtPeso.value = ArrayEvaluacion.Peso;
     
-    //Para sacar la nota hay que calcular la media de las notas de los examenes teniendo en cuenta el peso de cada uno
-    var colExamenes = Alloy.createCollection("Examen");
-    colExamenes.fetch();
-    var modelExamen = colExamenes.where({Evaluacion: data.IdEvaluacion});
-    var nota=0;
-    for (var i=0;i<modelExamen.length;i++){
-        var datos = modelExamen[i].toJSON();
-        nota = nota + (datos.Nota * datos.Peso/100);
-    }
-    $.txtNota.text = nota;
+    GuardarEvaluacion();
     
-}
+function Guardar(){
+    GuardarEvaluacion();
+    $.winNuevaEvaluacion.close();
+}   
 
 function GuardarEvaluacion(){
-    if ($.txtNombreEvaluacion.value == "") 
-        {
-            alert("Tiene que introducir un nombre de la evaluacion.")
+    calcularMedia();
+    var coleccionEvaluaciones = Alloy.Collections.Evaluacion;
+    if (data.IdEvaluacion == undefined){
+        if ($.txtNombreEvaluacion.value == "") 
+            {
+                alert("Tiene que introducir un nombre de la evaluacion.")
+            }
+        else
+            {
+                var Evaluacion = Alloy.createModel('Evaluacion',{Nombre:$.txtNombreEvaluacion.value, AlumnoAsignatura:data.AlumnoAsignatura, Nota:$.txtNota.text, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.text});
+                coleccionEvaluaciones.add(Evaluacion);
+                Evaluacion.save();
+                coleccionEvaluaciones.fetch();
+                $.winNuevaEvaluacion.close();
+            }
+    }else{
+        coleccionEvaluaciones.fetch();
+        var modelEvaluacion = coleccionEvaluaciones.get(data.IdEvaluacion);
+        modelEvaluacion.set({Nombre:$.txtNombreEvaluacion.value, Evaluacion:data.IdEvaluacion, Calificacion:$.txtNota.text, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.text});
+        modelEvaluacion.save();
+        coleccionEvaluaciones.fetch();
+    }
+
+}
+
+function calcularMedia(){
+        //Para sacar la nota hay que calcular la media de las notas de los examenes teniendo en cuenta el peso de cada uno
+        var colExamenes = Alloy.createCollection("Examen");
+        colExamenes.fetch();
+        var modelExamen = colExamenes.where({Evaluacion: data.IdEvaluacion});
+        var nota=0;
+        for (var i=0;i<modelExamen.length;i++){
+            var datos = modelExamen[i].toJSON();
+            nota = nota + (datos.Nota * datos.Peso/100);
         }
-    else
-        {
-            var Evaluacion = Alloy.createModel('Evaluacion',{Nombre:$.txtNombreEvaluacion.value, AlumnoAsignatura:data.AlumnoAsignatura});
-            var coleccionEvaluaciones = Alloy.Collections.Evaluacion;
-            coleccionEvaluaciones.add(Evaluacion);
-            Evaluacion.save();
-            coleccionEvaluaciones.fetch();
-            $.winNuevaEvaluacion.close();
+        $.txtNota.text = nota;
+        
     }
 }
+
 
 //--------------------CODIGO PARA FUNCIONAMIENTO DEL DATEPICKER
 var slide_in =  Titanium.UI.createAnimation({bottom:0});
@@ -74,7 +94,7 @@ picker_view.add(picker);
 picker_view.add(toolbar);
 
 $.lblFecha.addEventListener('click',function(){
-    $.txtNota.blur();
+    //$.txtNota.blur();
     $.winNuevaEvaluacion.add(picker_view);
     picker_view.animate(slide_in);
 

@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId139() {
-        var models = filtrado(__alloyId138);
+    function __alloyId140() {
+        var models = filtrado(__alloyId139);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId136 = models[i];
-            __alloyId136.__transform = TextoFila(__alloyId136);
-            var __alloyId137 = Alloy.createController("ExamenRow", {
-                $model: __alloyId136
+            var __alloyId137 = models[i];
+            __alloyId137.__transform = TextoFila(__alloyId137);
+            var __alloyId138 = Alloy.createController("ExamenRow", {
+                $model: __alloyId137
             });
-            rows.push(__alloyId137.getViewEx({
+            rows.push(__alloyId138.getViewEx({
                 recurse: true
             }));
         }
@@ -45,11 +45,13 @@ function Controller() {
     });
     $.__views.WinExamenes && $.addTopLevelView($.__views.WinExamenes);
     $.__views.TablaExamenes = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaExamenes"
     });
     $.__views.WinExamenes.add($.__views.TablaExamenes);
-    var __alloyId138 = Alloy.Collections["Examen"] || Examen;
-    __alloyId138.on("fetch destroy change add remove reset", __alloyId139);
+    var __alloyId139 = Alloy.Collections["Examen"] || Examen;
+    __alloyId139.on("fetch destroy change add remove reset", __alloyId140);
     $.__views.addExamen = Ti.UI.createButton({
         id: "addExamen",
         title: "Nuevo",
@@ -58,7 +60,7 @@ function Controller() {
     $.__views.WinExamenes.add($.__views.addExamen);
     NuevoExamen ? $.__views.addExamen.addEventListener("click", NuevoExamen) : __defers["$.__views.addExamen!click!NuevoExamen"] = true;
     exports.destroy = function() {
-        __alloyId138.off("fetch destroy change add remove reset", __alloyId139);
+        __alloyId139.off("fetch destroy change add remove reset", __alloyId140);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

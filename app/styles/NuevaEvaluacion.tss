@@ -8,5 +8,5 @@
 	borderColor:"#000", left:"50%", width:"40%"
 },
 ".label2": {
-	borderColor:"#000",height:"16dp", textAlign:"center", width:"40%", left:"50%",font:{ fontSize:"14dp"}, borderWidth:"1dp", borderColor:"#000"
+	borderColor:"#000",height:"20dp", textAlign:"center", width:"40%", left:"50%",font:{ fontSize:"14dp"}, borderWidth:"1dp"
 }

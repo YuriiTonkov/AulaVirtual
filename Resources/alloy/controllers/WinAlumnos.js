@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId94() {
-        var models = filtrado(__alloyId93);
+    function __alloyId95() {
+        var models = filtrado(__alloyId94);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId91 = models[i];
-            __alloyId91.__transform = nombrecompleto(__alloyId91);
-            var __alloyId92 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId91
+            var __alloyId92 = models[i];
+            __alloyId92.__transform = nombrecompleto(__alloyId92);
+            var __alloyId93 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId92
             });
-            rows.push(__alloyId92.getViewEx({
+            rows.push(__alloyId93.getViewEx({
                 recurse: true
             }));
         }
@@ -37,13 +37,15 @@ function Controller() {
     });
     $.__views.WinAlumnos && $.addTopLevelView($.__views.WinAlumnos);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId93 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId93.on("fetch destroy change add remove reset", __alloyId94);
+    var __alloyId94 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId94.on("fetch destroy change add remove reset", __alloyId95);
     exports.destroy = function() {
-        __alloyId93.off("fetch destroy change add remove reset", __alloyId94);
+        __alloyId94.off("fetch destroy change add remove reset", __alloyId95);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

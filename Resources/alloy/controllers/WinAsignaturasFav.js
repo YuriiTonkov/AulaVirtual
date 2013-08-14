@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId109() {
-        var models = filtrado(__alloyId108);
+    function __alloyId110() {
+        var models = filtrado(__alloyId109);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId106 = models[i];
-            __alloyId106.__transform = NombreAsignatura(__alloyId106);
-            var __alloyId107 = Alloy.createController("AsignaturaFavRow", {
-                $model: __alloyId106
+            var __alloyId107 = models[i];
+            __alloyId107.__transform = NombreAsignatura(__alloyId107);
+            var __alloyId108 = Alloy.createController("AsignaturaFavRow", {
+                $model: __alloyId107
             });
-            rows.push(__alloyId107.getViewEx({
+            rows.push(__alloyId108.getViewEx({
                 recurse: true
             }));
         }
@@ -37,13 +37,15 @@ function Controller() {
     });
     $.__views.WinAsignaturasFav && $.addTopLevelView($.__views.WinAsignaturasFav);
     $.__views.TablaAsignaturasFav = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAsignaturasFav"
     });
     $.__views.WinAsignaturasFav.add($.__views.TablaAsignaturasFav);
-    var __alloyId108 = Alloy.Collections["VW_Asignaturas_Favoritas"] || VW_Asignaturas_Favoritas;
-    __alloyId108.on("fetch destroy change add remove reset", __alloyId109);
+    var __alloyId109 = Alloy.Collections["VW_Asignaturas_Favoritas"] || VW_Asignaturas_Favoritas;
+    __alloyId109.on("fetch destroy change add remove reset", __alloyId110);
     exports.destroy = function() {
-        __alloyId108.off("fetch destroy change add remove reset", __alloyId109);
+        __alloyId109.off("fetch destroy change add remove reset", __alloyId110);
     };
     _.extend($, $.__views);
     $.WinAsignaturasFav.title = "Asignaturas Favoritas";

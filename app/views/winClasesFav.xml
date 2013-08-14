@@ -1,6 +1,6 @@
 <Alloy>	
 			<Window id="WinClasesFav" title="Clases">	
-				<TableView dataCollection="VW_Clases_Favoritas" dataTransform="NombreClase" dataFilter="filtrado" id="TablaClases">
+				<TableView dataCollection="VW_Clases_Favoritas" dataTransform="NombreClase" dataFilter="filtrado" id="TablaClases" class="form">
 					<Require src="ClaseRow"/>
 				</TableView>
 				

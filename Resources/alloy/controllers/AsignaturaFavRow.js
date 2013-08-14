@@ -14,7 +14,8 @@ function Controller() {
     $.__views.lblAsignatura = Ti.UI.createLabel({
         width: "100%",
         height: "40dp",
-        textAlign: "center",
+        textAlign: "left",
+        left: "10dp",
         font: {
             fontFamily: "Helvetica",
             fontSize: "12dp"

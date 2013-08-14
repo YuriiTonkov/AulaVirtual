@@ -1,9 +1,21 @@
 ".container": {
 	"backgroundColor": "white"
 },
+".row":{
+	"height":"50dp"
+},
 ".rowTitle": {
+	"bottom":"18dp",
 	"width": "100%",
-	"height": "40dp",
+	"height": "30dp",
+	"textAlign": "left",
+	"left": "10dp"
+	},
+".rowSubTitle": {
+	"width": "100%",
+	"height": "10dp",
+	"top":"33dp",
+	"font": {fontSize:10,fontFamily:'HelveticaNeue'},
 	"textAlign": "left",
 	"left": "10dp"
 },
