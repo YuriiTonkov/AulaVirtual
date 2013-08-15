@@ -40,10 +40,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno && $.addTopLevelView($.__views.WinAsignaturasAlumno);
     $.__views.TablaAsignaturasAlumno = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-<<<<<<< HEAD
         backgroundColor: "transparent",
-=======
->>>>>>> d200f9c9102588d6328da7e4fbedc4938a0b0714
         id: "TablaAsignaturasAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasAlumno);

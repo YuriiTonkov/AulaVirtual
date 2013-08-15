@@ -5,20 +5,15 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.tblCursosRow = Ti.UI.createTableViewRow({
-<<<<<<< HEAD
         backgroundColor: "white",
-=======
-        height: "50dp",
->>>>>>> d200f9c9102588d6328da7e4fbedc4938a0b0714
         data: "undefined" != typeof $model.__transform["IdCurso"] ? $model.__transform["IdCurso"] : $model.get("IdCurso"),
         hasDetail: "true",
         id: "tblCursosRow"
     });
     $.__views.tblCursosRow && $.addTopLevelView($.__views.tblCursosRow);
     $.__views.lblCurso = Ti.UI.createLabel({
-        bottom: "18dp",
         width: "100%",
-        height: "30dp",
+        height: "40dp",
         textAlign: "left",
         left: "10dp",
         id: "lblCurso",
