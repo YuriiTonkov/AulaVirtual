@@ -3,4 +3,8 @@
 },
 ".topButton": {
 	"top": "0px"
+},
+".form": {
+  style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+  backgroundImage: "backGround320x416Base.png"
 }

@@ -13,7 +13,7 @@ function GuardarExamen(){
         }
     else 
         {
-            var Examen = Alloy.createModel('Examen',{FechaExamen:$.dateTextField.text, Evaluacion:data.Evaluacion, Nota:$.txtNota.value});
+            var Examen = Alloy.createModel('Examen',{FechaExamen:$.dateTextField.text,Peso:$.txtPeso.value, Evaluacion:data.Evaluacion, Nota:$.txtNota.value});
             var coleccionExamenes = Alloy.Collections.Examen;
             coleccionExamenes.add(Examen);
             Examen.save();

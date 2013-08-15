@@ -113,13 +113,18 @@ function AnteriorAlumno(){
     if (modelPrev != undefined){
         var datos = modelPrev.toJSON();
        //coleccion_filtrada.setElement(modelPrev);
-        $.txtNombre.value = datos.Nombre;
-        $.txtApellido1.value = datos.Apellido1;
-        $.txtApellido2.value = datos.Apellido2;
-        $.txtDireccion.value = datos.Direccion;
-        $.txtCodPostal.value = datos.CodPostal;
-        $.txtTelefono.value = datos.TelContacto;
-        $.txtEmail.value = datos.Email; 
+       if (datos.Nombre == undefined){$.txtNombre.value = "";}else{$.txtNombre.value = datos.Nombre;}
+       if (datos.Apellido1 == undefined){$.txtApellido1.value = "";}else{$.txtApellido1.value = datos.Apellido1;}
+       if (datos.Apellido2 == undefined){$.txtApellido2.value = "";}else{$.txtApellido2.value = datos.Apellido2;}
+       if (datos.Direccion == undefined){$.txtDireccion.value = "";}else{$.txtDireccion.value = datos.Direccion;}
+       if (datos.CodPostal == undefined){$.txtCodPostal.value = "";}else{$.txtCodPostal.value = datos.CodPostal;}
+       if (datos.TelContacto == undefined){$.txtTelefono.value = "";}else{$.txtTelefono.value = datos.TelContacto;}
+       if (datos.Email == undefined){$.txtEmail.value = "";}else{$.txtEmail.value = datos.Email;}
+       if (datos.TelContacto2 == undefined){$.txtTelefono2.value = "";}else{$.txtTelefono2.value = datos.TelContacto2;}
+       if (datos.Email2 == undefined){$.txtEmail2.value = "";}else{$.txtEmail2.value = datos.Email2;}
+       if (datos.Padre == undefined){$.txtPadre.value = "";}else{$.txtPadre.value = datos.Padre;}
+       if (datos.Madre == undefined){$.txtMadre.value = "";}else{$.txtMadre.value = datos.Madre;}
+
     }else{
         coleccion_filtrada.setElement(modelActual);
         var dialog2 = Ti.UI.createAlertDialog({
@@ -138,13 +143,17 @@ function SiguienteAlumno(){
     if (modelNext != undefined){
         var datos = modelNext.toJSON();
         //coleccion_filtrada.setElement(modelNext);
-        $.txtNombre.value = datos.Nombre;
-        $.txtApellido1.value = datos.Apellido1;
-        $.txtApellido2.value = datos.Apellido2;
-        $.txtDireccion.value = datos.Direccion;
-        $.txtCodPostal.value = datos.CodPostal;
-        $.txtTelefono.value = datos.TelContacto;
-        $.txtEmail.value = datos.Email; 
+       if (datos.Nombre == undefined){$.txtNombre.value = "";}else{$.txtNombre.value = datos.Nombre;}
+       if (datos.Apellido1 == undefined){$.txtApellido1.value = "";}else{$.txtApellido1.value = datos.Apellido1;}
+       if (datos.Apellido2 == undefined){$.txtApellido2.value = "";}else{$.txtApellido2.value = datos.Apellido2;}
+       if (datos.Direccion == undefined){$.txtDireccion.value = "";}else{$.txtDireccion.value = datos.Direccion;}
+       if (datos.CodPostal == undefined){$.txtCodPostal.value = "";}else{$.txtCodPostal.value = datos.CodPostal;}
+       if (datos.TelContacto == undefined){$.txtTelefono.value = "";}else{$.txtTelefono.value = datos.TelContacto;}
+       if (datos.Email == undefined){$.txtEmail.value = "";}else{$.txtEmail.value = datos.Email;}
+       if (datos.TelContacto2 == undefined){$.txtTelefono2.value = "";}else{$.txtTelefono2.value = datos.TelContacto2;}
+       if (datos.Email2 == undefined){$.txtEmail2.value = "";}else{$.txtEmail2.value = datos.Email2;}
+       if (datos.Padre == undefined){$.txtPadre.value = "";}else{$.txtPadre.value = datos.Padre;}
+       if (datos.Madre == undefined){$.txtMadre.value = "";}else{$.txtMadre.value = datos.Madre;}
     }
     else {
         coleccion_filtrada.setElement(modelActual);

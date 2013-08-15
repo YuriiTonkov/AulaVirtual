@@ -3,6 +3,7 @@ function Controller() {
         if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del examen."); else {
             var Examen = Alloy.createModel("Examen", {
                 FechaExamen: $.dateTextField.text,
+                Peso: $.txtPeso.value,
                 Evaluacion: data.Evaluacion,
                 Nota: $.txtNota.value
             });
@@ -24,7 +25,7 @@ function Controller() {
         id: "winNuevoExamen"
     });
     $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);
-    $.__views.__alloyId81 = Ti.UI.createLabel({
+    $.__views.__alloyId84 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -32,12 +33,11 @@ function Controller() {
         },
         text: "Fecha Examen:",
         top: "15%",
-        id: "__alloyId81"
+        id: "__alloyId84"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId81);
+    $.__views.winNuevoExamen.add($.__views.__alloyId84);
     $.__views.dateTextField = Ti.UI.createLabel({
-        borderColor: "#000",
-        height: "16dp",
+        height: "20dp",
         textAlign: "center",
         width: "40%",
         left: "35%",
@@ -45,22 +45,23 @@ function Controller() {
             fontSize: "14dp"
         },
         borderWidth: "1dp",
+        borderColor: "#000",
         top: "15%",
         text: "Pulse aqui",
         id: "dateTextField"
     });
     $.__views.winNuevoExamen.add($.__views.dateTextField);
-    $.__views.__alloyId82 = Ti.UI.createLabel({
+    $.__views.__alloyId85 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
             fontSize: "14dp"
         },
         text: "Nota:",
-        top: "25%",
-        id: "__alloyId82"
+        top: "35%",
+        id: "__alloyId85"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId82);
+    $.__views.winNuevoExamen.add($.__views.__alloyId85);
     $.__views.txtNota = Ti.UI.createTextField({
         borderColor: "#000",
         height: "16dp",
@@ -70,11 +71,36 @@ function Controller() {
         font: {
             fontSize: "14dp"
         },
-        top: "25%",
+        top: "35%",
         id: "txtNota",
         keyboardType: "KEYBOARD_DECIMAL_PAD"
     });
     $.__views.winNuevoExamen.add($.__views.txtNota);
+    $.__views.__alloyId86 = Ti.UI.createLabel({
+        width: "40%",
+        left: "2%",
+        font: {
+            fontSize: "14dp"
+        },
+        text: "Peso:",
+        top: "25%",
+        id: "__alloyId86"
+    });
+    $.__views.winNuevoExamen.add($.__views.__alloyId86);
+    $.__views.txtPeso = Ti.UI.createTextField({
+        borderColor: "#000",
+        height: "16dp",
+        textAlign: "center",
+        width: "20%",
+        left: "35%",
+        font: {
+            fontSize: "14dp"
+        },
+        top: "25%",
+        id: "txtPeso",
+        keyboardType: "KEYBOARD_DECIMAL_PAD"
+    });
+    $.__views.winNuevoExamen.add($.__views.txtPeso);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",

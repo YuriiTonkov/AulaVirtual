@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId106() {
-        var models = filtrado(__alloyId105);
+    function __alloyId110() {
+        var models = filtrado(__alloyId109);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId103 = models[i];
-            __alloyId103.__transform = NombreAsignatura(__alloyId103);
-            var __alloyId104 = Alloy.createController("AsignaturaFavRow", {
-                $model: __alloyId103
+            var __alloyId107 = models[i];
+            __alloyId107.__transform = NombreAsignatura(__alloyId107);
+            var __alloyId108 = Alloy.createController("AsignaturaFavRow", {
+                $model: __alloyId107
             });
-            rows.push(__alloyId104.getViewEx({
+            rows.push(__alloyId108.getViewEx({
                 recurse: true
             }));
         }
@@ -38,14 +38,18 @@ function Controller() {
     $.__views.WinAsignaturasFav && $.addTopLevelView($.__views.WinAsignaturasFav);
     $.__views.TablaAsignaturasFav = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+<<<<<<< HEAD
         backgroundColor: "transparent",
+=======
+        backgroundImage: "backGround320x416Base.png",
+>>>>>>> d200f9c9102588d6328da7e4fbedc4938a0b0714
         id: "TablaAsignaturasFav"
     });
     $.__views.WinAsignaturasFav.add($.__views.TablaAsignaturasFav);
-    var __alloyId105 = Alloy.Collections["VW_Asignaturas_Favoritas"] || VW_Asignaturas_Favoritas;
-    __alloyId105.on("fetch destroy change add remove reset", __alloyId106);
+    var __alloyId109 = Alloy.Collections["VW_Asignaturas_Favoritas"] || VW_Asignaturas_Favoritas;
+    __alloyId109.on("fetch destroy change add remove reset", __alloyId110);
     exports.destroy = function() {
-        __alloyId105.off("fetch destroy change add remove reset", __alloyId106);
+        __alloyId109.off("fetch destroy change add remove reset", __alloyId110);
     };
     _.extend($, $.__views);
     $.WinAsignaturasFav.title = "Asignaturas Favoritas";

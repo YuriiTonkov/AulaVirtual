@@ -5,15 +5,20 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.tblCursosRow = Ti.UI.createTableViewRow({
+<<<<<<< HEAD
         backgroundColor: "white",
+=======
+        height: "50dp",
+>>>>>>> d200f9c9102588d6328da7e4fbedc4938a0b0714
         data: "undefined" != typeof $model.__transform["IdCurso"] ? $model.__transform["IdCurso"] : $model.get("IdCurso"),
         hasDetail: "true",
         id: "tblCursosRow"
     });
     $.__views.tblCursosRow && $.addTopLevelView($.__views.tblCursosRow);
     $.__views.lblCurso = Ti.UI.createLabel({
+        bottom: "18dp",
         width: "100%",
-        height: "40dp",
+        height: "30dp",
         textAlign: "left",
         left: "10dp",
         id: "lblCurso",
@@ -21,6 +26,21 @@ function Controller() {
         textid: "undefined" != typeof $model.__transform["IdCurso"] ? $model.__transform["IdCurso"] : $model.get("IdCurso")
     });
     $.__views.tblCursosRow.add($.__views.lblCurso);
+    $.__views.lblInfo = Ti.UI.createLabel({
+        width: "100%",
+        height: "10dp",
+        top: "33dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue"
+        },
+        textAlign: "left",
+        left: "10dp",
+        id: "lblInfo",
+        text: "undefined" != typeof $model.__transform["Grupos"] ? $model.__transform["Grupos"] : $model.get("Grupos"),
+        textid: "undefined" != typeof $model.__transform["IdCurso"] ? $model.__transform["IdCurso"] : $model.get("IdCurso")
+    });
+    $.__views.tblCursosRow.add($.__views.lblInfo);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.tblCursosRow.addEventListener("click", function(e) {

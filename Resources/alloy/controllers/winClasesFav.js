@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId116() {
-        var models = filtrado(__alloyId115);
+    function __alloyId120() {
+        var models = filtrado(__alloyId119);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId113 = models[i];
-            __alloyId113.__transform = NombreClase(__alloyId113);
-            var __alloyId114 = Alloy.createController("ClaseRow", {
-                $model: __alloyId113
+            var __alloyId117 = models[i];
+            __alloyId117.__transform = NombreClase(__alloyId117);
+            var __alloyId118 = Alloy.createController("ClaseRow", {
+                $model: __alloyId117
             });
-            rows.push(__alloyId114.getViewEx({
+            rows.push(__alloyId118.getViewEx({
                 recurse: true
             }));
         }
@@ -38,14 +38,18 @@ function Controller() {
     $.__views.WinClasesFav && $.addTopLevelView($.__views.WinClasesFav);
     $.__views.TablaClases = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+<<<<<<< HEAD
         backgroundColor: "transparent",
+=======
+        backgroundImage: "backGround320x416Base.png",
+>>>>>>> d200f9c9102588d6328da7e4fbedc4938a0b0714
         id: "TablaClases"
     });
     $.__views.WinClasesFav.add($.__views.TablaClases);
-    var __alloyId115 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
-    __alloyId115.on("fetch destroy change add remove reset", __alloyId116);
+    var __alloyId119 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
+    __alloyId119.on("fetch destroy change add remove reset", __alloyId120);
     exports.destroy = function() {
-        __alloyId115.off("fetch destroy change add remove reset", __alloyId116);
+        __alloyId119.off("fetch destroy change add remove reset", __alloyId120);
     };
     _.extend($, $.__views);
     $.WinClasesFav.title = "Clases Favoritas";

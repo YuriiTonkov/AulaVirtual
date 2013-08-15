@@ -1,6 +1,10 @@
 <Alloy>	
 			<Window id="WinClases" title="Clases">	
+<<<<<<< HEAD
 				<TableView dataCollection="Clase" dataTransform="NombreClase" dataFilter="filtrado" id="TablaClases" >
+=======
+				<TableView dataCollection="Clase" dataTransform="NombreClase" dataFilter="filtrado" id="TablaClases" class="form">
+>>>>>>> d200f9c9102588d6328da7e4fbedc4938a0b0714
 					<Require src="ClaseRow"/>
 				</TableView>
 				<Button id="addClase" title="Nueva" top="-50dp" onClick="NuevaClase"></Button>
