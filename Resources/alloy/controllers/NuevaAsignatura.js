@@ -7,6 +7,7 @@ function Controller() {
             var __alloyId63 = models[i];
             __alloyId63.__transform = {};
             var __alloyId64 = Ti.UI.createTableViewRow({
+                backgroundColor: "white",
                 editable: "true",
                 data: "undefined" != typeof __alloyId63.__transform["IdAsignatura"] ? __alloyId63.__transform["IdAsignatura"] : __alloyId63.get("IdAsignatura")
             });
@@ -14,7 +15,8 @@ function Controller() {
             var __alloyId65 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
-                textAlign: "center",
+                textAlign: "left",
+                left: "10dp",
                 text: "undefined" != typeof __alloyId63.__transform["Nombre"] ? __alloyId63.__transform["Nombre"] : __alloyId63.get("Nombre"),
                 textid: "undefined" != typeof __alloyId63.__transform["IdAsignatura"] ? __alloyId63.__transform["IdAsignatura"] : __alloyId63.get("IdAsignatura")
             });
@@ -69,6 +71,8 @@ function Controller() {
     });
     $.__views.winNuevaAsignatura.add($.__views.__alloyId62);
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundColor: "transparent",
         id: "TablaAsignaturas",
         allowsSelection: "true"
     });

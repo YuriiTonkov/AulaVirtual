@@ -17,6 +17,7 @@ function Controller() {
     Alloy.Collections.instance("VW_Clases_Favoritas");
     Alloy.Collections.instance("VW_Asignaturas_Favoritas");
     $.__views.GrupoTab = Ti.UI.createTabGroup({
+        backgroundImage: "backGround320x480Base.png",
         id: "GrupoTab"
     });
     $.__views.__alloyId55 = Alloy.createController("TabPrincipal", {

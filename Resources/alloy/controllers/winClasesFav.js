@@ -37,6 +37,8 @@ function Controller() {
     });
     $.__views.WinClasesFav && $.addTopLevelView($.__views.WinClasesFav);
     $.__views.TablaClases = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundColor: "transparent",
         id: "TablaClases"
     });
     $.__views.WinClasesFav.add($.__views.TablaClases);

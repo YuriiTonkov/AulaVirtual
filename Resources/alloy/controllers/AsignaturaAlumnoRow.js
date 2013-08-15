@@ -5,6 +5,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.tblAsignaturaAlumnoRow = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
         hasChild: "true",
         editable: "true",
         data: "undefined" != typeof $model.__transform["IdAsignatura"] ? $model.__transform["IdAsignatura"] : $model.get("IdAsignatura"),
@@ -14,7 +15,8 @@ function Controller() {
     $.__views.lblAsignaturaAlumno = Ti.UI.createLabel({
         width: "100%",
         height: "40dp",
-        textAlign: "center",
+        textAlign: "left",
+        left: "10dp",
         id: "lblAsignaturaAlumno",
         text: "undefined" != typeof $model.__transform["Nombre"] ? $model.__transform["Nombre"] : $model.get("Nombre"),
         textid: "undefined" != typeof $model.__transform["IdAsignatura"] ? $model.__transform["IdAsignatura"] : $model.get("IdAsignatura")

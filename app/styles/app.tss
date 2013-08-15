@@ -1,3 +1,16 @@
-".grouped": {
-  style: Ti.UI.iPhone.TableViewStyle.GROUPED
+"TableView": {
+  style : Ti.UI.iPhone.TableViewStyle.GROUPED,
+  backgroundColor : "transparent"},
+  
+"TableViewRow":{backgroundColor : "white"},
+
+".rowTitle": {
+	"width": "100%",
+	"height": "40dp",
+	"textAlign": "left",
+	"left": "10dp"
+},
+
+".mainWindow" : {
+backgroundImage : "backGround320x480Base.png"
 }

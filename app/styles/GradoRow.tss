@@ -1,9 +1,3 @@
 ".container": {
 	"backgroundColor": "white"
-},
-".rowTitle": {
-	"width": "100%",
-	"height": "40dp",
-	"textAlign": "left",
-	"left": "10dp"
 }

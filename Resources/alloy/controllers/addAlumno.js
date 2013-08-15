@@ -7,6 +7,7 @@ function Controller() {
             var __alloyId1 = models[i];
             __alloyId1.__transform = nombrecompleto(__alloyId1);
             var __alloyId2 = Ti.UI.createTableViewRow({
+                backgroundColor: "white",
                 editable: "true",
                 data: "undefined" != typeof __alloyId1.__transform["IdAlumno"] ? __alloyId1.__transform["IdAlumno"] : __alloyId1.get("IdAlumno")
             });
@@ -14,7 +15,8 @@ function Controller() {
             var __alloyId3 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
-                textAlign: "center",
+                textAlign: "left",
+                left: "10dp",
                 text: "undefined" != typeof __alloyId1.__transform["nombrecompleto"] ? __alloyId1.__transform["nombrecompleto"] : __alloyId1.get("nombrecompleto"),
                 textid: "undefined" != typeof __alloyId1.__transform["IdAlumno"] ? __alloyId1.__transform["IdAlumno"] : __alloyId1.get("IdAlumno")
             });
@@ -74,6 +76,8 @@ function Controller() {
     });
     $.__views.addAlumno.add($.__views.__alloyId0);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundColor: "transparent",
         id: "TablaAlumnos",
         allowsSelection: "true"
     });

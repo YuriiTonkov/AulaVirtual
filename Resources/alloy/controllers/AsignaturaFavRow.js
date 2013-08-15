@@ -5,6 +5,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.tblAsignaturaRow = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
         editable: "true",
         data: "undefined" != typeof $model.__transform["IdAsignatura"] ? $model.__transform["IdAsignatura"] : $model.get("IdAsignatura"),
         hasChild: "true",
@@ -15,6 +16,7 @@ function Controller() {
         width: "100%",
         height: "40dp",
         textAlign: "center",
+        left: "10dp",
         font: {
             fontFamily: "Helvetica",
             fontSize: "12dp"

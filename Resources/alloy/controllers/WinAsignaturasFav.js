@@ -37,6 +37,8 @@ function Controller() {
     });
     $.__views.WinAsignaturasFav && $.addTopLevelView($.__views.WinAsignaturasFav);
     $.__views.TablaAsignaturasFav = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundColor: "transparent",
         id: "TablaAsignaturasFav"
     });
     $.__views.WinAsignaturasFav.add($.__views.TablaAsignaturasFav);

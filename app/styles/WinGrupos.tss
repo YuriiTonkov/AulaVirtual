@@ -1,6 +1,3 @@
 ".container": {
 	"backgroundColor": "white"
 }
-".form": {
-  style: Ti.UI.iPhone.TableViewStyle.GROUPED
-}
