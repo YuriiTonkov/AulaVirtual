@@ -1,7 +1,9 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     Alloy.Collections.instance("Grado");
@@ -20,28 +22,28 @@ function Controller() {
         backgroundImage: "backGround320x480Base.png",
         id: "GrupoTab"
     });
-    $.__views.__alloyId55 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId55"
+    $.__views.__alloyId128 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId128"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId55.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId128.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId57 = Alloy.createController("tabFavoritos", {
-        id: "__alloyId57"
+    $.__views.__alloyId130 = Alloy.createController("tabFavoritos", {
+        id: "__alloyId130"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId57.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId130.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId59 = Alloy.createController("TabAsignaturasFavoritas", {
-        id: "__alloyId59"
+    $.__views.__alloyId132 = Alloy.createController("TabAsignaturasFavoritas", {
+        id: "__alloyId132"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId59.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId132.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId61 = Alloy.createController("TabConfiguracion", {
-        id: "__alloyId61"
+    $.__views.__alloyId134 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId134"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId61.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId134.getViewEx({
         recurse: true
     }));
     $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);

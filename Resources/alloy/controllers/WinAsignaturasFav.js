@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId110() {
-        var models = filtrado(__alloyId109);
+    function __alloyId59() {
+        __alloyId59.opts || {};
+        var models = filtrado(__alloyId58);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId107 = models[i];
-            __alloyId107.__transform = NombreAsignatura(__alloyId107);
-            var __alloyId108 = Alloy.createController("AsignaturaFavRow", {
-                $model: __alloyId107
+            var __alloyId56 = models[i];
+            __alloyId56.__transform = NombreAsignatura(__alloyId56);
+            var __alloyId57 = Alloy.createController("AsignaturaFavRow", {
+                $model: __alloyId56
             });
-            rows.push(__alloyId108.getViewEx({
+            rows.push(__alloyId57.getViewEx({
                 recurse: true
             }));
         }
@@ -27,8 +28,10 @@ function Controller() {
         return coleccion_filtrada;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinAsignaturasFav";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.WinAsignaturasFav = Ti.UI.createWindow({
@@ -43,10 +46,10 @@ function Controller() {
         id: "TablaAsignaturasFav"
     });
     $.__views.WinAsignaturasFav.add($.__views.TablaAsignaturasFav);
-    var __alloyId109 = Alloy.Collections["VW_Asignaturas_Favoritas"] || VW_Asignaturas_Favoritas;
-    __alloyId109.on("fetch destroy change add remove reset", __alloyId110);
+    var __alloyId58 = Alloy.Collections["VW_Asignaturas_Favoritas"] || VW_Asignaturas_Favoritas;
+    __alloyId58.on("fetch destroy change add remove reset", __alloyId59);
     exports.destroy = function() {
-        __alloyId109.off("fetch destroy change add remove reset", __alloyId110);
+        __alloyId58.off("fetch destroy change add remove reset", __alloyId59);
     };
     _.extend($, $.__views);
     $.WinAsignaturasFav.title = "Asignaturas Favoritas";

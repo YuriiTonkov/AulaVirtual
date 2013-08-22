@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId115() {
-        var models = filtrado(__alloyId114);
+    function __alloyId64() {
+        __alloyId64.opts || {};
+        var models = filtrado(__alloyId63);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId112 = models[i];
-            __alloyId112.__transform = NombreClase(__alloyId112);
-            var __alloyId113 = Alloy.createController("ClaseRow", {
-                $model: __alloyId112
+            var __alloyId61 = models[i];
+            __alloyId61.__transform = NombreClase(__alloyId61);
+            var __alloyId62 = Alloy.createController("ClaseRow", {
+                $model: __alloyId61
             });
-            rows.push(__alloyId113.getViewEx({
+            rows.push(__alloyId62.getViewEx({
                 recurse: true
             }));
         }
@@ -34,8 +35,10 @@ function Controller() {
         Alloy.Globals.GrupoTab.activeTab.open(tabClasesController.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinClases";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -50,8 +53,8 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);
-    var __alloyId114 = Alloy.Collections["Clase"] || Clase;
-    __alloyId114.on("fetch destroy change add remove reset", __alloyId115);
+    var __alloyId63 = Alloy.Collections["Clase"] || Clase;
+    __alloyId63.on("fetch destroy change add remove reset", __alloyId64);
     $.__views.addClase = Ti.UI.createButton({
         id: "addClase",
         title: "Nueva",
@@ -60,7 +63,7 @@ function Controller() {
     $.__views.WinClases.add($.__views.addClase);
     NuevaClase ? $.__views.addClase.addEventListener("click", NuevaClase) : __defers["$.__views.addClase!click!NuevaClase"] = true;
     exports.destroy = function() {
-        __alloyId114.off("fetch destroy change add remove reset", __alloyId115);
+        __alloyId63.off("fetch destroy change add remove reset", __alloyId64);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

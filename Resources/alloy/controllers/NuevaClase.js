@@ -13,8 +13,10 @@ function Controller() {
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "NuevaClase";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -23,13 +25,13 @@ function Controller() {
         id: "winNuevaClase"
     });
     $.__views.winNuevaClase && $.addTopLevelView($.__views.winNuevaClase);
-    $.__views.__alloyId68 = Ti.UI.createLabel({
+    $.__views.__alloyId18 = Ti.UI.createLabel({
         width: "80%",
         text: "Introduzca el nombre de la clase",
         top: "5%",
-        id: "__alloyId68"
+        id: "__alloyId18"
     });
-    $.__views.winNuevaClase.add($.__views.__alloyId68);
+    $.__views.winNuevaClase.add($.__views.__alloyId18);
     $.__views.txtNombreClase = Ti.UI.createTextField({
         borderColor: "#000",
         width: "70%",
