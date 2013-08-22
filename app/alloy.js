@@ -10,6 +10,6 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 // Prueba actualizacion github
-//Alloy.Globals.databaseversion = "1";
+Alloy.Globals.databaseversion = "1";
 
 

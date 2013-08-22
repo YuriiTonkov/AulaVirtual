@@ -1,16 +1,15 @@
 function Controller() {
-    function __alloyId140() {
-        __alloyId140.opts || {};
-        var models = filtrado(__alloyId139);
+    function __alloyId120() {
+        var models = filtrado(__alloyId119);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId137 = models[i];
-            __alloyId137.__transform = NombreClase(__alloyId137);
-            var __alloyId138 = Alloy.createController("ClaseRow", {
-                $model: __alloyId137
+            var __alloyId117 = models[i];
+            __alloyId117.__transform = NombreClase(__alloyId117);
+            var __alloyId118 = Alloy.createController("ClaseRow", {
+                $model: __alloyId117
             });
-            rows.push(__alloyId138.getViewEx({
+            rows.push(__alloyId118.getViewEx({
                 recurse: true
             }));
         }
@@ -28,10 +27,8 @@ function Controller() {
         return coleccion_filtrada;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "winClasesFav";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.WinClasesFav = Ti.UI.createWindow({
@@ -46,10 +43,10 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClasesFav.add($.__views.TablaClases);
-    var __alloyId139 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
-    __alloyId139.on("fetch destroy change add remove reset", __alloyId140);
+    var __alloyId119 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
+    __alloyId119.on("fetch destroy change add remove reset", __alloyId120);
     exports.destroy = function() {
-        __alloyId139.off("fetch destroy change add remove reset", __alloyId140);
+        __alloyId119.off("fetch destroy change add remove reset", __alloyId120);
     };
     _.extend($, $.__views);
     $.WinClasesFav.title = "Clases Favoritas";

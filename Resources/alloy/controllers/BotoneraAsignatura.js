@@ -1,9 +1,7 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "BotoneraAsignatura";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.botones = Ti.UI.createView({
@@ -14,19 +12,19 @@ function Controller() {
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
-    var __alloyId1 = [];
-    var __alloyId2 = {
+    var __alloyId7 = [];
+    var __alloyId8 = {
         title: "+",
         ns: "Alloy.Abstract"
     };
-    __alloyId1.push(__alloyId2);
-    var __alloyId3 = {
+    __alloyId7.push(__alloyId8);
+    var __alloyId9 = {
         title: "*",
         ns: "Alloy.Abstract"
     };
-    __alloyId1.push(__alloyId3);
+    __alloyId7.push(__alloyId9);
     $.__views.btnBar = Ti.UI.createButtonBar({
-        labels: __alloyId1,
+        labels: __alloyId7,
         borderRadius: "5dp",
         height: "100%",
         width: "100%",

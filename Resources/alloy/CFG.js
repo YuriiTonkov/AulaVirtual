@@ -1,1 +1,4 @@
-module.exports={"dependencies":{},"databaseversion":"13"};
+module.exports = {
+    dependencies: {},
+    databaseversion: "13"
+};

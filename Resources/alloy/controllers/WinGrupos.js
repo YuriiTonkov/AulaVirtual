@@ -1,26 +1,23 @@
 function Controller() {
-    function __alloyId84() {
-        __alloyId84.opts || {};
-        var models = __alloyId83.models;
+    function __alloyId145() {
+        var models = __alloyId144.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId81 = models[i];
-            __alloyId81.__transform = {};
-            var __alloyId82 = Alloy.createController("GradoRow", {
-                $model: __alloyId81
+            var __alloyId142 = models[i];
+            __alloyId142.__transform = {};
+            var __alloyId143 = Alloy.createController("GradoRow", {
+                $model: __alloyId142
             });
-            rows.push(__alloyId82.getViewEx({
+            rows.push(__alloyId143.getViewEx({
                 recurse: true
             }));
         }
         $.__views.TablaGrados.setData(rows);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "WinGrupos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.winGrados = Ti.UI.createWindow({
@@ -34,10 +31,10 @@ function Controller() {
         id: "TablaGrados"
     });
     $.__views.winGrados.add($.__views.TablaGrados);
-    var __alloyId83 = Alloy.Collections["Grado"] || Grado;
-    __alloyId83.on("fetch destroy change add remove reset", __alloyId84);
+    var __alloyId144 = Alloy.Collections["Grado"] || Grado;
+    __alloyId144.on("fetch destroy change add remove reset", __alloyId145);
     exports.destroy = function() {
-        __alloyId83.off("fetch destroy change add remove reset", __alloyId84);
+        __alloyId144.off("fetch destroy change add remove reset", __alloyId145);
     };
     _.extend($, $.__views);
     var grados = Alloy.Collections.Grado;

@@ -1,9 +1,7 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "DetailAlumno";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.DetailAlumno = Ti.UI.createWindow({
@@ -11,13 +9,13 @@ function Controller() {
         id: "DetailAlumno"
     });
     $.__views.DetailAlumno && $.addTopLevelView($.__views.DetailAlumno);
-    $.__views.__alloyId11 = Ti.UI.createLabel({
+    $.__views.__alloyId17 = Ti.UI.createLabel({
         text: "Detalle de alumno",
         top: "2%",
         width: "20%",
-        id: "__alloyId11"
+        id: "__alloyId17"
     });
-    $.__views.DetailAlumno.add($.__views.__alloyId11);
+    $.__views.DetailAlumno.add($.__views.__alloyId17);
     exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);

@@ -1,16 +1,14 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "TabAsignaturasFavoritas";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId37 = Alloy.createController("WinAsignaturasFav", {
-        id: "__alloyId37"
+    $.__views.__alloyId87 = Alloy.createController("WinAsignaturasFav", {
+        id: "__alloyId87"
     });
     $.__views.TabAsignaturasFavoritas = Ti.UI.createTab({
-        window: $.__views.__alloyId37.getViewEx({
+        window: $.__views.__alloyId87.getViewEx({
             recurse: true
         }),
         title: "Mis asignaturas",

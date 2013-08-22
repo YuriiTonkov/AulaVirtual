@@ -1,9 +1,7 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "BotoneraClase";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.botones = Ti.UI.createView({
@@ -14,19 +12,19 @@ function Controller() {
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
-    var __alloyId5 = [];
-    var __alloyId6 = {
+    var __alloyId11 = [];
+    var __alloyId12 = {
         title: "+",
         ns: "Alloy.Abstract"
     };
-    __alloyId5.push(__alloyId6);
-    var __alloyId7 = {
+    __alloyId11.push(__alloyId12);
+    var __alloyId13 = {
         title: "*",
         ns: "Alloy.Abstract"
     };
-    __alloyId5.push(__alloyId7);
+    __alloyId11.push(__alloyId13);
     $.__views.btnBar = Ti.UI.createButtonBar({
-        labels: __alloyId5,
+        labels: __alloyId11,
         borderRadius: "5dp",
         height: "100%",
         width: "100%",
