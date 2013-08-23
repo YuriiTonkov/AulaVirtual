@@ -1,5 +1,5 @@
 {
-	"global": {"databaseversion":"13"}, 
+	"global": {"databaseversion":"13", "databasePath": "/library/bbdd/"}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
