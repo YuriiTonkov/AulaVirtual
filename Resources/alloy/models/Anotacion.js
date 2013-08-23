@@ -11,7 +11,7 @@ exports.definition = {
         adapter: {
             type: "sql",
             collection_name: "Anotacion",
-            db_file: "/AulaVirtual_v" + require("Alloy").CFG.databaseversion + ".sqlite",
+            db_file: "/AulaVirtual_v13.sqlite",
             db_name: "AulaVirtual",
             idAttribute: "IdAlumnoAsignatura",
             remoteBackup: "false"
