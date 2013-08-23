@@ -12,5 +12,5 @@
 },
 
 ".mainWindow" : {
-backgroundImage : "backGround320x480Base.png"
+backgroundImage : "library/images/iphone/backGround320x480Base.png"
 }

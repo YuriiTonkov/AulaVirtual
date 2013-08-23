@@ -17,7 +17,7 @@ function Controller() {
     Alloy.Collections.instance("VW_Clases_Favoritas");
     Alloy.Collections.instance("VW_Asignaturas_Favoritas");
     $.__views.GrupoTab = Ti.UI.createTabGroup({
-        backgroundImage: "backGround320x480Base.png",
+        backgroundImage: "library/images/iphone/backGround320x480Base.png",
         id: "GrupoTab"
     });
     $.__views.__alloyId55 = Alloy.createController("TabPrincipal", {
@@ -61,7 +61,7 @@ function Controller() {
     if (void 0 == Ti.App.Properties.getString("Login")) {
         var window = Titanium.UI.createWindow({
             title: "Nuevo usuario",
-            backgroundImage: "backGround320x416Login.png"
+            backgroundImage: "library/images/iphone/backGround320x416Login.png"
         });
         window.open({
             modal: true,
@@ -97,7 +97,7 @@ function Controller() {
     } else {
         var window = Titanium.UI.createWindow({
             title: "Login",
-            backgroundImage: "backGround320x416Login.png"
+            backgroundImage: "library/images/iphone/backGround320x416Login.png"
         });
         window.open({
             modal: true,
