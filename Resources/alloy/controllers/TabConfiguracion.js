@@ -4,7 +4,7 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId88 = Alloy.createController("WinGrupos", {
+    $.__views.__alloyId88 = Alloy.createController("winProfile", {
         id: "__alloyId88"
     });
     $.__views.TabConfiguracion = Ti.UI.createTab({

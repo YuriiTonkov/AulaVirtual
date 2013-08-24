@@ -1,4 +1,31 @@
 function Controller() {
+    function refreshScreen() {
+        void 0 != Ti.App.Properties.getString("Nombre") && ($.txtNombre.value = Ti.App.Properties.getString("Nombre"));
+        void 0 != Ti.App.Properties.getString("Apellido1") && ($.txtApellido1.value = Ti.App.Properties.getString("Apellido1"));
+        void 0 != Ti.App.Properties.getString("Apellido2") && ($.txtApellido2.value = Ti.App.Properties.getString("Apellido2"));
+        void 0 != Ti.App.Properties.getString("Direccion") && ($.txtDireccion.value = Ti.App.Properties.getString("Direccion"));
+        void 0 != Ti.App.Properties.getString("CP") && ($.txtCodPostal.value = Ti.App.Properties.getString("CP"));
+        void 0 != Ti.App.Properties.getString("Telefono") && ($.txtTelefono.value = Ti.App.Properties.getString("Telefono"));
+        void 0 != Ti.App.Properties.getString("Email") && ($.txtEmail.value = Ti.App.Properties.getString("Email"));
+        void 0 != Ti.App.Properties.getString("Ayuda") && ($.chkAyuda.value = Ti.App.Properties.getString("Ayuda"));
+    }
+    function Guardar() {
+        if (Ti.App.Properties.getString("Pass") == $.txtPass.value) {
+            Ti.App.Properties.setString("Nombre", $.txtNombre.value);
+            Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
+            Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
+            Ti.App.Properties.setString("Direccion", $.txtDireccion.value);
+            Ti.App.Properties.setString("CP", $.txtCodPostal.value);
+            Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
+            Ti.App.Properties.setString("Email", $.txtEmail.value);
+            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+            $.lblError.text = "Se han modificado los datos de registro";
+            $.lblError.visible = true;
+        } else {
+            $.lblError.text = "Contraseña incorrecta";
+            $.lblError.visible = true;
+        }
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -242,6 +269,10 @@ function Controller() {
     Guardar ? $.__views.btnGuardar.addEventListener("click", Guardar) : __defers["$.__views.btnGuardar!click!Guardar"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.winUsuario.setRightNavButton($.btnGuardar);
+    $.winUsuario.addEventListener("focus", function() {
+        refreshScreen();
+    });
     __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
     _.extend($, exports);
 }

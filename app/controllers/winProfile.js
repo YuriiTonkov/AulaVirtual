@@ -50,13 +50,11 @@ function Guardar(){
       } else {
             $.lblError.text = "Contraseña incorrecta";
             $.lblError.visible= true;
-    }
-    
-    
+    }   
 }
 
- $.winUsuario.addEventListener('focus',function(e){
-    // Ti.API.info('ENTRO EN EL FOCUS');
+$.winUsuario.addEventListener('focus',function(e){
+    
      refreshScreen();
 });
 

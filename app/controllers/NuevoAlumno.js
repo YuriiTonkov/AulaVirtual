@@ -9,10 +9,12 @@ var coleccion_filtrada = alumno.getAlumnosFromClase(data.IdClase);
 
 
 if (data.IdAlumno == undefined){
-    
+    $.btnAnterior.visible="false";
+    $.btnSiguiente.visible="false";
 }else{
     //Si viene un idalumno, la pantalla debe ser de actualizacion, se deben mostrar los datos
-    
+    $.btnAnterior.visible="true";
+    $.btnSiguiente.visible="true";
     //alumno.fetch();
     
     var model = coleccion_filtrada.get(data.IdAlumno);
@@ -55,7 +57,13 @@ function GuardarAlumno(){
        
         coleccionAlumnos.add(alumno);
         alumno.save();
-        coleccionAlumnos.fetch();     
+        coleccionAlumnos.fetch();    
+        var dialog1 = Ti.UI.createAlertDialog({
+            title: 'El alumno se ha creado correctamente.',
+            style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
+            buttonNames: ['Aceptar'],
+             });
+            dialog1.show(); 
     }else{
     //Al venir idAlumno con un valor quiere decir que es una actualizacion
         var modelActual = coleccion_filtrada.getElement();
@@ -73,12 +81,12 @@ function GuardarAlumno(){
                        Clase:data.IdClase});
         modelActual.save();
         
-        var dialog = Ti.UI.createAlertDialog({
+        var dialog2 = Ti.UI.createAlertDialog({
             title: 'La información del alumno se ha almacenado correctamente.',
             style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
             buttonNames: ['Aceptar'],
              });
-            dialog.show();
+            dialog2.show();
     }
     
     

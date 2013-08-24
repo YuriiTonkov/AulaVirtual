@@ -19,6 +19,12 @@ function Controller() {
             coleccionAlumnos.add(alumno);
             alumno.save();
             coleccionAlumnos.fetch();
+            Ti.UI.createAlertDialog({
+                title: "El alumno se ha creado correctamente.",
+                style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
+                buttonNames: [ "Aceptar" ]
+            });
+            dialog.show();
         } else {
             var modelActual = coleccion_filtrada.getElement();
             modelActual.set({
@@ -36,7 +42,7 @@ function Controller() {
                 Clase: data.IdClase
             });
             modelActual.save();
-            var dialog = Ti.UI.createAlertDialog({
+            Ti.UI.createAlertDialog({
                 title: "La información del alumno se ha almacenado correctamente.",
                 style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
                 buttonNames: [ "Aceptar" ]
@@ -435,7 +441,12 @@ function Controller() {
     $.winNuevoAlumno.setRightNavButton($.btnGuardar);
     var alumno = Alloy.Collections.Alumno;
     var coleccion_filtrada = alumno.getAlumnosFromClase(data.IdClase);
-    if (void 0 == data.IdAlumno) ; else {
+    if (void 0 == data.IdAlumno) {
+        $.btnAnterior.visible = "false";
+        $.btnSiguiente.visible = "false";
+    } else {
+        $.btnAnterior.visible = "true";
+        $.btnSiguiente.visible = "true";
         var model = coleccion_filtrada.get(data.IdAlumno);
         var datos = model.toJSON();
         coleccion_filtrada.setElement(model);
