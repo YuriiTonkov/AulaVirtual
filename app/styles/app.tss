@@ -11,6 +11,9 @@
 	"left": "10dp"
 },
 
-".mainWindow" : {
+".mainWindow[platform=ios formFactor=max-height:480dp]" : {
 backgroundImage : "library/images/iphone/backGround320x480Base.png"
+},
+".mainWindow[platform=ios formFactor=max-height:568dp]" : {
+backgroundImage : "library/images/iphone/backGround640x1136Base.png"
 }

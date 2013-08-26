@@ -6,8 +6,15 @@ var btnGuardar = Ti.UI.createButton({title: 'Alta',style:Ti.UI.iPhone.SystemButt
 var btnLogin = Ti.UI.createButton({title: 'Login',style:Ti.UI.iPhone.SystemButton.SAVE});
 
 if (Ti.App.Properties.getString('Login')==undefined){
-   var window = Titanium.UI.createWindow({title:"Nuevo usuario",backgroundImage:"library/images/iphone/backGround320x416Login.png"});
-   window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
+   var window = Titanium.UI.createWindow({title:"Nuevo usuario"});
+   
+   if (Titanium.Platform.displayCaps.platformHeight < 568){
+   	window.backgroundImage="library/images/iphone/backGround320x416Login.png" //Iphone 4
+   }else{
+   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png" //Iphone 5
+   }
+   
+    window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
     
     var txtLogin = Titanium.UI.createTextField({top:60,left:35,width:245,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED, hintText: "Usuario"});
     var txtPass = Titanium.UI.createTextField({top:110,left:35,width:245, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED, hintText: "Contraseña"});
@@ -19,15 +26,22 @@ if (Ti.App.Properties.getString('Login')==undefined){
     window.setRightNavButton(btnGuardar);
    
 }else{
-    var window = Titanium.UI.createWindow({title:"Login",backgroundImage:"library/images/iphone/backGround320x416Login.png"});
+    var window = Titanium.UI.createWindow({title:Titanium.Platform.displayCaps.platformHeight});
+    
+    if (Titanium.Platform.displayCaps.platformHeight < 568){
+   	window.backgroundImage="library/images/iphone/backGround320x416Login.png" //Iphone 4
+   }else{
+   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png" //Iphone 5
+   }
+   
     window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
     
-    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:60,left:35,width:245,height:'auto',font: {fontSize:"15dp", fontFamily:"Helvetica Neue"}});
-    var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:130,left:35,width:245,height:'auto',font: {fontSize:"15dp", fontFamily:"Helvetica Neue"}});
-    var lblError = Titanium.UI.createLabel({color:"#f00", visible:"false", top:300,left:35,width:"100%",height:'auto',font: {fontSize:"15dp", fontFamily:"Helvetica Neue"}});
-    var txtLogin = Titanium.UI.createTextField({top:90,left:35,width:245,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp", fontFamily:"Helvetica Neue"}});
-    var txtPass = Titanium.UI.createTextField({top:160,left:35,width:245, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp", fontFamily:"Helvetica Neue"}});
-    var lblAyuda = Titanium.UI.createLabel({color:"#000",text:'Ayuda activa:',top:220,left:65,width:100,height:'auto',font: {fontSize:"15dp", fontFamily:"Helvetica Neue"}});
+    var lblLogin = Titanium.UI.createLabel({color:"#000",text:"Usuario:",top:60,left:35,width:245,height:'auto',font: {fontSize:"15dp"}});
+    var lblPass = Titanium.UI.createLabel({color:"#000",text:'Contraseña:',top:130,left:35,width:245,height:'auto',font: {fontSize:"15dp"}});
+    var lblError = Titanium.UI.createLabel({color:"#f00", visible:"false", top:300,left:35,width:"100%",height:'auto',font: {fontSize:"15dp"}});
+    var txtLogin = Titanium.UI.createTextField({top:90,left:35,width:245,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp"}});
+    var txtPass = Titanium.UI.createTextField({top:160,left:35,width:245, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp"}});
+    var lblAyuda = Titanium.UI.createLabel({color:"#000",text:'Ayuda activa:',top:220,left:65,width:100,height:'auto',font: {fontSize:"15dp"}});
     var chkAyuda = Titanium.UI.createSwitch({value:false, top:215, left:160, width:'40', height:'auto'});
     window.add(lblLogin);
     window.add(lblPass);

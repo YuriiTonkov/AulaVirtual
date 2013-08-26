@@ -17,7 +17,7 @@ function Controller() {
     Alloy.Collections.instance("VW_Clases_Favoritas");
     Alloy.Collections.instance("VW_Asignaturas_Favoritas");
     $.__views.GrupoTab = Ti.UI.createTabGroup({
-        backgroundImage: "library/images/iphone/backGround320x480Base.png",
+        backgroundImage: "library/images/iphone/backGround640x1136Base.png",
         id: "GrupoTab"
     });
     $.__views.__alloyId55 = Alloy.createController("TabPrincipal", {
@@ -60,9 +60,9 @@ function Controller() {
     });
     if (void 0 == Ti.App.Properties.getString("Login")) {
         var window = Titanium.UI.createWindow({
-            title: "Nuevo usuario",
-            backgroundImage: "library/images/iphone/backGround320x416Login.png"
+            title: "Nuevo usuario"
         });
+        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround320x416Login.png" : "library/images/iphone/backGround640x1010Login.png";
         window.open({
             modal: true,
             modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,
@@ -96,9 +96,9 @@ function Controller() {
         window.setRightNavButton(btnGuardar);
     } else {
         var window = Titanium.UI.createWindow({
-            title: "Login",
-            backgroundImage: "library/images/iphone/backGround320x416Login.png"
+            title: Titanium.Platform.displayCaps.platformHeight
         });
+        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround320x416Login.png" : "library/images/iphone/backGround640x1010Login.png";
         window.open({
             modal: true,
             modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,
@@ -112,8 +112,7 @@ function Controller() {
             width: 245,
             height: "auto",
             font: {
-                fontSize: "15dp",
-                fontFamily: "Helvetica Neue"
+                fontSize: "15dp"
             }
         });
         var lblPass = Titanium.UI.createLabel({
@@ -124,8 +123,7 @@ function Controller() {
             width: 245,
             height: "auto",
             font: {
-                fontSize: "15dp",
-                fontFamily: "Helvetica Neue"
+                fontSize: "15dp"
             }
         });
         var lblError = Titanium.UI.createLabel({
@@ -136,8 +134,7 @@ function Controller() {
             width: "100%",
             height: "auto",
             font: {
-                fontSize: "15dp",
-                fontFamily: "Helvetica Neue"
+                fontSize: "15dp"
             }
         });
         var txtLogin = Titanium.UI.createTextField({
@@ -146,8 +143,7 @@ function Controller() {
             width: 245,
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
             font: {
-                fontSize: "15dp",
-                fontFamily: "Helvetica Neue"
+                fontSize: "15dp"
             }
         });
         var txtPass = Titanium.UI.createTextField({
@@ -157,8 +153,7 @@ function Controller() {
             passwordMask: "true",
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
             font: {
-                fontSize: "15dp",
-                fontFamily: "Helvetica Neue"
+                fontSize: "15dp"
             }
         });
         var lblAyuda = Titanium.UI.createLabel({
@@ -169,8 +164,7 @@ function Controller() {
             width: 100,
             height: "auto",
             font: {
-                fontSize: "15dp",
-                fontFamily: "Helvetica Neue"
+                fontSize: "15dp"
             }
         });
         var chkAyuda = Titanium.UI.createSwitch({
