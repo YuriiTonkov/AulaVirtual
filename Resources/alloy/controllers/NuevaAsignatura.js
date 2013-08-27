@@ -8,6 +8,7 @@ function Controller() {
             __alloyId63.__transform = {};
             var __alloyId64 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
+                height: "40dp",
                 editable: "true",
                 data: "undefined" != typeof __alloyId63.__transform["IdAsignatura"] ? __alloyId63.__transform["IdAsignatura"] : __alloyId63.get("IdAsignatura")
             });

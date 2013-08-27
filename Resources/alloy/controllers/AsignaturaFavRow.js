@@ -6,6 +6,7 @@ function Controller() {
     var exports = {};
     $.__views.tblAsignaturaRow = Ti.UI.createTableViewRow({
         backgroundColor: "white",
+        height: "40dp",
         editable: "true",
         data: "undefined" != typeof $model.__transform["IdAsignatura"] ? $model.__transform["IdAsignatura"] : $model.get("IdAsignatura"),
         hasChild: "true",

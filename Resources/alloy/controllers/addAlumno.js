@@ -8,6 +8,7 @@ function Controller() {
             __alloyId1.__transform = nombrecompleto(__alloyId1);
             var __alloyId2 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
+                height: "40dp",
                 editable: "true",
                 data: "undefined" != typeof __alloyId1.__transform["IdAlumno"] ? __alloyId1.__transform["IdAlumno"] : __alloyId1.get("IdAlumno")
             });

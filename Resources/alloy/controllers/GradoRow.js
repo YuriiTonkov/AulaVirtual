@@ -6,6 +6,7 @@ function Controller() {
     var exports = {};
     $.__views.tblGradosRow = Ti.UI.createTableViewRow({
         backgroundColor: "white",
+        height: "40dp",
         id: "tblGradosRow",
         hasChild: "true"
     });

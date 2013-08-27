@@ -19,12 +19,12 @@ function Controller() {
             coleccionAlumnos.add(alumno);
             alumno.save();
             coleccionAlumnos.fetch();
-            Ti.UI.createAlertDialog({
+            var dialog1 = Ti.UI.createAlertDialog({
                 title: "El alumno se ha creado correctamente.",
                 style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
                 buttonNames: [ "Aceptar" ]
             });
-            dialog.show();
+            dialog1.show();
         } else {
             var modelActual = coleccion_filtrada.getElement();
             modelActual.set({
@@ -42,12 +42,12 @@ function Controller() {
                 Clase: data.IdClase
             });
             modelActual.save();
-            Ti.UI.createAlertDialog({
+            var dialog2 = Ti.UI.createAlertDialog({
                 title: "La información del alumno se ha almacenado correctamente.",
                 style: Ti.UI.iPhone.AlertDialogStyle.DEFAULT,
                 buttonNames: [ "Aceptar" ]
             });
-            dialog.show();
+            dialog2.show();
         }
     }
     function sacarFoto() {
