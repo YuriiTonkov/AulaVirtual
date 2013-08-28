@@ -2,6 +2,12 @@
 <<<<<<<=HEAD
 >>>>>>>=3c119669e2457d610aedeaf82207f28db26c2a05
 eclipse.preferences.version=1
-provisioning_profiles/development/F55F5B21-26B8-461F-A0C6-03E00B0B4FF2/appid=*
-provisioning_profiles/development/F55F5B21-26B8-461F-A0C6-03E00B0B4FF2/name=iOS Team Provisioning Profile\: *
-provisioning_profiles/development/F55F5B21-26B8-461F-A0C6-03E00B0B4FF2/uuid=F55F5B21-26B8-461F-A0C6-03E00B0B4FF2
+provisioning_profiles/development/0A2BD435-1059-4433-9BB8-B7CA87632334/appid=*
+provisioning_profiles/development/0A2BD435-1059-4433-9BB8-B7CA87632334/name=BajiaProductions
+provisioning_profiles/development/0A2BD435-1059-4433-9BB8-B7CA87632334/uuid=0A2BD435-1059-4433-9BB8-B7CA87632334
+provisioning_profiles/development/0EB590C3-47F6-4446-BAD4-D2BA89D12678/appid=com.altiacor.insafe
+provisioning_profiles/development/0EB590C3-47F6-4446-BAD4-D2BA89D12678/name=AltiaInsafe
+provisioning_profiles/development/0EB590C3-47F6-4446-BAD4-D2BA89D12678/uuid=0EB590C3-47F6-4446-BAD4-D2BA89D12678
+provisioning_profiles/development/29ABA84F-4DF1-43FF-A5C2-053F01F8E3BC/appid=com.altiacor.*
+provisioning_profiles/development/29ABA84F-4DF1-43FF-A5C2-053F01F8E3BC/name=altiacor wildcard
+provisioning_profiles/development/29ABA84F-4DF1-43FF-A5C2-053F01F8E3BC/uuid=29ABA84F-4DF1-43FF-A5C2-053F01F8E3BC

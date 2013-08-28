@@ -9,30 +9,33 @@ var coleccion_filtrada = alumno.getAlumnosFromClase(data.IdClase);
 
 
 if (data.IdAlumno == undefined){
-    $.btnAnterior.visible="false";
-    $.btnSiguiente.visible="false";
+    //$.btnAnterior.visible="false";
+   // $.btnSiguiente.visible="false";
 }else{
-    //Si viene un idalumno, la pantalla debe ser de actualizacion, se deben mostrar los datos
-    $.btnAnterior.visible="true";
-    $.btnSiguiente.visible="true";
-    //alumno.fetch();
-    
-    var model = coleccion_filtrada.get(data.IdAlumno);
-    var datos = model.toJSON();
-    coleccion_filtrada.setElement(model);
-    
-    $.txtNombre.value = datos.Nombre;
-    $.txtApellido1.value = datos.Apellido1;
-    $.txtApellido2.value = datos.Apellido2;
-    $.txtDireccion.value = datos.Direccion;
-    $.txtCodPostal.value = datos.CodPostal;
-    $.txtTelefono.value = datos.TelContacto;
-    $.txtTelefono2.value = datos.TelContacto2;
-    $.txtEmail.value = datos.Email;
-    $.txtEmail2.value = datos.Email2;
-    $.txtPadre.value = datos.Padre;
-    $.txtMadre.value = datos.Madre;
-
+        //Si viene un idalumno, la pantalla debe ser de actualizacion, se deben mostrar los datos
+       // $.btnAnterior.visible="true";
+       // $.btnSiguiente.visible="true";
+        //alumno.fetch();
+        
+        var model = coleccion_filtrada.get(data.IdAlumno);
+        var datos = model.toJSON();
+        coleccion_filtrada.setElement(model);
+        
+        $.txtNombre.value = datos.Nombre;
+        $.txtApellido1.value = datos.Apellido1;
+        $.txtApellido2.value = datos.Apellido2;
+        $.txtDireccion.value = datos.Direccion;
+        $.txtCodPostal.value = datos.CodPostal;
+        $.txtTelefono.value = datos.TelContacto;
+        $.txtTelefono2.value = datos.TelContacto2;
+        $.txtEmail.value = datos.Email;
+        $.txtEmail2.value = datos.Email2;
+        $.txtPadre.value = datos.Padre;
+        $.txtMadre.value = datos.Madre;
+        if (datos.foto1_url != undefined){
+            $.imgAlumno.image = datos.foto1_url;
+            $.imgAlumno.visible=true;
+        }
     }
 
 //Funciones --------------------------------------------------------------------------------------------------------
@@ -53,7 +56,9 @@ function GuardarAlumno(){
                                             Email2:$.txtEmail2.value,
                                             Padre:$.txtPadre.value,
                                             Madre:$.txtMadre.value,
+                                            foto1_url:$.imgAlumno.image,
                                             Clase:data.IdClase});
+                                            //Titanium.API.info("Se almacena la ruta de la imagen: "+$.imgAlumno.image);
        
         coleccionAlumnos.add(alumno);
         alumno.save();
@@ -78,7 +83,9 @@ function GuardarAlumno(){
                        Email2:$.txtEmail2.value,
                        Padre:$.txtPadre.value,
                        Madre:$.txtMadre.value,
+                       foto1_url:$.imgAlumno.image,
                        Clase:data.IdClase});
+                       //Titanium.API.info("Se almacena la ruta de la imagen: "+$.imgAlumno.image);
         modelActual.save();
         
         var dialog2 = Ti.UI.createAlertDialog({
@@ -100,18 +107,28 @@ function sacarFoto(){
             var cropRect = event.cropRect;
             var image = event.media;
             var d=new Date();
-            var filename = d.getTime() + pictype + ".png";
+            var filename = d.getTime() + ".png";
             var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,filename);
             f.write(image);
-         
-            Titanium.API.info('taken picture.. path is;-');
-            Titanium.API.info(f.nativePath);
+            $.imgAlumno.image=f.nativePath;
+            $.imgAlumno.visible=true;
+            //Titanium.API.info('taken picture.. path is;-');
+            //Titanium.API.info(f.nativePath);
     }
 });
 }
 
 function TomarAnotacion(){
     
+}
+
+function Arrastre(e){
+    if (data.IdAlumno == undefined){}
+    else
+        {
+            if (e.direction=="left") SiguienteAlumno();
+            else AnteriorAlumno();
+        }
 }
 
 function AnteriorAlumno(){
@@ -132,6 +149,7 @@ function AnteriorAlumno(){
        if (datos.Email2 == undefined){$.txtEmail2.value = "";}else{$.txtEmail2.value = datos.Email2;}
        if (datos.Padre == undefined){$.txtPadre.value = "";}else{$.txtPadre.value = datos.Padre;}
        if (datos.Madre == undefined){$.txtMadre.value = "";}else{$.txtMadre.value = datos.Madre;}
+       if (datos.foto1_url == undefined){$.imgAlumno.image = "";$.imgAlumno.visible=true;}else{$.imgAlumno.image = datos.foto1_url;$.imgAlumno.visible=true;}
 
     }else{
         coleccion_filtrada.setElement(modelActual);
@@ -157,11 +175,12 @@ function SiguienteAlumno(){
        if (datos.Direccion == undefined){$.txtDireccion.value = "";}else{$.txtDireccion.value = datos.Direccion;}
        if (datos.CodPostal == undefined){$.txtCodPostal.value = "";}else{$.txtCodPostal.value = datos.CodPostal;}
        if (datos.TelContacto == undefined){$.txtTelefono.value = "";}else{$.txtTelefono.value = datos.TelContacto;}
-       if (datos.Email == undefined){$.txtEmail.value = "";}else{$.txtEmail.value = datos.Email;}
+       if (datos.Email == undefined){$.txtEmail.value = "";$.imgAlumno.visible=true;}else{$.txtEmail.value = datos.Email;}
        if (datos.TelContacto2 == undefined){$.txtTelefono2.value = "";}else{$.txtTelefono2.value = datos.TelContacto2;}
        if (datos.Email2 == undefined){$.txtEmail2.value = "";}else{$.txtEmail2.value = datos.Email2;}
        if (datos.Padre == undefined){$.txtPadre.value = "";}else{$.txtPadre.value = datos.Padre;}
        if (datos.Madre == undefined){$.txtMadre.value = "";}else{$.txtMadre.value = datos.Madre;}
+       if (datos.foto1_url == undefined){$.imgAlumno.image = "";}else{$.imgAlumno.image = datos.foto1_url;$.imgAlumno.visible=true;}
     }
     else {
         coleccion_filtrada.setElement(modelActual);

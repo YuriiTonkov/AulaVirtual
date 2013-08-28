@@ -1,32 +1,34 @@
 <Alloy>
 	
-	<Window id="winNuevoAlumno" class="container">
-		 	<Label class="label" top ="10%" >Nombre </Label>
-			<TextField top ="10%"  class="textbox" id="txtNombre" ></TextField>
-			<Label class="label" top ="17%">1er Apellido </Label>
-			<TextField class="textbox" top ="17%" id="txtApellido1"></TextField>
-			<Label class="label" top ="24%">2o Apellido </Label>
-			<TextField class="textbox" top ="24%" id="txtApellido2"></TextField>
-			<Label class="label" top ="31%">Direccion </Label>
-			<TextField class="textbox" top ="31%" id="txtDireccion"></TextField>
-			<Label class="label" top ="38%">Cod.Postal </Label>
-			<TextField class="textbox" top ="38%" id="txtCodPostal"></TextField>
-			<Label class="label" top ="45%">Telefono </Label>
-			<TextField class="textbox" top ="45%" id="txtTelefono"></TextField>
-			<Label class="label" top ="52%">Telefono2 </Label>
-			<TextField class="textbox" top ="52%" id="txtTelefono2"></TextField>
-			<Label class="label" top ="59%">Email </Label>
-			<TextField class="textbox" top ="59%" id="txtEmail"></TextField>
-			<Label class="label" top ="66%">Email2 </Label>
-			<TextField class="textbox" top ="66%" id="txtEmail2"></TextField>
-			<Label class="label" top ="73%">Nombre Padre </Label>
-			<TextField class="textbox" top ="73%" id="txtPadre"></TextField>
-			<Label class="label" top ="80%">Nombre Madre </Label>
-			<TextField class="textbox" top ="80%" id="txtMadre"></TextField>
-		<Button class="button" top="2%" borderRadius="5dp" left="30dp" height="25dp" width="125dp" onClick="TomarAnotacion" id="btnAnotacion" title="Anotaciones"></Button>
-		<Button class="button" top="2%" borderRadius="5dp" left="165dp" height="25dp" onClick="sacarFoto" width="125dp" id="btnFoto" title="Foto"></Button>
+	<Window id="winNuevoAlumno" onSwipe="Arrastre" class="container">
+		<ScrollView id="scrollView" top="15%" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false" height="90%" width="100%">
+		   <View id="view"  borderRaduis="10" top="10" height="600" width="100%">
+			 	<Label class="label" top ="5%" >Nombre </Label>
+				<TextField top ="5%"  class="textbox" id="txtNombre" ></TextField>
+				<Label class="label" top ="10%">1er Apellido </Label>
+				<TextField class="textbox" top ="10%" id="txtApellido1"></TextField>
+				<Label class="label" top ="15%">2o Apellido </Label>
+				<TextField class="textbox" top ="15%" id="txtApellido2"></TextField>
+				<Label class="label" top ="20%">Direccion </Label>
+				<TextField class="textbox" top ="20%" id="txtDireccion"></TextField>
+				<Label class="label" top ="25%">Cod.Postal </Label>
+				<TextField class="textbox" top ="25%" id="txtCodPostal"></TextField>
+				<Label class="label" top ="30%">Telefono </Label>
+				<TextField class="textbox" top ="30%" id="txtTelefono"></TextField>
+				<Label class="label" top ="35%">Telefono2 </Label>
+				<TextField class="textbox" top ="35%" id="txtTelefono2"></TextField>
+				<Label class="label" top ="40%">Email </Label>
+				<TextField class="textbox" top ="40%" id="txtEmail"></TextField>
+				<Label class="label" top ="45%">Email2 </Label>
+				<TextField class="textbox" top ="45%" id="txtEmail2"></TextField>
+				<Label class="label" top ="50%">Nombre Padre </Label>
+				<TextField class="textbox" top ="50%" id="txtPadre"></TextField>
+				<Label class="label" top ="55%">Nombre Madre </Label>
+				<TextField class="textbox" top ="55%" id="txtMadre"></TextField>
+			</View>
+		</ScrollView>
+		<ImageView  left="10%" id="imgAlumno" height="15%" width="16%" top="2%" onClick="sacarFoto"></ImageView>
+		<Button class="button" top="2%" borderRadius="5dp" left="40%" height="25dp" width="80dp" onClick="TomarAnotacion" id="btnAnotacion" title="Notas"></Button>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAlumno"></Button>
-		<Button class="button" bottom="2%" borderRadius="5dp" left="30dp" height="25dp" width="125dp" onClick="AnteriorAlumno" id="btnAnterior" title="Anterior"></Button>
-		<Button class="button" bottom="2%" borderRadius="5dp" left="165dp" height="25dp" width="125dp" onClick="SiguienteAlumno" width="125dp" id="btnSiguiente" title="Siguiente"></Button>
 	</Window>
 </Alloy>

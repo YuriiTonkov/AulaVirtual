@@ -14,6 +14,7 @@ function Controller() {
                 Email2: $.txtEmail2.value,
                 Padre: $.txtPadre.value,
                 Madre: $.txtMadre.value,
+                foto1_url: $.imgAlumno.image,
                 Clase: data.IdClase
             });
             coleccionAlumnos.add(alumno);
@@ -39,6 +40,7 @@ function Controller() {
                 Email2: $.txtEmail2.value,
                 Padre: $.txtPadre.value,
                 Madre: $.txtMadre.value,
+                foto1_url: $.imgAlumno.image,
                 Clase: data.IdClase
             });
             modelActual.save();
@@ -56,15 +58,18 @@ function Controller() {
                 event.cropRect;
                 var image = event.media;
                 var d = new Date();
-                var filename = d.getTime() + pictype + ".png";
+                var filename = d.getTime() + ".png";
                 var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
                 f.write(image);
-                Titanium.API.info("taken picture.. path is;-");
-                Titanium.API.info(f.nativePath);
+                $.imgAlumno.image = f.nativePath;
+                $.imgAlumno.visible = true;
             }
         });
     }
     function TomarAnotacion() {}
+    function Arrastre(e) {
+        void 0 == data.IdAlumno || ("left" == e.direction ? SiguienteAlumno() : AnteriorAlumno());
+    }
     function AnteriorAlumno() {
         var modelActual = coleccion_filtrada.getElement();
         var modelPrev = coleccion_filtrada.prev().getElement();
@@ -81,6 +86,13 @@ function Controller() {
             $.txtEmail2.value = void 0 == datos.Email2 ? "" : datos.Email2;
             $.txtPadre.value = void 0 == datos.Padre ? "" : datos.Padre;
             $.txtMadre.value = void 0 == datos.Madre ? "" : datos.Madre;
+            if (void 0 == datos.foto1_url) {
+                $.imgAlumno.image = "";
+                $.imgAlumno.visible = true;
+            } else {
+                $.imgAlumno.image = datos.foto1_url;
+                $.imgAlumno.visible = true;
+            }
         } else {
             coleccion_filtrada.setElement(modelActual);
             var dialog2 = Ti.UI.createAlertDialog({
@@ -102,11 +114,18 @@ function Controller() {
             $.txtDireccion.value = void 0 == datos.Direccion ? "" : datos.Direccion;
             $.txtCodPostal.value = void 0 == datos.CodPostal ? "" : datos.CodPostal;
             $.txtTelefono.value = void 0 == datos.TelContacto ? "" : datos.TelContacto;
-            $.txtEmail.value = void 0 == datos.Email ? "" : datos.Email;
+            if (void 0 == datos.Email) {
+                $.txtEmail.value = "";
+                $.imgAlumno.visible = true;
+            } else $.txtEmail.value = datos.Email;
             $.txtTelefono2.value = void 0 == datos.TelContacto2 ? "" : datos.TelContacto2;
             $.txtEmail2.value = void 0 == datos.Email2 ? "" : datos.Email2;
             $.txtPadre.value = void 0 == datos.Padre ? "" : datos.Padre;
             $.txtMadre.value = void 0 == datos.Madre ? "" : datos.Madre;
+            if (void 0 == datos.foto1_url) $.imgAlumno.image = ""; else {
+                $.imgAlumno.image = datos.foto1_url;
+                $.imgAlumno.visible = true;
+            }
         } else {
             coleccion_filtrada.setElement(modelActual);
             var dialog = Ti.UI.createAlertDialog({
@@ -128,6 +147,24 @@ function Controller() {
         id: "winNuevoAlumno"
     });
     $.__views.winNuevoAlumno && $.addTopLevelView($.__views.winNuevoAlumno);
+    Arrastre ? $.__views.winNuevoAlumno.addEventListener("swipe", Arrastre) : __defers["$.__views.winNuevoAlumno!swipe!Arrastre"] = true;
+    $.__views.scrollView = Ti.UI.createScrollView({
+        id: "scrollView",
+        top: "15%",
+        showVerticalScrollIndicator: "true",
+        showHorizontalScrollIndicator: "false",
+        height: "90%",
+        width: "100%"
+    });
+    $.__views.winNuevoAlumno.add($.__views.scrollView);
+    $.__views.view = Ti.UI.createView({
+        id: "view",
+        borderRaduis: "10",
+        top: "10",
+        height: "600",
+        width: "100%"
+    });
+    $.__views.scrollView.add($.__views.view);
     $.__views.__alloyId73 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -135,10 +172,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Nombre",
-        top: "10%",
+        top: "5%",
         id: "__alloyId73"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId73);
+    $.__views.view.add($.__views.__alloyId73);
     $.__views.txtNombre = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -147,10 +184,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "10%",
+        top: "5%",
         id: "txtNombre"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtNombre);
+    $.__views.view.add($.__views.txtNombre);
     $.__views.__alloyId74 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -158,10 +195,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "1er Apellido",
-        top: "17%",
+        top: "10%",
         id: "__alloyId74"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId74);
+    $.__views.view.add($.__views.__alloyId74);
     $.__views.txtApellido1 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -170,10 +207,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "17%",
+        top: "10%",
         id: "txtApellido1"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtApellido1);
+    $.__views.view.add($.__views.txtApellido1);
     $.__views.__alloyId75 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -181,10 +218,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "2o Apellido",
-        top: "24%",
+        top: "15%",
         id: "__alloyId75"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId75);
+    $.__views.view.add($.__views.__alloyId75);
     $.__views.txtApellido2 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -193,10 +230,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "24%",
+        top: "15%",
         id: "txtApellido2"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtApellido2);
+    $.__views.view.add($.__views.txtApellido2);
     $.__views.__alloyId76 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -204,10 +241,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Direccion",
-        top: "31%",
+        top: "20%",
         id: "__alloyId76"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId76);
+    $.__views.view.add($.__views.__alloyId76);
     $.__views.txtDireccion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -216,10 +253,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "31%",
+        top: "20%",
         id: "txtDireccion"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtDireccion);
+    $.__views.view.add($.__views.txtDireccion);
     $.__views.__alloyId77 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -227,10 +264,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Cod.Postal",
-        top: "38%",
+        top: "25%",
         id: "__alloyId77"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId77);
+    $.__views.view.add($.__views.__alloyId77);
     $.__views.txtCodPostal = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -239,10 +276,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "38%",
+        top: "25%",
         id: "txtCodPostal"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtCodPostal);
+    $.__views.view.add($.__views.txtCodPostal);
     $.__views.__alloyId78 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -250,10 +287,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Telefono",
-        top: "45%",
+        top: "30%",
         id: "__alloyId78"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId78);
+    $.__views.view.add($.__views.__alloyId78);
     $.__views.txtTelefono = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -262,10 +299,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "45%",
+        top: "30%",
         id: "txtTelefono"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtTelefono);
+    $.__views.view.add($.__views.txtTelefono);
     $.__views.__alloyId79 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -273,10 +310,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Telefono2",
-        top: "52%",
+        top: "35%",
         id: "__alloyId79"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId79);
+    $.__views.view.add($.__views.__alloyId79);
     $.__views.txtTelefono2 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -285,10 +322,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "52%",
+        top: "35%",
         id: "txtTelefono2"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtTelefono2);
+    $.__views.view.add($.__views.txtTelefono2);
     $.__views.__alloyId80 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -296,10 +333,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Email",
-        top: "59%",
+        top: "40%",
         id: "__alloyId80"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId80);
+    $.__views.view.add($.__views.__alloyId80);
     $.__views.txtEmail = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -308,10 +345,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "59%",
+        top: "40%",
         id: "txtEmail"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtEmail);
+    $.__views.view.add($.__views.txtEmail);
     $.__views.__alloyId81 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -319,10 +356,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Email2",
-        top: "66%",
+        top: "45%",
         id: "__alloyId81"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId81);
+    $.__views.view.add($.__views.__alloyId81);
     $.__views.txtEmail2 = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -331,10 +368,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "66%",
+        top: "45%",
         id: "txtEmail2"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtEmail2);
+    $.__views.view.add($.__views.txtEmail2);
     $.__views.__alloyId82 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -342,10 +379,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Nombre Padre",
-        top: "73%",
+        top: "50%",
         id: "__alloyId82"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId82);
+    $.__views.view.add($.__views.__alloyId82);
     $.__views.txtPadre = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -354,10 +391,10 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "73%",
+        top: "50%",
         id: "txtPadre"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtPadre);
+    $.__views.view.add($.__views.txtPadre);
     $.__views.__alloyId83 = Ti.UI.createLabel({
         width: "40%",
         left: "10%",
@@ -365,10 +402,10 @@ function Controller() {
             fontSize: "12dp"
         },
         text: "Nombre Madre",
-        top: "80%",
+        top: "55%",
         id: "__alloyId83"
     });
-    $.__views.winNuevoAlumno.add($.__views.__alloyId83);
+    $.__views.view.add($.__views.__alloyId83);
     $.__views.txtMadre = Ti.UI.createTextField({
         borderColor: "#000",
         width: "50%",
@@ -377,32 +414,30 @@ function Controller() {
         font: {
             fontSize: "12dp"
         },
-        top: "80%",
+        top: "55%",
         id: "txtMadre"
     });
-    $.__views.winNuevoAlumno.add($.__views.txtMadre);
+    $.__views.view.add($.__views.txtMadre);
+    $.__views.imgAlumno = Ti.UI.createImageView({
+        left: "10%",
+        id: "imgAlumno",
+        height: "15%",
+        width: "16%",
+        top: "2%"
+    });
+    $.__views.winNuevoAlumno.add($.__views.imgAlumno);
+    sacarFoto ? $.__views.imgAlumno.addEventListener("click", sacarFoto) : __defers["$.__views.imgAlumno!click!sacarFoto"] = true;
     $.__views.btnAnotacion = Ti.UI.createButton({
         top: "2%",
         borderRadius: "5dp",
-        left: "30dp",
+        left: "40%",
         height: "25dp",
-        width: "125dp",
+        width: "80dp",
         id: "btnAnotacion",
-        title: "Anotaciones"
+        title: "Notas"
     });
     $.__views.winNuevoAlumno.add($.__views.btnAnotacion);
     TomarAnotacion ? $.__views.btnAnotacion.addEventListener("click", TomarAnotacion) : __defers["$.__views.btnAnotacion!click!TomarAnotacion"] = true;
-    $.__views.btnFoto = Ti.UI.createButton({
-        top: "2%",
-        borderRadius: "5dp",
-        left: "165dp",
-        height: "25dp",
-        width: "125dp",
-        id: "btnFoto",
-        title: "Foto"
-    });
-    $.__views.winNuevoAlumno.add($.__views.btnFoto);
-    sacarFoto ? $.__views.btnFoto.addEventListener("click", sacarFoto) : __defers["$.__views.btnFoto!click!sacarFoto"] = true;
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -410,28 +445,6 @@ function Controller() {
     });
     $.__views.winNuevoAlumno.add($.__views.btnGuardar);
     GuardarAlumno ? $.__views.btnGuardar.addEventListener("click", GuardarAlumno) : __defers["$.__views.btnGuardar!click!GuardarAlumno"] = true;
-    $.__views.btnAnterior = Ti.UI.createButton({
-        bottom: "2%",
-        borderRadius: "5dp",
-        left: "30dp",
-        height: "25dp",
-        width: "125dp",
-        id: "btnAnterior",
-        title: "Anterior"
-    });
-    $.__views.winNuevoAlumno.add($.__views.btnAnterior);
-    AnteriorAlumno ? $.__views.btnAnterior.addEventListener("click", AnteriorAlumno) : __defers["$.__views.btnAnterior!click!AnteriorAlumno"] = true;
-    $.__views.btnSiguiente = Ti.UI.createButton({
-        bottom: "2%",
-        borderRadius: "5dp",
-        left: "165dp",
-        height: "25dp",
-        width: "125dp",
-        id: "btnSiguiente",
-        title: "Siguiente"
-    });
-    $.__views.winNuevoAlumno.add($.__views.btnSiguiente);
-    SiguienteAlumno ? $.__views.btnSiguiente.addEventListener("click", SiguienteAlumno) : __defers["$.__views.btnSiguiente!click!SiguienteAlumno"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
@@ -441,12 +454,7 @@ function Controller() {
     $.winNuevoAlumno.setRightNavButton($.btnGuardar);
     var alumno = Alloy.Collections.Alumno;
     var coleccion_filtrada = alumno.getAlumnosFromClase(data.IdClase);
-    if (void 0 == data.IdAlumno) {
-        $.btnAnterior.visible = "false";
-        $.btnSiguiente.visible = "false";
-    } else {
-        $.btnAnterior.visible = "true";
-        $.btnSiguiente.visible = "true";
+    if (void 0 == data.IdAlumno) ; else {
         var model = coleccion_filtrada.get(data.IdAlumno);
         var datos = model.toJSON();
         coleccion_filtrada.setElement(model);
@@ -461,6 +469,10 @@ function Controller() {
         $.txtEmail2.value = datos.Email2;
         $.txtPadre.value = datos.Padre;
         $.txtMadre.value = datos.Madre;
+        if (void 0 != datos.foto1_url) {
+            $.imgAlumno.image = datos.foto1_url;
+            $.imgAlumno.visible = true;
+        }
     }
     $.txtNombre.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
@@ -594,11 +606,10 @@ function Controller() {
         });
         dialog.show();
     });
+    __defers["$.__views.winNuevoAlumno!swipe!Arrastre"] && $.__views.winNuevoAlumno.addEventListener("swipe", Arrastre);
+    __defers["$.__views.imgAlumno!click!sacarFoto"] && $.__views.imgAlumno.addEventListener("click", sacarFoto);
     __defers["$.__views.btnAnotacion!click!TomarAnotacion"] && $.__views.btnAnotacion.addEventListener("click", TomarAnotacion);
-    __defers["$.__views.btnFoto!click!sacarFoto"] && $.__views.btnFoto.addEventListener("click", sacarFoto);
     __defers["$.__views.btnGuardar!click!GuardarAlumno"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumno);
-    __defers["$.__views.btnAnterior!click!AnteriorAlumno"] && $.__views.btnAnterior.addEventListener("click", AnteriorAlumno);
-    __defers["$.__views.btnSiguiente!click!SiguienteAlumno"] && $.__views.btnSiguiente.addEventListener("click", SiguienteAlumno);
     _.extend($, exports);
 }
 

@@ -13,12 +13,14 @@ exports.definition = {
             Clase: "int",
             Padre: "string",
             Madre: "string",
-            Email2: "string"
+            Email2: "string",
+            foto1_url: "string",
+            foto2_url: "string"
         },
         adapter: {
             type: "sql",
             collection_name: "Alumno",
-            db_file: "/AulaVirtual_v13.sqlite",
+            db_file: "/Aula_Virtual.sqlite",
             db_name: "AulaVirtual",
             idAttribute: "IdAlumno",
             remoteBackup: "false"

@@ -11,7 +11,7 @@ exports.definition = {
         adapter: {
             type: "sql",
             collection_name: "Examen",
-            db_file: "/AulaVirtual_v13.sqlite",
+            db_file: "/Aula_Virtual.sqlite",
             db_name: "AulaVirtual",
             idAttribute: "IdExamen",
             remoteBackup: "false"
