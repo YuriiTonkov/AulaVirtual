@@ -1,15 +1,15 @@
 function Controller() {
-    function __alloyId105() {
-        var models = filtrado(__alloyId104);
+    function __alloyId115() {
+        var models = filtrado(__alloyId114);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId102 = models[i];
-            __alloyId102.__transform = {};
-            var __alloyId103 = Alloy.createController("AsignaturaRow", {
-                $model: __alloyId102
+            var __alloyId112 = models[i];
+            __alloyId112.__transform = {};
+            var __alloyId113 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId112
             });
-            rows.push(__alloyId103.getViewEx({
+            rows.push(__alloyId113.getViewEx({
                 recurse: true
             }));
         }
@@ -46,8 +46,8 @@ function Controller() {
         id: "TablaAsignaturasByAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
-    var __alloyId104 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId104.on("fetch destroy change add remove reset", __alloyId105);
+    var __alloyId114 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId114.on("fetch destroy change add remove reset", __alloyId115);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -56,7 +56,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId104.off("fetch destroy change add remove reset", __alloyId105);
+        __alloyId114.off("fetch destroy change add remove reset", __alloyId115);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

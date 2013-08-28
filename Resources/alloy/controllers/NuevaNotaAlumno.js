@@ -1,17 +1,16 @@
 function Controller() {
     function GuardarExamen() {
         if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del examen."); else {
-            var Examen = Alloy.createModel("Examen", {
-                FechaExamen: $.dateTextField.text,
-                Peso: $.txtPeso.value,
-                Evaluacion: data.Evaluacion,
-                Nota: $.txtNota.value
+            var Anotacion = Alloy.createModel("Anotacion", {
+                Fecha: $.dateTextField.text,
+                IdAlumno: data.IdAlumno,
+                Comentario: $.txtObservaciones.value
             });
-            var coleccionExamenes = Alloy.Collections.Examen;
-            coleccionExamenes.add(Examen);
-            Examen.save();
-            coleccionExamenes.fetch();
-            $.winNuevoExamen.close();
+            var coleccionAnotaciones = Alloy.Collections.Anotacion;
+            coleccionAnotaciones.add(Anotacion);
+            Anotacion.save();
+            coleccionAnotaciones.fetch();
+            $.winNuevaNota.close();
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -20,22 +19,22 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.winNuevoExamen = Ti.UI.createWindow({
+    $.__views.winNuevaNota = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "winNuevoExamen"
+        id: "winNuevaNota"
     });
-    $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);
-    $.__views.__alloyId94 = Ti.UI.createLabel({
+    $.__views.winNuevaNota && $.addTopLevelView($.__views.winNuevaNota);
+    $.__views.__alloyId81 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
             fontSize: "14dp"
         },
-        text: "Fecha Examen:",
+        text: "Fecha:",
         top: "15%",
-        id: "__alloyId94"
+        id: "__alloyId81"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId94);
+    $.__views.winNuevaNota.add($.__views.__alloyId81);
     $.__views.dateTextField = Ti.UI.createLabel({
         height: "20dp",
         textAlign: "center",
@@ -50,63 +49,37 @@ function Controller() {
         text: "Pulse aqui",
         id: "dateTextField"
     });
-    $.__views.winNuevoExamen.add($.__views.dateTextField);
-    $.__views.__alloyId95 = Ti.UI.createLabel({
+    $.__views.winNuevaNota.add($.__views.dateTextField);
+    $.__views.__alloyId82 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
             fontSize: "14dp"
         },
-        text: "Nota:",
+        text: "Observaciones:",
         top: "35%",
-        id: "__alloyId95"
+        id: "__alloyId82"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId95);
-    $.__views.txtNota = Ti.UI.createTextField({
+    $.__views.winNuevaNota.add($.__views.__alloyId82);
+    $.__views.txtObservaciones = Ti.UI.createTextArea({
         borderColor: "#000",
-        height: "16dp",
-        textAlign: "center",
-        width: "20%",
+        height: "200dp",
+        textAlign: "left",
+        width: "60%",
         left: "35%",
         font: {
             fontSize: "14dp"
         },
         top: "35%",
-        id: "txtNota",
-        keyboardType: "KEYBOARD_DECIMAL_PAD"
+        id: "txtObservaciones"
     });
-    $.__views.winNuevoExamen.add($.__views.txtNota);
-    $.__views.__alloyId96 = Ti.UI.createLabel({
-        width: "40%",
-        left: "2%",
-        font: {
-            fontSize: "14dp"
-        },
-        text: "Peso:",
-        top: "25%",
-        id: "__alloyId96"
-    });
-    $.__views.winNuevoExamen.add($.__views.__alloyId96);
-    $.__views.txtPeso = Ti.UI.createTextField({
-        borderColor: "#000",
-        height: "16dp",
-        textAlign: "center",
-        width: "20%",
-        left: "35%",
-        font: {
-            fontSize: "14dp"
-        },
-        top: "25%",
-        id: "txtPeso",
-        keyboardType: "KEYBOARD_DECIMAL_PAD"
-    });
-    $.__views.winNuevoExamen.add($.__views.txtPeso);
+    $.__views.winNuevaNota.add($.__views.txtObservaciones);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
         title: "Guardar"
     });
-    $.__views.winNuevoExamen.add($.__views.btnGuardar);
+    $.__views.winNuevaNota.add($.__views.btnGuardar);
     GuardarExamen ? $.__views.btnGuardar.addEventListener("click", GuardarExamen) : __defers["$.__views.btnGuardar!click!GuardarExamen"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
@@ -114,20 +87,20 @@ function Controller() {
         title: "Cancelar",
         style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
     });
-    $.__views.winNuevoExamen.add($.__views.cancel);
+    $.__views.winNuevaNota.add($.__views.cancel);
     $.__views.done = Ti.UI.createButton({
         top: "-100dp",
         id: "done",
         title: "Hecho",
         style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
     });
-    $.__views.winNuevoExamen.add($.__views.done);
+    $.__views.winNuevaNota.add($.__views.done);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
     var data = [];
     data = arg1;
-    $.winNuevoExamen.setRightNavButton($.btnGuardar);
+    $.winNuevaNota.setRightNavButton($.btnGuardar);
     var slide_in = Titanium.UI.createAnimation({
         bottom: 0
     });
@@ -160,11 +133,11 @@ function Controller() {
     picker_view.add(picker);
     picker_view.add(toolbar);
     $.dateTextField.addEventListener("click", function() {
-        $.txtNota.blur();
-        $.winNuevoExamen.add(picker_view);
+        $.txtObservaciones.blur();
+        $.winNuevaNota.add(picker_view);
         picker_view.animate(slide_in);
     });
-    $.txtNota.addEventListener("click", function() {
+    $.txtObservaciones.addEventListener("click", function() {
         picker_view.animate(slide_out);
     });
     $.cancel.addEventListener("click", function() {

@@ -11,6 +11,7 @@ var coleccion_filtrada = alumno.getAlumnosFromClase(data.IdClase);
 if (data.IdAlumno == undefined){
     //$.btnAnterior.visible="false";
    // $.btnSiguiente.visible="false";
+   $.btnAnotacion.visible = "false";
 }else{
         //Si viene un idalumno, la pantalla debe ser de actualizacion, se deben mostrar los datos
        // $.btnAnterior.visible="true";
@@ -119,7 +120,8 @@ function sacarFoto(){
 }
 
 function TomarAnotacion(){
-    
+    var tabAnotacionController = Alloy.createController("notasAlumno", {"IdAlumno":data.IdAlumno, "Nombre":data.Nombre});
+    Alloy.Globals.GrupoTab.activeTab.open(tabAnotacionController.getView());
 }
 
 function Arrastre(e){

@@ -1,0 +1,8 @@
+<Alloy>
+	<Window id="WinNotasAlumno" title="Anotaciones">	
+				<TableView dataCollection="Anotacion" dataFilter="filtrado" id="TablaAnotaciones" class="form">
+					<Require src="AnotacionRow"/>
+				</TableView>
+				<Button id="addAnotacion" title="Nuevo" top="-50dp" onClick="NuevaAnotacion"></Button>
+	</Window>
+</Alloy>

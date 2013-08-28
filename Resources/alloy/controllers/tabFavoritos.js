@@ -4,11 +4,11 @@ function Controller() {
     arguments[0] ? arguments[0]["$model"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId89 = Alloy.createController("winClasesFav", {
-        id: "__alloyId89"
+    $.__views.__alloyId99 = Alloy.createController("winClasesFav", {
+        id: "__alloyId99"
     });
     $.__views.tabFavoritos = Ti.UI.createTab({
-        window: $.__views.__alloyId89.getViewEx({
+        window: $.__views.__alloyId99.getViewEx({
             recurse: true
         }),
         title: "Mis Clases",

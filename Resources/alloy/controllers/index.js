@@ -16,32 +16,33 @@ function Controller() {
     Alloy.Collections.instance("Asignatura");
     Alloy.Collections.instance("VW_Clases_Favoritas");
     Alloy.Collections.instance("VW_Asignaturas_Favoritas");
+    Alloy.Collections.instance("Anotacion");
     $.__views.GrupoTab = Ti.UI.createTabGroup({
         backgroundImage: "library/images/iphone/backGround640x1136Base.png",
         id: "GrupoTab"
     });
-    $.__views.__alloyId55 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId55"
+    $.__views.__alloyId58 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId58"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId55.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId58.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId57 = Alloy.createController("tabFavoritos", {
-        id: "__alloyId57"
+    $.__views.__alloyId60 = Alloy.createController("tabFavoritos", {
+        id: "__alloyId60"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId57.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId60.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId59 = Alloy.createController("TabAsignaturasFavoritas", {
-        id: "__alloyId59"
+    $.__views.__alloyId62 = Alloy.createController("TabAsignaturasFavoritas", {
+        id: "__alloyId62"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId59.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId62.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId61 = Alloy.createController("TabConfiguracion", {
-        id: "__alloyId61"
+    $.__views.__alloyId64 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId64"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId61.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId64.getViewEx({
         recurse: true
     }));
     $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);

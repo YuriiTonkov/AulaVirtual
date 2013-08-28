@@ -23,13 +23,13 @@ function Controller() {
         id: "winNuevaClase"
     });
     $.__views.winNuevaClase && $.addTopLevelView($.__views.winNuevaClase);
-    $.__views.__alloyId68 = Ti.UI.createLabel({
+    $.__views.__alloyId76 = Ti.UI.createLabel({
         width: "80%",
         text: "Introduzca el nombre de la clase",
         top: "5%",
-        id: "__alloyId68"
+        id: "__alloyId76"
     });
-    $.__views.winNuevaClase.add($.__views.__alloyId68);
+    $.__views.winNuevaClase.add($.__views.__alloyId76);
     $.__views.txtNombreClase = Ti.UI.createTextField({
         borderColor: "#000",
         width: "70%",
