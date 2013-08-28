@@ -23,6 +23,21 @@ function Controller() {
         textid: "undefined" != typeof $model.__transform["IdAnotacion"] ? $model.__transform["IdAnotacion"] : $model.get("IdAnotacion")
     });
     $.__views.tblAnotacionRow.add($.__views.lblAnotacion);
+    $.__views.lblComentario = Ti.UI.createLabel({
+        width: "100%",
+        height: "10dp",
+        top: "26dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue"
+        },
+        textAlign: "left",
+        left: "10dp",
+        id: "lblComentario",
+        text: "undefined" != typeof $model.__transform["Comentario"] ? $model.__transform["Comentario"] : $model.get("Comentario"),
+        textid: "undefined" != typeof $model.__transform["IdAnotacion"] ? $model.__transform["IdAnotacion"] : $model.get("IdAnotacion")
+    });
+    $.__views.tblAnotacionRow.add($.__views.lblComentario);
     exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);
