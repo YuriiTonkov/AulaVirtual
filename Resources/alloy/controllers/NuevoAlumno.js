@@ -81,6 +81,7 @@ function Controller() {
         var modelPrev = coleccion_filtrada.prev().getElement();
         if (void 0 != modelPrev) {
             var datos = modelPrev.toJSON();
+            data.IdAlumno = datos.IdAlumno;
             $.txtNombre.value = void 0 == datos.Nombre ? "" : datos.Nombre;
             $.txtApellido1.value = void 0 == datos.Apellido1 ? "" : datos.Apellido1;
             $.txtApellido2.value = void 0 == datos.Apellido2 ? "" : datos.Apellido2;
@@ -114,6 +115,7 @@ function Controller() {
         var modelNext = coleccion_filtrada.next().getElement();
         if (void 0 != modelNext) {
             var datos = modelNext.toJSON();
+            data.IdAlumno = datos.IdAlumno;
             $.txtNombre.value = void 0 == datos.Nombre ? "" : datos.Nombre;
             $.txtApellido1.value = void 0 == datos.Apellido1 ? "" : datos.Apellido1;
             $.txtApellido2.value = void 0 == datos.Apellido2 ? "" : datos.Apellido2;

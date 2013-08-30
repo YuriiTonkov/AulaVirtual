@@ -23,6 +23,21 @@ function Controller() {
         textid: "undefined" != typeof $model.__transform["IdClase"] ? $model.__transform["IdClase"] : $model.get("IdClase")
     });
     $.__views.tblClasesRow.add($.__views.lblClases);
+    $.__views.lblInfoAlumnos = Ti.UI.createLabel({
+        width: "100%",
+        height: "10dp",
+        top: "26dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue"
+        },
+        textAlign: "left",
+        left: "10dp",
+        id: "lblInfoAlumnos",
+        text: "undefined" != typeof $model.__transform["Alumnos"] ? $model.__transform["Alumnos"] : $model.get("Alumnos"),
+        textid: "undefined" != typeof $model.__transform["IdClase"] ? $model.__transform["IdClase"] : $model.get("IdClase")
+    });
+    $.__views.tblClasesRow.add($.__views.lblInfoAlumnos);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.lblClases.addEventListener("click", function(e) {

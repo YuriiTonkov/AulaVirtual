@@ -18,7 +18,17 @@ function Controller() {
     function NombreClase(model) {
         var transform = model.toJSON();
         transform.nombreCompleto = "Grupo " + transform.Nombre;
-        return transform;
+        var alumnos = Alloy.Collections.Alumno;
+        alumnos.fetch();
+        var arrayAlumnos = alumnos.where({
+            Clase: transform.IdClase
+        });
+        if ("0" != arrayAlumnos.length) {
+            var texto = "Hay " + arrayAlumnos.length + " alummos.";
+            transform.Alumnos = texto;
+            return transform;
+        }
+        transform.Alumnos = "No hay alumnos";
     }
     function filtrado(collection) {
         var coleccion_filtrada = collection.where({

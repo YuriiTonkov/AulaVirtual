@@ -1,6 +1,6 @@
 <Alloy>
-	<TableViewRow  editable="true" data="{IdAnotacion}" hasChild="true" id="tblAnotacionRow">
-		<Label class="rowTitle" id="lblAnotacion" text="{Fecha}" textid="{IdAnotacion}"></Label>
-		<Label class="rowSubTitle"  id="lblComentario" text="{Comentario}" textid="{IdAnotacion}"></Label>
+	<TableViewRow height="55dp" editable="true" data="{IdAnotacion}" hasChild="true" id="tblAnotacionRow">
+		<Label class="rowTitle" top="2dp" id="lblAnotacion" text="{Fecha}" textid="{IdAnotacion}"></Label>
+		<Label class="rowSubTitle" top="20dp" height="30dp" width="90%"  id="lblComentario" text="{Comentario}" textid="{IdAnotacion}"></Label>
 	</TableViewRow>
 </Alloy>

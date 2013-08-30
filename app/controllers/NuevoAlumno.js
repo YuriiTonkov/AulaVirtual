@@ -140,6 +140,7 @@ function AnteriorAlumno(){
     if (modelPrev != undefined){
         var datos = modelPrev.toJSON();
        //coleccion_filtrada.setElement(modelPrev);
+       data.IdAlumno = datos.IdAlumno;
        if (datos.Nombre == undefined){$.txtNombre.value = "";}else{$.txtNombre.value = datos.Nombre;}
        if (datos.Apellido1 == undefined){$.txtApellido1.value = "";}else{$.txtApellido1.value = datos.Apellido1;}
        if (datos.Apellido2 == undefined){$.txtApellido2.value = "";}else{$.txtApellido2.value = datos.Apellido2;}
@@ -171,6 +172,7 @@ function SiguienteAlumno(){
     if (modelNext != undefined){
         var datos = modelNext.toJSON();
         //coleccion_filtrada.setElement(modelNext);
+        data.IdAlumno = datos.IdAlumno;
        if (datos.Nombre == undefined){$.txtNombre.value = "";}else{$.txtNombre.value = datos.Nombre;}
        if (datos.Apellido1 == undefined){$.txtApellido1.value = "";}else{$.txtApellido1.value = datos.Apellido1;}
        if (datos.Apellido2 == undefined){$.txtApellido2.value = "";}else{$.txtApellido2.value = datos.Apellido2;}

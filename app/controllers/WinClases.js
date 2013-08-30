@@ -19,7 +19,15 @@ clases.fetch();
 function NombreClase (model){
     var transform = model.toJSON();
     transform.nombreCompleto = "Grupo " + transform.Nombre;
-    return transform
+    var alumnos = Alloy.Collections.Alumno;
+    alumnos.fetch();
+    var arrayAlumnos = alumnos.where({Clase:transform.IdClase});
+    if (arrayAlumnos.length == "0"){transform.Alumnos="No hay alumnos";}
+    else {
+        var texto = "Hay " + arrayAlumnos.length + " alummos.";
+        transform.Alumnos = texto; 
+        return transform
+        }
 }
 
 function filtrado (collection){

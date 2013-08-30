@@ -6,7 +6,7 @@ function Controller() {
     var exports = {};
     $.__views.tblAnotacionRow = Ti.UI.createTableViewRow({
         backgroundColor: "white",
-        height: "40dp",
+        height: "55dp",
         editable: "true",
         data: "undefined" != typeof $model.__transform["IdAnotacion"] ? $model.__transform["IdAnotacion"] : $model.get("IdAnotacion"),
         hasChild: "true",
@@ -18,15 +18,16 @@ function Controller() {
         height: "40dp",
         textAlign: "left",
         left: "10dp",
+        top: "2dp",
         id: "lblAnotacion",
         text: "undefined" != typeof $model.__transform["Fecha"] ? $model.__transform["Fecha"] : $model.get("Fecha"),
         textid: "undefined" != typeof $model.__transform["IdAnotacion"] ? $model.__transform["IdAnotacion"] : $model.get("IdAnotacion")
     });
     $.__views.tblAnotacionRow.add($.__views.lblAnotacion);
     $.__views.lblComentario = Ti.UI.createLabel({
-        width: "100%",
-        height: "10dp",
-        top: "26dp",
+        width: "90%",
+        height: "30dp",
+        top: "20dp",
         font: {
             fontSize: 10,
             fontFamily: "HelveticaNeue"
