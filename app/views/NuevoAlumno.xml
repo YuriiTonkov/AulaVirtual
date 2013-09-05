@@ -1,30 +1,30 @@
 <Alloy>
 	
 	<Window id="winNuevoAlumno" onSwipe="Arrastre" class="container">
-		<ScrollView id="scrollView" top="15%" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false" height="90%" width="100%">
-		   <View id="view"  borderRaduis="10" top="10" height="600" width="100%">
-			 	<Label class="label" top ="5%" >Nombre </Label>
-				<TextField top ="5%"  class="textbox" id="txtNombre" ></TextField>
-				<Label class="label" top ="10%">1er Apellido </Label>
-				<TextField class="textbox" top ="10%" id="txtApellido1"></TextField>
-				<Label class="label" top ="15%">2o Apellido </Label>
-				<TextField class="textbox" top ="15%" id="txtApellido2"></TextField>
-				<Label class="label" top ="20%">Direccion </Label>
-				<TextField class="textbox" top ="20%" id="txtDireccion"></TextField>
-				<Label class="label" top ="25%">Cod.Postal </Label>
-				<TextField class="textbox" top ="25%" id="txtCodPostal"></TextField>
-				<Label class="label" top ="30%">Telefono </Label>
-				<TextField class="textbox" top ="30%" id="txtTelefono"></TextField>
-				<Label class="label" top ="35%">Telefono2 </Label>
-				<TextField class="textbox" top ="35%" id="txtTelefono2"></TextField>
-				<Label class="label" top ="40%">Email </Label>
-				<TextField class="textbox" top ="40%" id="txtEmail"></TextField>
-				<Label class="label" top ="45%">Email2 </Label>
-				<TextField class="textbox" top ="45%" id="txtEmail2"></TextField>
-				<Label class="label" top ="50%">Nombre Padre </Label>
-				<TextField class="textbox" top ="50%" id="txtPadre"></TextField>
-				<Label class="label" top ="55%">Nombre Madre </Label>
-				<TextField class="textbox" top ="55%" id="txtMadre"></TextField>
+		<ScrollView id="scrollView" top="15%" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false" height="90%" width="100%"  >
+		   <View id="viewAlumno" >
+			 	<Label class="labelAlumno" top ="0dp" >Nombre </Label>
+				<TextField top ="15dp"  class="textboxAlumno" id="txtNombre" ></TextField>
+				<Label class="labelAlumno" top ="45dp">1er Apellido </Label>
+				<TextField class="textboxAlumno" top ="60dp" id="txtApellido1"></TextField>
+				<Label class="labelAlumno" top ="90dp">2o Apellido </Label>
+				<TextField class="textboxAlumno" top ="105dp" id="txtApellido2"></TextField>
+				<Label class="labelAlumno" top ="135dp">Direccion </Label>
+				<TextField class="textboxAlumno" top ="150dp" id="txtDireccion"></TextField>
+				<Label class="labelAlumno" top ="180dp">Cod.Postal </Label>
+				<TextField class="textboxAlumno" top ="195dp" id="txtCodPostal"></TextField>
+				<Label class="labelAlumno" top ="225dp">Telefono </Label>
+				<TextField class="textboxAlumno" top ="240dp" id="txtTelefono"></TextField>
+				<Label class="labelAlumno" top ="270dp">Telefono2 </Label>
+				<TextField class="textboxAlumno" top ="285dp" id="txtTelefono2"></TextField>
+				<Label class="labelAlumno" top ="315dp">Email </Label>
+				<TextField class="textboxAlumno" top ="330dp" id="txtEmail"></TextField>
+				<Label class="labelAlumno" top ="360dp">Email2 </Label>
+				<TextField class="textboxAlumno" top ="375dp" id="txtEmail2"></TextField>
+				<Label class="labelAlumno" top ="405dp">Nombre Padre </Label>
+				<TextField class="textboxAlumno" top ="420dp" id="txtPadre"></TextField>
+				<Label class="labelAlumno" top ="450dp">Nombre Madre </Label>
+				<TextField class="textboxAlumno" top ="465dp" id="txtMadre"></TextField>
 			</View>
 		</ScrollView>
 		<ImageView  left="10%" id="imgAlumno" height="15%" width="16%" top="2%" onClick="sacarFoto"></ImageView>

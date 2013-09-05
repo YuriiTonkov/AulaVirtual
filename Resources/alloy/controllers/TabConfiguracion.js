@@ -1,14 +1,16 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "TabConfiguracion";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId98 = Alloy.createController("winProfile", {
-        id: "__alloyId98"
+    $.__views.__alloyId40 = Alloy.createController("winProfile", {
+        id: "__alloyId40"
     });
     $.__views.TabConfiguracion = Ti.UI.createTab({
-        window: $.__views.__alloyId98.getViewEx({
+        window: $.__views.__alloyId40.getViewEx({
             recurse: true
         }),
         title: "Configuracion",

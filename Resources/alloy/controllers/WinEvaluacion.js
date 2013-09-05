@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId145() {
-        var models = filtrado(__alloyId144);
+    function __alloyId76() {
+        __alloyId76.opts || {};
+        var models = filtrado(__alloyId75);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId142 = models[i];
-            __alloyId142.__transform = {};
-            var __alloyId143 = Alloy.createController("EvaluacionRow", {
-                $model: __alloyId142
+            var __alloyId73 = models[i];
+            __alloyId73.__transform = {};
+            var __alloyId74 = Alloy.createController("EvaluacionRow", {
+                $model: __alloyId73
             });
-            rows.push(__alloyId143.getViewEx({
+            rows.push(__alloyId74.getViewEx({
                 recurse: true
             }));
         }
@@ -29,8 +30,10 @@ function Controller() {
         Alloy.Globals.GrupoTab.activeTab.open(tabEvaluacionController.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinEvaluacion";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -46,8 +49,8 @@ function Controller() {
         id: "TablaEvaluaciones"
     });
     $.__views.WinEvaluacionesAlumno.add($.__views.TablaEvaluaciones);
-    var __alloyId144 = Alloy.Collections["Evaluacion"] || Evaluacion;
-    __alloyId144.on("fetch destroy change add remove reset", __alloyId145);
+    var __alloyId75 = Alloy.Collections["Evaluacion"] || Evaluacion;
+    __alloyId75.on("fetch destroy change add remove reset", __alloyId76);
     $.__views.addEvaluacion = Ti.UI.createButton({
         id: "addEvaluacion",
         title: "Nueva",
@@ -56,7 +59,7 @@ function Controller() {
     $.__views.WinEvaluacionesAlumno.add($.__views.addEvaluacion);
     NuevoEvaluacion ? $.__views.addEvaluacion.addEventListener("click", NuevoEvaluacion) : __defers["$.__views.addEvaluacion!click!NuevoEvaluacion"] = true;
     exports.destroy = function() {
-        __alloyId144.off("fetch destroy change add remove reset", __alloyId145);
+        __alloyId75.off("fetch destroy change add remove reset", __alloyId76);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -1,4 +1,4 @@
-".container": {
+/*".container": {
 	backgroundColor: "white"
 },
 ".label": {
@@ -6,5 +6,5 @@
 },
 ".textbox": {
 	borderColor:"#000", width:"50%", left:"40%",height:"17dp",font:{ fontSize:"12dp"}
-}
+}*/
 

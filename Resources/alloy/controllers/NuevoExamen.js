@@ -15,8 +15,10 @@ function Controller() {
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "NuevoExamen";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -25,7 +27,7 @@ function Controller() {
         id: "winNuevoExamen"
     });
     $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);
-    $.__views.__alloyId94 = Ti.UI.createLabel({
+    $.__views.__alloyId36 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -33,9 +35,9 @@ function Controller() {
         },
         text: "Fecha Examen:",
         top: "15%",
-        id: "__alloyId94"
+        id: "__alloyId36"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId94);
+    $.__views.winNuevoExamen.add($.__views.__alloyId36);
     $.__views.dateTextField = Ti.UI.createLabel({
         height: "20dp",
         textAlign: "center",
@@ -51,7 +53,7 @@ function Controller() {
         id: "dateTextField"
     });
     $.__views.winNuevoExamen.add($.__views.dateTextField);
-    $.__views.__alloyId95 = Ti.UI.createLabel({
+    $.__views.__alloyId37 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -59,9 +61,9 @@ function Controller() {
         },
         text: "Nota:",
         top: "35%",
-        id: "__alloyId95"
+        id: "__alloyId37"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId95);
+    $.__views.winNuevoExamen.add($.__views.__alloyId37);
     $.__views.txtNota = Ti.UI.createTextField({
         borderColor: "#000",
         height: "16dp",
@@ -76,7 +78,7 @@ function Controller() {
         keyboardType: "KEYBOARD_DECIMAL_PAD"
     });
     $.__views.winNuevoExamen.add($.__views.txtNota);
-    $.__views.__alloyId96 = Ti.UI.createLabel({
+    $.__views.__alloyId38 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -84,9 +86,9 @@ function Controller() {
         },
         text: "Peso:",
         top: "25%",
-        id: "__alloyId96"
+        id: "__alloyId38"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId96);
+    $.__views.winNuevoExamen.add($.__views.__alloyId38);
     $.__views.txtPeso = Ti.UI.createTextField({
         borderColor: "#000",
         height: "16dp",

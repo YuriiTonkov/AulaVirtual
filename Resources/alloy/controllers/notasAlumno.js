@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId69() {
-        var models = filtrado(__alloyId68);
+    function __alloyId144() {
+        __alloyId144.opts || {};
+        var models = filtrado(__alloyId143);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId66 = models[i];
-            __alloyId66.__transform = {};
-            var __alloyId67 = Alloy.createController("AnotacionRow", {
-                $model: __alloyId66
+            var __alloyId141 = models[i];
+            __alloyId141.__transform = {};
+            var __alloyId142 = Alloy.createController("AnotacionRow", {
+                $model: __alloyId141
             });
-            rows.push(__alloyId67.getViewEx({
+            rows.push(__alloyId142.getViewEx({
                 recurse: true
             }));
         }
@@ -28,8 +29,10 @@ function Controller() {
         Alloy.Globals.GrupoTab.activeTab.open(tabAnotacionController.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "notasAlumno";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -44,8 +47,8 @@ function Controller() {
         id: "TablaAnotaciones"
     });
     $.__views.WinNotasAlumno.add($.__views.TablaAnotaciones);
-    var __alloyId68 = Alloy.Collections["Anotacion"] || Anotacion;
-    __alloyId68.on("fetch destroy change add remove reset", __alloyId69);
+    var __alloyId143 = Alloy.Collections["Anotacion"] || Anotacion;
+    __alloyId143.on("fetch destroy change add remove reset", __alloyId144);
     $.__views.addAnotacion = Ti.UI.createButton({
         id: "addAnotacion",
         title: "Nuevo",
@@ -54,7 +57,7 @@ function Controller() {
     $.__views.WinNotasAlumno.add($.__views.addAnotacion);
     NuevaAnotacion ? $.__views.addAnotacion.addEventListener("click", NuevaAnotacion) : __defers["$.__views.addAnotacion!click!NuevaAnotacion"] = true;
     exports.destroy = function() {
-        __alloyId68.off("fetch destroy change add remove reset", __alloyId69);
+        __alloyId143.off("fetch destroy change add remove reset", __alloyId144);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

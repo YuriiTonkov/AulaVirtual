@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId150() {
-        var models = filtrado(__alloyId149);
+    function __alloyId81() {
+        __alloyId81.opts || {};
+        var models = filtrado(__alloyId80);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId147 = models[i];
-            __alloyId147.__transform = TextoFila(__alloyId147);
-            var __alloyId148 = Alloy.createController("ExamenRow", {
-                $model: __alloyId147
+            var __alloyId78 = models[i];
+            __alloyId78.__transform = TextoFila(__alloyId78);
+            var __alloyId79 = Alloy.createController("ExamenRow", {
+                $model: __alloyId78
             });
-            rows.push(__alloyId148.getViewEx({
+            rows.push(__alloyId79.getViewEx({
                 recurse: true
             }));
         }
@@ -34,8 +35,10 @@ function Controller() {
         Alloy.Globals.GrupoTab.activeTab.open(tabExamenController.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinExamenes";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -51,8 +54,8 @@ function Controller() {
         id: "TablaExamenes"
     });
     $.__views.WinExamenes.add($.__views.TablaExamenes);
-    var __alloyId149 = Alloy.Collections["Examen"] || Examen;
-    __alloyId149.on("fetch destroy change add remove reset", __alloyId150);
+    var __alloyId80 = Alloy.Collections["Examen"] || Examen;
+    __alloyId80.on("fetch destroy change add remove reset", __alloyId81);
     $.__views.addExamen = Ti.UI.createButton({
         id: "addExamen",
         title: "Nuevo",
@@ -61,7 +64,7 @@ function Controller() {
     $.__views.WinExamenes.add($.__views.addExamen);
     NuevoExamen ? $.__views.addExamen.addEventListener("click", NuevoExamen) : __defers["$.__views.addExamen!click!NuevoExamen"] = true;
     exports.destroy = function() {
-        __alloyId149.off("fetch destroy change add remove reset", __alloyId150);
+        __alloyId80.off("fetch destroy change add remove reset", __alloyId81);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId105() {
-        var models = filtrado(__alloyId104);
+    function __alloyId46() {
+        __alloyId46.opts || {};
+        var models = filtrado(__alloyId45);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId102 = models[i];
-            __alloyId102.__transform = nombrecompleto(__alloyId102);
-            var __alloyId103 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId102
+            var __alloyId43 = models[i];
+            __alloyId43.__transform = nombrecompleto(__alloyId43);
+            var __alloyId44 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId43
             });
-            rows.push(__alloyId103.getViewEx({
+            rows.push(__alloyId44.getViewEx({
                 recurse: true
             }));
         }
@@ -27,8 +28,10 @@ function Controller() {
         return transform;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinAlumnos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.WinAlumnos = Ti.UI.createWindow({
@@ -42,10 +45,10 @@ function Controller() {
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId104 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId104.on("fetch destroy change add remove reset", __alloyId105);
+    var __alloyId45 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId45.on("fetch destroy change add remove reset", __alloyId46);
     exports.destroy = function() {
-        __alloyId104.off("fetch destroy change add remove reset", __alloyId105);
+        __alloyId45.off("fetch destroy change add remove reset", __alloyId46);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

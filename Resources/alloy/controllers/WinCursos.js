@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId140() {
-        var models = filtrado(__alloyId139);
+    function __alloyId71() {
+        __alloyId71.opts || {};
+        var models = filtrado(__alloyId70);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId137 = models[i];
-            __alloyId137.__transform = transform(__alloyId137);
-            var __alloyId138 = Alloy.createController("CursoRow", {
-                $model: __alloyId137
+            var __alloyId68 = models[i];
+            __alloyId68.__transform = transform(__alloyId68);
+            var __alloyId69 = Alloy.createController("CursoRow", {
+                $model: __alloyId68
             });
-            rows.push(__alloyId138.getViewEx({
+            rows.push(__alloyId69.getViewEx({
                 recurse: true
             }));
         }
@@ -39,8 +40,10 @@ function Controller() {
         return transform;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinCursos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.WinCursos = Ti.UI.createWindow({
@@ -54,10 +57,10 @@ function Controller() {
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);
-    var __alloyId139 = Alloy.Collections["Curso"] || Curso;
-    __alloyId139.on("fetch destroy change add remove reset", __alloyId140);
+    var __alloyId70 = Alloy.Collections["Curso"] || Curso;
+    __alloyId70.on("fetch destroy change add remove reset", __alloyId71);
     exports.destroy = function() {
-        __alloyId139.off("fetch destroy change add remove reset", __alloyId140);
+        __alloyId70.off("fetch destroy change add remove reset", __alloyId71);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -14,8 +14,10 @@ function Controller() {
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "NuevaNotaAlumno";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -24,7 +26,7 @@ function Controller() {
         id: "winNuevaNota"
     });
     $.__views.winNuevaNota && $.addTopLevelView($.__views.winNuevaNota);
-    $.__views.__alloyId81 = Ti.UI.createLabel({
+    $.__views.__alloyId23 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -32,9 +34,9 @@ function Controller() {
         },
         text: "Fecha:",
         top: "15%",
-        id: "__alloyId81"
+        id: "__alloyId23"
     });
-    $.__views.winNuevaNota.add($.__views.__alloyId81);
+    $.__views.winNuevaNota.add($.__views.__alloyId23);
     $.__views.dateTextField = Ti.UI.createLabel({
         height: "20dp",
         textAlign: "center",
@@ -50,7 +52,7 @@ function Controller() {
         id: "dateTextField"
     });
     $.__views.winNuevaNota.add($.__views.dateTextField);
-    $.__views.__alloyId82 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -58,9 +60,9 @@ function Controller() {
         },
         text: "Observaciones:",
         top: "35%",
-        id: "__alloyId82"
+        id: "__alloyId24"
     });
-    $.__views.winNuevaNota.add($.__views.__alloyId82);
+    $.__views.winNuevaNota.add($.__views.__alloyId24);
     $.__views.txtObservaciones = Ti.UI.createTextArea({
         borderColor: "#000",
         height: "200dp",

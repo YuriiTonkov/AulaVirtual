@@ -13,8 +13,10 @@ function Controller() {
         $.winCrearAsignatura.close();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "CrearAsignatura";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -23,7 +25,7 @@ function Controller() {
         id: "winCrearAsignatura"
     });
     $.__views.winCrearAsignatura && $.addTopLevelView($.__views.winCrearAsignatura);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.__alloyId8 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
@@ -31,9 +33,9 @@ function Controller() {
         },
         text: "Nombre",
         top: "5%",
-        id: "__alloyId14"
+        id: "__alloyId8"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId14);
+    $.__views.winCrearAsignatura.add($.__views.__alloyId8);
     $.__views.txtNombreAsignatura = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -42,7 +44,7 @@ function Controller() {
         id: "txtNombreAsignatura"
     });
     $.__views.winCrearAsignatura.add($.__views.txtNombreAsignatura);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    $.__views.__alloyId9 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
@@ -50,9 +52,9 @@ function Controller() {
         },
         text: "Descripcion",
         top: "15%",
-        id: "__alloyId15"
+        id: "__alloyId9"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId15);
+    $.__views.winCrearAsignatura.add($.__views.__alloyId9);
     $.__views.txtDescripcion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -61,7 +63,7 @@ function Controller() {
         id: "txtDescripcion"
     });
     $.__views.winCrearAsignatura.add($.__views.txtDescripcion);
-    $.__views.__alloyId16 = Ti.UI.createLabel({
+    $.__views.__alloyId10 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
@@ -69,9 +71,9 @@ function Controller() {
         },
         text: "Asignatura Optativa",
         top: "25%",
-        id: "__alloyId16"
+        id: "__alloyId10"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId16);
+    $.__views.winCrearAsignatura.add($.__views.__alloyId10);
     $.__views.swtOptativa = Ti.UI.createSwitch({
         title: "Optativa",
         value: "false",

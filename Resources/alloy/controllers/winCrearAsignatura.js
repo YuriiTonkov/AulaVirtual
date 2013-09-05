@@ -1,15 +1,16 @@
 function Controller() {
-    function __alloyId135() {
-        var models = filtrado(__alloyId134);
+    function __alloyId155() {
+        __alloyId155.opts || {};
+        var models = filtrado(__alloyId154);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId132 = models[i];
-            __alloyId132.__transform = {};
-            var __alloyId133 = Alloy.createController("AsignaturaAlumnoRow", {
-                $model: __alloyId132
+            var __alloyId152 = models[i];
+            __alloyId152.__transform = {};
+            var __alloyId153 = Alloy.createController("AsignaturaAlumnoRow", {
+                $model: __alloyId152
             });
-            rows.push(__alloyId133.getViewEx({
+            rows.push(__alloyId153.getViewEx({
                 recurse: true
             }));
         }
@@ -28,8 +29,10 @@ function Controller() {
         Alloy.Globals.GrupoTab.activeTab.open(tabAsignaturaController.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "winCrearAsignatura";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -44,8 +47,8 @@ function Controller() {
         id: "TablaAsignaturasAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasAlumno);
-    var __alloyId134 = Alloy.Collections["Asignatura"] || Asignatura;
-    __alloyId134.on("fetch destroy change add remove reset", __alloyId135);
+    var __alloyId154 = Alloy.Collections["Asignatura"] || Asignatura;
+    __alloyId154.on("fetch destroy change add remove reset", __alloyId155);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -54,7 +57,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevaAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevaAsignatura) : __defers["$.__views.addAsignatura!click!NuevaAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId134.off("fetch destroy change add remove reset", __alloyId135);
+        __alloyId154.off("fetch destroy change add remove reset", __alloyId155);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
