@@ -9,7 +9,7 @@ exports.definition = {
 		adapter: {
 			type: "sql",
 			collection_name: "Alumno_Asignatura",
-            db_file: "/Aula_Virtual.sqlite",
+            db_file: "/Aula_VirtualDB.sqlite",
             db_name: "AulaVirtual",
             idAttribute: "IdAlumnoAsignatura",
             remoteBackup:"false"
@@ -30,5 +30,5 @@ exports.definition = {
 		
 		return Collection;
 	}
-}
+};
 

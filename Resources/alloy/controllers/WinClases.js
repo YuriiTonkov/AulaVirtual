@@ -24,12 +24,11 @@ function Controller() {
         var arrayAlumnos = alumnos.where({
             Clase: transform.IdClase
         });
-        if ("0" != arrayAlumnos.length) {
+        if ("0" == arrayAlumnos.length) transform.Alumnos = "No hay alumnos"; else {
             var texto = "Hay " + arrayAlumnos.length + " alummos.";
             transform.Alumnos = texto;
-            return transform;
         }
-        transform.Alumnos = "No hay alumnos";
+        return transform;
     }
     function filtrado(collection) {
         var coleccion_filtrada = collection.where({

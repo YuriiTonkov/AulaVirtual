@@ -8,7 +8,7 @@ $.lblClases.addEventListener("click", function(e){
 });
 
 $.lblClases.addEventListener("longpress", function(e){
-    var colVWClases = Alloy.Collections.VW_Clases_Favoritas
+    var colVWClases = Alloy.Collections.VW_Clases_Favoritas;
     var colClases = Alloy.createCollection("Clase");
     colClases.fetch();
     var model = colClases.get(e.source.textid);

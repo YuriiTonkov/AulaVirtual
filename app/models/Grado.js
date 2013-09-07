@@ -9,7 +9,7 @@ exports.definition = {
 		adapter: {
 			type: "sql",
 			collection_name: "Grado",
-            db_file: "/Aula_Virtual.sqlite",
+            db_file: "/Aula_VirtualDB.sqlite",
 			db_name: "AulaVirtual",
 			idAttribute: "IdGrado",
 			remoteBackup:"false"
@@ -29,5 +29,5 @@ exports.definition = {
 		
 		return Collection;
 	}
-}
+};
 

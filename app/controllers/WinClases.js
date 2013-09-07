@@ -26,8 +26,8 @@ function NombreClase (model){
     else {
         var texto = "Hay " + arrayAlumnos.length + " alummos.";
         transform.Alumnos = texto; 
-        return transform
         }
+    return transform;
 }
 
 function filtrado (collection){
