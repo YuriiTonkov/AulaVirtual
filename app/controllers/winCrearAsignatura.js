@@ -5,8 +5,8 @@ data = arg1;
 //----------------------------
 
 //Elementos de Interfaz
-$.WinAsignaturasAlumno.title = "Asignaturas";
-$.WinAsignaturasAlumno.setRightNavButton($.addAsignatura);
+$.WinCrearAsignatura.title = "Asignaturas";
+$.WinCrearAsignatura.setRightNavButton($.addAsignatura);
 //-----------------------------------------
 
 
@@ -44,6 +44,9 @@ $.TablaAsignaturasAlumno.addEventListener('delete', function(e)
 
 //--------------------------------
 
-
+// Free model-view data binding resources when this view-controller closes
+$.WinCrearAsignatura.addEventListener('close', function() {
+    $.destroy();
+});
 
 

@@ -45,3 +45,8 @@ $.WinClasesFav.addEventListener('focus',function(e){
      clase.fetch();
 });
 //--------------------------------
+
+// Free model-view data binding resources when this view-controller closes
+$.WinClasesFav.addEventListener('close', function() {
+    $.destroy();
+});

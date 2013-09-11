@@ -16,3 +16,7 @@ $.winGrados.addEventListener('focus',function(e){
 });
 
 
+// Free model-view data binding resources when this view-controller closes
+$.winGrados.addEventListener('close', function() {
+    $.destroy();
+});

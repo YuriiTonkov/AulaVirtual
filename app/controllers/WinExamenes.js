@@ -48,6 +48,9 @@ $.TablaExamenes.addEventListener('delete', function(e)
 
 //--------------------------------
 
-
+// Free model-view data binding resources when this view-controller closes
+$.WinExamenes.addEventListener('close', function() {
+    $.destroy();
+});
 
 

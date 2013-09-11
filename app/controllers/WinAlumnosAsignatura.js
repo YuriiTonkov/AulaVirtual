@@ -46,3 +46,8 @@ $.TablaAlumnosByAsignatura.addEventListener('delete', function(e)
 
 
 //--------------------------------
+
+// Free model-view data binding resources when this view-controller closes
+$.WinAsignaturasAlumno.addEventListener('close', function() {
+    $.destroy();
+});

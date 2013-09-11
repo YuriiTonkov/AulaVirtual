@@ -9,9 +9,9 @@ if (Ti.App.Properties.getString('Login')==undefined){
    var window = Titanium.UI.createWindow({title:"Nuevo usuario"});
    
    if (Titanium.Platform.displayCaps.platformHeight < 568){
-   	window.backgroundImage="library/images/iphone/backGround320x416Login.png" //Iphone 4
+   	window.backgroundImage="library/images/iphone/backGround320x416Login.png"; //Iphone 4
    }else{
-   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png" //Iphone 5
+   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png"; //Iphone 5
    }
    
     window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
@@ -29,9 +29,9 @@ if (Ti.App.Properties.getString('Login')==undefined){
     var window = Titanium.UI.createWindow({title:Titanium.Platform.displayCaps.platformHeight});
     
     if (Titanium.Platform.displayCaps.platformHeight < 568){
-   	window.backgroundImage="library/images/iphone/backGround320x416Login.png" //Iphone 4
+   	window.backgroundImage="library/images/iphone/backGround320x416Login.png"; //Iphone 4
    }else{
-   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png" //Iphone 5
+   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png"; //Iphone 5
    }
    
     window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
@@ -68,12 +68,12 @@ btnLogin.addEventListener("click", function(){
     if ((Ti.App.Properties.getString('Login')==txtLogin.value) && (Ti.App.Properties.getString('Pass')==txtPass.value)){
          Ti.App.Properties.setString("Ayuda", chkAyuda.value);
          window.close();
-    }else
+    }
+    else
     {
         lblError.text = "Usuario/Contraseña incorrecta";
         lblError.visible= true;
-    }
-    
-   
+    }  
 });
+
 

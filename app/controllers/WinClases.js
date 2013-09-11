@@ -73,3 +73,8 @@ $.WinClases.addEventListener('focus',function(e){
 });
 
 //--------------------------------
+
+// Free model-view data binding resources when this view-controller closes
+$.WinClases.addEventListener('close', function() {
+    $.destroy();
+});

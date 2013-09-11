@@ -47,3 +47,8 @@ $.WinAsignaturasFav.addEventListener('focus',function(e){
 
 
 //--------------------------------
+
+// Free model-view data binding resources when this view-controller closes
+$.WinAsignaturasFav.addEventListener('close', function() {
+    $.destroy();
+});

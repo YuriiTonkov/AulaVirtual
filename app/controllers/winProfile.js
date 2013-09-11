@@ -58,3 +58,7 @@ $.winUsuario.addEventListener('focus',function(e){
      refreshScreen();
 });
 
+// Free model-view data binding resources when this view-controller closes
+$.winUsuario.addEventListener('close', function() {
+    $.destroy();
+});

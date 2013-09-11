@@ -47,5 +47,8 @@ $.WinCursos.addEventListener('focus',function(e){
     }
 });
 
-
+// Free model-view data binding resources when this view-controller closes
+$.WinCursos.addEventListener('close', function() {
+    $.destroy();
+});
 
