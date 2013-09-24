@@ -26,10 +26,10 @@ if (Ti.App.Properties.getString('Login')==undefined){
     window.setRightNavButton(btnGuardar);
    
 }else{
-    var window = Titanium.UI.createWindow({title:Titanium.Platform.displayCaps.platformHeight});
+    var window = Titanium.UI.createWindow({title:"Datos de Acceso"});//Titanium.Platform.displayCaps.platformHeight});
     
     if (Titanium.Platform.displayCaps.platformHeight < 568){
-   	window.backgroundImage="library/images/iphone/backGround320x416Login.png"; //Iphone 4
+   	window.backgroundImage="library/images/iphone/backGround640x920Login.png"; //Iphone 4
    }else{
    	window.backgroundImage="library/images/iphone/backGround640x1010Login.png"; //Iphone 5
    }
