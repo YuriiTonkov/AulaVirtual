@@ -81,6 +81,9 @@ function Controller() {
         Examenes.remove(model);
         Examenes.fetch();
     });
+    $.WinExamenes.addEventListener("close", function() {
+        $.destroy();
+    });
     __defers["$.__views.addExamen!click!NuevoExamen"] && $.__views.addExamen.addEventListener("click", NuevoExamen);
     _.extend($, exports);
 }

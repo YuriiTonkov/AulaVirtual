@@ -76,6 +76,9 @@ function Controller() {
         Evaluaciones.remove(model);
         Evaluaciones.fetch();
     });
+    $.WinEvaluacionesAlumno.addEventListener("close", function() {
+        $.destroy();
+    });
     __defers["$.__views.addEvaluacion!click!NuevoEvaluacion"] && $.__views.addEvaluacion.addEventListener("click", NuevoEvaluacion);
     _.extend($, exports);
 }

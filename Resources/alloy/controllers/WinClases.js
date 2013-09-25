@@ -100,6 +100,9 @@ function Controller() {
             alertDialog.show();
         }
     });
+    $.WinClases.addEventListener("close", function() {
+        $.destroy();
+    });
     __defers["$.__views.addClase!click!NuevaClase"] && $.__views.addClase.addEventListener("click", NuevaClase);
     _.extend($, exports);
 }

@@ -53,6 +53,9 @@ function Controller() {
             alertDialog.show();
         }
     });
+    $.winGrados.addEventListener("close", function() {
+        $.destroy();
+    });
     _.extend($, exports);
 }
 

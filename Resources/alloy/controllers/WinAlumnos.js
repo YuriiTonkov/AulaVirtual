@@ -68,6 +68,9 @@ function Controller() {
         alumnos.remove(model);
         alumnos.fetch();
     });
+    $.WinAlumnos.addEventListener("close", function() {
+        $.destroy();
+    });
     _.extend($, exports);
 }
 

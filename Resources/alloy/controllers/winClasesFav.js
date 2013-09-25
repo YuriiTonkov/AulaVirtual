@@ -65,6 +65,9 @@ function Controller() {
         var clase = Alloy.Collections.VW_Clases_Favoritas;
         clase.fetch();
     });
+    $.WinClasesFav.addEventListener("close", function() {
+        $.destroy();
+    });
     _.extend($, exports);
 }
 

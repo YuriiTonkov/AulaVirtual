@@ -77,6 +77,9 @@ function Controller() {
         Asignaturas.remove(model);
         Asignaturas.fetch();
     });
+    $.WinAsignaturasAlumno.addEventListener("close", function() {
+        $.destroy();
+    });
     __defers["$.__views.addAsignatura!click!NuevoAsignatura"] && $.__views.addAsignatura.addEventListener("click", NuevoAsignatura);
     _.extend($, exports);
 }

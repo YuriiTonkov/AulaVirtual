@@ -80,6 +80,9 @@ function Controller() {
             alertDialog.show();
         }
     });
+    $.WinCursos.addEventListener("close", function() {
+        $.destroy();
+    });
     _.extend($, exports);
 }
 

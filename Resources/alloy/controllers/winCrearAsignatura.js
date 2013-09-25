@@ -63,8 +63,8 @@ function Controller() {
     var arg1 = arguments[0] || {};
     var data = [];
     data = arg1;
-    $.WinAsignaturasAlumno.title = "Asignaturas";
-    $.WinAsignaturasAlumno.setRightNavButton($.addAsignatura);
+    $.WinCrearAsignatura.title = "Asignaturas";
+    $.WinCrearAsignatura.setRightNavButton($.addAsignatura);
     var Asignaturas = Alloy.Collections.Asignatura;
     Asignaturas.fetch();
     $.TablaAsignaturasAlumno.addEventListener("delete", function(e) {
@@ -74,6 +74,9 @@ function Controller() {
         model.destroy();
         Asignaturas.remove(model);
         Asignaturas.fetch();
+    });
+    $.WinCrearAsignatura.addEventListener("close", function() {
+        $.destroy();
     });
     __defers["$.__views.addAsignatura!click!NuevaAsignatura"] && $.__views.addAsignatura.addEventListener("click", NuevaAsignatura);
     _.extend($, exports);

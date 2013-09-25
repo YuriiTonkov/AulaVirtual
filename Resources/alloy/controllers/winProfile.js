@@ -275,6 +275,9 @@ function Controller() {
     $.winUsuario.addEventListener("focus", function() {
         refreshScreen();
     });
+    $.winUsuario.addEventListener("close", function() {
+        $.destroy();
+    });
     __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
     _.extend($, exports);
 }

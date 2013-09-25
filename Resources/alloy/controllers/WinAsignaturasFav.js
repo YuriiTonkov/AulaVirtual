@@ -65,6 +65,9 @@ function Controller() {
         var asignaturas = Alloy.Collections.VW_Asignaturas_Favoritas;
         asignaturas.fetch();
     });
+    $.WinAsignaturasFav.addEventListener("close", function() {
+        $.destroy();
+    });
     _.extend($, exports);
 }
 

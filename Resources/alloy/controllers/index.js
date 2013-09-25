@@ -55,10 +55,14 @@ function Controller() {
     Ti.App.Properties.setString("Ayuda", 0);
     var btnGuardar = Ti.UI.createButton({
         title: "Alta",
+        top: 190,
+        left: 35,
         style: Ti.UI.iPhone.SystemButton.SAVE
     });
     var btnLogin = Ti.UI.createButton({
         title: "Login",
+        top: 190,
+        left: 35,
         style: Ti.UI.iPhone.SystemButton.SAVE
     });
     if (void 0 == Ti.App.Properties.getString("Login")) {
@@ -96,7 +100,7 @@ function Controller() {
         window.add(txtLogin);
         window.add(txtPass);
         window.add(emailField);
-        window.setRightNavButton(btnGuardar);
+        window.add(btnGuardar);
     } else {
         var window = Titanium.UI.createWindow({
             title: "Datos de Acceso"
@@ -184,7 +188,7 @@ function Controller() {
         window.add(txtLogin);
         window.add(txtPass);
         window.add(chkAyuda);
-        window.setRightNavButton(btnLogin);
+        window.add(btnLogin);
         txtLogin.value = Ti.App.Properties.getString("Login");
     }
     btnGuardar.addEventListener("click", function() {
