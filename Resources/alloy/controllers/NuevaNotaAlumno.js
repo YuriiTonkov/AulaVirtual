@@ -26,7 +26,7 @@ function Controller() {
         id: "winNuevaNota"
     });
     $.__views.winNuevaNota && $.addTopLevelView($.__views.winNuevaNota);
-    $.__views.__alloyId23 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -34,9 +34,9 @@ function Controller() {
         },
         text: "Fecha:",
         top: "15%",
-        id: "__alloyId23"
+        id: "__alloyId24"
     });
-    $.__views.winNuevaNota.add($.__views.__alloyId23);
+    $.__views.winNuevaNota.add($.__views.__alloyId24);
     $.__views.dateTextField = Ti.UI.createLabel({
         height: "20dp",
         textAlign: "center",
@@ -52,7 +52,7 @@ function Controller() {
         id: "dateTextField"
     });
     $.__views.winNuevaNota.add($.__views.dateTextField);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
+    $.__views.__alloyId25 = Ti.UI.createLabel({
         width: "40%",
         left: "2%",
         font: {
@@ -60,9 +60,9 @@ function Controller() {
         },
         text: "Observaciones:",
         top: "35%",
-        id: "__alloyId24"
+        id: "__alloyId25"
     });
-    $.__views.winNuevaNota.add($.__views.__alloyId24);
+    $.__views.winNuevaNota.add($.__views.__alloyId25);
     $.__views.txtObservaciones = Ti.UI.createTextArea({
         borderColor: "#000",
         height: "200dp",

@@ -25,7 +25,7 @@ function Controller() {
         id: "winCrearAsignatura"
     });
     $.__views.winCrearAsignatura && $.addTopLevelView($.__views.winCrearAsignatura);
-    $.__views.__alloyId8 = Ti.UI.createLabel({
+    $.__views.__alloyId9 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
@@ -33,9 +33,9 @@ function Controller() {
         },
         text: "Nombre",
         top: "5%",
-        id: "__alloyId8"
+        id: "__alloyId9"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId8);
+    $.__views.winCrearAsignatura.add($.__views.__alloyId9);
     $.__views.txtNombreAsignatura = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -44,7 +44,7 @@ function Controller() {
         id: "txtNombreAsignatura"
     });
     $.__views.winCrearAsignatura.add($.__views.txtNombreAsignatura);
-    $.__views.__alloyId9 = Ti.UI.createLabel({
+    $.__views.__alloyId10 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
@@ -52,9 +52,9 @@ function Controller() {
         },
         text: "Descripcion",
         top: "15%",
-        id: "__alloyId9"
+        id: "__alloyId10"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId9);
+    $.__views.winCrearAsignatura.add($.__views.__alloyId10);
     $.__views.txtDescripcion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -63,7 +63,7 @@ function Controller() {
         id: "txtDescripcion"
     });
     $.__views.winCrearAsignatura.add($.__views.txtDescripcion);
-    $.__views.__alloyId10 = Ti.UI.createLabel({
+    $.__views.__alloyId11 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
@@ -71,9 +71,9 @@ function Controller() {
         },
         text: "Asignatura Optativa",
         top: "25%",
-        id: "__alloyId10"
+        id: "__alloyId11"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId10);
+    $.__views.winCrearAsignatura.add($.__views.__alloyId11);
     $.__views.swtOptativa = Ti.UI.createSwitch({
         title: "Optativa",
         value: "false",

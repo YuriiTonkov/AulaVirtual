@@ -20,5 +20,6 @@
 		<Switch enabled="true" top ="70%" left="42%" id="chkAyuda"/>		
 		<Label id="lblError" class="label" visible="false" top ="80%"/>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
+		<Button class="button" top="85%" left="42%" id="btnAlta" title="Alta" onClick="Alta"></Button>
 	</Window>
 </Alloy>

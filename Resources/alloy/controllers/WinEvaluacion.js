@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId76() {
-        __alloyId76.opts || {};
-        var models = filtrado(__alloyId75);
+    function __alloyId77() {
+        __alloyId77.opts || {};
+        var models = filtrado(__alloyId76);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId73 = models[i];
-            __alloyId73.__transform = {};
-            var __alloyId74 = Alloy.createController("EvaluacionRow", {
-                $model: __alloyId73
+            var __alloyId74 = models[i];
+            __alloyId74.__transform = {};
+            var __alloyId75 = Alloy.createController("EvaluacionRow", {
+                $model: __alloyId74
             });
-            rows.push(__alloyId74.getViewEx({
+            rows.push(__alloyId75.getViewEx({
                 recurse: true
             }));
         }
@@ -49,8 +49,8 @@ function Controller() {
         id: "TablaEvaluaciones"
     });
     $.__views.WinEvaluacionesAlumno.add($.__views.TablaEvaluaciones);
-    var __alloyId75 = Alloy.Collections["Evaluacion"] || Evaluacion;
-    __alloyId75.on("fetch destroy change add remove reset", __alloyId76);
+    var __alloyId76 = Alloy.Collections["Evaluacion"] || Evaluacion;
+    __alloyId76.on("fetch destroy change add remove reset", __alloyId77);
     $.__views.addEvaluacion = Ti.UI.createButton({
         id: "addEvaluacion",
         title: "Nueva",
@@ -59,7 +59,7 @@ function Controller() {
     $.__views.WinEvaluacionesAlumno.add($.__views.addEvaluacion);
     NuevoEvaluacion ? $.__views.addEvaluacion.addEventListener("click", NuevoEvaluacion) : __defers["$.__views.addEvaluacion!click!NuevoEvaluacion"] = true;
     exports.destroy = function() {
-        __alloyId75.off("fetch destroy change add remove reset", __alloyId76);
+        __alloyId76.off("fetch destroy change add remove reset", __alloyId77);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

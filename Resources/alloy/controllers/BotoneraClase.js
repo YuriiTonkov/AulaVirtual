@@ -21,10 +21,15 @@ function Controller() {
     };
     __alloyId5.push(__alloyId6);
     var __alloyId7 = {
-        title: "*",
+        title: "(+)",
         ns: "Alloy.Abstract"
     };
     __alloyId5.push(__alloyId7);
+    var __alloyId8 = {
+        title: "*",
+        ns: "Alloy.Abstract"
+    };
+    __alloyId5.push(__alloyId8);
     $.__views.btnBar = Ti.UI.createButtonBar({
         labels: __alloyId5,
         borderRadius: "5dp",
@@ -48,18 +53,29 @@ function Controller() {
             title: "+",
             enabled: true
         }, {
+            title: "(+)",
+            enabled: true
+        }, {
             title: "*",
             enabled: false
         } ];
         $.btnBar.labels = buttons;
     }
     $.btnBar.addEventListener("click", function(e) {
-        if (0 == e.index) {
+        switch (e.index) {
+          case 0:
             var tabAlumnosController = Alloy.createController("NuevoAlumno", {
                 IdClase: data.IdClase
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
-        } else {
+            break;
+
+          case 1:
+            var tabAlumnosController = Alloy.createController("NuevoAlumnoCloud");
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+            break;
+
+          case 2:
             colClase.updateFavorito(data.IdClase, 1);
             var buttons = [ {
                 title: "+",

@@ -23,28 +23,28 @@ function Controller() {
         backgroundImage: "library/images/iphone/backGround640x1136Base.png",
         id: "GrupoTab"
     });
-    $.__views.__alloyId133 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId133"
+    $.__views.__alloyId134 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId134"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId133.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId134.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId135 = Alloy.createController("tabFavoritos", {
-        id: "__alloyId135"
+    $.__views.__alloyId136 = Alloy.createController("tabFavoritos", {
+        id: "__alloyId136"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId135.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId136.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId137 = Alloy.createController("TabAsignaturasFavoritas", {
-        id: "__alloyId137"
+    $.__views.__alloyId138 = Alloy.createController("TabAsignaturasFavoritas", {
+        id: "__alloyId138"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId137.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId138.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId139 = Alloy.createController("TabConfiguracion", {
-        id: "__alloyId139"
+    $.__views.__alloyId140 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId140"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId139.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId140.getViewEx({
         recurse: true
     }));
     $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);
@@ -201,6 +201,12 @@ function Controller() {
     btnLogin.addEventListener("click", function() {
         if (Ti.App.Properties.getString("Login") == txtLogin.value && Ti.App.Properties.getString("Pass") == txtPass.value) {
             Ti.App.Properties.setString("Ayuda", chkAyuda.value);
+            void 0 != Ti.App.Properties.getString("UsuarioCloud") && Cloud.Users.login({
+                login: Ti.App.Properties.getString("Email"),
+                password: "AulaVirtual"
+            }, function(e) {
+                e.success ? Ti.API.info("Logged in user, id = " + e.users[0].id + ", session ID = " + Cloud.sessionId) : Ti.API.info("Login failed.");
+            });
             window.close();
         } else {
             lblError.text = "Usuario/Contraseña incorrecta";

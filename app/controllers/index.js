@@ -53,6 +53,7 @@ if (Ti.App.Properties.getString('Login')==undefined){
    // window.add(emailField)
     window.add(btnLogin);
     txtLogin.value = Ti.App.Properties.getString('Login');
+    
 }
 
 
@@ -67,6 +68,19 @@ btnGuardar.addEventListener("click", function(){
 btnLogin.addEventListener("click", function(){
     if ((Ti.App.Properties.getString('Login')==txtLogin.value) && (Ti.App.Properties.getString('Pass')==txtPass.value)){
          Ti.App.Properties.setString("Ayuda", chkAyuda.value);
+         if (Ti.App.Properties.getString('UsuarioCloud')!=undefined){
+		//Ya tiene usuario en la nube
+				Cloud.Users.login({ 
+		    	login: Ti.App.Properties.getString('Email'),
+		    	password: "AulaVirtual"
+				}, function(e) {
+		    		if (e.success) {
+		        		Ti.API.info("Logged in user, id = " + e.users[0].id + ", session ID = " + Cloud.sessionId);
+		    		} else {
+		        		Ti.API.info("Login failed.");
+		    		}
+				});
+	}
          window.close();
     }
     else

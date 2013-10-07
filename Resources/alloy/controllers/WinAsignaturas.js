@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId56() {
-        __alloyId56.opts || {};
-        var models = filtrado(__alloyId55);
+    function __alloyId57() {
+        __alloyId57.opts || {};
+        var models = filtrado(__alloyId56);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId53 = models[i];
-            __alloyId53.__transform = {};
-            var __alloyId54 = Alloy.createController("AsignaturaRow", {
-                $model: __alloyId53
+            var __alloyId54 = models[i];
+            __alloyId54.__transform = {};
+            var __alloyId55 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId54
             });
-            rows.push(__alloyId54.getViewEx({
+            rows.push(__alloyId55.getViewEx({
                 recurse: true
             }));
         }
@@ -49,8 +49,8 @@ function Controller() {
         id: "TablaAsignaturasByAlumno"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
-    var __alloyId55 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId55.on("fetch destroy change add remove reset", __alloyId56);
+    var __alloyId56 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId56.on("fetch destroy change add remove reset", __alloyId57);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -59,7 +59,7 @@ function Controller() {
     $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
     NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId55.off("fetch destroy change add remove reset", __alloyId56);
+        __alloyId56.off("fetch destroy change add remove reset", __alloyId57);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

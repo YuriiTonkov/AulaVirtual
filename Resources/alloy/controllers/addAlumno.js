@@ -1,28 +1,28 @@
 function Controller() {
-    function __alloyId92() {
-        __alloyId92.opts || {};
-        var models = __alloyId91.models;
+    function __alloyId93() {
+        __alloyId93.opts || {};
+        var models = __alloyId92.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId88 = models[i];
-            __alloyId88.__transform = nombrecompleto(__alloyId88);
-            var __alloyId89 = Ti.UI.createTableViewRow({
+            var __alloyId89 = models[i];
+            __alloyId89.__transform = nombrecompleto(__alloyId89);
+            var __alloyId90 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
                 height: "40dp",
                 editable: "true",
-                data: "undefined" != typeof __alloyId88.__transform["IdAlumno"] ? __alloyId88.__transform["IdAlumno"] : __alloyId88.get("IdAlumno")
+                data: "undefined" != typeof __alloyId89.__transform["IdAlumno"] ? __alloyId89.__transform["IdAlumno"] : __alloyId89.get("IdAlumno")
             });
-            rows.push(__alloyId89);
-            var __alloyId90 = Ti.UI.createLabel({
+            rows.push(__alloyId90);
+            var __alloyId91 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "left",
                 left: "10dp",
-                text: "undefined" != typeof __alloyId88.__transform["nombrecompleto"] ? __alloyId88.__transform["nombrecompleto"] : __alloyId88.get("nombrecompleto"),
-                textid: "undefined" != typeof __alloyId88.__transform["IdAlumno"] ? __alloyId88.__transform["IdAlumno"] : __alloyId88.get("IdAlumno")
+                text: "undefined" != typeof __alloyId89.__transform["nombrecompleto"] ? __alloyId89.__transform["nombrecompleto"] : __alloyId89.get("nombrecompleto"),
+                textid: "undefined" != typeof __alloyId89.__transform["IdAlumno"] ? __alloyId89.__transform["IdAlumno"] : __alloyId89.get("IdAlumno")
             });
-            __alloyId89.add(__alloyId90);
+            __alloyId90.add(__alloyId91);
         }
         $.__views.TablaAlumnos.setData(rows);
     }
@@ -73,12 +73,12 @@ function Controller() {
         id: "addAlumno"
     });
     $.__views.addAlumno && $.addTopLevelView($.__views.addAlumno);
-    $.__views.__alloyId87 = Ti.UI.createLabel({
+    $.__views.__alloyId88 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId87"
+        id: "__alloyId88"
     });
-    $.__views.addAlumno.add($.__views.__alloyId87);
+    $.__views.addAlumno.add($.__views.__alloyId88);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundColor: "transparent",
@@ -86,8 +86,8 @@ function Controller() {
         allowsSelection: "true"
     });
     $.__views.addAlumno.add($.__views.TablaAlumnos);
-    var __alloyId91 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId91.on("fetch destroy change add remove reset", __alloyId92);
+    var __alloyId92 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId92.on("fetch destroy change add remove reset", __alloyId93);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -96,7 +96,7 @@ function Controller() {
     $.__views.addAlumno.add($.__views.btnGuardar);
     GuardarAlumnos ? $.__views.btnGuardar.addEventListener("click", GuardarAlumnos) : __defers["$.__views.btnGuardar!click!GuardarAlumnos"] = true;
     exports.destroy = function() {
-        __alloyId91.off("fetch destroy change add remove reset", __alloyId92);
+        __alloyId92.off("fetch destroy change add remove reset", __alloyId93);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

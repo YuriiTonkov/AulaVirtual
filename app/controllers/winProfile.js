@@ -33,6 +33,45 @@ function refreshScreen(){
     if (Ti.App.Properties.getString('Ayuda')!=undefined){
         $.chkAyuda.value = Ti.App.Properties.getString('Ayuda');
     };
+    if (Ti.App.Properties.getString('UsuarioCloud')!=undefined){
+        $.btnAlta.visible = false;
+    };
+}
+
+function Alta(){
+	if (Ti.App.Properties.getString('UsuarioCloud')==undefined){
+	Cloud.Users.create({
+						    email: Ti.App.Properties.getString('Email'),
+						    first_name: Ti.App.Properties.getString('Nombre'),
+						    last_name: Ti.App.Properties.getString('Apellido1'),
+						    password: 'AulaVirtual',
+						    password_confirmation: 'AulaVirtual',
+						    role: 'Profesor',
+						    custom_fields:{"Direccion": Ti.App.Properties.getString('Direccion'),
+						    			   "CodPostal": Ti.App.Properties.getString('CP'),
+						    			   "Telefono1": Ti.App.Properties.getString('Telefono'),
+						    			   "Apellido2": Ti.App.Properties.getString('Apellido2')
+						    			   }
+					}, function (e) {
+					    if (e.success) {
+						  
+							//AVISO 
+							var user = e.users[0];
+					        alert('Success:\n' +
+					            'id: ' + user.id + '\n' +
+					            'sessionId: ' + Cloud.sessionId + '\n' +
+					            'first name: ' + user.first_name + '\n' +
+					            'last name: ' + user.last_name);
+								Ti.App.Properties.setString("UsuarioCloud",1);
+					    } else {
+					        alert('Error:\n' +
+					            ((e.error && e.message) || JSON.stringify(e)));
+					    }
+					});
+					
+					}
+					else {}
+					
 }
 
 function Guardar(){

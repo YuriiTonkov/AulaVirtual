@@ -13,6 +13,7 @@ var datos = model.toJSON();
 if (datos.Favorita==1){
     var buttons = [
         {title:'+', enabled:true},
+        {title:'(+)', enabled:true},
         {title:'*', enabled:false}];
     $.btnBar.labels=buttons;
 }
@@ -20,23 +21,31 @@ if (datos.Favorita==1){
 
 //Funciones--------------------------
 $.btnBar.addEventListener("click", function(e){
-    if (e.index==0){
-    var tabAlumnosController = Alloy.createController("NuevoAlumno", {"IdClase":data.IdClase});
-    Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
-    }
-    else{
-        colClase.updateFavorito(data.IdClase, 1);
-        var buttons = [
-        {title:'+', enabled:true},
-        {title:'*', enabled:false}];
-        $.btnBar.labels=buttons;
-        //Creamos aviso de que se ha guardado en favoritos
-        var alertDialog = Ti.UI.createAlertDialog({
-            title: "Aviso",
-            message: "La clase se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
-            buttonNames: ['OK'],
-            cancel:0
-        });
-    alertDialog.show();
+    switch (e.index){
+    	case 0:
+    		var tabAlumnosController = Alloy.createController("NuevoAlumno", {"IdClase":data.IdClase});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
+    		break;
+    	case 1:
+    		var tabAlumnosController = Alloy.createController("NuevoAlumnoCloud");
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+    		break;
+    	case 2:
+        	colClase.updateFavorito(data.IdClase, 1);
+        	var buttons = [
+        		{title:'+', enabled:true},
+        		{title:'*', enabled:false}];
+        	$.btnBar.labels=buttons;
+        	//Creamos aviso de que se ha guardado en favoritos
+        	var alertDialog = Ti.UI.createAlertDialog({
+	            title: "Aviso",
+	            message: "La clase se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
+	            buttonNames: ['OK'],
+	            cancel:0
+       			 });
+    		alertDialog.show();
+    		
+    		break;
+    	
     }
 });

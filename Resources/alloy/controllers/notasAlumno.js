@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId144() {
-        __alloyId144.opts || {};
-        var models = filtrado(__alloyId143);
+    function __alloyId145() {
+        __alloyId145.opts || {};
+        var models = filtrado(__alloyId144);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId141 = models[i];
-            __alloyId141.__transform = {};
-            var __alloyId142 = Alloy.createController("AnotacionRow", {
-                $model: __alloyId141
+            var __alloyId142 = models[i];
+            __alloyId142.__transform = {};
+            var __alloyId143 = Alloy.createController("AnotacionRow", {
+                $model: __alloyId142
             });
-            rows.push(__alloyId142.getViewEx({
+            rows.push(__alloyId143.getViewEx({
                 recurse: true
             }));
         }
@@ -47,8 +47,8 @@ function Controller() {
         id: "TablaAnotaciones"
     });
     $.__views.WinNotasAlumno.add($.__views.TablaAnotaciones);
-    var __alloyId143 = Alloy.Collections["Anotacion"] || Anotacion;
-    __alloyId143.on("fetch destroy change add remove reset", __alloyId144);
+    var __alloyId144 = Alloy.Collections["Anotacion"] || Anotacion;
+    __alloyId144.on("fetch destroy change add remove reset", __alloyId145);
     $.__views.addAnotacion = Ti.UI.createButton({
         id: "addAnotacion",
         title: "Nuevo",
@@ -57,7 +57,7 @@ function Controller() {
     $.__views.WinNotasAlumno.add($.__views.addAnotacion);
     NuevaAnotacion ? $.__views.addAnotacion.addEventListener("click", NuevaAnotacion) : __defers["$.__views.addAnotacion!click!NuevaAnotacion"] = true;
     exports.destroy = function() {
-        __alloyId143.off("fetch destroy change add remove reset", __alloyId144);
+        __alloyId144.off("fetch destroy change add remove reset", __alloyId145);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

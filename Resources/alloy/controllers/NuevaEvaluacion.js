@@ -58,14 +58,14 @@ function Controller() {
         id: "winNuevaEvaluacion"
     });
     $.__views.winNuevaEvaluacion && $.addTopLevelView($.__views.winNuevaEvaluacion);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.__alloyId20 = Ti.UI.createLabel({
         width: "40%",
         left: "10dp",
         text: "Nombre",
         top: "10%",
-        id: "__alloyId19"
+        id: "__alloyId20"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId19);
+    $.__views.winNuevaEvaluacion.add($.__views.__alloyId20);
     $.__views.txtNombreEvaluacion = Ti.UI.createTextField({
         borderColor: "#000",
         left: "50%",
@@ -74,14 +74,14 @@ function Controller() {
         id: "txtNombreEvaluacion"
     });
     $.__views.winNuevaEvaluacion.add($.__views.txtNombreEvaluacion);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
+    $.__views.__alloyId21 = Ti.UI.createLabel({
         width: "40%",
         left: "10dp",
         text: "Fecha Inicio",
         top: "20%",
-        id: "__alloyId20"
+        id: "__alloyId21"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId20);
+    $.__views.winNuevaEvaluacion.add($.__views.__alloyId21);
     $.__views.lblFecha = Ti.UI.createLabel({
         borderColor: "#000",
         height: "20dp",
@@ -96,14 +96,14 @@ function Controller() {
         id: "lblFecha"
     });
     $.__views.winNuevaEvaluacion.add($.__views.lblFecha);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
+    $.__views.__alloyId22 = Ti.UI.createLabel({
         width: "40%",
         left: "10dp",
         text: "Peso",
         top: "30%",
-        id: "__alloyId21"
+        id: "__alloyId22"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId21);
+    $.__views.winNuevaEvaluacion.add($.__views.__alloyId22);
     $.__views.txtPeso = Ti.UI.createTextField({
         borderColor: "#000",
         left: "50%",
@@ -112,14 +112,14 @@ function Controller() {
         id: "txtPeso"
     });
     $.__views.winNuevaEvaluacion.add($.__views.txtPeso);
-    $.__views.__alloyId22 = Ti.UI.createLabel({
+    $.__views.__alloyId23 = Ti.UI.createLabel({
         width: "40%",
         left: "10dp",
         text: "Nota",
         top: "40%",
-        id: "__alloyId22"
+        id: "__alloyId23"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId22);
+    $.__views.winNuevaEvaluacion.add($.__views.__alloyId23);
     $.__views.txtNota = Ti.UI.createLabel({
         borderColor: "#000",
         height: "20dp",
