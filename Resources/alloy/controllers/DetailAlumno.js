@@ -7,6 +7,8 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.DetailAlumno = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         backgroundColor: "white",
         id: "DetailAlumno"
     });

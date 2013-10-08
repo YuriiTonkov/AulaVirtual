@@ -20,6 +20,10 @@ function Controller() {
         height: "40dp",
         textAlign: "left",
         left: "10dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         id: "lblEvaluacion",
         text: "undefined" != typeof $model.__transform["Nombre"] ? $model.__transform["Nombre"] : $model.get("Nombre"),
         textid: "undefined" != typeof $model.__transform["IdEvaluacion"] ? $model.__transform["IdEvaluacion"] : $model.get("IdEvaluacion")

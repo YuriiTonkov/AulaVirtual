@@ -20,7 +20,6 @@ function Controller() {
     Alloy.Collections.instance("VW_Asignaturas_Favoritas");
     Alloy.Collections.instance("Anotacion");
     $.__views.GrupoTab = Ti.UI.createTabGroup({
-        backgroundImage: "library/images/iphone/backGround640x1136Base.png",
         id: "GrupoTab"
     });
     $.__views.__alloyId134 = Alloy.createController("TabPrincipal", {
@@ -69,7 +68,7 @@ function Controller() {
         var window = Titanium.UI.createWindow({
             title: "Nuevo usuario"
         });
-        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround320x416Login.png" : "library/images/iphone/backGround640x1010Login.png";
+        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround320x416Login.png" : "library/images/iphone/backGround640x1136Login.png";
         window.open({
             modal: true,
             modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,
@@ -105,7 +104,7 @@ function Controller() {
         var window = Titanium.UI.createWindow({
             title: "Datos de Acceso"
         });
-        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround640x920Login.png" : "library/images/iphone/backGround640x1010Login.png";
+        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround640x920Login.png" : "library/images/iphone/backGround640x1136Login.png";
         window.open({
             modal: true,
             modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,

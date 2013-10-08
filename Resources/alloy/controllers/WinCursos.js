@@ -47,13 +47,15 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.WinCursos = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         id: "WinCursos",
         title: "Cursos"
     });
     $.__views.WinCursos && $.addTopLevelView($.__views.WinCursos);
     $.__views.TablaCursos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);

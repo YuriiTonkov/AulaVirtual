@@ -18,6 +18,10 @@ function Controller() {
         height: "40dp",
         textAlign: "left",
         left: "10dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         id: "lblGrado",
         text: "undefined" != typeof $model.__transform["NombreGrado"] ? $model.__transform["NombreGrado"] : $model.get("NombreGrado"),
         textid: "undefined" != typeof $model.__transform["IdGrado"] ? $model.__transform["IdGrado"] : $model.get("IdGrado")

@@ -20,6 +20,10 @@ function Controller() {
         height: "40dp",
         textAlign: "left",
         left: "10dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         id: "lblClases",
         text: "undefined" != typeof $model.__transform["nombreCompleto"] ? $model.__transform["nombreCompleto"] : $model.get("nombreCompleto"),
         textid: "undefined" != typeof $model.__transform["IdClase"] ? $model.__transform["IdClase"] : $model.get("IdClase")
@@ -31,7 +35,7 @@ function Controller() {
         top: "26dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         textAlign: "left",
         left: "10dp",

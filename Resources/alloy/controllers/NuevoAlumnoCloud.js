@@ -8,7 +8,7 @@ function Controller() {
     var exports = {};
     $.__views.TablaAlumnosCloud = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         id: "TablaAlumnosCloud"
     });
     $.__views.TablaAlumnosCloud && $.addTopLevelView($.__views.TablaAlumnosCloud);

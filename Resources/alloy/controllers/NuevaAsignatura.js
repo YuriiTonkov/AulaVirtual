@@ -19,6 +19,10 @@ function Controller() {
                 height: "40dp",
                 textAlign: "left",
                 left: "10dp",
+                font: {
+                    fontSize: 16,
+                    fontFamily: "HelveticaNeue-UltraLight"
+                },
                 text: "undefined" != typeof __alloyId14.__transform["Nombre"] ? __alloyId14.__transform["Nombre"] : __alloyId14.get("Nombre"),
                 textid: "undefined" != typeof __alloyId14.__transform["IdAsignatura"] ? __alloyId14.__transform["IdAsignatura"] : __alloyId14.get("IdAsignatura")
             });
@@ -64,6 +68,8 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.winNuevaAsignatura = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         backgroundColor: "white",
         id: "winNuevaAsignatura"
     });
@@ -76,7 +82,7 @@ function Controller() {
     $.__views.winNuevaAsignatura.add($.__views.__alloyId13);
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         id: "TablaAsignaturas",
         allowsSelection: "true"
     });

@@ -19,6 +19,10 @@ function Controller() {
                 height: "40dp",
                 textAlign: "left",
                 left: "10dp",
+                font: {
+                    fontSize: 16,
+                    fontFamily: "HelveticaNeue-UltraLight"
+                },
                 text: "undefined" != typeof __alloyId89.__transform["nombrecompleto"] ? __alloyId89.__transform["nombrecompleto"] : __alloyId89.get("nombrecompleto"),
                 textid: "undefined" != typeof __alloyId89.__transform["IdAlumno"] ? __alloyId89.__transform["IdAlumno"] : __alloyId89.get("IdAlumno")
             });
@@ -69,6 +73,8 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.addAlumno = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         backgroundColor: "white",
         id: "addAlumno"
     });
@@ -81,7 +87,7 @@ function Controller() {
     $.__views.addAlumno.add($.__views.__alloyId88);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         id: "TablaAlumnos",
         allowsSelection: "true"
     });

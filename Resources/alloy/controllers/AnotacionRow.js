@@ -20,6 +20,10 @@ function Controller() {
         height: "40dp",
         textAlign: "left",
         left: "10dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         top: "2dp",
         id: "lblAnotacion",
         text: "undefined" != typeof $model.__transform["Fecha"] ? $model.__transform["Fecha"] : $model.get("Fecha"),
@@ -32,7 +36,7 @@ function Controller() {
         top: "20dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         textAlign: "left",
         left: "10dp",

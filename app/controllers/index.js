@@ -11,7 +11,7 @@ if (Ti.App.Properties.getString('Login')==undefined){
    if (Titanium.Platform.displayCaps.platformHeight < 568){
    	window.backgroundImage="library/images/iphone/backGround320x416Login.png"; //Iphone 4
    }else{
-   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png"; //Iphone 5
+   	window.backgroundImage="library/images/iphone/backGround640x1136Login.png"; //Iphone 5
    }
    
     window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});
@@ -31,7 +31,7 @@ if (Ti.App.Properties.getString('Login')==undefined){
     if (Titanium.Platform.displayCaps.platformHeight < 568){
    	window.backgroundImage="library/images/iphone/backGround640x920Login.png"; //Iphone 4
    }else{
-   	window.backgroundImage="library/images/iphone/backGround640x1010Login.png"; //Iphone 5
+   	window.backgroundImage="library/images/iphone/backGround640x1136Login.png"; //Iphone 5
    }
    
     window.open({modal:true, modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL, modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET});

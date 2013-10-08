@@ -153,6 +153,8 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.winNuevoAlumno = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         id: "winNuevoAlumno"
     });
     $.__views.winNuevoAlumno && $.addTopLevelView($.__views.winNuevoAlumno);
@@ -183,7 +185,7 @@ function Controller() {
         top: "0dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Nombre",
         id: "__alloyId26"
@@ -208,7 +210,7 @@ function Controller() {
         top: "45dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "1er Apellido",
         id: "__alloyId27"
@@ -233,7 +235,7 @@ function Controller() {
         top: "90dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "2o Apellido",
         id: "__alloyId28"
@@ -258,7 +260,7 @@ function Controller() {
         top: "135dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Direccion",
         id: "__alloyId29"
@@ -283,7 +285,7 @@ function Controller() {
         top: "180dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Cod.Postal",
         id: "__alloyId30"
@@ -308,7 +310,7 @@ function Controller() {
         top: "225dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Telefono",
         id: "__alloyId31"
@@ -333,7 +335,7 @@ function Controller() {
         top: "270dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Telefono2",
         id: "__alloyId32"
@@ -358,7 +360,7 @@ function Controller() {
         top: "315dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Email",
         id: "__alloyId33"
@@ -383,7 +385,7 @@ function Controller() {
         top: "360dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Email2",
         id: "__alloyId34"
@@ -408,7 +410,7 @@ function Controller() {
         top: "405dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Nombre Padre",
         id: "__alloyId35"
@@ -433,7 +435,7 @@ function Controller() {
         top: "450dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Nombre Madre",
         id: "__alloyId36"

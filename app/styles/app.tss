@@ -1,7 +1,14 @@
-//Estilo redondeado para todas las tablas de la aplicacion
+//Estilo de todas las ventanas. se le quita al titulo la propiedad traslucida y se le pone el mismo fondo de color de la aplicacion
+"Window": {
+	"barColor":"#e7effa", 
+	"translucent": "false"
+	}
+
+//Estilo agrupado para todas las tablas de la aplicacion
 "TableView": {
   style : Ti.UI.iPhone.TableViewStyle.GROUPED,
-  backgroundColor : "transparent"}
+  backgroundColor : "white"
+}
  
 //Todas las filas de las tablas llevan de fondo color blanco  
 "TableViewRow":{
@@ -14,9 +21,9 @@
 	"width": "100%",
 	"height": "40dp",
 	"textAlign": "left",
-	"left": "10dp"
+	"left": "10dp", 
+   "font": {fontSize:16, fontFamily:'HelveticaNeue-UltraLight'}
 }
-
 //Estilo de los titulos de las filas de la tabla de Cursos.
 "#lblCurso":{
     width: Ti.UI.FILL,
@@ -30,7 +37,7 @@
 	"width": "100%",
 	"height": "10dp",
 	"top":"26dp",
-	"font": {fontSize:10,fontFamily:'HelveticaNeue'},
+	"font": {fontSize:10,fontFamily:'HelveticaNeue-UltraLight'},
 	"textAlign": "left",
 	"left": "10dp"
 }
@@ -43,12 +50,12 @@
 
 
 //Pendiente de cambiar el fondo en funcion del telefono en el controlador...
-".mainWindow[platform=ios formFactor=max-height:480dp]" : {
-backgroundImage : "library/images/iphone/backGround320x480Base.png"
-}
-".mainWindow[platform=ios formFactor=max-height:568dp]" : {
-backgroundImage : "library/images/iphone/backGround640x1136Base.png"
-}
+//".mainWindow[platform=ios formFactor=max-height:480dp]" : {
+//backgroundImage : "library/images/iphone/backGround320x480Base.png"
+//}
+//".mainWindow[platform=ios formFactor=max-height:568dp]" : {
+//backgroundImage : "library/images/iphone/backGround640x1136Base.png"
+//}
 
 //Estilo para los scrollview
 ".ScrollView":{
@@ -70,7 +77,7 @@ backgroundImage : "library/images/iphone/backGround640x1136Base.png"
 	"textAlign": "left",
 	"left": "6dp",
 	"top": "20dp",
-	"font": {fontSize:10,fontFamily:'HelveticaNeue'}
+	"font": {fontSize:10,fontFamily:'HelveticaNeue-UltraLight'}
 }
 
 //Estilo de las cajas de texto de la ventana NuevoAlumno

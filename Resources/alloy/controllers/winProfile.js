@@ -58,6 +58,8 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.winUsuario = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         backgroundColor: "white",
         id: "winUsuario",
         title: "Perfil usuario"

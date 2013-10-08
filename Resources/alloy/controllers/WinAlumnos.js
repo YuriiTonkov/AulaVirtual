@@ -35,13 +35,15 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.WinAlumnos = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
         id: "WinAlumnos",
         title: "Alumnos"
     });
     $.__views.WinAlumnos && $.addTopLevelView($.__views.WinAlumnos);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);

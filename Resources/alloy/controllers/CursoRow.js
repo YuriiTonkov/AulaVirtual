@@ -19,6 +19,10 @@ function Controller() {
         height: "40dp",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         left: "10dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         top: "-6dp",
         id: "lblCurso",
         text: "undefined" != typeof $model.__transform["Nombre"] ? $model.__transform["Nombre"] : $model.get("Nombre"),
@@ -31,7 +35,7 @@ function Controller() {
         top: "26dp",
         font: {
             fontSize: 10,
-            fontFamily: "HelveticaNeue"
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         textAlign: "left",
         left: "10dp",
