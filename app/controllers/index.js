@@ -9,7 +9,7 @@ if (Ti.App.Properties.getString('Login')==undefined){
    var window = Titanium.UI.createWindow({title:"Nuevo usuario"});
    
    if (Titanium.Platform.displayCaps.platformHeight < 568){
-   	window.backgroundImage="library/images/iphone/backGround320x416Login.png"; //Iphone 4
+   	window.backgroundImage="library/images/iphone/backGround640x920Login.png"; //Iphone 4
    }else{
    	window.backgroundImage="library/images/iphone/backGround640x1136Login.png"; //Iphone 5
    }
