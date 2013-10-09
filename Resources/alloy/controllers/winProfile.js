@@ -64,7 +64,7 @@ function Controller() {
                 }
             };
             Cloud.Users.update(data, function(e) {
-                e.success ? alert("Updated!") : error(e);
+                e.success ? alert("Se han modificado los datos de usuario") : error(e);
             });
         }
     }
