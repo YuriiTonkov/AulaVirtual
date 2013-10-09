@@ -68,7 +68,7 @@ function Controller() {
         var window = Titanium.UI.createWindow({
             title: "Nuevo usuario"
         });
-        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround320x416Login.png" : "library/images/iphone/backGround640x1136Login.png";
+        window.backgroundImage = 568 > Titanium.Platform.displayCaps.platformHeight ? "library/images/iphone/backGround640x920Login.png" : "library/images/iphone/backGround640x1136Login.png";
         window.open({
             modal: true,
             modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,

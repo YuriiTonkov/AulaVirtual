@@ -11,11 +11,40 @@ colClase.fetch();
 var model = colClase.get(data.IdClase);
 var datos = model.toJSON();
 if (datos.Favorita==1){
+	if (Ti.App.Properties.getString('UsuarioCloud')==undefined){
     var buttons = [
+        {title:'+', enabled:true},
+        {title:'(+)', enabled:false},
+        {title:'*', enabled:false}];
+        
+    $.btnBar.labels=buttons;
+    
+}else{
+	var buttons = [
         {title:'+', enabled:true},
         {title:'(+)', enabled:true},
         {title:'*', enabled:false}];
+        
     $.btnBar.labels=buttons;
+}
+} else {
+	if (Ti.App.Properties.getString('UsuarioCloud')==undefined){
+    var buttons = [
+        {title:'+', enabled:true},
+        {title:'(+)', enabled:false},
+        {title:'*', enabled:true}];
+        
+    $.btnBar.labels=buttons;
+    
+}else{
+	var buttons = [
+        {title:'+', enabled:true},
+        {title:'(+)', enabled:true},
+        {title:'*', enabled:true}];
+        
+    $.btnBar.labels=buttons;
+}
+	
 }
 
 
@@ -27,13 +56,14 @@ $.btnBar.addEventListener("click", function(e){
     		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
     		break;
     	case 1:
-    		var tabAlumnosController = Alloy.createController("NuevoAlumnoCloud");
-    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+    		var tabAlumnosCloudController = Alloy.createController("NuevoAlumnoCloud",{});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());
     		break;
     	case 2:
         	colClase.updateFavorito(data.IdClase, 1);
         	var buttons = [
         		{title:'+', enabled:true},
+        		{title:'(+)', enabled:true},
         		{title:'*', enabled:false}];
         	$.btnBar.labels=buttons;
         	//Creamos aviso de que se ha guardado en favoritos

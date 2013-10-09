@@ -1,4 +1,7 @@
 <Alloy>
-	<TableView class="form" id="TablaAlumnosCloud">
-	</TableView>
+	<Window id="NuevoAlumnoCloud" title="Solicitantes">	
+		<TableView class="form" id="TablaAlumnosCloud">
+			<TableViewRow   id="tblAlumnoCloudRow" >
+		</TableViewRow>
+	</Window>
 </Alloy>

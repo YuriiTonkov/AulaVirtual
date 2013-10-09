@@ -48,6 +48,25 @@ function Controller() {
             $.lblError.text = "Contraseña incorrecta";
             $.lblError.visible = true;
         }
+        if (void 0 != Ti.App.Properties.getString("UsuarioCloud")) {
+            var data = {
+                email: $.txtEmail.value,
+                first_name: $.txtNombre.value,
+                last_name: $.txtApellido1.value,
+                password: "AulaVirtual",
+                password_confirmation: "AulaVirtual",
+                role: "Profesor",
+                custom_fields: {
+                    Direccion: $.txtDireccion.value,
+                    CodPostal: $.txtCodPostal.value,
+                    Telefono1: $.txtTelefono.value,
+                    Apellido2: $.txtApellido2.value
+                }
+            };
+            Cloud.Users.update(data, function(e) {
+                e.success ? alert("Updated!") : error(e);
+            });
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "winProfile";

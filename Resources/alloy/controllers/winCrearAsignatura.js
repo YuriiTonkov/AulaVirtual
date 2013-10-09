@@ -36,19 +36,19 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.WinAsignaturasAlumno = Ti.UI.createWindow({
+    $.__views.WinCrearAsignatura = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        id: "WinAsignaturasAlumno",
+        id: "WinCrearAsignatura",
         title: "Asignaturas"
     });
-    $.__views.WinAsignaturasAlumno && $.addTopLevelView($.__views.WinAsignaturasAlumno);
+    $.__views.WinCrearAsignatura && $.addTopLevelView($.__views.WinCrearAsignatura);
     $.__views.TablaAsignaturasAlumno = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundColor: "white",
         id: "TablaAsignaturasAlumno"
     });
-    $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasAlumno);
+    $.__views.WinCrearAsignatura.add($.__views.TablaAsignaturasAlumno);
     var __alloyId155 = Alloy.Collections["Asignatura"] || Asignatura;
     __alloyId155.on("fetch destroy change add remove reset", __alloyId156);
     $.__views.addAsignatura = Ti.UI.createButton({
@@ -56,7 +56,7 @@ function Controller() {
         title: "Añadir",
         top: "-50dp"
     });
-    $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
+    $.__views.WinCrearAsignatura.add($.__views.addAsignatura);
     NuevaAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevaAsignatura) : __defers["$.__views.addAsignatura!click!NuevaAsignatura"] = true;
     exports.destroy = function() {
         __alloyId155.off("fetch destroy change add remove reset", __alloyId156);

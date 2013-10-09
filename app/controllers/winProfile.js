@@ -90,6 +90,33 @@ function Guardar(){
             $.lblError.text = "Contraseña incorrecta";
             $.lblError.visible= true;
     }   
+    if (Ti.App.Properties.getString('UsuarioCloud')!=undefined){
+    var data = {
+						    email: $.txtEmail.value,
+						    first_name:$.txtNombre.value ,
+						    last_name:  $.txtApellido1.value,
+						    password: 'AulaVirtual',
+						    password_confirmation: 'AulaVirtual',
+						    role: 'Profesor',
+						    custom_fields:{"Direccion": $.txtDireccion.value,
+						    			   "CodPostal": $.txtCodPostal.value,
+						    			   "Telefono1": $.txtTelefono.value,
+						    			   "Apellido2": $.txtApellido2.value
+						    			   }
+				};
+    	
+        Cloud.Users.update(data, function (e) {
+            if (e.success) {
+                alert('Se han modificado los datos de usuario');
+            }
+            else {
+                error(e);
+            }
+            
+           
+        });
+       
+	}
 }
 
 $.winUsuario.addEventListener('focus',function(e){

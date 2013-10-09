@@ -48,7 +48,19 @@ function Controller() {
     colClase.fetch();
     var model = colClase.get(data.IdClase);
     var datos = model.toJSON();
-    if (1 == datos.Favorita) {
+    if (1 == datos.Favorita) if (void 0 == Ti.App.Properties.getString("UsuarioCloud")) {
+        var buttons = [ {
+            title: "+",
+            enabled: true
+        }, {
+            title: "(+)",
+            enabled: false
+        }, {
+            title: "*",
+            enabled: false
+        } ];
+        $.btnBar.labels = buttons;
+    } else {
         var buttons = [ {
             title: "+",
             enabled: true
@@ -58,6 +70,30 @@ function Controller() {
         }, {
             title: "*",
             enabled: false
+        } ];
+        $.btnBar.labels = buttons;
+    } else if (void 0 == Ti.App.Properties.getString("UsuarioCloud")) {
+        var buttons = [ {
+            title: "+",
+            enabled: true
+        }, {
+            title: "(+)",
+            enabled: false
+        }, {
+            title: "*",
+            enabled: true
+        } ];
+        $.btnBar.labels = buttons;
+    } else {
+        var buttons = [ {
+            title: "+",
+            enabled: true
+        }, {
+            title: "(+)",
+            enabled: true
+        }, {
+            title: "*",
+            enabled: true
         } ];
         $.btnBar.labels = buttons;
     }
@@ -71,14 +107,17 @@ function Controller() {
             break;
 
           case 1:
-            var tabAlumnosController = Alloy.createController("NuevoAlumnoCloud");
-            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+            var tabAlumnosCloudController = Alloy.createController("NuevoAlumnoCloud", {});
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());
             break;
 
           case 2:
             colClase.updateFavorito(data.IdClase, 1);
             var buttons = [ {
                 title: "+",
+                enabled: true
+            }, {
+                title: "(+)",
                 enabled: true
             }, {
                 title: "*",
