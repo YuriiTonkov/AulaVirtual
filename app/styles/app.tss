@@ -1,13 +1,13 @@
 //Estilo de todas las ventanas. se le quita al titulo la propiedad traslucida y se le pone el mismo fondo de color de la aplicacion
 "Window": {
 	"barColor":"#e7effa", 
-	"translucent": "false"
+	"translucent": "false",
+  	backgroundColor : "EEE"
 	}
 
 //Estilo agrupado para todas las tablas de la aplicacion
 "TableView": {
-  style : Ti.UI.iPhone.TableViewStyle.GROUPED,
-  backgroundColor : "white"
+  style : Ti.UI.iPhone.TableViewStyle.GROUPED
 }
  
 //Todas las filas de las tablas llevan de fondo color blanco  
@@ -32,6 +32,14 @@
     "top": "-6dp"		
 } 
 
+"#lblClases":{
+    width: Ti.UI.FILL,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+    "left": "10dp",
+    "top": "-6dp"		
+} 
+
+
 //Estilo de los subtitulos de las filas de las tablas
 ".rowSubTitle": {
 	"width": "100%",
@@ -49,17 +57,9 @@
 }
 
 
-//Pendiente de cambiar el fondo en funcion del telefono en el controlador...
-//".mainWindow[platform=ios formFactor=max-height:480dp]" : {
-//backgroundImage : "library/images/iphone/backGround320x480Base.png"
-//}
-//".mainWindow[platform=ios formFactor=max-height:568dp]" : {
-//backgroundImage : "library/images/iphone/backGround640x1136Base.png"
-//}
-
 //Estilo para los scrollview
-".ScrollView":{
-	backgroundColor : "transparent"
+"#scrollViewAlumno":{
+	backgroundColor : "EEE"
 }
 
 "#viewAlumno":{

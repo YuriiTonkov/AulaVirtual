@@ -16,14 +16,15 @@ function Controller() {
     });
     $.__views.tblClasesRow && $.addTopLevelView($.__views.tblClasesRow);
     $.__views.lblClases = Ti.UI.createLabel({
-        width: "100%",
+        width: Ti.UI.FILL,
         height: "40dp",
-        textAlign: "left",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         left: "10dp",
         font: {
             fontSize: 16,
             fontFamily: "HelveticaNeue-UltraLight"
         },
+        top: "-6dp",
         id: "lblClases",
         text: "undefined" != typeof $model.__transform["nombreCompleto"] ? $model.__transform["nombreCompleto"] : $model.get("nombreCompleto"),
         textid: "undefined" != typeof $model.__transform["IdClase"] ? $model.__transform["IdClase"] : $model.get("IdClase")

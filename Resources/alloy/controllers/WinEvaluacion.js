@@ -40,13 +40,13 @@ function Controller() {
     $.__views.WinEvaluacionesAlumno = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
+        backgroundColor: "EEE",
         id: "WinEvaluacionesAlumno",
         title: "Evaluaciones"
     });
     $.__views.WinEvaluacionesAlumno && $.addTopLevelView($.__views.WinEvaluacionesAlumno);
     $.__views.TablaEvaluaciones = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "white",
         backgroundImage: "backGround320x416Base.png",
         id: "TablaEvaluaciones"
     });

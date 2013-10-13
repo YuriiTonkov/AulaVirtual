@@ -9,13 +9,13 @@ function Controller() {
     $.__views.NuevoAlumnoCloud = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
+        backgroundColor: "EEE",
         id: "NuevoAlumnoCloud",
         title: "Solicitantes"
     });
     $.__views.NuevoAlumnoCloud && $.addTopLevelView($.__views.NuevoAlumnoCloud);
     $.__views.TablaAlumnosCloud = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "white",
         id: "TablaAlumnosCloud"
     });
     $.__views.NuevoAlumnoCloud.add($.__views.TablaAlumnosCloud);
