@@ -1,4 +1,36 @@
 function Controller() {
+    function GuardarAlumnos() {
+        for (var i = 0; $.TablaAlumnosCloud.data[0].rows.length > i; i++) $.TablaAlumnosCloud.data[0].rows[i].selected && Cloud.Users.query({
+            page: 1,
+            per_page: 1,
+            where: {
+                id: $.TablaAlumnosCloud.data[0].rows[i].data
+            }
+        }, function(e) {
+            if (e.success) {
+                var AlumnoCloud = Alloy.createModel("Alumno", {
+                    Nombre: e.users[0].first_name,
+                    Apellido1: e.users[0].last_name,
+                    Apellido2: e.users[0].custom_fields.Apellido2,
+                    Direccion: e.users[0].custom_fields.Direccion,
+                    CodPostal: e.users[0].custom_fields.CodPostal,
+                    TelContacto: e.users[0].custom_fields.Telefono1,
+                    TelContacto2: e.users[0].custom_fields.Telefono2,
+                    Email: e.users[0].email,
+                    Email2: e.users[0].custom_fields.Email2,
+                    Padre: e.users[0].custom_fields.Padre,
+                    Madre: e.users[0].custom_fields.Madre,
+                    foto1_url: "",
+                    Clase: data.IdClase
+                });
+                var coleccionAlumno = Alloy.Collections.Alumno;
+                coleccionAlumno.add(AlumnoCloud);
+                AlumnoCloud.save();
+                coleccionAlumno.fetch();
+            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        });
+        $.NuevoAlumnoCloud.close();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "NuevoAlumnoCloud";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,6 +38,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.NuevoAlumnoCloud = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
@@ -16,30 +49,38 @@ function Controller() {
     $.__views.TablaAlumnosCloud = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundColor: "white",
-        id: "TablaAlumnosCloud"
+        id: "TablaAlumnosCloud",
+        allowsSelection: "true"
     });
     $.__views.NuevoAlumnoCloud.add($.__views.TablaAlumnosCloud);
-    $.__views.tblAlumnoCloudRow = Ti.UI.createTableViewRow({
-        backgroundColor: "white",
-        height: "40dp",
-        id: "tblAlumnoCloudRow"
+    $.__views.btnGuardar = Ti.UI.createButton({
+        id: "btnGuardar",
+        top: "-50dp",
+        title: "Guardar"
     });
-    $.__views.NuevoAlumnoCloud.add($.__views.tblAlumnoCloudRow);
+    $.__views.NuevoAlumnoCloud.add($.__views.btnGuardar);
+    GuardarAlumnos ? $.__views.btnGuardar.addEventListener("click", GuardarAlumnos) : __defers["$.__views.btnGuardar!click!GuardarAlumnos"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var arg1 = arguments[0] || {};
+    var data = [];
+    data = arg1;
     $.NuevoAlumnoCloud.title = "Solicitudes de tutoría";
+    $.NuevoAlumnoCloud.setRightNavButton($.btnGuardar);
     Cloud.Friends.requests(function(e) {
         if (e.success) if (0 == e.friend_requests.length) $.TablaAlumnosCloud.setData([ {
             title: "No hay solicitantes"
         } ]); else {
-            var data = [];
+            var dato = [];
             for (var i = 0, l = e.friend_requests.length; l > i; i++) {
                 var user = e.friend_requests[i].user;
-                var row = $.tblAlumnoCloudRow;
-                row.title = user.first_name + " " + user.last_name;
-                data.push(row);
+                var row = Ti.UI.createTableViewRow({
+                    title: user.first_name + " " + user.last_name,
+                    id: user.id
+                });
+                dato.push(row);
             }
-            $.TablaAlumnosCloud.setData(data);
+            $.TablaAlumnosCloud.setData(dato);
         } else {
             $.TablaAlumnosCloud.setData.setData([ {
                 title: e.error && e.message || e
@@ -47,6 +88,7 @@ function Controller() {
             error(e);
         }
     });
+    __defers["$.__views.btnGuardar!click!GuardarAlumnos"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumnos);
     _.extend($, exports);
 }
 

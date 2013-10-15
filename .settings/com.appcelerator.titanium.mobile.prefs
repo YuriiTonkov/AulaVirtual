@@ -1,8 +1,8 @@
 eclipse.preferences.version=1
 iosLaunchConfigurationAttributes/ATTR_MINIFY=true
-iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=AulaVirtual
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=Aula_Virtual
 iosLaunchConfigurationAttributes/appid=com.sushitonkovsoftware.aulavirtual
 iosLaunchConfigurationAttributes/certificate=Nicolas Gutierrez Garcia (WTLW6X7K88)
 iosLaunchConfigurationAttributes/keychain=
-iosLaunchConfigurationAttributes/sdk_version=6.1
-iosLaunchConfigurationAttributes/uuid=F55F5B21-26B8-461F-A0C6-03E00B0B4FF2
+iosLaunchConfigurationAttributes/sdk_version=7.0
+iosLaunchConfigurationAttributes/uuid=71676ED9-71DB-49A5-BD75-04259ACC9082
