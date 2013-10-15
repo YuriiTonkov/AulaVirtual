@@ -26,13 +26,13 @@ function Controller() {
     $.__views.winGrados = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
+        backgroundColor: "EEE",
         id: "winGrados",
         title: "Grados"
     });
     $.__views.winGrados && $.addTopLevelView($.__views.winGrados);
     $.__views.TablaGrados = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "white",
         id: "TablaGrados"
     });
     $.__views.winGrados.add($.__views.TablaGrados);

@@ -42,15 +42,20 @@ function Controller() {
     $.__views.NuevoAlumnoCloud = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
+        backgroundColor: "EEE",
         id: "NuevoAlumnoCloud",
         title: "Solicitantes"
     });
     $.__views.NuevoAlumnoCloud && $.addTopLevelView($.__views.NuevoAlumnoCloud);
     $.__views.TablaAlumnosCloud = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+<<<<<<< HEAD
         backgroundColor: "white",
         id: "TablaAlumnosCloud",
         allowsSelection: "true"
+=======
+        id: "TablaAlumnosCloud"
+>>>>>>> 68395d14f6a581cb09fa31e49f504c57041e3130
     });
     $.__views.NuevoAlumnoCloud.add($.__views.TablaAlumnosCloud);
     $.__views.btnGuardar = Ti.UI.createButton({

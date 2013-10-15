@@ -87,7 +87,6 @@ function Controller() {
     $.__views.addAlumno.add($.__views.__alloyId88);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "white",
         id: "TablaAlumnos",
         allowsSelection: "true"
     });

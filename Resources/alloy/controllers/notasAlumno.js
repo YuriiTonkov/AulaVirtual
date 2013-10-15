@@ -39,13 +39,13 @@ function Controller() {
     $.__views.WinNotasAlumno = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
+        backgroundColor: "EEE",
         id: "WinNotasAlumno",
         title: "Anotaciones"
     });
     $.__views.WinNotasAlumno && $.addTopLevelView($.__views.WinNotasAlumno);
     $.__views.TablaAnotaciones = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-        backgroundColor: "white",
         id: "TablaAnotaciones"
     });
     $.__views.WinNotasAlumno.add($.__views.TablaAnotaciones);

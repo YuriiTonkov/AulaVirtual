@@ -155,19 +155,21 @@ function Controller() {
     $.__views.winNuevoAlumno = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
+        backgroundColor: "EEE",
         id: "winNuevoAlumno"
     });
     $.__views.winNuevoAlumno && $.addTopLevelView($.__views.winNuevoAlumno);
     Arrastre ? $.__views.winNuevoAlumno.addEventListener("swipe", Arrastre) : __defers["$.__views.winNuevoAlumno!swipe!Arrastre"] = true;
-    $.__views.scrollView = Ti.UI.createScrollView({
-        id: "scrollView",
+    $.__views.scrollViewAlumno = Ti.UI.createScrollView({
+        backgroundColor: "EEE",
+        id: "scrollViewAlumno",
         top: "15%",
         showVerticalScrollIndicator: "true",
         showHorizontalScrollIndicator: "false",
-        height: "90%",
+        height: "130%",
         width: "100%"
     });
-    $.__views.winNuevoAlumno.add($.__views.scrollView);
+    $.__views.winNuevoAlumno.add($.__views.scrollViewAlumno);
     $.__views.viewAlumno = Ti.UI.createView({
         backgroundColor: "white",
         borderRadius: "5dp",
@@ -176,7 +178,7 @@ function Controller() {
         width: "85%",
         id: "viewAlumno"
     });
-    $.__views.scrollView.add($.__views.viewAlumno);
+    $.__views.scrollViewAlumno.add($.__views.viewAlumno);
     $.__views.__alloyId26 = Ti.UI.createLabel({
         width: "100%",
         height: "16dp",

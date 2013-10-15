@@ -1,7 +1,6 @@
 <Alloy>
-	
 	<Window id="winNuevoAlumno" onSwipe="Arrastre" class="container">
-		<ScrollView id="scrollView" top="15%" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false" height="90%" width="100%"  >
+		<ScrollView id="scrollViewAlumno" top="15%" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false" height="130%" width="100%"  >
 		   <View id="viewAlumno" >
 			 	<Label class="labelAlumno" top ="0dp" >Nombre </Label>
 				<TextField top ="15dp"  class="textboxAlumno" id="txtNombre" ></TextField>
