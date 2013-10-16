@@ -4,10 +4,15 @@ function Controller() {
             page: 1,
             per_page: 1,
             where: {
-                id: $.TablaAlumnosCloud.data[0].rows[i].data
+                id: $.TablaAlumnosCloud.data[0].rows[i].id
             }
         }, function(e) {
             if (e.success) {
+                Cloud.Friends.approve({
+                    user_ids: e.users[0].id
+                }, function(o) {
+                    o.success ? alert("Alumno aceptado") : error(o);
+                });
                 var AlumnoCloud = Alloy.createModel("Alumno", {
                     Nombre: e.users[0].first_name,
                     Apellido1: e.users[0].last_name,
@@ -21,7 +26,8 @@ function Controller() {
                     Padre: e.users[0].custom_fields.Padre,
                     Madre: e.users[0].custom_fields.Madre,
                     foto1_url: "",
-                    Clase: data.IdClase
+                    Clase: data.IdClase,
+                    UsuarioCloud: e.users[0].id
                 });
                 var coleccionAlumno = Alloy.Collections.Alumno;
                 coleccionAlumno.add(AlumnoCloud);
@@ -49,13 +55,8 @@ function Controller() {
     $.__views.NuevoAlumnoCloud && $.addTopLevelView($.__views.NuevoAlumnoCloud);
     $.__views.TablaAlumnosCloud = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
-<<<<<<< HEAD
-        backgroundColor: "white",
         id: "TablaAlumnosCloud",
         allowsSelection: "true"
-=======
-        id: "TablaAlumnosCloud"
->>>>>>> 68395d14f6a581cb09fa31e49f504c57041e3130
     });
     $.__views.NuevoAlumnoCloud.add($.__views.TablaAlumnosCloud);
     $.__views.btnGuardar = Ti.UI.createButton({
@@ -91,6 +92,15 @@ function Controller() {
                 title: e.error && e.message || e
             } ]);
             error(e);
+        }
+    });
+    $.TablaAlumnosCloud.addEventListener("click", function(e) {
+        if (e.row.selected) {
+            e.row.backgroundColor = "#fff";
+            e.row.selected = 0;
+        } else {
+            e.row.backgroundColor = "#003b6f";
+            e.row.selected = 1;
         }
     });
     __defers["$.__views.btnGuardar!click!GuardarAlumnos"] && $.__views.btnGuardar.addEventListener("click", GuardarAlumnos);

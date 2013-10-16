@@ -66,9 +66,14 @@ function Controller() {
     $.TablaAlumnos.addEventListener("delete", function(e) {
         var alumnos = Alloy.Collections.Alumno;
         var model = alumnos.get(e.rowData.data);
-        model.destroy();
-        alumnos.remove(model);
-        alumnos.fetch();
+        Cloud.Friends.remove({
+            user_ids: model.UsuarioCloud
+        }, function(e) {
+            e.success ? alert("Se ha desvinculado al alumn") : error(e);
+            model.destroy();
+            alumnos.remove(model);
+            alumnos.fetch();
+        });
     });
     $.WinAlumnos.addEventListener("close", function() {
         $.destroy();

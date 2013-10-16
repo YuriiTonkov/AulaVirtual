@@ -34,15 +34,24 @@ function nombrecompleto(model){
 
 $.TablaAlumnos.addEventListener('delete', function(e) 
 {
-    //console.debug("recogemos:"+e.rowData.data);
-    var alumnos = Alloy.Collections.Alumno;
+	var alumnos = Alloy.Collections.Alumno;
     var model = alumnos.get(e.rowData.data);
+    //Eliminamos la amistad 
+    Cloud.Friends.remove({
+				user_ids: model.UsuarioCloud
+			}, function(e) {
+	            if (e.success) {
+	                alert('Se ha desvinculado al alumn');
+	            } else {
+	                error(e);
+	            }
+	            
+	            model.destroy();
+    			alumnos.remove(model);
+    			alumnos.fetch();
+	        });
     
-    model.destroy();
-    alumnos.remove(model);
-    alumnos.fetch();
 });
-
 
 //--------------------------------
 

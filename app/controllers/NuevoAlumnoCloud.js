@@ -20,7 +20,7 @@ Cloud.Friends.requests(function (e) {
 	                    var user = e.friend_requests[i].user;
 	                    var row = Ti.UI.createTableViewRow({
 		                        title: user.first_name + ' ' + user.last_name,
-		                        id: user.id
+		                        id: user.id,
 	                    	});
 	                    dato.push(row);
 	                   
@@ -49,6 +49,15 @@ function GuardarAlumnos(){
 		    }
 				}, function (e) {
 				    if (e.success) {
+				    	Cloud.Friends.approve({
+							user_ids: e.users[0].id
+						}, function(o) {
+					        if (o.success) {
+						        alert('Alumno aceptado');
+					        } else {
+						        error(o);
+					        }
+				        });
 				    	 var AlumnoCloud = Alloy.createModel('Alumno',{Nombre:e.users[0].first_name, 
                                             Apellido1:e.users[0].last_name,   
                                             Apellido2:e.users[0].custom_fields.Apellido2, 
@@ -61,7 +70,8 @@ function GuardarAlumnos(){
                                             Padre:e.users[0].custom_fields.Padre,
                                             Madre:e.users[0].custom_fields.Madre,
                                             foto1_url:"",
-                                            Clase:data.IdClase});
+                                            Clase:data.IdClase,
+                                            UsuarioCloud:e.users[0].id});
            				 var coleccionAlumno = Alloy.Collections.Alumno;
             			 coleccionAlumno.add(AlumnoCloud);
             			 AlumnoCloud.save();
@@ -83,3 +93,18 @@ function GuardarAlumnos(){
     $.NuevoAlumnoCloud.close(); 
     
 }
+
+
+//-Listeners-------------------------------
+
+$.TablaAlumnosCloud.addEventListener('click',function(e){
+
+   if(!e.row.selected) {
+      e.row.backgroundColor = '#003b6f';
+      e.row.selected = 1;
+   }
+   else{
+      e.row.backgroundColor = '#fff';
+      e.row.selected = 0;
+   }
+});

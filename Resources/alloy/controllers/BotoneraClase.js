@@ -107,7 +107,9 @@ function Controller() {
             break;
 
           case 1:
-            var tabAlumnosCloudController = Alloy.createController("NuevoAlumnoCloud", {});
+            var tabAlumnosCloudController = Alloy.createController("NuevoAlumnoCloud", {
+                IdClase: data.IdClase
+            });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());
             break;
 
