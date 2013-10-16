@@ -39,7 +39,7 @@ function Controller() {
     $.__views.WinNotasAlumno = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "EEE",
+        backgroundColor: "e2effa",
         id: "WinNotasAlumno",
         title: "Anotaciones"
     });

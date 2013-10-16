@@ -45,7 +45,7 @@ function Controller() {
     $.__views.WinExamenes = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "EEE",
+        backgroundColor: "e2effa",
         id: "WinExamenes",
         title: "Examenes"
     });
