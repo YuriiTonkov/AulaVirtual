@@ -26,7 +26,7 @@ function Controller() {
     $.__views.winGrados = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "EEE",
+        backgroundColor: "e2effa",
         id: "winGrados",
         title: "Grados"
     });

@@ -19,7 +19,7 @@ function Controller() {
         width: "100%",
         height: "40dp",
         textAlign: "left",
-        left: "10dp",
+        left: "16dp",
         font: {
             fontSize: 16,
             fontFamily: "HelveticaNeue-UltraLight"
@@ -35,11 +35,11 @@ function Controller() {
         height: "30dp",
         top: "20dp",
         font: {
-            fontSize: 10,
+            fontSize: 12,
             fontFamily: "HelveticaNeue-UltraLight"
         },
         textAlign: "left",
-        left: "10dp",
+        left: "16dp",
         id: "lblComentario",
         text: "undefined" != typeof $model.__transform["Comentario"] ? $model.__transform["Comentario"] : $model.get("Comentario"),
         textid: "undefined" != typeof $model.__transform["IdAnotacion"] ? $model.__transform["IdAnotacion"] : $model.get("IdAnotacion")

@@ -25,7 +25,7 @@ function Controller() {
     $.__views.winNuevoExamen = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "EEE",
+        backgroundColor: "e2effa",
         id: "winNuevoExamen"
     });
     $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);

@@ -48,7 +48,7 @@ function Controller() {
     $.__views.NuevoAlumnoCloud = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "EEE",
+        backgroundColor: "e2effa",
         id: "NuevoAlumnoCloud",
         title: "Solicitantes"
     });

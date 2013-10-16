@@ -19,12 +19,12 @@ function Controller() {
         width: Ti.UI.FILL,
         height: "40dp",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        left: "10dp",
+        left: "16dp",
         font: {
             fontSize: 16,
             fontFamily: "HelveticaNeue-UltraLight"
         },
-        top: "-6dp",
+        top: "-7dp",
         id: "lblClases",
         text: "undefined" != typeof $model.__transform["nombreCompleto"] ? $model.__transform["nombreCompleto"] : $model.get("nombreCompleto"),
         textid: "undefined" != typeof $model.__transform["IdClase"] ? $model.__transform["IdClase"] : $model.get("IdClase")
@@ -35,11 +35,11 @@ function Controller() {
         height: "10dp",
         top: "26dp",
         font: {
-            fontSize: 10,
+            fontSize: 12,
             fontFamily: "HelveticaNeue-UltraLight"
         },
         textAlign: "left",
-        left: "10dp",
+        left: "16dp",
         id: "lblInfoAlumnos",
         text: "undefined" != typeof $model.__transform["Alumnos"] ? $model.__transform["Alumnos"] : $model.get("Alumnos"),
         textid: "undefined" != typeof $model.__transform["IdClase"] ? $model.__transform["IdClase"] : $model.get("IdClase")
