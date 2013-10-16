@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId73() {
-        __alloyId73.opts || {};
-        var models = filtrado(__alloyId72);
+    function __alloyId76() {
+        __alloyId76.opts || {};
+        var models = filtrado(__alloyId75);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId70 = models[i];
-            __alloyId70.__transform = nombrecompleto(__alloyId70);
-            var __alloyId71 = Alloy.createController("AlumnosAsignaturaRow", {
-                $model: __alloyId70
+            var __alloyId73 = models[i];
+            __alloyId73.__transform = nombrecompleto(__alloyId73);
+            var __alloyId74 = Alloy.createController("AlumnosAsignaturaRow", {
+                $model: __alloyId73
             });
-            rows.push(__alloyId71.getViewEx({
+            rows.push(__alloyId74.getViewEx({
                 recurse: true
             }));
         }
@@ -48,10 +48,10 @@ function Controller() {
         id: "TablaAlumnosByAsignatura"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAlumnosByAsignatura);
-    var __alloyId72 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId72.on("fetch destroy change add remove reset", __alloyId73);
+    var __alloyId75 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId75.on("fetch destroy change add remove reset", __alloyId76);
     exports.destroy = function() {
-        __alloyId72.off("fetch destroy change add remove reset", __alloyId73);
+        __alloyId75.off("fetch destroy change add remove reset", __alloyId76);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

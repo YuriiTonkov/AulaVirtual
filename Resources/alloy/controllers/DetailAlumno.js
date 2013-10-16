@@ -13,13 +13,13 @@ function Controller() {
         id: "DetailAlumno"
     });
     $.__views.DetailAlumno && $.addTopLevelView($.__views.DetailAlumno);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.__alloyId15 = Ti.UI.createLabel({
         text: "Detalle de alumno",
         top: "2%",
         width: "20%",
-        id: "__alloyId12"
+        id: "__alloyId15"
     });
-    $.__views.DetailAlumno.add($.__views.__alloyId12);
+    $.__views.DetailAlumno.add($.__views.__alloyId15);
     exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);

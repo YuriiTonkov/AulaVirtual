@@ -83,14 +83,12 @@ function Guardar(){
             Ti.App.Properties.setString("Direccion",$.txtDireccion.value);
             Ti.App.Properties.setString("CP", $.txtCodPostal.value);
             Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
-            Ti.App.Properties.setString("Email", $.txtEmail.value);
             Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
             $.lblError.text = "Se han modificado los datos de registro";
             $.lblError.visible= true;
             
 			if (Ti.App.Properties.getString('UsuarioCloud')!=undefined){
 			    var data = {
-					email: $.txtEmail.value,
 					first_name:$.txtNombre.value ,
 					last_name:  $.txtApellido1.value,
 					password: 'AulaVirtual',
@@ -226,8 +224,10 @@ $.txtTelefono.addEventListener("click", function(){
 });
 
 $.txtEmail.addEventListener("click", function(){
+	if ($.txtEmail.value=="")
+	{
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduzca el correo electrónico',
+            title: 'Introduzca su Email (No permite modificación)',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -240,6 +240,8 @@ $.txtEmail.addEventListener("click", function(){
             }
         });
         dialog.show();
+     }
+     else alert("No se puede modificar el Email");
 });
 
 $.txtPass.addEventListener("click", function(){

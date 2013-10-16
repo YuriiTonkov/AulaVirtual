@@ -1,11 +1,18 @@
 <Alloy>
 	<Window id="winCrearAsignatura" class="container">
-		<Label class="label" top="5%">Nombre</Label>
-		<TextField class="textbox" top="5%" id="txtNombreAsignatura"></TextField>
-		<Label class="label" top="15%">Descripcion</Label>
-		<TextField class="textbox" top="15%" id="txtDescripcion"></TextField>
-		<Label class="label" top="25%">Asignatura Optativa</Label>
-		<Switch title="Optativa" value="false" visible="true" top="25%" id="swtOptativa"/>
+		<TableView top="10%" id="Marco">
+			<TableViewRow height="40dp">
+				<Label class="label" >Nombre</Label>
+				<TextField class="textbox" editable="false"  id="txtNombreAsignatura"></TextField>
+			</TableViewRow>
+			<TableViewRow height="40dp">	
+				<Label class="label" >Descripcion</Label>
+				<TextField class="textbox"  editable="false" id="txtDescripcion"></TextField>
+			</TableViewRow>	
+			<TableViewRow height="40dp">
+				<Label class="label" >Asignatura Optativa</Label>
+				<Switch title="Optativa" value="false" visible="true" id="swtOptativa"/>
+			</TableViewRow>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAsignatura"></Button>
 	</Window>
 </Alloy>

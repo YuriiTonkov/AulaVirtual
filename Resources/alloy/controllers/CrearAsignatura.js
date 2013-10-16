@@ -27,63 +27,83 @@ function Controller() {
         id: "winCrearAsignatura"
     });
     $.__views.winCrearAsignatura && $.addTopLevelView($.__views.winCrearAsignatura);
-    $.__views.__alloyId9 = Ti.UI.createLabel({
-        width: "30%",
-        left: "2%",
-        font: {
-            fontSize: "11dp"
-        },
-        text: "Nombre",
-        top: "5%",
+    $.__views.Marco = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        top: "10%",
+        id: "Marco"
+    });
+    $.__views.winCrearAsignatura.add($.__views.Marco);
+    $.__views.__alloyId9 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
         id: "__alloyId9"
     });
     $.__views.winCrearAsignatura.add($.__views.__alloyId9);
-    $.__views.txtNombreAsignatura = Ti.UI.createTextField({
-        borderColor: "#000",
-        width: "60%",
-        left: "35%",
-        top: "5%",
-        id: "txtNombreAsignatura"
-    });
-    $.__views.winCrearAsignatura.add($.__views.txtNombreAsignatura);
     $.__views.__alloyId10 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
             fontSize: "11dp"
         },
-        text: "Descripcion",
-        top: "15%",
+        text: "Nombre",
         id: "__alloyId10"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId10);
+    $.__views.__alloyId9.add($.__views.__alloyId10);
+    $.__views.txtNombreAsignatura = Ti.UI.createTextField({
+        borderColor: "#000",
+        width: "60%",
+        left: "35%",
+        editable: "false",
+        id: "txtNombreAsignatura"
+    });
+    $.__views.__alloyId9.add($.__views.txtNombreAsignatura);
+    $.__views.__alloyId11 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId11"
+    });
+    $.__views.winCrearAsignatura.add($.__views.__alloyId11);
+    $.__views.__alloyId12 = Ti.UI.createLabel({
+        width: "30%",
+        left: "2%",
+        font: {
+            fontSize: "11dp"
+        },
+        text: "Descripcion",
+        id: "__alloyId12"
+    });
+    $.__views.__alloyId11.add($.__views.__alloyId12);
     $.__views.txtDescripcion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
         left: "35%",
-        top: "15%",
+        editable: "false",
         id: "txtDescripcion"
     });
-    $.__views.winCrearAsignatura.add($.__views.txtDescripcion);
-    $.__views.__alloyId11 = Ti.UI.createLabel({
+    $.__views.__alloyId11.add($.__views.txtDescripcion);
+    $.__views.__alloyId13 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId13"
+    });
+    $.__views.winCrearAsignatura.add($.__views.__alloyId13);
+    $.__views.__alloyId14 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
             fontSize: "11dp"
         },
         text: "Asignatura Optativa",
-        top: "25%",
-        id: "__alloyId11"
+        id: "__alloyId14"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId11);
+    $.__views.__alloyId13.add($.__views.__alloyId14);
     $.__views.swtOptativa = Ti.UI.createSwitch({
         title: "Optativa",
         value: "false",
         visible: "true",
-        top: "25%",
         id: "swtOptativa"
     });
-    $.__views.winCrearAsignatura.add($.__views.swtOptativa);
+    $.__views.__alloyId13.add($.__views.swtOptativa);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -98,6 +118,30 @@ function Controller() {
     data = arg1;
     $.winCrearAsignatura.title = data.Nombre;
     $.winCrearAsignatura.setRightNavButton($.btnGuardar);
+    $.txtNombreAsignatura.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el nombre de la asignatura",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtNombreAsignatura.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtDescripcion.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca breve descripcion",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtDescripcion.value = e.text);
+        });
+        dialog.show();
+    });
     __defers["$.__views.btnGuardar!click!GuardarAsignatura"] && $.__views.btnGuardar.addEventListener("click", GuardarAsignatura);
     _.extend($, exports);
 }
