@@ -9,7 +9,7 @@ $.winNuevoExamen.setRightNavButton($.btnGuardar);
 function GuardarExamen(){
     if ($.dateTextField.text == "Pulse aqui") 
         {
-            alert("Tiene que introducir la fecha del examen.")
+            alert("Tiene que introducir la fecha del examen.");
         }
     else 
         {
@@ -21,6 +21,45 @@ function GuardarExamen(){
             $.winNuevoExamen.close();
     }
 }
+//---------------Listeners
+
+$.txtNota.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca la nota del examen',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtNota.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtPeso.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el segundo apellido',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtPeso.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+
+
+
 //--------------------CODIGO PARA FUNCIONAMIENTO DEL DATEPICKER
 var slide_in =  Titanium.UI.createAnimation({bottom:0});
 var slide_out =  Titanium.UI.createAnimation({bottom:-251});
@@ -54,7 +93,7 @@ $.dateTextField.addEventListener('click',function(){
 
 });
 
-$.txtNota.addEventListener('click', function(){picker_view.animate(slide_out);})
+$.txtNota.addEventListener('click', function(){picker_view.animate(slide_out);});
 
 
 

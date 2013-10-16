@@ -3,7 +3,7 @@ Alloy.Globals.GrupoTab = $.GrupoTab;
 Ti.App.Properties.setString("Ayuda", 0);
 
 var btnGuardar = Ti.UI.createButton({title: 'Alta',top:190, left:35,style:Ti.UI.iPhone.SystemButton.SAVE});
-var btnLogin = Ti.UI.createButton({title: 'Login',top:190, left:35, style:Ti.UI.iPhone.SystemButton.SAVE});
+var btnLogin = Ti.UI.createButton({title: 'Login',top:210, left:35, style:Ti.UI.iPhone.SystemButton.SAVE});
 
 if (Ti.App.Properties.getString('Login')==undefined){
    var window = Titanium.UI.createWindow({title:"Nuevo usuario"});
@@ -41,8 +41,8 @@ if (Ti.App.Properties.getString('Login')==undefined){
     var lblError = Titanium.UI.createLabel({color:"#f00", visible:"false", top:300,left:35,width:"100%",height:'auto',font: {fontSize:"15dp"}});
     var txtLogin = Titanium.UI.createTextField({top:90,left:35,width:245,borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp"}});
     var txtPass = Titanium.UI.createTextField({top:160,left:35,width:245, passwordMask:"true", borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,font: {fontSize:"15dp"}});
-    var lblAyuda = Titanium.UI.createLabel({color:"#000",text:'Ayuda activa:',top:220,left:65,width:100,height:'auto',font: {fontSize:"15dp"}});
-    var chkAyuda = Titanium.UI.createSwitch({value:false, top:215, left:160, width:'40', height:'auto'});
+    var lblAyuda = Titanium.UI.createLabel({color:"#000",text:'Ayuda activa:',top:250,left:65,width:100,height:'auto',font: {fontSize:"15dp"}});
+    var chkAyuda = Titanium.UI.createSwitch({value:false, top:245, left:160, width:'40', height:'auto'});
     window.add(lblLogin);
     window.add(lblPass);
     window.add(lblError);

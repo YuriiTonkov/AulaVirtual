@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId151() {
-        __alloyId151.opts || {};
-        var models = filtrado(__alloyId150);
+    function __alloyId172() {
+        __alloyId172.opts || {};
+        var models = filtrado(__alloyId171);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId148 = models[i];
-            __alloyId148.__transform = NombreClase(__alloyId148);
-            var __alloyId149 = Alloy.createController("ClaseRow", {
-                $model: __alloyId148
+            var __alloyId169 = models[i];
+            __alloyId169.__transform = NombreClase(__alloyId169);
+            var __alloyId170 = Alloy.createController("ClaseRow", {
+                $model: __alloyId169
             });
-            rows.push(__alloyId149.getViewEx({
+            rows.push(__alloyId170.getViewEx({
                 recurse: true
             }));
         }
@@ -18,7 +18,16 @@ function Controller() {
     }
     function NombreClase(model) {
         var transform = model.toJSON();
-        transform.nombreCompleto = transform.NombreGrado + " " + transform.NombreCurso + " " + transform.NombreClase;
+        transform.nombreCompleto = "Grupo " + transform.NombreClase;
+        var alumnos = Alloy.Collections.Alumno;
+        alumnos.fetch();
+        var arrayAlumnos = alumnos.where({
+            Clase: transform.IdClase
+        });
+        if ("0" == arrayAlumnos.length) transform.Alumnos = "No hay alumnos"; else {
+            var texto = "Hay " + arrayAlumnos.length + " alummos.";
+            transform.Alumnos = texto;
+        }
         return transform;
     }
     function filtrado(collection) {
@@ -48,10 +57,10 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClasesFav.add($.__views.TablaClases);
-    var __alloyId150 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
-    __alloyId150.on("fetch destroy change add remove reset", __alloyId151);
+    var __alloyId171 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
+    __alloyId171.on("fetch destroy change add remove reset", __alloyId172);
     exports.destroy = function() {
-        __alloyId150.off("fetch destroy change add remove reset", __alloyId151);
+        __alloyId171.off("fetch destroy change add remove reset", __alloyId172);
     };
     _.extend($, $.__views);
     $.WinClasesFav.title = "Clases Favoritas";

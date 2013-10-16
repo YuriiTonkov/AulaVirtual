@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId47() {
-        __alloyId47.opts || {};
-        var models = filtrado(__alloyId46);
+    function __alloyId68() {
+        __alloyId68.opts || {};
+        var models = filtrado(__alloyId67);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId44 = models[i];
-            __alloyId44.__transform = nombrecompleto(__alloyId44);
-            var __alloyId45 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId44
+            var __alloyId65 = models[i];
+            __alloyId65.__transform = nombrecompleto(__alloyId65);
+            var __alloyId66 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId65
             });
-            rows.push(__alloyId45.getViewEx({
+            rows.push(__alloyId66.getViewEx({
                 recurse: true
             }));
         }
@@ -47,10 +47,10 @@ function Controller() {
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId46 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId46.on("fetch destroy change add remove reset", __alloyId47);
+    var __alloyId67 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId67.on("fetch destroy change add remove reset", __alloyId68);
     exports.destroy = function() {
-        __alloyId46.off("fetch destroy change add remove reset", __alloyId47);
+        __alloyId67.off("fetch destroy change add remove reset", __alloyId68);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
@@ -69,7 +69,7 @@ function Controller() {
         Cloud.Friends.remove({
             user_ids: model.UsuarioCloud
         }, function(e) {
-            e.success ? alert("Se ha desvinculado al alumn") : error(e);
+            e.success ? alert("Se ha desvinculado al alumno") : error(e);
             model.destroy();
             alumnos.remove(model);
             alumnos.fetch();

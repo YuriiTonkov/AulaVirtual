@@ -41,7 +41,7 @@ $.TablaAlumnos.addEventListener('delete', function(e)
 				user_ids: model.UsuarioCloud
 			}, function(e) {
 	            if (e.success) {
-	                alert('Se ha desvinculado al alumn');
+	                alert('Se ha desvinculado al alumno');
 	            } else {
 	                error(e);
 	            }

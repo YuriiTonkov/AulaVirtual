@@ -60,82 +60,147 @@ function Controller() {
         id: "winNuevaEvaluacion"
     });
     $.__views.winNuevaEvaluacion && $.addTopLevelView($.__views.winNuevaEvaluacion);
-    $.__views.__alloyId20 = Ti.UI.createLabel({
-        width: "40%",
-        left: "10dp",
-        text: "Nombre",
-        top: "10%",
+    $.__views.__alloyId20 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
         id: "__alloyId20"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId20);
-    $.__views.txtNombreEvaluacion = Ti.UI.createTextField({
-        borderColor: "#000",
-        left: "50%",
-        width: "40%",
-        top: "10%",
-        id: "txtNombreEvaluacion"
-    });
-    $.__views.winNuevaEvaluacion.add($.__views.txtNombreEvaluacion);
-    $.__views.__alloyId21 = Ti.UI.createLabel({
-        width: "40%",
-        left: "10dp",
-        text: "Fecha Inicio",
-        top: "20%",
-        id: "__alloyId21"
-    });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId21);
-    $.__views.lblFecha = Ti.UI.createLabel({
-        borderColor: "#000",
-        height: "20dp",
-        textAlign: "center",
-        width: "40%",
-        left: "50%",
-        font: {
-            fontSize: "14dp"
-        },
-        borderWidth: "1dp",
-        top: "20%",
-        id: "lblFecha"
-    });
-    $.__views.winNuevaEvaluacion.add($.__views.lblFecha);
+    var __alloyId21 = [];
+    __alloyId21.push($.__views.__alloyId20);
     $.__views.__alloyId22 = Ti.UI.createLabel({
-        width: "40%",
-        left: "10dp",
-        text: "Peso",
-        top: "30%",
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        text: "Nombre",
         id: "__alloyId22"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId22);
-    $.__views.txtPeso = Ti.UI.createTextField({
-        borderColor: "#000",
-        left: "50%",
-        width: "40%",
-        top: "30%",
-        id: "txtPeso"
+    $.__views.__alloyId20.add($.__views.__alloyId22);
+    $.__views.txtNombreEvaluacion = Ti.UI.createTextField({
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        editable: "false",
+        id: "txtNombreEvaluacion"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.txtPeso);
-    $.__views.__alloyId23 = Ti.UI.createLabel({
-        width: "40%",
-        left: "10dp",
-        text: "Nota",
-        top: "40%",
+    $.__views.__alloyId20.add($.__views.txtNombreEvaluacion);
+    $.__views.__alloyId23 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
         id: "__alloyId23"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.__alloyId23);
-    $.__views.txtNota = Ti.UI.createLabel({
-        borderColor: "#000",
-        height: "20dp",
-        textAlign: "center",
-        width: "40%",
-        left: "50%",
+    __alloyId21.push($.__views.__alloyId23);
+    $.__views.__alloyId24 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
-        borderWidth: "1dp",
-        top: "40%",
+        text: "Fecha Inicio",
+        id: "__alloyId24"
+    });
+    $.__views.__alloyId23.add($.__views.__alloyId24);
+    $.__views.lblFecha = Ti.UI.createLabel({
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        id: "lblFecha"
+    });
+    $.__views.__alloyId23.add($.__views.lblFecha);
+    $.__views.__alloyId25 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId25"
+    });
+    __alloyId21.push($.__views.__alloyId25);
+    $.__views.__alloyId26 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        text: "Peso",
+        id: "__alloyId26"
+    });
+    $.__views.__alloyId25.add($.__views.__alloyId26);
+    $.__views.txtPeso = Ti.UI.createTextField({
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        editable: "false",
+        id: "txtPeso"
+    });
+    $.__views.__alloyId25.add($.__views.txtPeso);
+    $.__views.__alloyId27 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId27"
+    });
+    __alloyId21.push($.__views.__alloyId27);
+    $.__views.__alloyId28 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        text: "Nota",
+        id: "__alloyId28"
+    });
+    $.__views.__alloyId27.add($.__views.__alloyId28);
+    $.__views.txtNota = Ti.UI.createLabel({
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         id: "txtNota"
     });
-    $.__views.winNuevaEvaluacion.add($.__views.txtNota);
+    $.__views.__alloyId27.add($.__views.txtNota);
+    $.__views.Formulario = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        data: __alloyId21,
+        id: "Formulario"
+    });
+    $.__views.winNuevaEvaluacion.add($.__views.Formulario);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -173,6 +238,30 @@ function Controller() {
         $.txtPeso.value = ArrayEvaluacion.Peso;
         GuardarEvaluacion();
     }
+    $.txtNombreEvaluacion.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el nombre de la Evaluación",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtNombreEvaluacion.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtPeso.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el peso de la Evaluacion",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtPeso.value = e.text);
+        });
+        dialog.show();
+    });
     var slide_in = Titanium.UI.createAnimation({
         bottom: 0
     });

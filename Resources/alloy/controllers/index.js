@@ -22,28 +22,28 @@ function Controller() {
     $.__views.GrupoTab = Ti.UI.createTabGroup({
         id: "GrupoTab"
     });
-    $.__views.__alloyId134 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId134"
+    $.__views.__alloyId155 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId155"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId134.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId155.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId136 = Alloy.createController("tabFavoritos", {
-        id: "__alloyId136"
+    $.__views.__alloyId157 = Alloy.createController("tabFavoritos", {
+        id: "__alloyId157"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId136.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId157.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId138 = Alloy.createController("TabAsignaturasFavoritas", {
-        id: "__alloyId138"
+    $.__views.__alloyId159 = Alloy.createController("TabAsignaturasFavoritas", {
+        id: "__alloyId159"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId138.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId159.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId140 = Alloy.createController("TabConfiguracion", {
-        id: "__alloyId140"
+    $.__views.__alloyId161 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId161"
     });
-    $.__views.GrupoTab.addTab($.__views.__alloyId140.getViewEx({
+    $.__views.GrupoTab.addTab($.__views.__alloyId161.getViewEx({
         recurse: true
     }));
     $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);
@@ -60,7 +60,7 @@ function Controller() {
     });
     var btnLogin = Ti.UI.createButton({
         title: "Login",
-        top: 190,
+        top: 210,
         left: 35,
         style: Ti.UI.iPhone.SystemButton.SAVE
     });
@@ -165,7 +165,7 @@ function Controller() {
         var lblAyuda = Titanium.UI.createLabel({
             color: "#000",
             text: "Ayuda activa:",
-            top: 220,
+            top: 250,
             left: 65,
             width: 100,
             height: "auto",
@@ -175,7 +175,7 @@ function Controller() {
         });
         var chkAyuda = Titanium.UI.createSwitch({
             value: false,
-            top: 215,
+            top: 245,
             left: 160,
             width: "40",
             height: "auto"

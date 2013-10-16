@@ -65,7 +65,41 @@ function calcularMedia(){
         
     }
 }
+//--------------------Listeners
 
+$.txtNombreEvaluacion.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el nombre de la Evaluación',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtNombreEvaluacion.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtPeso.addEventListener("click", function(){
+        var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el peso de la Evaluacion',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtPeso.value = e.text;
+            }
+        });
+        dialog.show();
+});
 
 //--------------------CODIGO PARA FUNCIONAMIENTO DEL DATEPICKER
 var slide_in =  Titanium.UI.createAnimation({bottom:0});

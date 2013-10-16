@@ -1,15 +1,26 @@
 <Alloy>
     <Window id="winNuevaEvaluacion" class="container">
-        <Label class="label" top="10%">Nombre</Label>
-        <TextField class="textbox" top="10%" id="txtNombreEvaluacion"></TextField>
-        <Label class="label" top="20%">Fecha Inicio</Label>
-        <Label class="label2" top="20%" id="lblFecha"></Label>
-        <Label class="label" top="30%">Peso</Label>
-        <TextField class="textbox" top="30%" id="txtPeso"></TextField>
-        <Label class="label" top="40%">Nota</Label>
-        <Label class="label2" top="40%" id="txtNota"></Label>
-        <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
-        <Button class="button" top="-90dp" id="cancel" title="Cancelar" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
-        <Button class="button" top="-100dp" id="done" title="Hecho" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
+    	<TableView id="Formulario">
+    		<TableViewRow height="40dp">
+	        	<Label class="labelAlumno" >Nombre</Label>
+	        	<TextField class="textboxAlumno" editable="false" id="txtNombreEvaluacion"></TextField>
+	        </TableViewRow>
+	        <TableViewRow height="40dp">
+		        <Label class="labelAlumno" >Fecha Inicio</Label>
+		        <Label class="textboxAlumno"  id="lblFecha"></Label>
+	         </TableViewRow>
+		     <TableViewRow height="40dp">
+		        <Label class="labelAlumno" >Peso</Label>
+	       		 <TextField class="textboxAlumno" editable="false"  id="txtPeso"></TextField>
+	         </TableViewRow>
+	        <TableViewRow height="40dp">
+		        <Label class="labelAlumno" >Nota</Label>
+		        <Label class="textboxAlumno"  id="txtNota"></Label>
+		    </TableViewRow>
+		 </TableView>
+	     <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
+	     <Button class="button" top="-90dp" id="cancel" title="Cancelar" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
+	     <Button class="button" top="-100dp" id="done" title="Hecho" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
+    	
     </Window>
 </Alloy>

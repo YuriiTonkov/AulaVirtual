@@ -25,86 +25,118 @@ function Controller() {
     $.__views.winNuevoExamen = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "white",
+        backgroundColor: "EEE",
         id: "winNuevoExamen"
     });
     $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);
-    $.__views.__alloyId37 = Ti.UI.createLabel({
-        width: "40%",
-        left: "2%",
+    $.__views.__alloyId54 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId54"
+    });
+    var __alloyId55 = [];
+    __alloyId55.push($.__views.__alloyId54);
+    $.__views.__alloyId56 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Fecha Examen:",
-        top: "15%",
-        id: "__alloyId37"
+        id: "__alloyId56"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId37);
+    $.__views.__alloyId54.add($.__views.__alloyId56);
     $.__views.dateTextField = Ti.UI.createLabel({
+        top: "15dp",
+        width: "100%",
         height: "20dp",
-        textAlign: "center",
-        width: "40%",
-        left: "35%",
+        textAlign: "left",
+        left: "45dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
-        borderWidth: "1dp",
-        borderColor: "#000",
-        top: "15%",
-        text: "Pulse aqui",
         id: "dateTextField"
     });
-    $.__views.winNuevoExamen.add($.__views.dateTextField);
-    $.__views.__alloyId38 = Ti.UI.createLabel({
-        width: "40%",
-        left: "2%",
+    $.__views.__alloyId54.add($.__views.dateTextField);
+    $.__views.__alloyId57 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId57"
+    });
+    __alloyId55.push($.__views.__alloyId57);
+    $.__views.__alloyId58 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Nota:",
-        top: "35%",
-        id: "__alloyId38"
+        id: "__alloyId58"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId38);
+    $.__views.__alloyId57.add($.__views.__alloyId58);
     $.__views.txtNota = Ti.UI.createTextField({
-        borderColor: "#000",
-        height: "16dp",
-        textAlign: "center",
-        width: "20%",
-        left: "35%",
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
-        top: "35%",
-        id: "txtNota",
-        keyboardType: "KEYBOARD_DECIMAL_PAD"
+        editable: "false",
+        id: "txtNota"
     });
-    $.__views.winNuevoExamen.add($.__views.txtNota);
-    $.__views.__alloyId39 = Ti.UI.createLabel({
-        width: "40%",
-        left: "2%",
+    $.__views.__alloyId57.add($.__views.txtNota);
+    $.__views.__alloyId59 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId59"
+    });
+    __alloyId55.push($.__views.__alloyId59);
+    $.__views.__alloyId60 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Peso:",
-        top: "25%",
-        id: "__alloyId39"
+        id: "__alloyId60"
     });
-    $.__views.winNuevoExamen.add($.__views.__alloyId39);
+    $.__views.__alloyId59.add($.__views.__alloyId60);
     $.__views.txtPeso = Ti.UI.createTextField({
-        borderColor: "#000",
-        height: "16dp",
-        textAlign: "center",
-        width: "20%",
-        left: "35%",
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
-        top: "25%",
-        id: "txtPeso",
-        keyboardType: "KEYBOARD_DECIMAL_PAD"
+        editable: "false",
+        id: "txtPeso"
     });
-    $.__views.winNuevoExamen.add($.__views.txtPeso);
+    $.__views.__alloyId59.add($.__views.txtPeso);
+    $.__views.Marco = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        data: __alloyId55,
+        id: "Marco"
+    });
+    $.__views.winNuevoExamen.add($.__views.Marco);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -132,6 +164,30 @@ function Controller() {
     var data = [];
     data = arg1;
     $.winNuevoExamen.setRightNavButton($.btnGuardar);
+    $.txtNota.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca la nota del examen",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtNota.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtPeso.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el segundo apellido",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtPeso.value = e.text);
+        });
+        dialog.show();
+    });
     var slide_in = Titanium.UI.createAnimation({
         bottom: 0
     });
