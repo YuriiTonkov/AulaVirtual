@@ -55,6 +55,7 @@ function Controller() {
     $.__views.NuevoAlumnoCloud && $.addTopLevelView($.__views.NuevoAlumnoCloud);
     $.__views.TablaAlumnosCloud = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAlumnosCloud",
         allowsSelection: "true"
     });

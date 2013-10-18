@@ -18,7 +18,7 @@ function Controller() {
     }
     function NombreClase(model) {
         var transform = model.toJSON();
-        transform.nombreCompleto = "Grupo " + transform.Nombre;
+        transform.nombreCompleto = "Clase " + transform.Nombre;
         var alumnos = Alloy.Collections.Alumno;
         alumnos.fetch();
         var arrayAlumnos = alumnos.where({
@@ -61,6 +61,7 @@ function Controller() {
     $.__views.WinClases && $.addTopLevelView($.__views.WinClases);
     $.__views.TablaClases = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);

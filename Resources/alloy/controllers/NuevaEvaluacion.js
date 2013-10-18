@@ -197,6 +197,7 @@ function Controller() {
     $.__views.__alloyId30.add($.__views.txtNota);
     $.__views.Formulario = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         data: __alloyId24,
         id: "Formulario"
     });

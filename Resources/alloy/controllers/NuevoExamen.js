@@ -133,6 +133,7 @@ function Controller() {
     $.__views.__alloyId62.add($.__views.txtPeso);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         data: __alloyId58,
         id: "Marco"
     });

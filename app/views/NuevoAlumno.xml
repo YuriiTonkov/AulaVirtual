@@ -27,7 +27,7 @@
 			</TableViewRow>	
 			<TableViewRow height="40dp">
 				<Label class="labelAlumno">Telefono2</Label>
-				<TextField class="textboxAlumno"editable="false" id="txtTelefono2"></TextField>
+				<TextField class="textboxAlumno" editable="false" id="txtTelefono2"></TextField>
 			</TableViewRow>	
 			<TableViewRow height="40dp">
 				<Label class="labelAlumno">Email</Label>

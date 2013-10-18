@@ -46,6 +46,7 @@ function Controller() {
     $.__views.WinNotasAlumno && $.addTopLevelView($.__views.WinNotasAlumno);
     $.__views.TablaAnotaciones = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAnotaciones"
     });
     $.__views.WinNotasAlumno.add($.__views.TablaAnotaciones);

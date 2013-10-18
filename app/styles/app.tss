@@ -4,10 +4,12 @@
 	"translucent": "false",
   	backgroundColor : "e2effa"
 	}
+	
 
 //Estilo agrupado para todas las tablas de la aplicacion
 "TableView": {
-  style : Ti.UI.iPhone.TableViewStyle.GROUPED
+  style : Ti.UI.iPhone.TableViewStyle.GROUPED,
+  backgroundImage: "backGround320x416Base.png" //Elimina el efecto del traslucido de las ventanas
 }
  
 //Todas las filas de las tablas llevan de fondo color blanco  

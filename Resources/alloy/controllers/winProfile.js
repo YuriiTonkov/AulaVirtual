@@ -404,6 +404,7 @@ function Controller() {
     $.__views.__alloyId200.add($.__views.lblError);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         data: __alloyId182,
         id: "Marco"
     });

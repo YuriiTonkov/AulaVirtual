@@ -13,12 +13,12 @@ function transform(model){
     var colGrupos = Alloy.Collections.Clase;
     colGrupos.fetch();
     var arrayGrupos = colGrupos.where({Curso:transform.IdCurso});
-    if (arrayGrupos.length==0){transform.Grupos="No hay grupos creados";}
+    if (arrayGrupos.length==0){transform.Grupos="No hay clases creadas";}
     else {
-        var texto = "Grupos ";
+        var texto = "Clases ";
         for (var i=0;i<arrayGrupos.length;i++){
             var modelo = arrayGrupos[i].toJSON();
-            if (texto=="Grupos "){texto=texto + modelo.Nombre}
+            if (texto=="Clases "){texto=texto + modelo.Nombre}
             else {
                 texto = texto + ", " + modelo.Nombre;
             }

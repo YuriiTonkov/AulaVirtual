@@ -44,14 +44,6 @@ function Controller() {
         textid: "undefined" != typeof $model.__transform["IdCurso"] ? $model.__transform["IdCurso"] : $model.get("IdCurso")
     });
     $.__views.tblCursosRow.add($.__views.lblInfoClases);
-    $.__views.imageLblCurso = Ti.UI.createImageView({
-        right: 10,
-        width: 30,
-        height: 30,
-        id: "imageLblCurso",
-        image: "/library/images/iphone/IconGrupos.png"
-    });
-    $.__views.tblCursosRow.add($.__views.imageLblCurso);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.tblCursosRow.addEventListener("click", function(e) {

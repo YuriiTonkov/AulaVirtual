@@ -44,6 +44,7 @@ function Controller() {
     $.__views.WinAlumnos && $.addTopLevelView($.__views.WinAlumnos);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);

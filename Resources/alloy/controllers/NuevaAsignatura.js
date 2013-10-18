@@ -82,6 +82,7 @@ function Controller() {
     $.__views.winNuevaAsignatura.add($.__views.__alloyId16);
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaAsignaturas",
         allowsSelection: "true"
     });

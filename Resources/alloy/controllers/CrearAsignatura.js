@@ -29,6 +29,7 @@ function Controller() {
     $.__views.winCrearAsignatura && $.addTopLevelView($.__views.winCrearAsignatura);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         top: "10%",
         id: "Marco"
     });

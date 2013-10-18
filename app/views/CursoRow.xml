@@ -2,6 +2,5 @@
 	<TableViewRow data ="{IdCurso}" hasDetail="true" id="tblCursosRow">
 		<Label class="rowTitle" id="lblCurso" text="{Nombre}" textid="{IdCurso}"/>
 		<Label class="rowSubTitle" id="lblInfoClases" text="{Grupos}" textid="{IdCurso}"/>
-		<ImageView id="imageLblCurso" image="/library/images/iphone/IconGrupos.png" />
 	</TableViewRow>
 </Alloy>

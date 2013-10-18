@@ -29,11 +29,11 @@ function Controller() {
         var arrayGrupos = colGrupos.where({
             Curso: transform.IdCurso
         });
-        if (0 == arrayGrupos.length) transform.Grupos = "No hay grupos creados"; else {
-            var texto = "Grupos ";
+        if (0 == arrayGrupos.length) transform.Grupos = "No hay clases creadas"; else {
+            var texto = "Clases ";
             for (var i = 0; arrayGrupos.length > i; i++) {
                 var modelo = arrayGrupos[i].toJSON();
-                "Grupos " == texto ? texto += modelo.Nombre : texto = texto + ", " + modelo.Nombre;
+                "Clases " == texto ? texto += modelo.Nombre : texto = texto + ", " + modelo.Nombre;
             }
             transform.Grupos = texto;
         }
@@ -56,6 +56,7 @@ function Controller() {
     $.__views.WinCursos && $.addTopLevelView($.__views.WinCursos);
     $.__views.TablaCursos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);
