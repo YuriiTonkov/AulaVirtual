@@ -61,10 +61,6 @@
 }
 
 
-//Estilo para los scrollview
-"#scrollViewAlumno":{
-	backgroundColor : "EEE"
-}
 
 "#viewAlumno":{
 	backgroundColor : "white",
@@ -94,7 +90,4 @@
 	"font": {fontSize:16, fontFamily:'HelveticaNeue-UltraLight'}
 }
 
-//Footer
-".Footer":{
-	"width": "100%"
-}
+
