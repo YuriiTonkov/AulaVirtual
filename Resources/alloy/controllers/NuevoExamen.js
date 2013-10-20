@@ -134,6 +134,7 @@ function Controller() {
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
+        top: "0dp",
         data: __alloyId58,
         id: "Marco"
     });

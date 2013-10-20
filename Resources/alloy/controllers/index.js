@@ -22,28 +22,28 @@ function Controller() {
     $.__views.GrupoTab = Ti.UI.createTabGroup({
         id: "GrupoTab"
     });
-    $.__views.__alloyId158 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId158"
-    });
-    $.__views.GrupoTab.addTab($.__views.__alloyId158.getViewEx({
-        recurse: true
-    }));
-    $.__views.__alloyId160 = Alloy.createController("tabFavoritos", {
-        id: "__alloyId160"
-    });
-    $.__views.GrupoTab.addTab($.__views.__alloyId160.getViewEx({
-        recurse: true
-    }));
-    $.__views.__alloyId162 = Alloy.createController("TabAsignaturasFavoritas", {
+    $.__views.__alloyId162 = Alloy.createController("TabPrincipal", {
         id: "__alloyId162"
     });
     $.__views.GrupoTab.addTab($.__views.__alloyId162.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId164 = Alloy.createController("TabConfiguracion", {
+    $.__views.__alloyId164 = Alloy.createController("tabFavoritos", {
         id: "__alloyId164"
     });
     $.__views.GrupoTab.addTab($.__views.__alloyId164.getViewEx({
+        recurse: true
+    }));
+    $.__views.__alloyId166 = Alloy.createController("TabAsignaturasFavoritas", {
+        id: "__alloyId166"
+    });
+    $.__views.GrupoTab.addTab($.__views.__alloyId166.getViewEx({
+        recurse: true
+    }));
+    $.__views.__alloyId168 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId168"
+    });
+    $.__views.GrupoTab.addTab($.__views.__alloyId168.getViewEx({
         recurse: true
     }));
     $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);
@@ -61,8 +61,10 @@ function Controller() {
     var btnLogin = Ti.UI.createButton({
         title: "Login",
         top: 210,
-        left: 35,
-        style: Ti.UI.iPhone.SystemButton.SAVE
+        left: 0/0,
+        width: 60,
+        backgroundImage: "library/images/iphone/iconLogin.png",
+        color: "e2effa"
     });
     if (void 0 == Ti.App.Properties.getString("Login")) {
         var window = Titanium.UI.createWindow({

@@ -1,7 +1,13 @@
 <Alloy>
 			<Window id="winGrados" title="Grados">
 				<TableView dataCollection="Grado" id="TablaGrados">
+					<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/01HeaderGrados.png" ></ImageView>
+					</HeaderView>
 					<Require src="GradoRow"/>
-				</TableView>
+					<FooterView>
+						<ImageView image="library/images/iphone/helpScreen/01FooterGrados.png" ></ImageView>
+					</FooterView>
+				</TableView>		
 			</Window>
 </Alloy>

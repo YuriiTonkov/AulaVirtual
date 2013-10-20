@@ -62,6 +62,7 @@ function Controller() {
     $.__views.TablaClases = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
+        top: "0dp",
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);

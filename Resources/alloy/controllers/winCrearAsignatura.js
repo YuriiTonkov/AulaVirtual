@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId180() {
-        __alloyId180.opts || {};
-        var models = filtrado(__alloyId179);
+    function __alloyId184() {
+        __alloyId184.opts || {};
+        var models = filtrado(__alloyId183);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId177 = models[i];
-            __alloyId177.__transform = {};
-            var __alloyId178 = Alloy.createController("AsignaturaAlumnoRow", {
-                $model: __alloyId177
+            var __alloyId181 = models[i];
+            __alloyId181.__transform = {};
+            var __alloyId182 = Alloy.createController("AsignaturaAlumnoRow", {
+                $model: __alloyId181
             });
-            rows.push(__alloyId178.getViewEx({
+            rows.push(__alloyId182.getViewEx({
                 recurse: true
             }));
         }
@@ -47,11 +47,12 @@ function Controller() {
     $.__views.TablaAsignaturasAlumno = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
+        top: "0dp",
         id: "TablaAsignaturasAlumno"
     });
     $.__views.WinCrearAsignatura.add($.__views.TablaAsignaturasAlumno);
-    var __alloyId179 = Alloy.Collections["Asignatura"] || Asignatura;
-    __alloyId179.on("fetch destroy change add remove reset", __alloyId180);
+    var __alloyId183 = Alloy.Collections["Asignatura"] || Asignatura;
+    __alloyId183.on("fetch destroy change add remove reset", __alloyId184);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -60,7 +61,7 @@ function Controller() {
     $.__views.WinCrearAsignatura.add($.__views.addAsignatura);
     NuevaAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevaAsignatura) : __defers["$.__views.addAsignatura!click!NuevaAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId179.off("fetch destroy change add remove reset", __alloyId180);
+        __alloyId183.off("fetch destroy change add remove reset", __alloyId184);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

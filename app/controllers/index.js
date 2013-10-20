@@ -3,7 +3,7 @@ Alloy.Globals.GrupoTab = $.GrupoTab;
 Ti.App.Properties.setString("Ayuda", 0);
 
 var btnGuardar = Ti.UI.createButton({title: 'Alta',top:190, left:35,style:Ti.UI.iPhone.SystemButton.SAVE});
-var btnLogin = Ti.UI.createButton({title: 'Login',top:210, left:35, style:Ti.UI.iPhone.SystemButton.SAVE});
+var btnLogin = Ti.UI.createButton({title: 'Login',top:210, left:"50%"-30 , width:60 , backgroundImage: "library/images/iphone/iconLogin.png", color: "e2effa"});
 
 if (Ti.App.Properties.getString('Login')==undefined){
    var window = Titanium.UI.createWindow({title:"Nuevo usuario"});
