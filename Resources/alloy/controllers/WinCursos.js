@@ -63,6 +63,7 @@ function Controller() {
     $.__views.WinCursos.add($.__views.TablaCursos);
     $.__views.__alloyId93 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/02HeaderCursos.png",
+        height: "70dp",
         id: "__alloyId93"
     });
     $.__views.TablaCursos.headerView = $.__views.__alloyId93;

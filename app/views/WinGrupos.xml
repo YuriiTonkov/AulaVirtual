@@ -2,7 +2,7 @@
 			<Window id="winGrados" title="Grados">
 				<TableView dataCollection="Grado" id="TablaGrados">
 					<HeaderView>
-						<ImageView image="library/images/iphone/helpScreen/01HeaderGrados.png" ></ImageView>
+						<ImageView image="library/images/iphone/helpScreen/01HeaderGrados.png" height="70dp" ></ImageView>
 					</HeaderView>
 					<Require src="GradoRow"/>
 					<FooterView>

@@ -40,6 +40,7 @@ function Controller() {
     $.__views.winGrados.add($.__views.TablaGrados);
     $.__views.__alloyId112 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/01HeaderGrados.png",
+        height: "70dp",
         id: "__alloyId112"
     });
     $.__views.TablaGrados.headerView = $.__views.__alloyId112;
