@@ -8,8 +8,7 @@ data = arg1;
 $.winNuevaNota.setRightNavButton($.btnGuardar);
 
 if (data.IdAnotacion == undefined){
-    //$.btnAnterior.visible="false";
-   // $.btnSiguiente.visible="false";
+    
   
 
 }else{
@@ -25,6 +24,12 @@ if (data.IdAnotacion == undefined){
 
 function GuardarExamen(){
 	if (data.IdAnotacion == undefined){
+		if (data.IdClase == undefined){
+			$.btnEnviarTodos.visible = false;
+		}
+		else{
+			$.btnEnviarTodos.visible = true;
+		}
     //$.btnAnterior.visible="false";
    // $.btnSiguiente.visible="false";
   if ($.dateTextField.text == "Pulse aqui") 
@@ -92,6 +97,47 @@ function EnviarExamen(){
 	}
    
 }
+
+function EnviarExamenTodos(){
+	var alumno = Alloy.Collections.Alumno;
+	alumno.fetch();
+	var model = alumno.get(data.IdAlumno);
+	var datos = model.toJSON();
+	
+	
+	if (datos.UsuarioCloud=1){
+		Cloud.Users.query({
+			    where: {
+			        email: datos.Email
+			    }
+			}, function (e) {
+			    if (e.success) {
+			       Cloud.Messages.create({
+	        			to_ids: e.users[0].id,
+				        body: $.txtObservaciones.value,
+				        subject: $.txtTitulo.value,
+				        custom_fields:{IdTipo:2, Fecha:$.dateTextField.text, Profesor: Ti.App.Properties.getString('Nombre') + ' ' + Ti.App.Properties.getString('Apellido1') +' '+ Ti.App.Properties.getString('Apellido2')}
+				        
+			        }, function (e) {
+			            if (e.success) {
+			                alert('Enviado!');
+				        
+			            } else {
+			                alert('Error:\n' +
+			            	((e.error && e.message) || JSON.stringify(e)));
+			            }
+			            
+			        });
+			    } else {
+			        alert('Error:\n' +
+			            ((e.error && e.message) || JSON.stringify(e)));
+			    }
+			});
+		 
+	}
+   
+}
+
 //Listeners ----------------------------
 
 $.txtTitulo.addEventListener("click", function() {

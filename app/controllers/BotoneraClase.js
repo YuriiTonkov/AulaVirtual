@@ -15,15 +15,17 @@ if (datos.Favorita==1){
     var buttons = [
         {title:'+', enabled:true},
         {title:'(+)', enabled:false},
-        {title:'*', enabled:false}];
+        {title:'*', enabled:false},
+        {title:'@', enabled:false}];
         
     $.btnBar.labels=buttons;
     
-}else{
+	}else{
 	var buttons = [
         {title:'+', enabled:true},
         {title:'(+)', enabled:true},
-        {title:'*', enabled:false}];
+        {title:'*', enabled:false},
+        {title:'@', enabled:true}];
         
     $.btnBar.labels=buttons;
 }
@@ -32,7 +34,8 @@ if (datos.Favorita==1){
     var buttons = [
         {title:'+', enabled:true},
         {title:'(+)', enabled:false},
-        {title:'*', enabled:true}];
+        {title:'*', enabled:true},
+        {title:'@', enabled:false}];
         
     $.btnBar.labels=buttons;
     
@@ -40,7 +43,8 @@ if (datos.Favorita==1){
 	var buttons = [
         {title:'+', enabled:true},
         {title:'(+)', enabled:true},
-        {title:'*', enabled:true}];
+        {title:'*', enabled:true},
+        {title:'@', enabled:true}];
         
     $.btnBar.labels=buttons;
 }
@@ -74,8 +78,10 @@ $.btnBar.addEventListener("click", function(e){
 	            cancel:0
        			 });
     		alertDialog.show();
-    		
     		break;
-    	
+    	case 3:
+    		var tabAlumnosCloudController = Alloy.createController("",{"IdClase":data.IdClase});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());
+    		break;
     }
 });

@@ -1,8 +1,6 @@
 function Controller() {
     function GuardarAlumnos() {
         for (var i = 0; $.TablaAlumnosCloud.data[0].rows.length > i; i++) $.TablaAlumnosCloud.data[0].rows[i].selected && Cloud.Users.query({
-            page: 1,
-            per_page: 1,
             where: {
                 id: $.TablaAlumnosCloud.data[0].rows[i].id
             }
@@ -21,7 +19,7 @@ function Controller() {
                     CodPostal: e.users[0].custom_fields.CodPostal,
                     TelContacto: e.users[0].custom_fields.Telefono1,
                     TelContacto2: e.users[0].custom_fields.Telefono2,
-                    Email: e.users[0].email,
+                    Email: e.users[0].Email,
                     Email2: e.users[0].custom_fields.Email2,
                     Padre: e.users[0].custom_fields.Padre,
                     Madre: e.users[0].custom_fields.Madre,

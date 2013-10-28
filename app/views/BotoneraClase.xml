@@ -5,6 +5,7 @@
 				<Label id="addAlumno">+</Label>
 				<Label id="addAlumnoCloud">(+)</Label>
 				<Label id="favoritar">*</Label>
+				<Label id="enviarMensaje">@</Label>
 			</Labels>
 		</ButtonBar>
 	</View>
