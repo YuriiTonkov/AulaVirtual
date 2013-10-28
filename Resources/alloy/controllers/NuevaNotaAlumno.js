@@ -1,17 +1,49 @@
 function Controller() {
     function GuardarExamen() {
-        if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del examen."); else {
+        if (void 0 == data.IdAnotacion) if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del aviso."); else {
             var Anotacion = Alloy.createModel("Anotacion", {
                 Fecha: $.dateTextField.text,
                 IdAlumno: data.IdAlumno,
-                Comentario: $.txtObservaciones.value
+                Comentario: $.txtObservaciones.value,
+                Titulo: $.txtTitulo.value
             });
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.winNuevaNota.close();
+        } else {
+            model.set({
+                Fecha: $.dateTextField.text,
+                IdAlumno: data.IdAlumno,
+                Comentario: $.txtObservaciones.value,
+                Titulo: $.txtTitulo.value
+            });
+            model.save();
         }
+    }
+    function EnviarExamen() {
+        var alumno = Alloy.Collections.Alumno;
+        alumno.fetch();
+        var model = alumno.get(data.IdAlumno);
+        var datos = model.toJSON();
+        (datos.UsuarioCloud = 1) && Cloud.Users.query({
+            where: {
+                email: datos.Email
+            }
+        }, function(e) {
+            e.success ? Cloud.Messages.create({
+                to_ids: e.users[0].id,
+                body: $.txtObservaciones.value,
+                subject: $.txtTitulo.value,
+                custom_fields: {
+                    IdTipo: 2,
+                    Fecha: $.dateTextField.text,
+                    Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
+                }
+            }, function(e) {
+                e.success ? alert("Enviado!") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            }) : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "NuevaNotaAlumno";
@@ -28,56 +60,117 @@ function Controller() {
         id: "winNuevaNota"
     });
     $.__views.winNuevaNota && $.addTopLevelView($.__views.winNuevaNota);
-    $.__views.__alloyId32 = Ti.UI.createLabel({
-        width: "40%",
-        left: "2%",
-        font: {
-            fontSize: "14dp"
-        },
-        text: "Fecha:",
-        top: "15%",
+    $.__views.__alloyId32 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
         id: "__alloyId32"
     });
-    $.__views.winNuevaNota.add($.__views.__alloyId32);
-    $.__views.dateTextField = Ti.UI.createLabel({
-        height: "20dp",
-        textAlign: "center",
-        width: "40%",
-        left: "35%",
+    var __alloyId33 = [];
+    __alloyId33.push($.__views.__alloyId32);
+    $.__views.__alloyId34 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
-        borderWidth: "1dp",
-        borderColor: "#000",
-        top: "15%",
+        text: "Fecha:",
+        id: "__alloyId34"
+    });
+    $.__views.__alloyId32.add($.__views.__alloyId34);
+    $.__views.dateTextField = Ti.UI.createLabel({
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
         text: "Pulse aqui",
         id: "dateTextField"
     });
-    $.__views.winNuevaNota.add($.__views.dateTextField);
-    $.__views.__alloyId33 = Ti.UI.createLabel({
-        width: "40%",
-        left: "2%",
+    $.__views.__alloyId32.add($.__views.dateTextField);
+    $.__views.__alloyId35 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "40dp",
+        id: "__alloyId35"
+    });
+    __alloyId33.push($.__views.__alloyId35);
+    $.__views.__alloyId36 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        text: "Titulo:",
+        id: "__alloyId36"
+    });
+    $.__views.__alloyId35.add($.__views.__alloyId36);
+    $.__views.txtTitulo = Ti.UI.createTextField({
+        top: "15dp",
+        width: "100%",
+        height: "20dp",
+        textAlign: "left",
+        left: "45dp",
+        font: {
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
+        },
+        enabled: "false",
+        id: "txtTitulo"
+    });
+    $.__views.__alloyId35.add($.__views.txtTitulo);
+    $.__views.__alloyId37 = Ti.UI.createTableViewRow({
+        backgroundColor: "white",
+        height: "300dp",
+        id: "__alloyId37"
+    });
+    __alloyId33.push($.__views.__alloyId37);
+    $.__views.__alloyId38 = Ti.UI.createLabel({
+        width: "100%",
+        height: "12dp",
+        textAlign: "left",
+        left: "6dp",
+        top: "1dp",
+        font: {
+            fontSize: 10,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Observaciones:",
-        top: "35%",
-        id: "__alloyId33"
+        id: "__alloyId38"
     });
-    $.__views.winNuevaNota.add($.__views.__alloyId33);
-    $.__views.txtObservaciones = Ti.UI.createTextArea({
-        borderColor: "#000",
-        height: "200dp",
+    $.__views.__alloyId37.add($.__views.__alloyId38);
+    $.__views.txtObservaciones = Ti.UI.createTextField({
+        top: "15dp",
+        width: "80%",
+        height: "100%",
         textAlign: "left",
-        width: "60%",
-        left: "35%",
+        left: "45dp",
         font: {
-            fontSize: "14dp"
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
-        top: "35%",
+        enabled: "false",
         id: "txtObservaciones"
     });
-    $.__views.winNuevaNota.add($.__views.txtObservaciones);
+    $.__views.__alloyId37.add($.__views.txtObservaciones);
+    $.__views.Marco = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
+        top: "10%",
+        data: __alloyId33,
+        id: "Marco"
+    });
+    $.__views.winNuevaNota.add($.__views.Marco);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -85,6 +178,13 @@ function Controller() {
     });
     $.__views.winNuevaNota.add($.__views.btnGuardar);
     GuardarExamen ? $.__views.btnGuardar.addEventListener("click", GuardarExamen) : __defers["$.__views.btnGuardar!click!GuardarExamen"] = true;
+    $.__views.btnEnviar = Ti.UI.createButton({
+        top: "10dp",
+        id: "btnEnviar",
+        title: "Enviar"
+    });
+    $.__views.winNuevaNota.add($.__views.btnEnviar);
+    EnviarExamen ? $.__views.btnEnviar.addEventListener("click", EnviarExamen) : __defers["$.__views.btnEnviar!click!EnviarExamen"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
         id: "cancel",
@@ -105,6 +205,39 @@ function Controller() {
     var data = [];
     data = arg1;
     $.winNuevaNota.setRightNavButton($.btnGuardar);
+    if (void 0 == data.IdAnotacion) ; else {
+        var anotacion = Alloy.Collections.Anotacion;
+        anotacion.fetch();
+        var model = anotacion.get(data.IdAnotacion);
+        var datos = model.toJSON();
+        $.dateTextField.text = datos.Fecha;
+        $.txtTitulo.value = datos.Titulo;
+        $.txtObservaciones.value = datos.Comentario;
+    }
+    $.txtTitulo.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el titulo",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtTitulo.value = e.text);
+        });
+        dialog.show();
+    });
+    $.txtObservaciones.addEventListener("click", function() {
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca el texto de la observación",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtObservaciones.value = e.text);
+        });
+        dialog.show();
+    });
     var slide_in = Titanium.UI.createAnimation({
         bottom: 0
     });
@@ -153,6 +286,7 @@ function Controller() {
         picker_view.animate(slide_out);
     });
     __defers["$.__views.btnGuardar!click!GuardarExamen"] && $.__views.btnGuardar.addEventListener("click", GuardarExamen);
+    __defers["$.__views.btnEnviar!click!EnviarExamen"] && $.__views.btnEnviar.addEventListener("click", EnviarExamen);
     _.extend($, exports);
 }
 

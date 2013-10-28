@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId177() {
-        __alloyId177.opts || {};
-        var models = filtrado(__alloyId176);
+    function __alloyId182() {
+        __alloyId182.opts || {};
+        var models = filtrado(__alloyId181);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId174 = models[i];
-            __alloyId174.__transform = {};
-            var __alloyId175 = Alloy.createController("AnotacionRow", {
-                $model: __alloyId174
+            var __alloyId179 = models[i];
+            __alloyId179.__transform = {};
+            var __alloyId180 = Alloy.createController("AnotacionRow", {
+                $model: __alloyId179
             });
-            rows.push(__alloyId175.getViewEx({
+            rows.push(__alloyId180.getViewEx({
                 recurse: true
             }));
         }
@@ -51,8 +51,8 @@ function Controller() {
         id: "TablaAnotaciones"
     });
     $.__views.WinNotasAlumno.add($.__views.TablaAnotaciones);
-    var __alloyId176 = Alloy.Collections["Anotacion"] || Anotacion;
-    __alloyId176.on("fetch destroy change add remove reset", __alloyId177);
+    var __alloyId181 = Alloy.Collections["Anotacion"] || Anotacion;
+    __alloyId181.on("fetch destroy change add remove reset", __alloyId182);
     $.__views.addAnotacion = Ti.UI.createButton({
         id: "addAnotacion",
         title: "Nuevo",
@@ -61,7 +61,7 @@ function Controller() {
     $.__views.WinNotasAlumno.add($.__views.addAnotacion);
     NuevaAnotacion ? $.__views.addAnotacion.addEventListener("click", NuevaAnotacion) : __defers["$.__views.addAnotacion!click!NuevaAnotacion"] = true;
     exports.destroy = function() {
-        __alloyId176.off("fetch destroy change add remove reset", __alloyId177);
+        __alloyId181.off("fetch destroy change add remove reset", __alloyId182);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
@@ -77,6 +77,21 @@ function Controller() {
         model.destroy();
         Anotaciones.remove(model);
         Anotaciones.fetch();
+    });
+    $.TablaAnotaciones.addEventListener("click", function(e) {
+        if ("tblAnotacionRow" == e.source.id) {
+            var tabItemController = Alloy.createController("NuevaNotaAlumno", {
+                IdAnotacion: e.source.data,
+                IdAlumno: data.IdAlumno
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabItemController.getView());
+        } else {
+            var tabItemController = Alloy.createController("NuevaNotaAlumno", {
+                IdAnotacion: e.source.textid,
+                IdAlumno: data.IdAlumno
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabItemController.getView());
+        }
     });
     __defers["$.__views.addAnotacion!click!NuevaAnotacion"] && $.__views.addAnotacion.addEventListener("click", NuevaAnotacion);
     _.extend($, exports);

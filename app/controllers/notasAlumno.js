@@ -44,6 +44,16 @@ $.TablaAnotaciones.addEventListener('delete', function(e)
 
 //--------------------------------
 
-
+$.TablaAnotaciones.addEventListener("click", function(e){
+    //console.debug("Añadimos el handler para el evento de click");
+    	if (e.source.id == "tblAnotacionRow") {
+        var tabItemController = Alloy.createController("NuevaNotaAlumno", {"IdAnotacion":e.source.data,"IdAlumno":data.IdAlumno});
+        Alloy.Globals.GrupoTab.activeTab.open(tabItemController.getView());
+      } else {
+      	var tabItemController = Alloy.createController("NuevaNotaAlumno", {"IdAnotacion":e.source.textid,"IdAlumno":data.IdAlumno});
+        Alloy.Globals.GrupoTab.activeTab.open(tabItemController.getView());
+      }
+      
+});
 
 

@@ -6,7 +6,8 @@ exports.definition = {
             IdClase: "integer",
             IdAsignatura: "integer",
             Fecha: "date",
-            Comentario: "string"
+            Comentario: "string",
+            Titulo: "string"
         },
         adapter: {
             type: "sql",

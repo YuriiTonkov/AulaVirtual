@@ -7,21 +7,126 @@ data = arg1;
 //$.WinClases.title = data.Nombre;
 $.winNuevaNota.setRightNavButton($.btnGuardar);
 
+if (data.IdAnotacion == undefined){
+    //$.btnAnterior.visible="false";
+   // $.btnSiguiente.visible="false";
+  
+
+}else{
+	var anotacion = Alloy.Collections.Anotacion;
+	anotacion.fetch();
+	var model = anotacion.get(data.IdAnotacion);
+	var datos = model.toJSON();
+	$.dateTextField.text = datos.Fecha;
+	$.txtTitulo.value = datos.Titulo;
+	$.txtObservaciones.value = datos.Comentario;
+	
+}
+
 function GuardarExamen(){
-    if ($.dateTextField.text == "Pulse aqui") 
+	if (data.IdAnotacion == undefined){
+    //$.btnAnterior.visible="false";
+   // $.btnSiguiente.visible="false";
+  if ($.dateTextField.text == "Pulse aqui") 
         {
-            alert("Tiene que introducir la fecha del examen.")
+            alert("Tiene que introducir la fecha del aviso.");
         }
     else 
         {
-            var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAlumno:data.IdAlumno, Comentario:$.txtObservaciones.value});
+            var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAlumno:data.IdAlumno, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.winNuevaNota.close();
-    }
+		}
+}else{
+	model.set({
+			Fecha:$.dateTextField.text, 
+			IdAlumno:data.IdAlumno, 
+			Comentario:$.txtObservaciones.value, 
+			Titulo:$.txtTitulo.value
+	});
+	model.save();
 }
+    
+           
+    
+}
+
+function EnviarExamen(){
+	var alumno = Alloy.Collections.Alumno;
+	alumno.fetch();
+	var model = alumno.get(data.IdAlumno);
+	var datos = model.toJSON();
+	
+	
+	if (datos.UsuarioCloud=1){
+		Cloud.Users.query({
+			    where: {
+			        email: datos.Email
+			    }
+			}, function (e) {
+			    if (e.success) {
+			       Cloud.Messages.create({
+	        			to_ids: e.users[0].id,
+				        body: $.txtObservaciones.value,
+				        subject: $.txtTitulo.value,
+				        custom_fields:{IdTipo:2, Fecha:$.dateTextField.text, Profesor: Ti.App.Properties.getString('Nombre') + ' ' + Ti.App.Properties.getString('Apellido1') +' '+ Ti.App.Properties.getString('Apellido2')}
+				        
+			        }, function (e) {
+			            if (e.success) {
+			                alert('Enviado!');
+				        
+			            } else {
+			                alert('Error:\n' +
+			            	((e.error && e.message) || JSON.stringify(e)));
+			            }
+			            
+			        });
+			    } else {
+			        alert('Error:\n' +
+			            ((e.error && e.message) || JSON.stringify(e)));
+			    }
+			});
+		 
+	}
+   
+}
+//Listeners ----------------------------
+
+$.txtTitulo.addEventListener("click", function() {
+	var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el titulo',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtTitulo.value = e.text;
+            }
+        });
+        dialog.show();
+});
+
+$.txtObservaciones.addEventListener("click", function() {
+	var dialog = Ti.UI.createAlertDialog({
+            title: 'Introduzca el texto de la observación',
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: ['Aceptar', 'Cancelar'],
+            cancel: 1,
+             });
+        dialog.addEventListener('click', function(e){
+           if (e.index === e.source.cancel){
+     
+            }else{
+                $.txtObservaciones.value = e.text;
+            }
+        });
+        dialog.show();
+});
 
 //--------------------CODIGO PARA FUNCIONAMIENTO DEL DATEPICKER
 var slide_in =  Titanium.UI.createAnimation({bottom:0});
@@ -56,7 +161,7 @@ $.dateTextField.addEventListener('click',function(){
 
 });
 
-$.txtObservaciones.addEventListener('click', function(){picker_view.animate(slide_out);})
+$.txtObservaciones.addEventListener('click', function(){picker_view.animate(slide_out);});
 
 
 
