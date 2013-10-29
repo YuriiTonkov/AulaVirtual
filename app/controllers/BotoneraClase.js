@@ -80,7 +80,7 @@ $.btnBar.addEventListener("click", function(e){
     		alertDialog.show();
     		break;
     	case 3:
-    		var tabAlumnosCloudController = Alloy.createController("",{"IdClase":data.IdClase});
+    		var tabAlumnosCloudController = Alloy.createController("NuevaNotaAlumno",{"IdClase":data.IdClase});
     		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());
     		break;
     }

@@ -8,9 +8,12 @@ data = arg1;
 $.winNuevaNota.setRightNavButton($.btnGuardar);
 
 if (data.IdAnotacion == undefined){
-    
-  
-
+	if (data.IdClase == undefined){
+		
+	} else {
+		$.btnEnviarTodos.visible=true;
+		$.btnEnviar.visible = false;
+	}
 }else{
 	var anotacion = Alloy.Collections.Anotacion;
 	anotacion.fetch();
@@ -25,7 +28,7 @@ if (data.IdAnotacion == undefined){
 function GuardarExamen(){
 	if (data.IdAnotacion == undefined){
 		if (data.IdClase == undefined){
-			$.btnEnviarTodos.visible = false;
+			
 		}
 		else{
 			$.btnEnviarTodos.visible = true;
@@ -59,10 +62,10 @@ function GuardarExamen(){
 }
 
 function EnviarExamen(){
-	var alumno = Alloy.Collections.Alumno;
-	alumno.fetch();
-	var model = alumno.get(data.IdAlumno);
-	var datos = model.toJSON();
+	var alumnos = Alloy.Collections.Alumno;
+	alumnos.fetch();
+	var alumno = alumnos.get(data.IdAlumno);
+	var datos = alumno.toJSON();
 	
 	
 	if (datos.UsuarioCloud=1){
@@ -101,14 +104,14 @@ function EnviarExamen(){
 function EnviarExamenTodos(){
 	var alumno = Alloy.Collections.Alumno;
 	alumno.fetch();
-	var model = alumno.get(data.IdAlumno);
+	var model = alumno.where(data.IdClase);
 	var datos = model.toJSON();
 	
-	
+	for (var i=0;i>datos.length;i++){
 	if (datos.UsuarioCloud=1){
 		Cloud.Users.query({
 			    where: {
-			        email: datos.Email
+			        email: datos[0].Email
 			    }
 			}, function (e) {
 			    if (e.success) {
@@ -135,7 +138,7 @@ function EnviarExamenTodos(){
 			});
 		 
 	}
-   
+   }
 }
 
 //Listeners ----------------------------

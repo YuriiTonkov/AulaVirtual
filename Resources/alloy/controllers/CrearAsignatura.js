@@ -34,22 +34,22 @@ function Controller() {
         id: "Marco"
     });
     $.__views.winCrearAsignatura.add($.__views.Marco);
-    $.__views.__alloyId9 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId10 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId9"
+        id: "__alloyId10"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId9);
-    $.__views.__alloyId10 = Ti.UI.createLabel({
+    $.__views.winCrearAsignatura.add($.__views.__alloyId10);
+    $.__views.__alloyId11 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
             fontSize: "11dp"
         },
         text: "Nombre",
-        id: "__alloyId10"
+        id: "__alloyId11"
     });
-    $.__views.__alloyId9.add($.__views.__alloyId10);
+    $.__views.__alloyId10.add($.__views.__alloyId11);
     $.__views.txtNombreAsignatura = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -57,23 +57,23 @@ function Controller() {
         editable: "false",
         id: "txtNombreAsignatura"
     });
-    $.__views.__alloyId9.add($.__views.txtNombreAsignatura);
-    $.__views.__alloyId11 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId10.add($.__views.txtNombreAsignatura);
+    $.__views.__alloyId12 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId11"
+        id: "__alloyId12"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId11);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.winCrearAsignatura.add($.__views.__alloyId12);
+    $.__views.__alloyId13 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
             fontSize: "11dp"
         },
         text: "Descripcion",
-        id: "__alloyId12"
+        id: "__alloyId13"
     });
-    $.__views.__alloyId11.add($.__views.__alloyId12);
+    $.__views.__alloyId12.add($.__views.__alloyId13);
     $.__views.txtDescripcion = Ti.UI.createTextField({
         borderColor: "#000",
         width: "60%",
@@ -81,30 +81,30 @@ function Controller() {
         editable: "false",
         id: "txtDescripcion"
     });
-    $.__views.__alloyId11.add($.__views.txtDescripcion);
-    $.__views.__alloyId13 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId12.add($.__views.txtDescripcion);
+    $.__views.__alloyId14 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId13"
+        id: "__alloyId14"
     });
-    $.__views.winCrearAsignatura.add($.__views.__alloyId13);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.winCrearAsignatura.add($.__views.__alloyId14);
+    $.__views.__alloyId15 = Ti.UI.createLabel({
         width: "30%",
         left: "2%",
         font: {
             fontSize: "11dp"
         },
         text: "Asignatura Optativa",
-        id: "__alloyId14"
+        id: "__alloyId15"
     });
-    $.__views.__alloyId13.add($.__views.__alloyId14);
+    $.__views.__alloyId14.add($.__views.__alloyId15);
     $.__views.swtOptativa = Ti.UI.createSwitch({
         title: "Optativa",
         value: "false",
         visible: "true",
         id: "swtOptativa"
     });
-    $.__views.__alloyId13.add($.__views.swtOptativa);
+    $.__views.__alloyId14.add($.__views.swtOptativa);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",

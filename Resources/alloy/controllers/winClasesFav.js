@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId188() {
-        __alloyId188.opts || {};
-        var models = filtrado(__alloyId187);
+    function __alloyId189() {
+        __alloyId189.opts || {};
+        var models = filtrado(__alloyId188);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId185 = models[i];
-            __alloyId185.__transform = NombreClase(__alloyId185);
-            var __alloyId186 = Alloy.createController("ClaseRow", {
-                $model: __alloyId185
+            var __alloyId186 = models[i];
+            __alloyId186.__transform = NombreClase(__alloyId186);
+            var __alloyId187 = Alloy.createController("ClaseRow", {
+                $model: __alloyId186
             });
-            rows.push(__alloyId186.getViewEx({
+            rows.push(__alloyId187.getViewEx({
                 recurse: true
             }));
         }
@@ -58,10 +58,10 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClasesFav.add($.__views.TablaClases);
-    var __alloyId187 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
-    __alloyId187.on("fetch destroy change add remove reset", __alloyId188);
+    var __alloyId188 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
+    __alloyId188.on("fetch destroy change add remove reset", __alloyId189);
     exports.destroy = function() {
-        __alloyId187.off("fetch destroy change add remove reset", __alloyId188);
+        __alloyId188.off("fetch destroy change add remove reset", __alloyId189);
     };
     _.extend($, $.__views);
     $.WinClasesFav.title = "Clases Favoritas";

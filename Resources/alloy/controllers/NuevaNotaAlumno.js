@@ -1,16 +1,19 @@
 function Controller() {
     function GuardarExamen() {
-        if (void 0 == data.IdAnotacion) if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del aviso."); else {
-            var Anotacion = Alloy.createModel("Anotacion", {
-                Fecha: $.dateTextField.text,
-                IdAlumno: data.IdAlumno,
-                Comentario: $.txtObservaciones.value,
-                Titulo: $.txtTitulo.value
-            });
-            var coleccionAnotaciones = Alloy.Collections.Anotacion;
-            coleccionAnotaciones.add(Anotacion);
-            Anotacion.save();
-            coleccionAnotaciones.fetch();
+        if (void 0 == data.IdAnotacion) {
+            void 0 == data.IdClase || ($.btnEnviarTodos.visible = true);
+            if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del aviso."); else {
+                var Anotacion = Alloy.createModel("Anotacion", {
+                    Fecha: $.dateTextField.text,
+                    IdAlumno: data.IdAlumno,
+                    Comentario: $.txtObservaciones.value,
+                    Titulo: $.txtTitulo.value
+                });
+                var coleccionAnotaciones = Alloy.Collections.Anotacion;
+                coleccionAnotaciones.add(Anotacion);
+                Anotacion.save();
+                coleccionAnotaciones.fetch();
+            }
         } else {
             model.set({
                 Fecha: $.dateTextField.text,
@@ -22,13 +25,37 @@ function Controller() {
         }
     }
     function EnviarExamen() {
-        var alumno = Alloy.Collections.Alumno;
-        alumno.fetch();
-        var model = alumno.get(data.IdAlumno);
-        var datos = model.toJSON();
+        var alumnos = Alloy.Collections.Alumno;
+        alumnos.fetch();
+        var alumno = alumnos.get(data.IdAlumno);
+        var datos = alumno.toJSON();
         (datos.UsuarioCloud = 1) && Cloud.Users.query({
             where: {
                 email: datos.Email
+            }
+        }, function(e) {
+            e.success ? Cloud.Messages.create({
+                to_ids: e.users[0].id,
+                body: $.txtObservaciones.value,
+                subject: $.txtTitulo.value,
+                custom_fields: {
+                    IdTipo: 2,
+                    Fecha: $.dateTextField.text,
+                    Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
+                }
+            }, function(e) {
+                e.success ? alert("Enviado!") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            }) : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        });
+    }
+    function EnviarExamenTodos() {
+        var alumno = Alloy.Collections.Alumno;
+        alumno.fetch();
+        var model = alumno.where(data.IdClase);
+        var datos = model.toJSON();
+        for (var i = 0; i > datos.length; i++) (datos.UsuarioCloud = 1) && Cloud.Users.query({
+            where: {
+                email: datos[0].Email
             }
         }, function(e) {
             e.success ? Cloud.Messages.create({
@@ -60,14 +87,14 @@ function Controller() {
         id: "winNuevaNota"
     });
     $.__views.winNuevaNota && $.addTopLevelView($.__views.winNuevaNota);
-    $.__views.__alloyId32 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId33 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId32"
+        id: "__alloyId33"
     });
-    var __alloyId33 = [];
-    __alloyId33.push($.__views.__alloyId32);
-    $.__views.__alloyId34 = Ti.UI.createLabel({
+    var __alloyId34 = [];
+    __alloyId34.push($.__views.__alloyId33);
+    $.__views.__alloyId35 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -78,9 +105,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Fecha:",
-        id: "__alloyId34"
+        id: "__alloyId35"
     });
-    $.__views.__alloyId32.add($.__views.__alloyId34);
+    $.__views.__alloyId33.add($.__views.__alloyId35);
     $.__views.dateTextField = Ti.UI.createLabel({
         top: "15dp",
         width: "100%",
@@ -94,14 +121,14 @@ function Controller() {
         text: "Pulse aqui",
         id: "dateTextField"
     });
-    $.__views.__alloyId32.add($.__views.dateTextField);
-    $.__views.__alloyId35 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId33.add($.__views.dateTextField);
+    $.__views.__alloyId36 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId35"
+        id: "__alloyId36"
     });
-    __alloyId33.push($.__views.__alloyId35);
-    $.__views.__alloyId36 = Ti.UI.createLabel({
+    __alloyId34.push($.__views.__alloyId36);
+    $.__views.__alloyId37 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -112,9 +139,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Titulo:",
-        id: "__alloyId36"
+        id: "__alloyId37"
     });
-    $.__views.__alloyId35.add($.__views.__alloyId36);
+    $.__views.__alloyId36.add($.__views.__alloyId37);
     $.__views.txtTitulo = Ti.UI.createTextField({
         top: "15dp",
         width: "100%",
@@ -128,14 +155,14 @@ function Controller() {
         enabled: "false",
         id: "txtTitulo"
     });
-    $.__views.__alloyId35.add($.__views.txtTitulo);
-    $.__views.__alloyId37 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId36.add($.__views.txtTitulo);
+    $.__views.__alloyId38 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "300dp",
-        id: "__alloyId37"
+        id: "__alloyId38"
     });
-    __alloyId33.push($.__views.__alloyId37);
-    $.__views.__alloyId38 = Ti.UI.createLabel({
+    __alloyId34.push($.__views.__alloyId38);
+    $.__views.__alloyId39 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -146,9 +173,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Observaciones:",
-        id: "__alloyId38"
+        id: "__alloyId39"
     });
-    $.__views.__alloyId37.add($.__views.__alloyId38);
+    $.__views.__alloyId38.add($.__views.__alloyId39);
     $.__views.txtObservaciones = Ti.UI.createTextField({
         top: "15dp",
         width: "80%",
@@ -162,12 +189,12 @@ function Controller() {
         enabled: "false",
         id: "txtObservaciones"
     });
-    $.__views.__alloyId37.add($.__views.txtObservaciones);
+    $.__views.__alloyId38.add($.__views.txtObservaciones);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "10%",
-        data: __alloyId33,
+        data: __alloyId34,
         id: "Marco"
     });
     $.__views.winNuevaNota.add($.__views.Marco);
@@ -185,6 +212,14 @@ function Controller() {
     });
     $.__views.winNuevaNota.add($.__views.btnEnviar);
     EnviarExamen ? $.__views.btnEnviar.addEventListener("click", EnviarExamen) : __defers["$.__views.btnEnviar!click!EnviarExamen"] = true;
+    $.__views.btnEnviarTodos = Ti.UI.createButton({
+        top: "20dp",
+        visible: "false",
+        id: "btnEnviarTodos",
+        title: "EnviarTodos"
+    });
+    $.__views.winNuevaNota.add($.__views.btnEnviarTodos);
+    EnviarExamenTodos ? $.__views.btnEnviarTodos.addEventListener("click", EnviarExamenTodos) : __defers["$.__views.btnEnviarTodos!click!EnviarExamenTodos"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
         id: "cancel",
@@ -205,7 +240,10 @@ function Controller() {
     var data = [];
     data = arg1;
     $.winNuevaNota.setRightNavButton($.btnGuardar);
-    if (void 0 == data.IdAnotacion) ; else {
+    if (void 0 == data.IdAnotacion) if (void 0 == data.IdClase) ; else {
+        $.btnEnviarTodos.visible = true;
+        $.btnEnviar.visible = false;
+    } else {
         var anotacion = Alloy.Collections.Anotacion;
         anotacion.fetch();
         var model = anotacion.get(data.IdAnotacion);
@@ -287,6 +325,7 @@ function Controller() {
     });
     __defers["$.__views.btnGuardar!click!GuardarExamen"] && $.__views.btnGuardar.addEventListener("click", GuardarExamen);
     __defers["$.__views.btnEnviar!click!EnviarExamen"] && $.__views.btnEnviar.addEventListener("click", EnviarExamen);
+    __defers["$.__views.btnEnviarTodos!click!EnviarExamenTodos"] && $.__views.btnEnviarTodos.addEventListener("click", EnviarExamenTodos);
     _.extend($, exports);
 }
 

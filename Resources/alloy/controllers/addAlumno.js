@@ -1,20 +1,20 @@
 function Controller() {
-    function __alloyId130() {
-        __alloyId130.opts || {};
-        var models = __alloyId129.models;
+    function __alloyId131() {
+        __alloyId131.opts || {};
+        var models = __alloyId130.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId126 = models[i];
-            __alloyId126.__transform = nombrecompleto(__alloyId126);
-            var __alloyId127 = Ti.UI.createTableViewRow({
+            var __alloyId127 = models[i];
+            __alloyId127.__transform = nombrecompleto(__alloyId127);
+            var __alloyId128 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
                 height: "40dp",
                 editable: "true",
-                data: "undefined" != typeof __alloyId126.__transform["IdAlumno"] ? __alloyId126.__transform["IdAlumno"] : __alloyId126.get("IdAlumno")
+                data: "undefined" != typeof __alloyId127.__transform["IdAlumno"] ? __alloyId127.__transform["IdAlumno"] : __alloyId127.get("IdAlumno")
             });
-            rows.push(__alloyId127);
-            var __alloyId128 = Ti.UI.createLabel({
+            rows.push(__alloyId128);
+            var __alloyId129 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "left",
@@ -23,10 +23,10 @@ function Controller() {
                     fontSize: 16,
                     fontFamily: "HelveticaNeue-UltraLight"
                 },
-                text: "undefined" != typeof __alloyId126.__transform["nombrecompleto"] ? __alloyId126.__transform["nombrecompleto"] : __alloyId126.get("nombrecompleto"),
-                textid: "undefined" != typeof __alloyId126.__transform["IdAlumno"] ? __alloyId126.__transform["IdAlumno"] : __alloyId126.get("IdAlumno")
+                text: "undefined" != typeof __alloyId127.__transform["nombrecompleto"] ? __alloyId127.__transform["nombrecompleto"] : __alloyId127.get("nombrecompleto"),
+                textid: "undefined" != typeof __alloyId127.__transform["IdAlumno"] ? __alloyId127.__transform["IdAlumno"] : __alloyId127.get("IdAlumno")
             });
-            __alloyId127.add(__alloyId128);
+            __alloyId128.add(__alloyId129);
         }
         $.__views.TablaAlumnos.setData(rows);
     }
@@ -79,12 +79,12 @@ function Controller() {
         id: "addAlumno"
     });
     $.__views.addAlumno && $.addTopLevelView($.__views.addAlumno);
-    $.__views.__alloyId125 = Ti.UI.createLabel({
+    $.__views.__alloyId126 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId125"
+        id: "__alloyId126"
     });
-    $.__views.addAlumno.add($.__views.__alloyId125);
+    $.__views.addAlumno.add($.__views.__alloyId126);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
@@ -93,8 +93,8 @@ function Controller() {
         allowsSelection: "true"
     });
     $.__views.addAlumno.add($.__views.TablaAlumnos);
-    var __alloyId129 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId129.on("fetch destroy change add remove reset", __alloyId130);
+    var __alloyId130 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId130.on("fetch destroy change add remove reset", __alloyId131);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -103,7 +103,7 @@ function Controller() {
     $.__views.addAlumno.add($.__views.btnGuardar);
     GuardarAlumnos ? $.__views.btnGuardar.addEventListener("click", GuardarAlumnos) : __defers["$.__views.btnGuardar!click!GuardarAlumnos"] = true;
     exports.destroy = function() {
-        __alloyId129.off("fetch destroy change add remove reset", __alloyId130);
+        __alloyId130.off("fetch destroy change add remove reset", __alloyId131);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
