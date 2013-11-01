@@ -71,7 +71,7 @@ function Controller() {
         Cloud.Friends.remove({
             user_ids: model.UsuarioCloud
         }, function(e) {
-            e.success ? alert("Se ha desvinculado al alumno") : error(e);
+            e.success && alert("Se ha desvinculado al alumno");
             model.destroy();
             alumnos.remove(model);
             alumnos.fetch();

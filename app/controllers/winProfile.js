@@ -76,7 +76,7 @@ function Alta(){
 }
 
 function Guardar(){
-    if (Ti.App.Properties.getString('Pass')==$.txtPass.value){
+
             Ti.App.Properties.setString("Nombre",$.txtNombre.value);
             Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
             Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
@@ -92,6 +92,7 @@ function Guardar(){
 					first_name:$.txtNombre.value ,
 					last_name:  $.txtApellido1.value,
 					password: 'AulaVirtual',
+					email: $.txtEmail.value,
 					password_confirmation: 'AulaVirtual',
 					role: 'Profesor',
 					custom_fields:{"Direccion": $.txtDireccion.value,
@@ -100,20 +101,32 @@ function Guardar(){
 								    "Apellido2": $.txtApellido2.value
 								 }
 				};
+				
 			    Cloud.Users.update(data, function (e) {
 			       if (e.success) {
 			            alert('Se han modificado los datos de usuario');
 			       }
 			       else {
-			            alert('No se han podido actualizar los datos en la nube');
+			            Cloud.Users.create(data, function (e) {
+					    if (e.success) {
+						  
+							//AVISO 
+							var user = e.users[0];
+					        alert('Success:\n' +
+					            'id: ' + user.id + '\n' +
+					            'sessionId: ' + Cloud.sessionId + '\n' +
+					            'first name: ' + user.first_name + '\n' +
+					            'last name: ' + user.last_name);
+								Ti.App.Properties.setString("UsuarioCloud",1);
+					    } else {
+					        alert('Error:\n' +
+					            ((e.error && e.message) || JSON.stringify(e)));
+					    }
+					});
 			       }  
 			    });
 			       
-			}
-      } else {
-            $.lblError.text = "Contraseña incorrecta";
-            $.lblError.visible= true;
-    }   
+			}   
    
 }
 
@@ -244,22 +257,7 @@ $.txtEmail.addEventListener("click", function(){
      else alert("No se puede modificar el Email");
 });
 
-$.txtPass.addEventListener("click", function(){
-        var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduzca el correo electrónico',
-            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
-            buttonNames: ['Aceptar', 'Cancelar'],
-            cancel: 1,
-             });
-        dialog.addEventListener('click', function(e){
-            if (e.index === e.source.cancel){
-     
-            }else{
-                $.txtPass.value = e.text;
-            }
-        });
-        dialog.show();
-});
+
 $.winUsuario.addEventListener('focus',function(e){
     
      refreshScreen();

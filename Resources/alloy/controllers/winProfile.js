@@ -33,37 +33,39 @@ function Controller() {
         });
     }
     function Guardar() {
-        if (Ti.App.Properties.getString("Pass") == $.txtPass.value) {
-            Ti.App.Properties.setString("Nombre", $.txtNombre.value);
-            Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
-            Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
-            Ti.App.Properties.setString("Direccion", $.txtDireccion.value);
-            Ti.App.Properties.setString("CP", $.txtCodPostal.value);
-            Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
-            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
-            $.lblError.text = "Se han modificado los datos de registro";
-            $.lblError.visible = true;
-            if (void 0 != Ti.App.Properties.getString("UsuarioCloud")) {
-                var data = {
-                    first_name: $.txtNombre.value,
-                    last_name: $.txtApellido1.value,
-                    password: "AulaVirtual",
-                    password_confirmation: "AulaVirtual",
-                    role: "Profesor",
-                    custom_fields: {
-                        Direccion: $.txtDireccion.value,
-                        CodPostal: $.txtCodPostal.value,
-                        Telefono1: $.txtTelefono.value,
-                        Apellido2: $.txtApellido2.value
-                    }
-                };
-                Cloud.Users.update(data, function(e) {
-                    e.success ? alert("Se han modificado los datos de usuario") : alert("No se han podido actualizar los datos en la nube");
+        Ti.App.Properties.setString("Nombre", $.txtNombre.value);
+        Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
+        Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
+        Ti.App.Properties.setString("Direccion", $.txtDireccion.value);
+        Ti.App.Properties.setString("CP", $.txtCodPostal.value);
+        Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
+        Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+        $.lblError.text = "Se han modificado los datos de registro";
+        $.lblError.visible = true;
+        if (void 0 != Ti.App.Properties.getString("UsuarioCloud")) {
+            var data = {
+                first_name: $.txtNombre.value,
+                last_name: $.txtApellido1.value,
+                password: "AulaVirtual",
+                email: $.txtEmail.value,
+                password_confirmation: "AulaVirtual",
+                role: "Profesor",
+                custom_fields: {
+                    Direccion: $.txtDireccion.value,
+                    CodPostal: $.txtCodPostal.value,
+                    Telefono1: $.txtTelefono.value,
+                    Apellido2: $.txtApellido2.value
+                }
+            };
+            Cloud.Users.update(data, function(e) {
+                e.success ? alert("Se han modificado los datos de usuario") : Cloud.Users.create(data, function(e) {
+                    if (e.success) {
+                        var user = e.users[0];
+                        alert("Success:\nid: " + user.id + "\n" + "sessionId: " + Cloud.sessionId + "\n" + "first name: " + user.first_name + "\n" + "last name: " + user.last_name);
+                        Ti.App.Properties.setString("UsuarioCloud", 1);
+                    } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
                 });
-            }
-        } else {
-            $.lblError.text = "Contraseña incorrecta";
-            $.lblError.visible = true;
+            });
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -337,57 +339,22 @@ function Controller() {
             fontSize: 10,
             fontFamily: "HelveticaNeue-UltraLight"
         },
-        text: "Contraseña",
+        text: "Ayuda activa",
         id: "__alloyId211"
     });
     $.__views.__alloyId210.add($.__views.__alloyId211);
-    $.__views.txtPass = Ti.UI.createTextField({
-        top: "15dp",
-        width: "100%",
-        height: "20dp",
-        textAlign: "left",
-        left: "45dp",
-        font: {
-            fontSize: 16,
-            fontFamily: "HelveticaNeue-UltraLight"
-        },
-        editable: "false",
-        passwordMask: "true",
-        id: "txtPass"
+    $.__views.chkAyuda = Ti.UI.createSwitch({
+        enabled: "true",
+        left: "80%",
+        id: "chkAyuda"
     });
-    $.__views.__alloyId210.add($.__views.txtPass);
+    $.__views.__alloyId210.add($.__views.chkAyuda);
     $.__views.__alloyId212 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
         id: "__alloyId212"
     });
     __alloyId196.push($.__views.__alloyId212);
-    $.__views.__alloyId213 = Ti.UI.createLabel({
-        width: "100%",
-        height: "12dp",
-        textAlign: "left",
-        left: "6dp",
-        top: "1dp",
-        font: {
-            fontSize: 10,
-            fontFamily: "HelveticaNeue-UltraLight"
-        },
-        text: "Ayuda activa",
-        id: "__alloyId213"
-    });
-    $.__views.__alloyId212.add($.__views.__alloyId213);
-    $.__views.chkAyuda = Ti.UI.createSwitch({
-        enabled: "true",
-        left: "80%",
-        id: "chkAyuda"
-    });
-    $.__views.__alloyId212.add($.__views.chkAyuda);
-    $.__views.__alloyId214 = Ti.UI.createTableViewRow({
-        backgroundColor: "white",
-        height: "40dp",
-        id: "__alloyId214"
-    });
-    __alloyId196.push($.__views.__alloyId214);
     $.__views.lblError = Ti.UI.createLabel({
         top: "15dp",
         width: "100%",
@@ -401,7 +368,7 @@ function Controller() {
         id: "lblError",
         visible: "false"
     });
-    $.__views.__alloyId214.add($.__views.lblError);
+    $.__views.__alloyId212.add($.__views.lblError);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
@@ -421,7 +388,7 @@ function Controller() {
         top: "85%",
         left: "42%",
         id: "btnAlta",
-        title: "Alta"
+        title: "Enviar a nube"
     });
     $.__views.winUsuario.add($.__views.btnAlta);
     Alta ? $.__views.btnAlta.addEventListener("click", Alta) : __defers["$.__views.btnAlta!click!Alta"] = true;
@@ -514,18 +481,6 @@ function Controller() {
             });
             dialog.show();
         } else alert("No se puede modificar el Email");
-    });
-    $.txtPass.addEventListener("click", function() {
-        var dialog = Ti.UI.createAlertDialog({
-            title: "Introduzca el correo electrónico",
-            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
-            buttonNames: [ "Aceptar", "Cancelar" ],
-            cancel: 1
-        });
-        dialog.addEventListener("click", function(e) {
-            e.index === e.source.cancel || ($.txtPass.value = e.text);
-        });
-        dialog.show();
     });
     $.winUsuario.addEventListener("focus", function() {
         refreshScreen();

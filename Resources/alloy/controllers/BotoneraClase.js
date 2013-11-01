@@ -8,9 +8,9 @@ function Controller() {
     var exports = {};
     $.__views.botones = Ti.UI.createView({
         backgroundColor: "white",
-        borderRadius: "5dp",
+        borderRadius: "3dp",
         height: "30dp",
-        width: "50dp",
+        width: "100dp",
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);

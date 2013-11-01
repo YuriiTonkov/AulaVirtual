@@ -1,11 +1,11 @@
 <Alloy>
-	<View  borderRadius="5dp" height="30dp" width="50dp" id="botones" class="container">
+	<View  borderRadius="3dp" height="30dp" width="100dp" id="botones" class="container">
 		<ButtonBar borderRadius="5dp" height="100%" width="100%" id="btnBar">
 			<Labels>
-				<Label id="addAlumno">+</Label>
-				<Label id="addAlumnoCloud">(+)</Label>
-				<Label id="favoritar">*</Label>
-				<Label id="enviarMensaje">@</Label>
+				<Label  id="addAlumno">+</Label>
+				<Label  id="addAlumnoCloud">(+)</Label>
+				<Label  id="favoritar">*</Label>
+				<Label  id="enviarMensaje">@</Label>
 			</Labels>
 		</ButtonBar>
 	</View>

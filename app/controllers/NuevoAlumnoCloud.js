@@ -63,7 +63,7 @@ function GuardarAlumnos(){
                                             CodPostal:e.users[0].custom_fields.CodPostal,
                                             TelContacto:e.users[0].custom_fields.Telefono1,
                                             TelContacto2:e.users[0].custom_fields.Telefono2,
-                                            Email:e.users[0].email,
+                                            Email:e.users[0].custom_fields.Email,
                                             Email2:e.users[0].custom_fields.Email2,
                                             Padre:e.users[0].custom_fields.Padre,
                                             Madre:e.users[0].custom_fields.Madre,

@@ -43,7 +43,7 @@ $.TablaAlumnos.addEventListener('delete', function(e)
 	            if (e.success) {
 	                alert('Se ha desvinculado al alumno');
 	            } else {
-	                error(e);
+	                
 	            }
 	            
 	            model.destroy();

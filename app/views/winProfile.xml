@@ -30,10 +30,6 @@
 				<TextField class="textboxAlumno" editable="false" id="txtEmail"></TextField>
 			</TableViewRow>	
 			<TableViewRow height="40dp">		
-				<Label class="labelAlumno" >Contraseña</Label>
-				<TextField class="textboxAlumno" editable="false" passwordMask="true"  id="txtPass"></TextField>
-			</TableViewRow>	
-			<TableViewRow height="40dp">		
 				<Label class="labelAlumno" >Ayuda activa</Label>
 				<Switch enabled="true"  left="80%" id="chkAyuda"/>	
 			</TableViewRow>	
@@ -42,6 +38,6 @@
 			</TableViewRow>
 		</TableView>	
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
-		<Button class="button" top="85%" left="42%" id="btnAlta" title="Alta" onClick="Alta"></Button>
+		<Button class="button" top="85%" left="42%" id="btnAlta" title="Enviar a nube" onClick="Alta"></Button>
 	</Window>
 </Alloy>
