@@ -3,7 +3,7 @@
     	<TableView id="Marco">
 			<TableViewRow height="40dp">
 		        <Label class="labelAlumno">Fecha Examen:</Label>
-		        <Label class="textboxAlumno" id="dateTextField"/>
+		        <TextField class="textboxAlumno" editable = "false" id="dateTextField"/>
 		     </TableViewRow>   
 		     <TableViewRow height="40dp">
 		        <Label class="labelAlumno">Nota:</Label>
@@ -14,7 +14,7 @@
 		        <TextField class="textboxAlumno" editable = "false" id="txtPeso"/>
 		     </TableViewRow>
 		</TableView>
-        <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarExamen"></Button>
+        <Button class="button" top="-50dp" id="btnGuardar" title="Guardar"></Button>
         <Button class="button" top="-90dp" id="cancel" title="Cancelar" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
         <Button class="button" top="-100dp" id="done" title="Hecho" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
     </Window>

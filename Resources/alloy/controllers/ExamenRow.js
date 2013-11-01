@@ -31,6 +31,19 @@ function Controller() {
     $.__views.tblExamenRow.add($.__views.lblExamen);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.tblExamenRow.addEventListener("click", function(e) {
+        if ("tblExamenRow" == e.source.id) {
+            var tabAlumnosController = Alloy.createController("NuevoExamen", {
+                IdExamen: e.source.data
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+        } else {
+            var tabAlumnosController = Alloy.createController("NuevoExamen", {
+                IdExamen: e.source.textid
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+        }
+    });
     _.extend($, exports);
 }
 

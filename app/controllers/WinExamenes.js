@@ -18,7 +18,7 @@ Examenes.fetch();
 function TextoFila (model){
     var transform = model.toJSON();
     transform.TextoFila = "Examen: "+transform.FechaExamen+"   Nota: "+transform.Nota;
-    return transform
+    return transform;
 }
 
 function filtrado (collection){
@@ -26,7 +26,7 @@ function filtrado (collection){
     return coleccion_filtrada;
 }
 function NuevoExamen (){
-    var tabExamenController = Alloy.createController("NuevoExamen", {"Evaluacion":data.IdEvaluacion, "Nombre":data.FechaExamen});
+    var tabExamenController = Alloy.createController("NuevoExamen", {"Evaluacion":data.IdEvaluacion});
     Alloy.Globals.GrupoTab.activeTab.open(tabExamenController.getView());
     
 }

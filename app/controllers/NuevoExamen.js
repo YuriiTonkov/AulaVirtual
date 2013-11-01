@@ -6,20 +6,36 @@ data = arg1;
 //$.WinClases.title = data.Nombre;
 $.winNuevoExamen.setRightNavButton($.btnGuardar);
 
+if (data.IdExamen==undefined){
+	
+} else {
+	var colExamenes = Alloy.Collections.Examen;
+    colExamenes.fetch();
+    var modelExamen = colExamenes.get(data.IdExamen);
+    var ArrayExamen = modelExamen.toJSON();
+    $.txtNota.value = ArrayExamen.Nota;
+    $.dateTextField.value = ArrayExamen.FechaExamen;
+    $.txtPeso.value = ArrayExamen.Peso;
+}
+
+
+
 function GuardarExamen(){
-    if ($.dateTextField.text == "Pulse aqui") 
-        {
-            alert("Tiene que introducir la fecha del examen.");
-        }
-    else 
-        {
-            var Examen = Alloy.createModel('Examen',{FechaExamen:$.dateTextField.text,Peso:$.txtPeso.value, Evaluacion:data.Evaluacion, Nota:$.txtNota.value});
-            var coleccionExamenes = Alloy.Collections.Examen;
+	  var coleccionExamenes = Alloy.Collections.Examen;
+    if (data.IdExamen==undefined){
+            var Examen = Alloy.createModel('Examen',{FechaExamen:$.dateTextField.value,Peso:$.txtPeso.value, Evaluacion:data.Evaluacion, Nota:$.txtNota.value});
             coleccionExamenes.add(Examen);
             Examen.save();
             coleccionExamenes.fetch();
             $.winNuevoExamen.close();
-    }
+     } else {
+            coleccionExamenes.fetch();
+        	var modelExamen= coleccionExamenes.get(data.IdExamen);
+       	    modelExamen.set({Nota:$.txtNota.value, Peso:$.txtPeso.value, FechaExamen:$.dateTextField.value});
+       	    modelExamen.save();
+       	    coleccionExamenes.fetch();	
+     }
+    
 }
 //---------------Listeners
 
@@ -88,6 +104,7 @@ picker_view.add(toolbar);
 
 $.dateTextField.addEventListener('click',function(){
     $.txtNota.blur();
+    $.txtPeso.blur();
     $.winNuevoExamen.add(picker_view);
     picker_view.animate(slide_in);
 
@@ -107,5 +124,47 @@ $.cancel.addEventListener("click", function() {
 
 $.done.addEventListener("click", function() {
     var dateValue = picker.value;
-    $.dateTextField.text =  (dateValue.getMonth() + 1) + "/"+ dateValue.getDate() + "/"+ dateValue.getFullYear();
+    $.dateTextField.value =  (dateValue.getMonth() + 1) + "/"+ dateValue.getDate() + "/"+ dateValue.getFullYear();
     picker_view.animate(slide_out);});
+    
+
+//-----------PRUEBAS DE VALIDACION-----------------------
+
+
+
+var validationCallback = function(errors) {
+        if(errors.length > 0) {
+                for (var i = 0; i < errors.length; i++) {
+                        Ti.API.debug(errors[i].message);
+                }
+                alert(errors[0].message);
+        } else {
+               GuardarExamen();
+        }
+};
+
+
+var returnCallback = function() {
+        validator.run([
+                                {
+                                        id: 'dateField',
+                                    value: $.dateTextField.value,
+                                    display: 'Fecha',    
+                                    rules: 'required'
+                                },
+                                {
+                                        id: 'notaField',
+                                    value: $.txtNota.value,
+                                    display: 'Nota',    
+                                    rules: 'required|numeric'
+                                },
+                                {
+                                        id: 'pesoField',
+                                    value: $.txtPeso.value,
+                                    display: 'Peso',    
+                                    rules: 'numeric'
+                                }
+                        ], validationCallback);        
+};
+
+$.btnGuardar.addEventListener('click', returnCallback);

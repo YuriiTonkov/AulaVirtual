@@ -29,8 +29,7 @@ function Controller() {
     }
     function NuevoExamen() {
         var tabExamenController = Alloy.createController("NuevoExamen", {
-            Evaluacion: data.IdEvaluacion,
-            Nombre: data.FechaExamen
+            Evaluacion: data.IdEvaluacion
         });
         Alloy.Globals.GrupoTab.activeTab.open(tabExamenController.getView());
     }

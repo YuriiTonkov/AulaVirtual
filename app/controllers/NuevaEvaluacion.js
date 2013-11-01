@@ -17,8 +17,8 @@ if (data.IdEvaluacion == undefined){
     $.txtNombreEvaluacion.value = ArrayEvaluacion.Nombre;
     $.lblFecha.text = ArrayEvaluacion.FechaInicio;
     $.txtPeso.value = ArrayEvaluacion.Peso;
-    
-    GuardarEvaluacion();
+}
+  
     
 function Guardar(){
     GuardarEvaluacion();
@@ -31,7 +31,7 @@ function GuardarEvaluacion(){
     if (data.IdEvaluacion == undefined){
         if ($.txtNombreEvaluacion.value == "") 
             {
-                alert("Tiene que introducir un nombre de la evaluacion.")
+                alert("Tiene que introducir un nombre de la evaluacion.");
             }
         else
             {
@@ -44,7 +44,7 @@ function GuardarEvaluacion(){
     }else{
         coleccionEvaluaciones.fetch();
         var modelEvaluacion = coleccionEvaluaciones.get(data.IdEvaluacion);
-        modelEvaluacion.set({Nombre:$.txtNombreEvaluacion.value, Evaluacion:data.IdEvaluacion, Calificacion:$.txtNota.text, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.text});
+        modelEvaluacion.set({Nombre:$.txtNombreEvaluacion.value, Calificacion:$.txtNota.text, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.text});
         modelEvaluacion.save();
         coleccionEvaluaciones.fetch();
     }
@@ -64,7 +64,7 @@ function calcularMedia(){
         $.txtNota.text = nota;
         
     }
-}
+
 //--------------------Listeners
 
 $.txtNombreEvaluacion.addEventListener("click", function(){
@@ -134,7 +134,7 @@ $.lblFecha.addEventListener('click',function(){
 
 });
 
-$.txtNota.addEventListener('click', function(){picker_view.animate(slide_out);})
+$.txtNota.addEventListener('click', function(){picker_view.animate(slide_out);});
 
 
 
@@ -148,5 +148,47 @@ $.cancel.addEventListener("click", function() {
 
 $.done.addEventListener("click", function() {
     var dateValue = picker.value;
-    $.lblFecha.text =  (dateValue.getMonth() + 1) + "/"+ dateValue.getDate() + "/"+ dateValue.getFullYear();
+    $.lblFecha.value =  (dateValue.getMonth() + 1) + "/"+ dateValue.getDate() + "/"+ dateValue.getFullYear();
     picker_view.animate(slide_out);});
+    
+
+//-----------PRUEBAS DE VALIDACION-----------------------
+
+
+
+var validationCallback = function(errors) {
+        if(errors.length > 0) {
+                for (var i = 0; i < errors.length; i++) {
+                        Ti.API.debug(errors[i].message);
+                }
+                alert(errors[0].message);
+        } else {
+               Guardar();
+        }
+};
+
+
+var returnCallback = function() {
+        validator.run([
+                                {
+                                        id: 'dateField',
+                                    value: $.lblFecha.value,
+                                    display: 'Fecha',    
+                                    rules: 'required'
+                                },
+                                {
+                                        id: 'notaField',
+                                    value: $.txtNombreEvaluacion.value,
+                                    display: 'Nombre',    
+                                    rules: 'required'
+                                },
+                                {
+                                        id: 'pesoField',
+                                    value: $.txtPeso.value,
+                                    display: 'Peso',    
+                                    rules: 'required|numeric'
+                                }
+                        ], validationCallback);        
+};
+
+$.btnGuardar.addEventListener('click', returnCallback);

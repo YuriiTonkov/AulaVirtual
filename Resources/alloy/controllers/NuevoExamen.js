@@ -1,17 +1,27 @@
 function Controller() {
     function GuardarExamen() {
-        if ("Pulse aqui" == $.dateTextField.text) alert("Tiene que introducir la fecha del examen."); else {
+        var coleccionExamenes = Alloy.Collections.Examen;
+        if (void 0 == data.IdExamen) {
             var Examen = Alloy.createModel("Examen", {
-                FechaExamen: $.dateTextField.text,
+                FechaExamen: $.dateTextField.value,
                 Peso: $.txtPeso.value,
                 Evaluacion: data.Evaluacion,
                 Nota: $.txtNota.value
             });
-            var coleccionExamenes = Alloy.Collections.Examen;
             coleccionExamenes.add(Examen);
             Examen.save();
             coleccionExamenes.fetch();
             $.winNuevoExamen.close();
+        } else {
+            coleccionExamenes.fetch();
+            var modelExamen = coleccionExamenes.get(data.IdExamen);
+            modelExamen.set({
+                Nota: $.txtNota.value,
+                Peso: $.txtPeso.value,
+                FechaExamen: $.dateTextField.value
+            });
+            modelExamen.save();
+            coleccionExamenes.fetch();
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -21,7 +31,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.winNuevoExamen = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
@@ -50,7 +59,7 @@ function Controller() {
         id: "__alloyId65"
     });
     $.__views.__alloyId63.add($.__views.__alloyId65);
-    $.__views.dateTextField = Ti.UI.createLabel({
+    $.__views.dateTextField = Ti.UI.createTextField({
         top: "15dp",
         width: "100%",
         height: "20dp",
@@ -60,6 +69,7 @@ function Controller() {
             fontSize: 16,
             fontFamily: "HelveticaNeue-UltraLight"
         },
+        editable: "false",
         id: "dateTextField"
     });
     $.__views.__alloyId63.add($.__views.dateTextField);
@@ -145,7 +155,6 @@ function Controller() {
         title: "Guardar"
     });
     $.__views.winNuevoExamen.add($.__views.btnGuardar);
-    GuardarExamen ? $.__views.btnGuardar.addEventListener("click", GuardarExamen) : __defers["$.__views.btnGuardar!click!GuardarExamen"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
         id: "cancel",
@@ -166,6 +175,15 @@ function Controller() {
     var data = [];
     data = arg1;
     $.winNuevoExamen.setRightNavButton($.btnGuardar);
+    if (void 0 == data.IdExamen) ; else {
+        var colExamenes = Alloy.Collections.Examen;
+        colExamenes.fetch();
+        var modelExamen = colExamenes.get(data.IdExamen);
+        var ArrayExamen = modelExamen.toJSON();
+        $.txtNota.value = ArrayExamen.Nota;
+        $.dateTextField.value = ArrayExamen.FechaExamen;
+        $.txtPeso.value = ArrayExamen.Peso;
+    }
     $.txtNota.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
             title: "Introduzca la nota del examen",
@@ -223,6 +241,7 @@ function Controller() {
     picker_view.add(toolbar);
     $.dateTextField.addEventListener("click", function() {
         $.txtNota.blur();
+        $.txtPeso.blur();
         $.winNuevoExamen.add(picker_view);
         picker_view.animate(slide_in);
     });
@@ -234,10 +253,34 @@ function Controller() {
     });
     $.done.addEventListener("click", function() {
         var dateValue = picker.value;
-        $.dateTextField.text = dateValue.getMonth() + 1 + "/" + dateValue.getDate() + "/" + dateValue.getFullYear();
+        $.dateTextField.value = dateValue.getMonth() + 1 + "/" + dateValue.getDate() + "/" + dateValue.getFullYear();
         picker_view.animate(slide_out);
     });
-    __defers["$.__views.btnGuardar!click!GuardarExamen"] && $.__views.btnGuardar.addEventListener("click", GuardarExamen);
+    var validationCallback = function(errors) {
+        if (errors.length > 0) {
+            for (var i = 0; errors.length > i; i++) Ti.API.debug(errors[i].message);
+            alert(errors[0].message);
+        } else GuardarExamen();
+    };
+    var returnCallback = function() {
+        validator.run([ {
+            id: "dateField",
+            value: $.dateTextField.value,
+            display: "Fecha",
+            rules: "required"
+        }, {
+            id: "notaField",
+            value: $.txtNota.value,
+            display: "Nota",
+            rules: "required|numeric"
+        }, {
+            id: "pesoField",
+            value: $.txtPeso.value,
+            display: "Peso",
+            rules: "numeric"
+        } ], validationCallback);
+    };
+    $.btnGuardar.addEventListener("click", returnCallback);
     _.extend($, exports);
 }
 

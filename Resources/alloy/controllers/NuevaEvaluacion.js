@@ -23,7 +23,6 @@ function Controller() {
             var modelEvaluacion = coleccionEvaluaciones.get(data.IdEvaluacion);
             modelEvaluacion.set({
                 Nombre: $.txtNombreEvaluacion.value,
-                Evaluacion: data.IdEvaluacion,
                 Calificacion: $.txtNota.text,
                 Peso: $.txtPeso.value,
                 FechaInicio: $.lblFecha.text
@@ -52,7 +51,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.winNuevaEvaluacion = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
@@ -115,7 +113,7 @@ function Controller() {
         id: "__alloyId28"
     });
     $.__views.__alloyId27.add($.__views.__alloyId28);
-    $.__views.lblFecha = Ti.UI.createLabel({
+    $.__views.lblFecha = Ti.UI.createTextField({
         top: "15dp",
         width: "100%",
         height: "20dp",
@@ -125,6 +123,7 @@ function Controller() {
             fontSize: 16,
             fontFamily: "HelveticaNeue-UltraLight"
         },
+        editable: "false",
         id: "lblFecha"
     });
     $.__views.__alloyId27.add($.__views.lblFecha);
@@ -209,7 +208,6 @@ function Controller() {
         title: "Guardar"
     });
     $.__views.winNuevaEvaluacion.add($.__views.btnGuardar);
-    Guardar ? $.__views.btnGuardar.addEventListener("click", Guardar) : __defers["$.__views.btnGuardar!click!Guardar"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
         id: "cancel",
@@ -238,7 +236,6 @@ function Controller() {
         $.txtNombreEvaluacion.value = ArrayEvaluacion.Nombre;
         $.lblFecha.text = ArrayEvaluacion.FechaInicio;
         $.txtPeso.value = ArrayEvaluacion.Peso;
-        GuardarEvaluacion();
     }
     $.txtNombreEvaluacion.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
@@ -307,10 +304,34 @@ function Controller() {
     });
     $.done.addEventListener("click", function() {
         var dateValue = picker.value;
-        $.lblFecha.text = dateValue.getMonth() + 1 + "/" + dateValue.getDate() + "/" + dateValue.getFullYear();
+        $.lblFecha.value = dateValue.getMonth() + 1 + "/" + dateValue.getDate() + "/" + dateValue.getFullYear();
         picker_view.animate(slide_out);
     });
-    __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
+    var validationCallback = function(errors) {
+        if (errors.length > 0) {
+            for (var i = 0; errors.length > i; i++) Ti.API.debug(errors[i].message);
+            alert(errors[0].message);
+        } else Guardar();
+    };
+    var returnCallback = function() {
+        validator.run([ {
+            id: "dateField",
+            value: $.lblFecha.value,
+            display: "Fecha",
+            rules: "required"
+        }, {
+            id: "notaField",
+            value: $.txtNombreEvaluacion.value,
+            display: "Nombre",
+            rules: "required"
+        }, {
+            id: "pesoField",
+            value: $.txtPeso.value,
+            display: "Peso",
+            rules: "required|numeric"
+        } ], validationCallback);
+    };
+    $.btnGuardar.addEventListener("click", returnCallback);
     _.extend($, exports);
 }
 
