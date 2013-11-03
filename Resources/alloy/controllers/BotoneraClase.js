@@ -14,29 +14,29 @@ function Controller() {
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
-    var __alloyId5 = [];
-    var __alloyId6 = {
+    var __alloyId6 = [];
+    var __alloyId7 = {
         title: "+",
         ns: "Alloy.Abstract"
     };
-    __alloyId5.push(__alloyId6);
-    var __alloyId7 = {
+    __alloyId6.push(__alloyId7);
+    var __alloyId8 = {
         title: "(+)",
         ns: "Alloy.Abstract"
     };
-    __alloyId5.push(__alloyId7);
-    var __alloyId8 = {
+    __alloyId6.push(__alloyId8);
+    var __alloyId9 = {
         title: "*",
         ns: "Alloy.Abstract"
     };
-    __alloyId5.push(__alloyId8);
-    var __alloyId9 = {
+    __alloyId6.push(__alloyId9);
+    var __alloyId10 = {
         title: "@",
         ns: "Alloy.Abstract"
     };
-    __alloyId5.push(__alloyId9);
+    __alloyId6.push(__alloyId10);
     $.__views.btnBar = Ti.UI.createButtonBar({
-        labels: __alloyId5,
+        labels: __alloyId6,
         borderRadius: "5dp",
         height: "100%",
         width: "100%",
@@ -153,7 +153,7 @@ function Controller() {
             break;
 
           case 3:
-            var tabAlumnosCloudController = Alloy.createController("NuevaNotaAlumno", {
+            var tabAlumnosCloudController = Alloy.createController("notasAlumno", {
                 IdClase: data.IdClase
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());

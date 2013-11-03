@@ -13,30 +13,38 @@ var datos = model.toJSON();
 if (datos.Favorita==1){
     var buttons = [
         {title:'+', enabled:true},
-        {title:'*', enabled:false}];
+        {title:'*', enabled:false},
+        {title:'@', enabled:true}];
     $.btnBar.labels=buttons;
 }
 
 
 //Funciones--------------------------
 $.btnBar.addEventListener("click", function(e){
-    if (e.index==0){
-    var tabAlumnosController = Alloy.createController("addAlumno", {"IdAsignatura":data.IdAsignatura});
-    Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
-    }
-    else{
-        colAsignatura.updateFavorito(data.IdAsignatura, 1);
-        var buttons = [
-        {title:'+', enabled:true},
-        {title:'*', enabled:false}];
-        $.btnBar.labels=buttons;
-        //Creamos aviso de que se ha guardado en favoritos
-        var alertDialog = Ti.UI.createAlertDialog({
-        title: "Aviso",
-        message: "La Asignatura se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
-        buttonNames: ['OK'],
-        cancel:0
-    });
-    alertDialog.show();
+	 switch (e.index){
+    	case 0:
+    		var tabAlumnosController = Alloy.createController("addAlumno", {"IdAsignatura":data.IdAsignatura});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
+    		break;
+    	case 1:
+    		colAsignatura.updateFavorito(data.IdAsignatura, 1);
+	        var buttons = [
+	        {title:'+', enabled:true},
+	        {title:'*', enabled:false},
+	        {title:'@', enabled:true}];
+	        $.btnBar.labels=buttons;
+	        //Creamos aviso de que se ha guardado en favoritos
+	        var alertDialog = Ti.UI.createAlertDialog({
+	        title: "Aviso",
+	        message: "La Asignatura se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
+	        buttonNames: ['OK'],
+	        cancel:0
+	    });
+	    alertDialog.show();
+    		break;
+    	case 2:
+        	var tabAlumnosController = Alloy.createController("notasAlumno", {"IdAsignatura":data.IdAsignatura});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
+    		break;
     }
 });

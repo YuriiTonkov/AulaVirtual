@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId189() {
-        __alloyId189.opts || {};
-        var models = filtrado(__alloyId188);
+    function __alloyId192() {
+        __alloyId192.opts || {};
+        var models = filtrado(__alloyId191);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId186 = models[i];
-            __alloyId186.__transform = NombreClase(__alloyId186);
-            var __alloyId187 = Alloy.createController("ClaseRow", {
-                $model: __alloyId186
+            var __alloyId189 = models[i];
+            __alloyId189.__transform = NombreClase(__alloyId189);
+            var __alloyId190 = Alloy.createController("ClaseRow", {
+                $model: __alloyId189
             });
-            rows.push(__alloyId187.getViewEx({
+            rows.push(__alloyId190.getViewEx({
                 recurse: true
             }));
         }
@@ -18,7 +18,7 @@ function Controller() {
     }
     function NombreClase(model) {
         var transform = model.toJSON();
-        transform.nombreCompleto = "Grupo " + transform.NombreClase;
+        transform.nombreCompleto = transform.NombreCurso + " de " + transform.NombreGrado + ". Clase " + transform.NombreClase;
         var alumnos = Alloy.Collections.Alumno;
         alumnos.fetch();
         var arrayAlumnos = alumnos.where({
@@ -58,10 +58,10 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClasesFav.add($.__views.TablaClases);
-    var __alloyId188 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
-    __alloyId188.on("fetch destroy change add remove reset", __alloyId189);
+    var __alloyId191 = Alloy.Collections["VW_Clases_Favoritas"] || VW_Clases_Favoritas;
+    __alloyId191.on("fetch destroy change add remove reset", __alloyId192);
     exports.destroy = function() {
-        __alloyId188.off("fetch destroy change add remove reset", __alloyId189);
+        __alloyId191.off("fetch destroy change add remove reset", __alloyId192);
     };
     _.extend($, $.__views);
     $.WinClasesFav.title = "Clases Favoritas";

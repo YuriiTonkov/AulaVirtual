@@ -4,6 +4,7 @@
 			<Labels>
 				<Label id="addAlumno">+</Label>
 				<Label id="favoritar">*</Label>
+				<Label id="anotacion">@</Label>
 			</Labels>
 		</ButtonBar>
 	</View>

@@ -9,21 +9,43 @@ $.WinNotasAlumno.title = data.Nombre;
 $.WinNotasAlumno.setRightNavButton($.addAnotacion);
 //-----------------------------------------
 
-
 var Anotaciones = Alloy.Collections.Anotacion;
 Anotaciones.fetch();
+
+
 
 //Funciones--------------------------
 
 
 
 function filtrado (collection){
-    var coleccion_filtrada = collection.where({IdAlumno: data.IdAlumno});
+	if (data.IdAlumno ==undefined){
+		if (data.IdClase == undefined){
+			var coleccion_filtrada = collection.where({IdAsignatura: data.IdAsignatura});
+		} else {
+		var coleccion_filtrada = collection.where({IdClase: data.IdClase});
+	}
+} else {
+	var coleccion_filtrada = collection.where({IdAlumno: data.IdAlumno});
+}
+    
     return coleccion_filtrada;
 }
+
 function NuevaAnotacion (){
-    var tabAnotacionController = Alloy.createController("NuevaNotaAlumno", {"IdAlumno":data.IdAlumno});
+	if (data.IdAlumno ==undefined){
+		if (data.IdClase == undefined){
+			var tabAnotacionController = Alloy.createController("NuevaNotaAlumno", {"IdAsignatura":data.IdAsignatura});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAnotacionController.getView());
+		} else {
+		var tabAnotacionController = Alloy.createController("NuevaNotaAlumno", {"IdClase":data.IdClase});
+    	Alloy.Globals.GrupoTab.activeTab.open(tabAnotacionController.getView());
+	}
+} else {
+	var tabAnotacionController = Alloy.createController("NuevaNotaAlumno", {"IdAlumno":data.IdAlumno});
     Alloy.Globals.GrupoTab.activeTab.open(tabAnotacionController.getView());
+}
+    
     
 }
 

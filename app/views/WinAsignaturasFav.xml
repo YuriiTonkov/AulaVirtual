@@ -3,6 +3,5 @@
 				<TableView dataCollection="VW_Asignaturas_Favoritas" dataTransform="NombreAsignatura" dataFilter="filtrado" class="form" id="TablaAsignaturasFav">
 						<Require src="AsignaturaFavRow"></Require>
 				</TableView>
-				
 			</Window>
 </Alloy>

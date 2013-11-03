@@ -15,7 +15,7 @@ asignaturas.fetch();
 function NombreAsignatura (model){
     var transform = model.toJSON();
     transform.nombrecompleto = transform.NombreAsignatura + " ("+ transform.NombreCurso + " "+ transform.NombreGrado +")";
-    return transform
+    return transform;
 }
 
 function filtrado (collection){

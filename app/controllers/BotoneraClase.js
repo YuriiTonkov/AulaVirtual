@@ -25,7 +25,7 @@ if (datos.Favorita==1){
         {title:'+', enabled:true},
         {title:'(+)', enabled:true},
         {title:'*', enabled:false},
-        {title:'@', enabled:true}];
+         {title:'@', enabled:true}];
         
     $.btnBar.labels=buttons;
 }
@@ -80,7 +80,7 @@ $.btnBar.addEventListener("click", function(e){
     		alertDialog.show();
     		break;
     	case 3:
-    		var tabAlumnosCloudController = Alloy.createController("NuevaNotaAlumno",{"IdClase":data.IdClase});
+    		var tabAlumnosCloudController = Alloy.createController("notasAlumno",{"IdClase":data.IdClase});
     		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosCloudController.getView());
     		break;
     }

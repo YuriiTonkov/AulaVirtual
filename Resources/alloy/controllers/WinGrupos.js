@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId125() {
-        __alloyId125.opts || {};
-        var models = __alloyId124.models;
+    function __alloyId128() {
+        __alloyId128.opts || {};
+        var models = __alloyId127.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId120 = models[i];
-            __alloyId120.__transform = {};
-            var __alloyId121 = Alloy.createController("GradoRow", {
-                $model: __alloyId120
+            var __alloyId123 = models[i];
+            __alloyId123.__transform = {};
+            var __alloyId124 = Alloy.createController("GradoRow", {
+                $model: __alloyId123
             });
-            rows.push(__alloyId121.getViewEx({
+            rows.push(__alloyId124.getViewEx({
                 recurse: true
             }));
         }
@@ -38,21 +38,21 @@ function Controller() {
         id: "TablaGrados"
     });
     $.__views.winGrados.add($.__views.TablaGrados);
-    $.__views.__alloyId118 = Ti.UI.createImageView({
+    $.__views.__alloyId121 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/01HeaderGrados.png",
         height: "70dp",
-        id: "__alloyId118"
+        id: "__alloyId121"
     });
-    $.__views.TablaGrados.headerView = $.__views.__alloyId118;
-    $.__views.__alloyId123 = Ti.UI.createImageView({
+    $.__views.TablaGrados.headerView = $.__views.__alloyId121;
+    $.__views.__alloyId126 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/01FooterGrados.png",
-        id: "__alloyId123"
+        id: "__alloyId126"
     });
-    $.__views.TablaGrados.footerView = $.__views.__alloyId123;
-    var __alloyId124 = Alloy.Collections["Grado"] || Grado;
-    __alloyId124.on("fetch destroy change add remove reset", __alloyId125);
+    $.__views.TablaGrados.footerView = $.__views.__alloyId126;
+    var __alloyId127 = Alloy.Collections["Grado"] || Grado;
+    __alloyId127.on("fetch destroy change add remove reset", __alloyId128);
     exports.destroy = function() {
-        __alloyId124.off("fetch destroy change add remove reset", __alloyId125);
+        __alloyId127.off("fetch destroy change add remove reset", __alloyId128);
     };
     _.extend($, $.__views);
     var grados = Alloy.Collections.Grado;

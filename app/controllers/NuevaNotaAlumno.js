@@ -6,15 +6,22 @@ data = arg1;
 //Elementos de Interfaz
 //$.WinClases.title = data.Nombre;
 $.winNuevaNota.setRightNavButton($.btnGuardar);
-
-if (data.IdAnotacion == undefined){
-	if (data.IdClase == undefined){
-		
+if (data.IdClase == undefined){
+		if (data.IdAsignatura == undefined){
+			
+		} else {
+			$.btnEnviarTodos.visible=true;
+			$.btnEnviar.visible = false;
+		}
 	} else {
 		$.btnEnviarTodos.visible=true;
 		$.btnEnviar.visible = false;
 	}
+	
+if (data.IdAnotacion == undefined){
+	
 }else{
+	
 	var anotacion = Alloy.Collections.Anotacion;
 	anotacion.fetch();
 	var model = anotacion.get(data.IdAnotacion);
@@ -28,33 +35,43 @@ if (data.IdAnotacion == undefined){
 function GuardarExamen(){
 	if (data.IdAnotacion == undefined){
 		if (data.IdClase == undefined){
-			
-		}
-		else{
-			$.btnEnviarTodos.visible = true;
-		}
-    //$.btnAnterior.visible="false";
-   // $.btnSiguiente.visible="false";
-  if ($.dateTextField.text == "Pulse aqui") 
-        {
-            alert("Tiene que introducir la fecha del aviso.");
-        }
-    else 
-        {
-            var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAlumno:data.IdAlumno, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
+			if (data.IdAsignatura == undefined){
+			var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAlumno:data.IdAlumno, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
+            $.lblAviso.value = "Se ha creado la anotacion.";
+          } else {
+          	var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAsignatura:data.IdAsignatura, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
+            var coleccionAnotaciones = Alloy.Collections.Anotacion;
+            coleccionAnotaciones.add(Anotacion);
+            Anotacion.save();
+            coleccionAnotaciones.fetch();
+            $.lblAviso.value = "Se ha creado la anotacion.";
+          }
 		}
+		else{
+			var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdClase:data.IdClase, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
+            var coleccionAnotaciones = Alloy.Collections.Anotacion;
+            coleccionAnotaciones.add(Anotacion);
+            Anotacion.save();
+            coleccionAnotaciones.fetch();
+            $.lblAviso.value = "Se ha creado la anotacion.";
+		}
+    //$.btnAnterior.visible="false";
+   // $.btnSiguiente.visible="false";
+  
+            
+		
 }else{
 	model.set({
 			Fecha:$.dateTextField.text, 
-			IdAlumno:data.IdAlumno, 
 			Comentario:$.txtObservaciones.value, 
 			Titulo:$.txtTitulo.value
 	});
 	model.save();
+	$.lblAviso.value = "Se ha actualizado la anotacion.";
 }
     
            
@@ -83,7 +100,7 @@ function EnviarExamen(){
 				        
 			        }, function (e) {
 			            if (e.success) {
-			                alert('Enviado!');
+			                 $.lblAviso.value = "Se ha enviado la anotacion.";
 				        
 			            } else {
 			                alert('Error:\n' +
@@ -98,15 +115,24 @@ function EnviarExamen(){
 			});
 		 
 	}
+	else {
+		//Como no tiene usuario cloud se mira si tenemos la direccion de email para mandarle un correo electronico
+	}
    
 }
 
 function EnviarExamenTodos(){
 	var alumno = Alloy.Collections.Alumno;
 	alumno.fetch();
-	var model = alumno.where(data.IdClase);
-	var datos = model.toJSON();
-	
+	var datos;
+	if (data.IdClase == undefined){
+		var model = alumno.where({IdAsignatura:data.IdAsignatura});
+		datos = model.toJSON();
+	}
+	else {
+		var model = alumno.where({IdClase:data.IdClase});
+		datos = model.toJSON();
+	}
 	for (var i=0;i>datos.length;i++){
 	if (datos.UsuarioCloud=1){
 		Cloud.Users.query({

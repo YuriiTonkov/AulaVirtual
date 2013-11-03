@@ -14,7 +14,7 @@ clases.fetch();
 
 function NombreClase (model){
     var transform = model.toJSON();
-    transform.nombreCompleto = "Grupo " + transform.NombreClase;
+    transform.nombreCompleto = transform.NombreCurso + " de " + transform.NombreGrado + ". Clase " + transform.NombreClase;
     var alumnos = Alloy.Collections.Alumno;
     alumnos.fetch();
     var arrayAlumnos = alumnos.where({Clase:transform.IdClase});

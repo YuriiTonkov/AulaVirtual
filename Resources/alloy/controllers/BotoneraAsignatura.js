@@ -25,6 +25,11 @@ function Controller() {
         ns: "Alloy.Abstract"
     };
     __alloyId1.push(__alloyId3);
+    var __alloyId4 = {
+        title: "@",
+        ns: "Alloy.Abstract"
+    };
+    __alloyId1.push(__alloyId4);
     $.__views.btnBar = Ti.UI.createButtonBar({
         labels: __alloyId1,
         borderRadius: "5dp",
@@ -50,16 +55,22 @@ function Controller() {
         }, {
             title: "*",
             enabled: false
+        }, {
+            title: "@",
+            enabled: true
         } ];
         $.btnBar.labels = buttons;
     }
     $.btnBar.addEventListener("click", function(e) {
-        if (0 == e.index) {
+        switch (e.index) {
+          case 0:
             var tabAlumnosController = Alloy.createController("addAlumno", {
                 IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
-        } else {
+            break;
+
+          case 1:
             colAsignatura.updateFavorito(data.IdAsignatura, 1);
             var buttons = [ {
                 title: "+",
@@ -67,6 +78,9 @@ function Controller() {
             }, {
                 title: "*",
                 enabled: false
+            }, {
+                title: "@",
+                enabled: true
             } ];
             $.btnBar.labels = buttons;
             var alertDialog = Ti.UI.createAlertDialog({
@@ -76,6 +90,13 @@ function Controller() {
                 cancel: 0
             });
             alertDialog.show();
+            break;
+
+          case 2:
+            var tabAlumnosController = Alloy.createController("notasAlumno", {
+                IdAsignatura: data.IdAsignatura
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
         }
     });
     _.extend($, exports);

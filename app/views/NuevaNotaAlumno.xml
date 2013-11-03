@@ -9,9 +9,12 @@
 		        <Label class="labelAlumno">Titulo:</Label>
 		        <TextField class="textboxAlumno" enabled="false"  id="txtTitulo"/>
 	        </TableViewRow>
-	        	<TableViewRow height="300dp">
+	        <TableViewRow height="200dp">
 			        <Label class="labelAlumno" >Observaciones:</Label>
 			        <TextField class="textboxAlumno" height="100%" width="80%" enabled="false"  id="txtObservaciones"/>
+	        </TableViewRow>
+	        <TableViewRow height="40dp">
+			        <Label class="textboxAlumno" id="lblAviso"/>
 	        </TableViewRow>
        	</TableView>
         <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarExamen"></Button>
