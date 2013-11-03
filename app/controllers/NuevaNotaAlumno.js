@@ -6,6 +6,7 @@ data = arg1;
 //Elementos de Interfaz
 //$.WinClases.title = data.Nombre;
 $.winNuevaNota.setRightNavButton($.btnGuardar);
+
 if (data.IdClase == undefined){
 		if (data.IdAsignatura == undefined){
 			
@@ -13,10 +14,10 @@ if (data.IdClase == undefined){
 			$.btnEnviarTodos.visible=true;
 			$.btnEnviar.visible = false;
 		}
-	} else {
-		$.btnEnviarTodos.visible=true;
-		$.btnEnviar.visible = false;
-	}
+} else {
+	$.btnEnviarTodos.visible=true;
+	$.btnEnviar.visible = false;
+}
 	
 if (data.IdAnotacion == undefined){
 	
@@ -41,14 +42,16 @@ function GuardarExamen(){
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.lblAviso.value = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.get("IdAnotacion");
+            $.lblAviso.text = "Se ha creado la anotacion.";
           } else {
           	var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAsignatura:data.IdAsignatura, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.lblAviso.value = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.IdAnotacion;
+            $.lblAviso.text = "Se ha creado la anotacion.";
           }
 		}
 		else{
@@ -57,7 +60,9 @@ function GuardarExamen(){
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.lblAviso.value = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.IdAnotacion;
+            $.lblAviso.text = "Se ha creado la anotacion.";
+            
 		}
     //$.btnAnterior.visible="false";
    // $.btnSiguiente.visible="false";
@@ -71,7 +76,7 @@ function GuardarExamen(){
 			Titulo:$.txtTitulo.value
 	});
 	model.save();
-	$.lblAviso.value = "Se ha actualizado la anotacion.";
+	$.lblAviso.text = "Se ha actualizado la anotacion.";
 }
     
            
@@ -92,6 +97,7 @@ function EnviarExamen(){
 			    }
 			}, function (e) {
 			    if (e.success) {
+			    	if (e.users.length > 0){ 
 			       Cloud.Messages.create({
 	        			to_ids: e.users[0].id,
 				        body: $.txtObservaciones.value,
@@ -100,7 +106,7 @@ function EnviarExamen(){
 				        
 			        }, function (e) {
 			            if (e.success) {
-			                 $.lblAviso.value = "Se ha enviado la anotacion.";
+			                 $.lblAviso.text = "Se ha enviado la anotacion.";
 				        
 			            } else {
 			                alert('Error:\n' +
@@ -108,6 +114,10 @@ function EnviarExamen(){
 			            }
 			            
 			        });
+			        } else {
+			        	//El alumno no se encuentra en la nube
+			        	 $.lblAviso.text = "El alumno no está registrado.";
+			        }
 			    } else {
 			        alert('Error:\n' +
 			            ((e.error && e.message) || JSON.stringify(e)));

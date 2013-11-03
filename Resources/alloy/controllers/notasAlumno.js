@@ -98,13 +98,15 @@ function Controller() {
         if ("tblAnotacionRow" == e.source.id) {
             var tabItemController = Alloy.createController("NuevaNotaAlumno", {
                 IdAnotacion: e.source.data,
-                IdAlumno: data.IdAlumno
+                IdClase: data.IdClase,
+                IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabItemController.getView());
         } else {
             var tabItemController = Alloy.createController("NuevaNotaAlumno", {
                 IdAnotacion: e.source.textid,
-                IdAlumno: data.IdAlumno
+                IdClase: data.IdClase,
+                IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabItemController.getView());
         }

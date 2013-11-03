@@ -11,7 +11,8 @@ function Controller() {
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.lblAviso.value = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.get("IdAnotacion");
+            $.lblAviso.text = "Se ha creado la anotacion.";
         } else {
             var Anotacion = Alloy.createModel("Anotacion", {
                 Fecha: $.dateTextField.text,
@@ -23,7 +24,8 @@ function Controller() {
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.lblAviso.value = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.IdAnotacion;
+            $.lblAviso.text = "Se ha creado la anotacion.";
         } else {
             var Anotacion = Alloy.createModel("Anotacion", {
                 Fecha: $.dateTextField.text,
@@ -35,7 +37,8 @@ function Controller() {
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            $.lblAviso.value = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.IdAnotacion;
+            $.lblAviso.text = "Se ha creado la anotacion.";
         } else {
             model.set({
                 Fecha: $.dateTextField.text,
@@ -43,6 +46,7 @@ function Controller() {
                 Titulo: $.txtTitulo.value
             });
             model.save();
+            $.lblAviso.text = "Se ha actualizado la anotacion.";
         }
     }
     function EnviarExamen() {
@@ -55,7 +59,7 @@ function Controller() {
                 email: datos.Email
             }
         }, function(e) {
-            e.success ? Cloud.Messages.create({
+            e.success ? e.users.length > 0 ? Cloud.Messages.create({
                 to_ids: e.users[0].id,
                 body: $.txtObservaciones.value,
                 subject: $.txtTitulo.value,
@@ -65,8 +69,8 @@ function Controller() {
                     Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
                 }
             }, function(e) {
-                e.success ? $.lblAviso.value = "Se ha enviado la anotacion." : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-            }) : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+                e.success ? $.lblAviso.text = "Se ha enviado la anotacion." : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            }) : $.lblAviso.text = "El alumno no está registrado." : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
     function EnviarExamenTodos() {
@@ -189,7 +193,7 @@ function Controller() {
     $.__views.__alloyId38.add($.__views.txtTitulo);
     $.__views.__alloyId40 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
-        height: "300dp",
+        height: "200dp",
         id: "__alloyId40"
     });
     __alloyId36.push($.__views.__alloyId40);
