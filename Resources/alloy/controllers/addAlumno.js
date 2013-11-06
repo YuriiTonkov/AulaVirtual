@@ -1,20 +1,20 @@
 function Controller() {
-    function __alloyId134() {
-        __alloyId134.opts || {};
-        var models = __alloyId133.models;
+    function __alloyId143() {
+        __alloyId143.opts || {};
+        var models = __alloyId142.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId130 = models[i];
-            __alloyId130.__transform = nombrecompleto(__alloyId130);
-            var __alloyId131 = Ti.UI.createTableViewRow({
+            var __alloyId139 = models[i];
+            __alloyId139.__transform = nombrecompleto(__alloyId139);
+            var __alloyId140 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
                 height: "40dp",
                 editable: "true",
-                data: "undefined" != typeof __alloyId130.__transform["IdAlumno"] ? __alloyId130.__transform["IdAlumno"] : __alloyId130.get("IdAlumno")
+                data: "undefined" != typeof __alloyId139.__transform["IdAlumno"] ? __alloyId139.__transform["IdAlumno"] : __alloyId139.get("IdAlumno")
             });
-            rows.push(__alloyId131);
-            var __alloyId132 = Ti.UI.createLabel({
+            rows.push(__alloyId140);
+            var __alloyId141 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "left",
@@ -23,10 +23,10 @@ function Controller() {
                     fontSize: 16,
                     fontFamily: "HelveticaNeue-UltraLight"
                 },
-                text: "undefined" != typeof __alloyId130.__transform["nombrecompleto"] ? __alloyId130.__transform["nombrecompleto"] : __alloyId130.get("nombrecompleto"),
-                textid: "undefined" != typeof __alloyId130.__transform["IdAlumno"] ? __alloyId130.__transform["IdAlumno"] : __alloyId130.get("IdAlumno")
+                text: "undefined" != typeof __alloyId139.__transform["nombrecompleto"] ? __alloyId139.__transform["nombrecompleto"] : __alloyId139.get("nombrecompleto"),
+                textid: "undefined" != typeof __alloyId139.__transform["IdAlumno"] ? __alloyId139.__transform["IdAlumno"] : __alloyId139.get("IdAlumno")
             });
-            __alloyId131.add(__alloyId132);
+            __alloyId140.add(__alloyId141);
         }
         $.__views.TablaAlumnos.setData(rows);
     }
@@ -76,15 +76,17 @@ function Controller() {
         barColor: "#e7effa",
         translucent: "false",
         backgroundColor: "white",
+        style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+        image: "/library/images/iphone/icon/AddAlumno.png",
         id: "addAlumno"
     });
     $.__views.addAlumno && $.addTopLevelView($.__views.addAlumno);
-    $.__views.__alloyId129 = Ti.UI.createLabel({
+    $.__views.__alloyId138 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId129"
+        id: "__alloyId138"
     });
-    $.__views.addAlumno.add($.__views.__alloyId129);
+    $.__views.addAlumno.add($.__views.__alloyId138);
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
@@ -93,8 +95,8 @@ function Controller() {
         allowsSelection: "true"
     });
     $.__views.addAlumno.add($.__views.TablaAlumnos);
-    var __alloyId133 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId133.on("fetch destroy change add remove reset", __alloyId134);
+    var __alloyId142 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId142.on("fetch destroy change add remove reset", __alloyId143);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -103,7 +105,7 @@ function Controller() {
     $.__views.addAlumno.add($.__views.btnGuardar);
     GuardarAlumnos ? $.__views.btnGuardar.addEventListener("click", GuardarAlumnos) : __defers["$.__views.btnGuardar!click!GuardarAlumnos"] = true;
     exports.destroy = function() {
-        __alloyId133.off("fetch destroy change add remove reset", __alloyId134);
+        __alloyId142.off("fetch destroy change add remove reset", __alloyId143);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

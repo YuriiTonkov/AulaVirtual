@@ -16,7 +16,10 @@ function Controller() {
     $.__views.botones && $.addTopLevelView($.__views.botones);
     var __alloyId6 = [];
     var __alloyId7 = {
+        style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+        image: "/library/images/iphone/icon/AddAlumno.png",
         title: "+",
+        backgroundImage: "/library/images/iphone/icon/AddAlumno.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId7);

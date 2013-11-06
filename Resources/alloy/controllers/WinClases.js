@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId100() {
-        __alloyId100.opts || {};
-        var models = filtrado(__alloyId99);
+    function __alloyId109() {
+        __alloyId109.opts || {};
+        var models = filtrado(__alloyId108);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId97 = models[i];
-            __alloyId97.__transform = NombreClase(__alloyId97);
-            var __alloyId98 = Alloy.createController("ClaseRow", {
-                $model: __alloyId97
+            var __alloyId104 = models[i];
+            __alloyId104.__transform = NombreClase(__alloyId104);
+            var __alloyId105 = Alloy.createController("ClaseRow", {
+                $model: __alloyId104
             });
-            rows.push(__alloyId98.getViewEx({
+            rows.push(__alloyId105.getViewEx({
                 recurse: true
             }));
         }
@@ -66,8 +66,19 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);
-    var __alloyId99 = Alloy.Collections["Clase"] || Clase;
-    __alloyId99.on("fetch destroy change add remove reset", __alloyId100);
+    $.__views.__alloyId102 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/03HeaderClases.png",
+        height: "70dp",
+        id: "__alloyId102"
+    });
+    $.__views.TablaClases.headerView = $.__views.__alloyId102;
+    $.__views.__alloyId107 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/03FooterClases.png",
+        id: "__alloyId107"
+    });
+    $.__views.TablaClases.footerView = $.__views.__alloyId107;
+    var __alloyId108 = Alloy.Collections["Clase"] || Clase;
+    __alloyId108.on("fetch destroy change add remove reset", __alloyId109);
     $.__views.addClase = Ti.UI.createButton({
         id: "addClase",
         title: "Nueva",
@@ -76,7 +87,7 @@ function Controller() {
     $.__views.WinClases.add($.__views.addClase);
     NuevaClase ? $.__views.addClase.addEventListener("click", NuevaClase) : __defers["$.__views.addClase!click!NuevaClase"] = true;
     exports.destroy = function() {
-        __alloyId99.off("fetch destroy change add remove reset", __alloyId100);
+        __alloyId108.off("fetch destroy change add remove reset", __alloyId109);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

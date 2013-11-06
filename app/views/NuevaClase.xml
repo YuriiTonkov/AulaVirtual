@@ -1,7 +1,8 @@
 <Alloy>
 	<Window id="winNuevaClase" class="container">
-		<Label class="label" top="5%">Introduzca el nombre de la clase</Label>
-		<TextField class="textbox" top="20%" id="txtNombreClase"></TextField>
+		<ImageView top = "25dp" image="library/images/iphone/helpScreen/0301HeaderNuevaClase.png"></ImageView>
+		<TextField class="textbox" top="80dp" id="txtNombreClase"></TextField>
+		<ImageView top = "110dp" image="library/images/iphone/helpScreen/0301FooterNuevaClase.png"></ImageView>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarClase"></Button>
 	</Window>
 </Alloy>

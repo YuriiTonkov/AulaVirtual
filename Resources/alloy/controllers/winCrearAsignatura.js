@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId197() {
-        __alloyId197.opts || {};
-        var models = filtrado(__alloyId196);
+    function __alloyId206() {
+        __alloyId206.opts || {};
+        var models = filtrado(__alloyId205);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId194 = models[i];
-            __alloyId194.__transform = {};
-            var __alloyId195 = Alloy.createController("AsignaturaAlumnoRow", {
-                $model: __alloyId194
+            var __alloyId203 = models[i];
+            __alloyId203.__transform = {};
+            var __alloyId204 = Alloy.createController("AsignaturaAlumnoRow", {
+                $model: __alloyId203
             });
-            rows.push(__alloyId195.getViewEx({
+            rows.push(__alloyId204.getViewEx({
                 recurse: true
             }));
         }
@@ -51,8 +51,8 @@ function Controller() {
         id: "TablaAsignaturasAlumno"
     });
     $.__views.WinCrearAsignatura.add($.__views.TablaAsignaturasAlumno);
-    var __alloyId196 = Alloy.Collections["Asignatura"] || Asignatura;
-    __alloyId196.on("fetch destroy change add remove reset", __alloyId197);
+    var __alloyId205 = Alloy.Collections["Asignatura"] || Asignatura;
+    __alloyId205.on("fetch destroy change add remove reset", __alloyId206);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -61,7 +61,7 @@ function Controller() {
     $.__views.WinCrearAsignatura.add($.__views.addAsignatura);
     NuevaAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevaAsignatura) : __defers["$.__views.addAsignatura!click!NuevaAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId196.off("fetch destroy change add remove reset", __alloyId197);
+        __alloyId205.off("fetch destroy change add remove reset", __alloyId206);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -1,7 +1,13 @@
 <Alloy>	
 			<Window id="WinAlumnos" title="Alumnos">	
 				<TableView dataCollection="Alumno" dataTransform="nombrecompleto" dataFilter="filtrado" id="TablaAlumnos" >
+					<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/04HeaderClase.png" height="70dp" ></ImageView>
+					</HeaderView>
 					<Require src="AlumnoRow"/>
+					<FooterView>
+						<ImageView image="library/images/iphone/helpScreen/04FooterClase.png" ></ImageView>
+					</FooterView>
 				</TableView>
 			</Window>
 </Alloy>

@@ -1,7 +1,13 @@
 <Alloy>	
 			<Window id="WinClases" title="Clases">	
 				<TableView dataCollection="Clase" dataTransform="NombreClase" dataFilter="filtrado" id="TablaClases" >
+					<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/03HeaderClases.png" height="70dp" ></ImageView>
+					</HeaderView>
 					<Require src="ClaseRow"/>
+					<FooterView>
+						<ImageView image="library/images/iphone/helpScreen/03FooterClases.png" ></ImageView>
+					</FooterView>
 				</TableView>
 				<Button id="addClase" title="Nueva" top="-50dp" onClick="NuevaClase"></Button>
 			</Window>

@@ -1,4 +1,4 @@
-".container": {
+/*".container": {
 	backgroundColor: "white"
 },
 ".label": {
@@ -6,5 +6,4 @@
 },
 ".textbox": {
 	borderColor:"#000", width:"70%"
-}
-
+}*/

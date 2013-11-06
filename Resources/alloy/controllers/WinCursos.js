@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId109() {
-        __alloyId109.opts || {};
-        var models = filtrado(__alloyId108);
+    function __alloyId118() {
+        __alloyId118.opts || {};
+        var models = filtrado(__alloyId117);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId104 = models[i];
-            __alloyId104.__transform = transform(__alloyId104);
-            var __alloyId105 = Alloy.createController("CursoRow", {
-                $model: __alloyId104
+            var __alloyId113 = models[i];
+            __alloyId113.__transform = transform(__alloyId113);
+            var __alloyId114 = Alloy.createController("CursoRow", {
+                $model: __alloyId113
             });
-            rows.push(__alloyId105.getViewEx({
+            rows.push(__alloyId114.getViewEx({
                 recurse: true
             }));
         }
@@ -61,21 +61,21 @@ function Controller() {
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);
-    $.__views.__alloyId102 = Ti.UI.createImageView({
+    $.__views.__alloyId111 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/02HeaderCursos.png",
         height: "70dp",
-        id: "__alloyId102"
+        id: "__alloyId111"
     });
-    $.__views.TablaCursos.headerView = $.__views.__alloyId102;
-    $.__views.__alloyId107 = Ti.UI.createImageView({
+    $.__views.TablaCursos.headerView = $.__views.__alloyId111;
+    $.__views.__alloyId116 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/02FooterCursos.png",
-        id: "__alloyId107"
+        id: "__alloyId116"
     });
-    $.__views.TablaCursos.footerView = $.__views.__alloyId107;
-    var __alloyId108 = Alloy.Collections["Curso"] || Curso;
-    __alloyId108.on("fetch destroy change add remove reset", __alloyId109);
+    $.__views.TablaCursos.footerView = $.__views.__alloyId116;
+    var __alloyId117 = Alloy.Collections["Curso"] || Curso;
+    __alloyId117.on("fetch destroy change add remove reset", __alloyId118);
     exports.destroy = function() {
-        __alloyId108.off("fetch destroy change add remove reset", __alloyId109);
+        __alloyId117.off("fetch destroy change add remove reset", __alloyId118);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

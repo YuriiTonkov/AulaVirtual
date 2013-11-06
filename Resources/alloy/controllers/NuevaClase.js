@@ -23,24 +23,32 @@ function Controller() {
     $.__views.winNuevaClase = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "white",
+        backgroundColor: "e2effa",
         id: "winNuevaClase"
     });
     $.__views.winNuevaClase && $.addTopLevelView($.__views.winNuevaClase);
-    $.__views.__alloyId25 = Ti.UI.createLabel({
-        width: "80%",
-        text: "Introduzca el nombre de la clase",
-        top: "5%",
+    $.__views.__alloyId25 = Ti.UI.createImageView({
+        top: "25dp",
+        image: "library/images/iphone/helpScreen/0301HeaderNuevaClase.png",
         id: "__alloyId25"
     });
     $.__views.winNuevaClase.add($.__views.__alloyId25);
     $.__views.txtNombreClase = Ti.UI.createTextField({
-        borderColor: "#000",
-        width: "70%",
-        top: "20%",
+        backgroundColor: "white",
+        width: "80%",
+        borderColor: "66cccc",
+        borderRadius: "4",
+        height: "28dp",
+        top: "80dp",
         id: "txtNombreClase"
     });
     $.__views.winNuevaClase.add($.__views.txtNombreClase);
+    $.__views.__alloyId26 = Ti.UI.createImageView({
+        top: "110dp",
+        image: "library/images/iphone/helpScreen/0301FooterNuevaClase.png",
+        id: "__alloyId26"
+    });
+    $.__views.winNuevaClase.add($.__views.__alloyId26);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",

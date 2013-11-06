@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId80() {
-        __alloyId80.opts || {};
-        var models = filtrado(__alloyId79);
+    function __alloyId85() {
+        __alloyId85.opts || {};
+        var models = filtrado(__alloyId84);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId77 = models[i];
-            __alloyId77.__transform = nombrecompleto(__alloyId77);
-            var __alloyId78 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId77
+            var __alloyId80 = models[i];
+            __alloyId80.__transform = nombrecompleto(__alloyId80);
+            var __alloyId81 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId80
             });
-            rows.push(__alloyId78.getViewEx({
+            rows.push(__alloyId81.getViewEx({
                 recurse: true
             }));
         }
@@ -49,10 +49,21 @@ function Controller() {
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId79 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId79.on("fetch destroy change add remove reset", __alloyId80);
+    $.__views.__alloyId78 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/04HeaderClase.png",
+        height: "70dp",
+        id: "__alloyId78"
+    });
+    $.__views.TablaAlumnos.headerView = $.__views.__alloyId78;
+    $.__views.__alloyId83 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/04FooterClase.png",
+        id: "__alloyId83"
+    });
+    $.__views.TablaAlumnos.footerView = $.__views.__alloyId83;
+    var __alloyId84 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId84.on("fetch destroy change add remove reset", __alloyId85);
     exports.destroy = function() {
-        __alloyId79.off("fetch destroy change add remove reset", __alloyId80);
+        __alloyId84.off("fetch destroy change add remove reset", __alloyId85);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
