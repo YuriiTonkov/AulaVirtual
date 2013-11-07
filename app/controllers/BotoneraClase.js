@@ -4,31 +4,31 @@ var data = [];
 data = arg1;
 
 var buttonObjectsEDDD = [
-    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:false},
-    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:false},
-    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:false}
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png', width:24, enabled:false},
+    {image:'/library/images/iphone/helpscreen/iconoAddFavorito.png', width:24, enabled:false},
+    {image:'/library/images/iphone/helpscreen/iconoMandarNotaClase.png', width:24, enabled:false}
     ];
     
 var buttonObjectsEEDE = [
-    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:false},
-    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:true}
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoAddFavorito.png', width:24, enabled:false},
+    {image:'/library/images/iphone/helpscreen/iconoMandarNotaClase.png', width:24, enabled:true}
     ];
     
 var buttonObjectsEDED = [
-    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:false},
-    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:false}
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png', width:24, enabled:false},
+    {image:'/library/images/iphone/helpscreen/iconoAddFavorito.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoMandarNotaClase.png', width:24, enabled:false}
     ];
     
 var buttonObjectsEEEE = [
-    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:true},
-    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:true}
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoAddFavorito.png', width:24, enabled:true},
+    {image:'/library/images/iphone/helpscreen/iconoMandarNotaClase.png', width:24, enabled:true}
     ];
 
 $.btnBar.style = Titanium.UI.iPhone.SystemButtonStyle.BAR;
