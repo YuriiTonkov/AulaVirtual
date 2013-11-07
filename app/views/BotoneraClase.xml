@@ -1,11 +1,11 @@
 <Alloy>
 	<View  height="25dp" width="110dp" id="botones" class="container" left="10">
-		<ButtonBar height="100%" width="100%" id="btnBar" style="PLAIN" borderColor="e7effa" borderWidth="0" >
+		<ButtonBar height="100%" width="100%" id="btnBar">
 			<Labels>
-				<Label  id="addAlumno"  >+</Label>
-				<Label  id="addAlumnoCloud">(+)</Label>
-				<Label  id="favoritar">*</Label>
-				<Label  id="enviarMensaje">@</Label>
+				<Label image="/library/images/iphone/helpscreen/iconoAddAlumno.png" id="addAlumno"  ></Label>
+				<Label image="/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png" id="addAlumnoCloud"></Label>
+				<Label image="/library/images/iphone/helpscreen/iconoAddFavorito.png" id="favoritar"></Label>
+				<Label image="/library/images/iphone/helpscreen/iconoMandarNotaClase.png" id="enviarMensaje"></Label>
 			</Labels>
 		</ButtonBar>
 	</View>

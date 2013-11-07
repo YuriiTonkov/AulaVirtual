@@ -15,22 +15,22 @@ function Controller() {
     $.__views.botones && $.addTopLevelView($.__views.botones);
     var __alloyId6 = [];
     var __alloyId7 = {
-        title: "+",
+        image: "/library/images/iphone/helpscreen/iconoAddAlumno.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId7);
     var __alloyId8 = {
-        title: "(+)",
+        image: "/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId8);
     var __alloyId9 = {
-        title: "*",
+        image: "/library/images/iphone/helpscreen/iconoAddFavorito.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId9);
     var __alloyId10 = {
-        title: "@",
+        image: "/library/images/iphone/helpscreen/iconoMandarNotaClase.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId10);
@@ -38,10 +38,7 @@ function Controller() {
         labels: __alloyId6,
         height: "100%",
         width: "100%",
-        id: "btnBar",
-        style: "PLAIN",
-        borderColor: "e7effa",
-        borderWidth: "0"
+        id: "btnBar"
     });
     $.__views.botones.add($.__views.btnBar);
     exports.destroy = function() {};
