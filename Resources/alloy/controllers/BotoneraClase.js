@@ -7,19 +7,15 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.botones = Ti.UI.createView({
-        backgroundColor: "white",
-        borderRadius: "3dp",
-        height: "30dp",
-        width: "100dp",
-        id: "botones"
+        height: "25dp",
+        width: "110dp",
+        id: "botones",
+        left: "10"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
     var __alloyId6 = [];
     var __alloyId7 = {
-        style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
-        image: "/library/images/iphone/icon/AddAlumno.png",
         title: "+",
-        backgroundImage: "/library/images/iphone/icon/AddAlumno.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId7);
@@ -40,10 +36,12 @@ function Controller() {
     __alloyId6.push(__alloyId10);
     $.__views.btnBar = Ti.UI.createButtonBar({
         labels: __alloyId6,
-        borderRadius: "5dp",
         height: "100%",
         width: "100%",
-        id: "btnBar"
+        id: "btnBar",
+        style: "PLAIN",
+        borderColor: "e7effa",
+        borderWidth: "0"
     });
     $.__views.botones.add($.__views.btnBar);
     exports.destroy = function() {};
@@ -51,70 +49,90 @@ function Controller() {
     var arg1 = arguments[0] || {};
     var data = [];
     data = arg1;
+    var buttonObjectsEDDD = [ {
+        image: "/library/images/iphone/icon/AddAlumno.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/AddAlumnoCloud.png",
+        width: 24,
+        enabled: false
+    }, {
+        image: "/library/images/iphone/icon/AddFavorito.png",
+        width: 24,
+        enabled: false
+    }, {
+        image: "/library/images/iphone/icon/MandarNotaClase.png",
+        width: 24,
+        enabled: false
+    } ];
+    var buttonObjectsEEDE = [ {
+        image: "/library/images/iphone/icon/AddAlumno.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/AddAlumnoCloud.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/AddFavorito.png",
+        width: 24,
+        enabled: false
+    }, {
+        image: "/library/images/iphone/icon/MandarNotaClase.png",
+        width: 24,
+        enabled: true
+    } ];
+    var buttonObjectsEDED = [ {
+        image: "/library/images/iphone/icon/AddAlumno.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/AddAlumnoCloud.png",
+        width: 24,
+        enabled: false
+    }, {
+        image: "/library/images/iphone/icon/AddFavorito.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/MandarNotaClase.png",
+        width: 24,
+        enabled: false
+    } ];
+    var buttonObjectsEEEE = [ {
+        image: "/library/images/iphone/icon/AddAlumno.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/AddAlumnoCloud.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/AddFavorito.png",
+        width: 24,
+        enabled: true
+    }, {
+        image: "/library/images/iphone/icon/MandarNotaClase.png",
+        width: 24,
+        enabled: true
+    } ];
     $.btnBar.style = Titanium.UI.iPhone.SystemButtonStyle.BAR;
     var colClase = Alloy.createCollection("Clase");
     colClase.fetch();
     var model = colClase.get(data.IdClase);
     var datos = model.toJSON();
     if (1 == datos.Favorita) if (void 0 == Ti.App.Properties.getString("UsuarioCloud")) {
-        var buttons = [ {
-            title: "+",
-            enabled: true
-        }, {
-            title: "(+)",
-            enabled: false
-        }, {
-            title: "*",
-            enabled: false
-        }, {
-            title: "@",
-            enabled: false
-        } ];
+        var buttons = buttonObjectsEDDD;
         $.btnBar.labels = buttons;
     } else {
-        var buttons = [ {
-            title: "+",
-            enabled: true
-        }, {
-            title: "(+)",
-            enabled: true
-        }, {
-            title: "*",
-            enabled: false
-        }, {
-            title: "@",
-            enabled: true
-        } ];
+        var buttons = buttonObjectsEEDE;
         $.btnBar.labels = buttons;
     } else if (void 0 == Ti.App.Properties.getString("UsuarioCloud")) {
-        var buttons = [ {
-            title: "+",
-            enabled: true
-        }, {
-            title: "(+)",
-            enabled: false
-        }, {
-            title: "*",
-            enabled: true
-        }, {
-            title: "@",
-            enabled: false
-        } ];
+        var buttons = buttonObjectsEDED;
         $.btnBar.labels = buttons;
     } else {
-        var buttons = [ {
-            title: "+",
-            enabled: true
-        }, {
-            title: "(+)",
-            enabled: true
-        }, {
-            title: "*",
-            enabled: true
-        }, {
-            title: "@",
-            enabled: true
-        } ];
+        var buttons = buttonObjectsEEEE;
         $.btnBar.labels = buttons;
     }
     $.btnBar.addEventListener("click", function(e) {
@@ -135,16 +153,7 @@ function Controller() {
 
           case 2:
             colClase.updateFavorito(data.IdClase, 1);
-            var buttons = [ {
-                title: "+",
-                enabled: true
-            }, {
-                title: "(+)",
-                enabled: true
-            }, {
-                title: "*",
-                enabled: false
-            } ];
+            var buttons = buttonObjectsEEDE;
             $.btnBar.labels = buttons;
             var alertDialog = Ti.UI.createAlertDialog({
                 title: "Aviso",

@@ -1,8 +1,8 @@
 <Alloy>
-	<View  borderRadius="3dp" height="30dp" width="100dp" id="botones" class="container">
-		<ButtonBar borderRadius="5dp" height="100%" width="100%" id="btnBar">
+	<View  height="25dp" width="110dp" id="botones" class="container" left="10">
+		<ButtonBar height="100%" width="100%" id="btnBar" style="PLAIN" borderColor="e7effa" borderWidth="0" >
 			<Labels>
-				<Label  backgroundImage="/library/images/iphone/icon/AddAlumno.png" id="addAlumno"  >+</Label>
+				<Label  id="addAlumno"  >+</Label>
 				<Label  id="addAlumnoCloud">(+)</Label>
 				<Label  id="favoritar">*</Label>
 				<Label  id="enviarMensaje">@</Label>

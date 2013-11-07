@@ -3,7 +3,33 @@ var arg1 = arguments[0] || {};
 var data = [];
 data = arg1;
 
-
+var buttonObjectsEDDD = [
+    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:false},
+    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:false},
+    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:false}
+    ];
+    
+var buttonObjectsEEDE = [
+    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:false},
+    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:true}
+    ];
+    
+var buttonObjectsEDED = [
+    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:false},
+    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:false}
+    ];
+    
+var buttonObjectsEEEE = [
+    {image:'/library/images/iphone/icon/AddAlumno.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/AddAlumnoCloud.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/AddFavorito.png', width:24, enabled:true},
+    {image:'/library/images/iphone/icon/MandarNotaClase.png', width:24, enabled:true}
+    ];
 
 $.btnBar.style = Titanium.UI.iPhone.SystemButtonStyle.BAR;
 var colClase = Alloy.createCollection("Clase");
@@ -12,39 +38,23 @@ var model = colClase.get(data.IdClase);
 var datos = model.toJSON();
 if (datos.Favorita==1){
 	if (Ti.App.Properties.getString('UsuarioCloud')==undefined){
-    var buttons = [
-        {title:'+', enabled:true},
-        {title:'(+)', enabled:false},
-        {title:'*', enabled:false},
-        {title:'@', enabled:false}];
+    var buttons = buttonObjectsEDDD;
         
     $.btnBar.labels=buttons;
     
 	}else{
-	var buttons = [
-        {title:'+', enabled:true},
-        {title:'(+)', enabled:true},
-        {title:'*', enabled:false},
-         {title:'@', enabled:true}];
+	var buttons = buttonObjectsEEDE;
         
     $.btnBar.labels=buttons;
 }
 } else {
 	if (Ti.App.Properties.getString('UsuarioCloud')==undefined){
-    var buttons = [
-        {title:'+', enabled:true},
-        {title:'(+)', enabled:false},
-        {title:'*', enabled:true},
-        {title:'@', enabled:false}];
+    var buttons = buttonObjectsEDED;
         
     $.btnBar.labels=buttons;
     
 }else{
-	var buttons = [
-        {title:'+', enabled:true},
-        {title:'(+)', enabled:true},
-        {title:'*', enabled:true},
-        {title:'@', enabled:true}];
+	var buttons = buttonObjectsEEEE;
         
     $.btnBar.labels=buttons;
 }
@@ -65,10 +75,7 @@ $.btnBar.addEventListener("click", function(e){
     		break;
     	case 2:
         	colClase.updateFavorito(data.IdClase, 1);
-        	var buttons = [
-        		{title:'+', enabled:true},
-        		{title:'(+)', enabled:true},
-        		{title:'*', enabled:false}];
+        	var buttons = buttonObjectsEEDE;
         	$.btnBar.labels=buttons;
         	//Creamos aviso de que se ha guardado en favoritos
         	var alertDialog = Ti.UI.createAlertDialog({

@@ -97,8 +97,3 @@
 	"font": {fontSize:16, fontFamily:'HelveticaNeue-UltraLight'}
 }
 
-//Estilo de los iconos de la pantalla de listado de alumnos
-"#addAlumno":{
-    style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
-    image: '/library/images/iphone/icon/AddAlumno.png',
-}

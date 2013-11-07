@@ -76,8 +76,6 @@ function Controller() {
         barColor: "#e7effa",
         translucent: "false",
         backgroundColor: "white",
-        style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
-        image: "/library/images/iphone/icon/AddAlumno.png",
         id: "addAlumno"
     });
     $.__views.addAlumno && $.addTopLevelView($.__views.addAlumno);
