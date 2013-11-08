@@ -84,6 +84,7 @@ function Guardar(){
             Ti.App.Properties.setString("CP", $.txtCodPostal.value);
             Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
             Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+            Ti.App.Properties.getString('Email', $.txtEmail.value);
             $.lblError.text = "Se han modificado los datos de registro";
             $.lblError.visible= true;
             
