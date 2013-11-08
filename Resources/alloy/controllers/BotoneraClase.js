@@ -9,28 +9,27 @@ function Controller() {
     $.__views.botones = Ti.UI.createView({
         height: "25dp",
         width: "110dp",
-        id: "botones",
-        left: "10"
+        id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
     var __alloyId6 = [];
     var __alloyId7 = {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumno.png",
+        image: "/library/images/iphone/icons/iconoAddAlumno.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId7);
     var __alloyId8 = {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png",
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId8);
     var __alloyId9 = {
-        image: "/library/images/iphone/helpscreen/iconoAddFavorito.png",
+        image: "/library/images/iphone/icons/iconoAddFavorito.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId9);
     var __alloyId10 = {
-        image: "/library/images/iphone/helpscreen/iconoMandarNotaClase.png",
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
         ns: "Alloy.Abstract"
     };
     __alloyId6.push(__alloyId10);
@@ -38,7 +37,9 @@ function Controller() {
         labels: __alloyId6,
         height: "100%",
         width: "100%",
-        id: "btnBar"
+        id: "btnBar",
+        tintColor: "white",
+        left: "10"
     });
     $.__views.botones.add($.__views.btnBar);
     exports.destroy = function() {};
@@ -47,70 +48,70 @@ function Controller() {
     var data = [];
     data = arg1;
     var buttonObjectsEDDD = [ {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumno.png",
+        image: "/library/images/iphone/icons/iconoAddAlumno.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png",
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         width: 24,
         enabled: false
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddFavorito.png",
+        image: "/library/images/iphone/icons/iconoAddFavorito.png",
         width: 24,
         enabled: false
     }, {
-        image: "/library/images/iphone/helpscreen/iconoMandarNotaClase.png",
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
         width: 24,
         enabled: false
     } ];
     var buttonObjectsEEDE = [ {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumno.png",
+        image: "/library/images/iphone/icons/iconoAddAlumno.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png",
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddFavorito.png",
+        image: "/library/images/iphone/icons/iconoAddFavorito.png",
         width: 24,
         enabled: false
     }, {
-        image: "/library/images/iphone/helpscreen/iconoMandarNotaClase.png",
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
         width: 24,
         enabled: true
     } ];
     var buttonObjectsEDED = [ {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumno.png",
+        image: "/library/images/iphone/icons/iconoAddAlumno.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png",
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         width: 24,
         enabled: false
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddFavorito.png",
+        image: "/library/images/iphone/icons/iconoAddFavorito.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoMandarNotaClase.png",
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
         width: 24,
         enabled: false
     } ];
     var buttonObjectsEEEE = [ {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumno.png",
+        image: "/library/images/iphone/icons/iconoAddAlumno.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddAlumnoCloud.png",
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoAddFavorito.png",
+        image: "/library/images/iphone/icons/iconoAddFavorito.png",
         width: 24,
         enabled: true
     }, {
-        image: "/library/images/iphone/helpscreen/iconoMandarNotaClase.png",
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
         width: 24,
         enabled: true
     } ];
