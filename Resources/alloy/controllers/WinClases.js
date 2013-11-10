@@ -95,25 +95,26 @@ function Controller() {
     data = arg1;
     $.WinClases.title = data.Nombre;
     $.WinClases.setRightNavButton($.addClase);
-    var clases = Alloy.Collections.Clase;
-    clases.fetch();
+    $.WinClases.addEventListener("focus", function() {
+        $.WinClases.title = data.Nombre;
+        var clases = Alloy.Collections.Clase;
+        clases.fetch();
+        if ("1" == Ti.App.Properties.getString("Ayuda")) {
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar las clases pertenecientes a " + data.Nombre + ". Se puede acceder a los diferentes alumnos.",
+                buttonNames: [ "OK" ],
+                cancel: 0
+            });
+            alertDialog.show();
+        }
+    });
     $.TablaClases.addEventListener("delete", function(e) {
         var clases = Alloy.Collections.Clase;
         var model = clases.get(e.rowData.data);
         model.destroy();
         clases.remove(model);
         clases.fetch();
-    });
-    $.WinClases.addEventListener("focus", function() {
-        if ("1" == Ti.App.Properties.getString("Ayuda")) {
-            var alertDialog = Ti.UI.createAlertDialog({
-                title: "Ayuda",
-                message: "En esta pantalla se pueden visualizar los grupos pertenecientes a " + data.Nombre + ". A través de esta tabla se puede acceder a los diferentes Alumnos de cada grupo.",
-                buttonNames: [ "OK" ],
-                cancel: 0
-            });
-            alertDialog.show();
-        }
     });
     $.WinClases.addEventListener("close", function() {
         $.destroy();

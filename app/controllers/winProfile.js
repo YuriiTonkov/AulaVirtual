@@ -58,11 +58,7 @@ function Alta(){
 						  
 							//AVISO 
 							var user = e.users[0];
-					        alert('Success:\n' +
-					            'id: ' + user.id + '\n' +
-					            'sessionId: ' + Cloud.sessionId + '\n' +
-					            'first name: ' + user.first_name + '\n' +
-					            'last name: ' + user.last_name);
+					        alert('Se ha creado el alumno en la nube.');
 								Ti.App.Properties.setString("UsuarioCloud",1);
 					    } else {
 					        alert('Error:\n' +
@@ -76,17 +72,6 @@ function Alta(){
 }
 
 function Guardar(){
-
-            Ti.App.Properties.setString("Nombre",$.txtNombre.value);
-            Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
-            Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
-            Ti.App.Properties.setString("Direccion",$.txtDireccion.value);
-            Ti.App.Properties.setString("CP", $.txtCodPostal.value);
-            Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
-            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
-            Ti.App.Properties.getString('Email', $.txtEmail.value);
-            $.lblError.text = "Se han modificado los datos de registro";
-            $.lblError.visible= true;
             
 			if (Ti.App.Properties.getString('UsuarioCloud')!=undefined){
 			    var data = {
@@ -106,18 +91,32 @@ function Guardar(){
 			    Cloud.Users.update(data, function (e) {
 			       if (e.success) {
 			            alert('Se han modificado los datos de usuario');
+			            Ti.App.Properties.setString("Nombre",$.txtNombre.value);
+			            Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
+			            Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
+			            Ti.App.Properties.setString("Direccion",$.txtDireccion.value);
+			            Ti.App.Properties.setString("CP", $.txtCodPostal.value);
+			            Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
+			            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+			            Ti.App.Properties.setString("Email", $.txtEmail.value);
+			            alert("Se han modificado los datos de registro");
+            
 			       }
 			       else {
 			            Cloud.Users.create(data, function (e) {
-					    if (e.success) {
-						  
-							//AVISO 
+					    if (e.success) { 
+							Ti.App.Properties.setString("Nombre",$.txtNombre.value);
+				            Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
+				            Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
+				            Ti.App.Properties.setString("Direccion",$.txtDireccion.value);
+				            Ti.App.Properties.setString("CP", $.txtCodPostal.value);
+				            Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
+				            Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+				            Ti.App.Properties.setString("Email", $.txtEmail.value);
+				            alert("Se han modificado los datos de registro");
+            
 							var user = e.users[0];
-					        alert('Success:\n' +
-					            'id: ' + user.id + '\n' +
-					            'sessionId: ' + Cloud.sessionId + '\n' +
-					            'first name: ' + user.first_name + '\n' +
-					            'last name: ' + user.last_name);
+					        alert('Se ha creado el usuario en la nube');
 								Ti.App.Properties.setString("UsuarioCloud",1);
 					    } else {
 					        alert('Error:\n' +
@@ -238,10 +237,8 @@ $.txtTelefono.addEventListener("click", function(){
 });
 
 $.txtEmail.addEventListener("click", function(){
-	if ($.txtEmail.value=="")
-	{
         var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduzca su Email (No permite modificación)',
+            title: 'Introduzca su Email',
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
             buttonNames: ['Aceptar', 'Cancelar'],
             cancel: 1,
@@ -254,8 +251,6 @@ $.txtEmail.addEventListener("click", function(){
             }
         });
         dialog.show();
-     }
-     else alert("No se puede modificar el Email");
 });
 
 
@@ -270,3 +265,50 @@ $.winUsuario.addEventListener('focus',function(e){
 $.winUsuario.addEventListener('close', function() {
     $.destroy();
 });
+
+//-----------PRUEBAS DE VALIDACION-----------------------
+
+
+
+var validationCallback = function(errors) {
+        if(errors.length > 0) {
+                for (var i = 0; i < errors.length; i++) {
+                        Ti.API.debug(errors[i].message);
+                }
+                alert(errors[0].message);
+        } else {
+               Guardar();
+        }
+};
+
+
+var returnCallback = function() {
+        validator.run([
+                                {
+                                        id: 'nameField',
+                                    value: $.txtNombre.value,
+                                    display: 'Nombre',    
+                                    rules: 'required|max_length[50]'
+                                },
+                                {
+                                        id: 'surname1Field',
+                                    value: $.txtApellido1.value,
+                                    display: 'Apellido1',    
+                                    rules: 'required|max_length[50]'
+                                },
+                                {
+                                        id: 'surname2Field',
+                                    value: $.txtApellido2.value,
+                                    display: 'Apellido2',    
+                                    rules: 'max_length[50]'
+                                },
+                                {
+                                        id: 'emailField',
+                                    value: $.txtEmail.value,
+                                    display: 'Email',    
+                                    rules: 'required|valid_email'
+                                }
+                        ], validationCallback);        
+};
+
+$.btnGuardar.addEventListener('click', returnCallback);

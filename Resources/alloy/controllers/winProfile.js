@@ -26,23 +26,13 @@ function Controller() {
             }
         }, function(e) {
             if (e.success) {
-                var user = e.users[0];
-                alert("Success:\nid: " + user.id + "\n" + "sessionId: " + Cloud.sessionId + "\n" + "first name: " + user.first_name + "\n" + "last name: " + user.last_name);
+                e.users[0];
+                alert("Se ha creado el alumno en la nube.");
                 Ti.App.Properties.setString("UsuarioCloud", 1);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
     function Guardar() {
-        Ti.App.Properties.setString("Nombre", $.txtNombre.value);
-        Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
-        Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
-        Ti.App.Properties.setString("Direccion", $.txtDireccion.value);
-        Ti.App.Properties.setString("CP", $.txtCodPostal.value);
-        Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
-        Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
-        Ti.App.Properties.getString("Email", $.txtEmail.value);
-        $.lblError.text = "Se han modificado los datos de registro";
-        $.lblError.visible = true;
         if (void 0 != Ti.App.Properties.getString("UsuarioCloud")) {
             var data = {
                 first_name: $.txtNombre.value,
@@ -59,10 +49,30 @@ function Controller() {
                 }
             };
             Cloud.Users.update(data, function(e) {
-                e.success ? alert("Se han modificado los datos de usuario") : Cloud.Users.create(data, function(e) {
+                if (e.success) {
+                    alert("Se han modificado los datos de usuario");
+                    Ti.App.Properties.setString("Nombre", $.txtNombre.value);
+                    Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
+                    Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
+                    Ti.App.Properties.setString("Direccion", $.txtDireccion.value);
+                    Ti.App.Properties.setString("CP", $.txtCodPostal.value);
+                    Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
+                    Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+                    Ti.App.Properties.setString("Email", $.txtEmail.value);
+                    alert("Se han modificado los datos de registro");
+                } else Cloud.Users.create(data, function(e) {
                     if (e.success) {
-                        var user = e.users[0];
-                        alert("Success:\nid: " + user.id + "\n" + "sessionId: " + Cloud.sessionId + "\n" + "first name: " + user.first_name + "\n" + "last name: " + user.last_name);
+                        Ti.App.Properties.setString("Nombre", $.txtNombre.value);
+                        Ti.App.Properties.setString("Apellido1", $.txtApellido1.value);
+                        Ti.App.Properties.setString("Apellido2", $.txtApellido2.value);
+                        Ti.App.Properties.setString("Direccion", $.txtDireccion.value);
+                        Ti.App.Properties.setString("CP", $.txtCodPostal.value);
+                        Ti.App.Properties.setString("Telefono", $.txtTelefono.value);
+                        Ti.App.Properties.setString("Ayuda", $.chkAyuda.value);
+                        Ti.App.Properties.setString("Email", $.txtEmail.value);
+                        alert("Se han modificado los datos de registro");
+                        e.users[0];
+                        alert("Se ha creado el usuario en la nube");
                         Ti.App.Properties.setString("UsuarioCloud", 1);
                     } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
                 });
@@ -175,7 +185,7 @@ function Controller() {
     });
     $.__views.__alloyId212.add($.__views.__alloyId213);
     $.__views.txtApellido2 = Ti.UI.createTextField({
-        top: "18%",
+        top: "15dp",
         width: "100%",
         height: "20dp",
         textAlign: "left",
@@ -350,26 +360,6 @@ function Controller() {
         id: "chkAyuda"
     });
     $.__views.__alloyId222.add($.__views.chkAyuda);
-    $.__views.__alloyId224 = Ti.UI.createTableViewRow({
-        backgroundColor: "white",
-        height: "40dp",
-        id: "__alloyId224"
-    });
-    __alloyId208.push($.__views.__alloyId224);
-    $.__views.lblError = Ti.UI.createLabel({
-        top: "15dp",
-        width: "100%",
-        height: "20dp",
-        textAlign: "left",
-        left: "45dp",
-        font: {
-            fontSize: 16,
-            fontFamily: "HelveticaNeue-UltraLight"
-        },
-        id: "lblError",
-        visible: "false"
-    });
-    $.__views.__alloyId224.add($.__views.lblError);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
@@ -384,7 +374,6 @@ function Controller() {
         title: "Guardar"
     });
     $.__views.winUsuario.add($.__views.btnGuardar);
-    Guardar ? $.__views.btnGuardar.addEventListener("click", Guardar) : __defers["$.__views.btnGuardar!click!Guardar"] = true;
     $.__views.btnAlta = Ti.UI.createButton({
         top: "85%",
         left: "42%",
@@ -470,18 +459,16 @@ function Controller() {
         dialog.show();
     });
     $.txtEmail.addEventListener("click", function() {
-        if ("" == $.txtEmail.value) {
-            var dialog = Ti.UI.createAlertDialog({
-                title: "Introduzca su Email (No permite modificación)",
-                style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
-                buttonNames: [ "Aceptar", "Cancelar" ],
-                cancel: 1
-            });
-            dialog.addEventListener("click", function(e) {
-                e.index === e.source.cancel || ($.txtEmail.value = e.text);
-            });
-            dialog.show();
-        } else alert("No se puede modificar el Email");
+        var dialog = Ti.UI.createAlertDialog({
+            title: "Introduzca su Email",
+            style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+            buttonNames: [ "Aceptar", "Cancelar" ],
+            cancel: 1
+        });
+        dialog.addEventListener("click", function(e) {
+            e.index === e.source.cancel || ($.txtEmail.value = e.text);
+        });
+        dialog.show();
     });
     $.winUsuario.addEventListener("focus", function() {
         refreshScreen();
@@ -489,7 +476,36 @@ function Controller() {
     $.winUsuario.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
+    var validationCallback = function(errors) {
+        if (errors.length > 0) {
+            for (var i = 0; errors.length > i; i++) Ti.API.debug(errors[i].message);
+            alert(errors[0].message);
+        } else Guardar();
+    };
+    var returnCallback = function() {
+        validator.run([ {
+            id: "nameField",
+            value: $.txtNombre.value,
+            display: "Nombre",
+            rules: "required|max_length[50]"
+        }, {
+            id: "surname1Field",
+            value: $.txtApellido1.value,
+            display: "Apellido1",
+            rules: "required|max_length[50]"
+        }, {
+            id: "surname2Field",
+            value: $.txtApellido2.value,
+            display: "Apellido2",
+            rules: "max_length[50]"
+        }, {
+            id: "emailField",
+            value: $.txtEmail.value,
+            display: "Email",
+            rules: "required|valid_email"
+        } ], validationCallback);
+    };
+    $.btnGuardar.addEventListener("click", returnCallback);
     __defers["$.__views.btnAlta!click!Alta"] && $.__views.btnAlta.addEventListener("click", Alta);
     _.extend($, exports);
 }

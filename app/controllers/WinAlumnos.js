@@ -11,8 +11,7 @@ $.WinAlumnos.setRightNavButton(tab.getView());
 //-----------------------------------------
 
 
-var alumnos = Alloy.Collections.Alumno;
-alumnos.fetch();
+
 
 //Funciones--------------------------
 
@@ -51,6 +50,22 @@ $.TablaAlumnos.addEventListener('delete', function(e)
     			alumnos.fetch();
 	        });
     
+});
+
+$.WinAlumnos.addEventListener('focus',function(e){
+    // Ti.API.info('ENTRO EN EL FOCUS');
+   var alumnos = Alloy.Collections.Alumno;
+	alumnos.fetch();
+    if (Ti.App.Properties.getString('Ayuda')=='1'){
+        //Creamos la ayuda que saldrá en caso de estar activada
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar los alumnos pertenecientes a la clase "+data.Nombre,
+                buttonNames: ['OK'],
+                cancel:0
+            });
+            alertDialog.show();
+    }
 });
 
 //--------------------------------

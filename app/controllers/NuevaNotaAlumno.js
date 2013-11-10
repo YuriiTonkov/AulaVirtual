@@ -7,33 +7,35 @@ data = arg1;
 //$.WinClases.title = data.Nombre;
 $.winNuevaNota.setRightNavButton($.btnGuardar);
 
-if (data.IdClase == undefined){
-		if (data.IdAsignatura == undefined){
-			
-		} else {
-			$.btnEnviarTodos.visible=true;
-			$.btnEnviar.visible = false;
-		}
-} else {
-	$.btnEnviarTodos.visible=true;
-	$.btnEnviar.visible = false;
-}
-	
-if (data.IdAnotacion == undefined){
-	
-}else{
-	
-	var anotacion = Alloy.Collections.Anotacion;
-	anotacion.fetch();
-	var model = anotacion.get(data.IdAnotacion);
-	var datos = model.toJSON();
-	$.dateTextField.text = datos.Fecha;
-	$.txtTitulo.value = datos.Titulo;
-	$.txtObservaciones.value = datos.Comentario;
-	
+function refreshScreen(){
+	if (data.IdClase == undefined){
+			if (data.IdAsignatura == undefined){
+				
+			} else {
+				$.btnEnviarTodos.visible=true;
+				$.btnEnviar.visible = false;
+			}
+	} else {
+		$.btnEnviarTodos.visible=true;
+		$.btnEnviar.visible = false;
+	}
+		
+	if (data.IdAnotacion == undefined){
+		
+	}else{
+		
+		var anotacion = Alloy.Collections.Anotacion;
+		anotacion.fetch();
+		var model = anotacion.get(data.IdAnotacion);
+		var datos = model.toJSON();
+		$.dateTextField.text = datos.Fecha;
+		$.txtTitulo.value = datos.Titulo;
+		$.txtObservaciones.value = datos.Comentario;
+		
+	}
 }
 
-function GuardarExamen(){
+function Guardar(){
 	if (data.IdAnotacion == undefined){
 		if (data.IdClase == undefined){
 			if (data.IdAsignatura == undefined){
@@ -43,15 +45,15 @@ function GuardarExamen(){
             Anotacion.save();
             coleccionAnotaciones.fetch();
             data.IdAnotacion = Anotacion.get("IdAnotacion");
-            $.lblAviso.text = "Se ha creado la anotacion.";
+            alert("Se ha creado la anotacion.");
           } else {
           	var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAsignatura:data.IdAsignatura, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            data.IdAnotacion = Anotacion.IdAnotacion;
-            $.lblAviso.text = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.get("IdAnotacion");
+           alert("Se ha creado la anotacion.");
           }
 		}
 		else{
@@ -60,8 +62,8 @@ function GuardarExamen(){
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            data.IdAnotacion = Anotacion.IdAnotacion;
-            $.lblAviso.text = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.get("IdAnotacion");
+            alert("Se ha creado la anotacion.");
             
 		}
     //$.btnAnterior.visible="false";
@@ -70,27 +72,33 @@ function GuardarExamen(){
             
 		
 }else{
+	var anotacion = Alloy.Collections.Anotacion;
+	anotacion.fetch();
+	var model = anotacion.get(data.IdAnotacion);
 	model.set({
 			Fecha:$.dateTextField.text, 
 			Comentario:$.txtObservaciones.value, 
 			Titulo:$.txtTitulo.value
 	});
 	model.save();
-	$.lblAviso.text = "Se ha actualizado la anotacion.";
+	alert("Se ha actualizado la anotacion.");
 }
     
            
     
 }
+function EnviarAnotacion(){
+	Enviar(data.IdAlumno);
+}
 
-function EnviarExamen(){
+function Enviar(idAlumno){
 	var alumnos = Alloy.Collections.Alumno;
 	alumnos.fetch();
-	var alumno = alumnos.get(data.IdAlumno);
+	var alumno = alumnos.get(idAlumno);
 	var datos = alumno.toJSON();
 	
 	
-	if (datos.UsuarioCloud=1){
+	if (datos.UsuarioCloud!=undefined){
 		Cloud.Users.query({
 			    where: {
 			        email: datos.Email
@@ -106,20 +114,20 @@ function EnviarExamen(){
 				        
 			        }, function (e) {
 			            if (e.success) {
-			                 $.lblAviso.text = "Se ha enviado la anotacion.";
+			                 alert("Se ha enviado la anotacion a " + datos.Nombre + " " + datos.Apellido1);
 				        
 			            } else {
-			                alert('Error:\n' +
+			                alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" +
 			            	((e.error && e.message) || JSON.stringify(e)));
 			            }
 			            
 			        });
 			        } else {
 			        	//El alumno no se encuentra en la nube
-			        	 $.lblAviso.text = "El alumno no está registrado.";
+			        	 alert("El alumno " + datos.Nombre + " " + datos.Apellido1 +  " no esta registrado en la nube");
 			        }
 			    } else {
-			        alert('Error:\n' +
+			        alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" +
 			            ((e.error && e.message) || JSON.stringify(e)));
 			    }
 			});
@@ -127,53 +135,43 @@ function EnviarExamen(){
 	}
 	else {
 		//Como no tiene usuario cloud se mira si tenemos la direccion de email para mandarle un correo electronico
+		if (datos.Email != undefined){
+			Cloud.Emails.send({
+            template: "Note",
+            recipients: datos.Email,
+            titulo: $.txtTitulo.value,
+            texto: $.txtObservaciones.value
+        }, function (e) {
+            if (e.success) {
+                alert("Se ha enviado la nota por correo a " + datos.Nombre + " " + datos.Apellido1.');
+            }
+            else {
+                 alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" +
+			            ((e.error && e.message) || JSON.stringify(e)));
+            }
+        });
+		}
 	}
    
 }
 
-function EnviarExamenTodos(){
+function EnviarAnotacionTodos(){
 	var alumno = Alloy.Collections.Alumno;
 	alumno.fetch();
-	var datos;
-	if (data.IdClase == undefined){
-		var model = alumno.where({IdAsignatura:data.IdAsignatura});
-		datos = model.toJSON();
+	var datos,model;
+	if (data.IdAsignatura != undefined){
+		
+		model = alumno.where({Asignatura:data.IdAsignatura});
 	}
 	else {
-		var model = alumno.where({IdClase:data.IdClase});
-		datos = model.toJSON();
+		
+		model = alumno.where({Clase:data.IdClase});
+		
 	}
-	for (var i=0;i>datos.length;i++){
-	if (datos.UsuarioCloud=1){
-		Cloud.Users.query({
-			    where: {
-			        email: datos[0].Email
-			    }
-			}, function (e) {
-			    if (e.success) {
-			       Cloud.Messages.create({
-	        			to_ids: e.users[0].id,
-				        body: $.txtObservaciones.value,
-				        subject: $.txtTitulo.value,
-				        custom_fields:{IdTipo:2, Fecha:$.dateTextField.text, Profesor: Ti.App.Properties.getString('Nombre') + ' ' + Ti.App.Properties.getString('Apellido1') +' '+ Ti.App.Properties.getString('Apellido2')}
-				        
-			        }, function (e) {
-			            if (e.success) {
-			                alert('Enviado!');
-				        
-			            } else {
-			                alert('Error:\n' +
-			            	((e.error && e.message) || JSON.stringify(e)));
-			            }
-			            
-			        });
-			    } else {
-			        alert('Error:\n' +
-			            ((e.error && e.message) || JSON.stringify(e)));
-			    }
-			});
-		 
-	}
+	for (var i=0;i<model.length;i++){
+		datos = model[i].toJSON();
+		
+		Enviar(datos.IdAlumno);
    }
 }
 
@@ -262,3 +260,49 @@ $.done.addEventListener("click", function() {
     var dateValue = picker.value;
     $.dateTextField.text =  (dateValue.getMonth() + 1) + "/"+ dateValue.getDate() + "/"+ dateValue.getFullYear();
     picker_view.animate(slide_out);});
+    
+$.winNuevaNota.addEventListener('focus',function(e){
+    
+     refreshScreen();
+});
+
+//-----------PRUEBAS DE VALIDACION-----------------------
+
+
+
+var validationCallback = function(errors) {
+        if(errors.length > 0) {
+                for (var i = 0; i < errors.length; i++) {
+                        Ti.API.debug(errors[i].message);
+                }
+                alert(errors[0].message);
+        } else {
+               Guardar();
+        }
+};
+
+
+var returnCallback = function() {
+        validator.run([
+                                {
+                                        id: 'nameField',
+                                    value: $.dateTextField.value,
+                                    display: 'Nombre',    
+                                    rules: 'required'
+                                },
+                                {
+                                        id: 'surname1Field',
+                                    value: $.txtTitulo.value,
+                                    display: 'Apellido1',    
+                                    rules: 'required|max_length[50]'
+                                },
+                                {
+                                        id: 'surname2Field',
+                                    value: $.txtObservaciones.value,
+                                    display: 'Apellido2',    
+                                    rules: 'required|max_length[500]'
+                                }
+                        ], validationCallback);        
+};
+
+$.btnGuardar.addEventListener('click', returnCallback);

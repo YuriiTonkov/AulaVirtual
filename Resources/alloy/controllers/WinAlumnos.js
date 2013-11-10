@@ -74,8 +74,6 @@ function Controller() {
         IdClase: data.IdClase
     });
     $.WinAlumnos.setRightNavButton(tab.getView());
-    var alumnos = Alloy.Collections.Alumno;
-    alumnos.fetch();
     $.TablaAlumnos.addEventListener("delete", function(e) {
         var alumnos = Alloy.Collections.Alumno;
         var model = alumnos.get(e.rowData.data);
@@ -87,6 +85,19 @@ function Controller() {
             alumnos.remove(model);
             alumnos.fetch();
         });
+    });
+    $.WinAlumnos.addEventListener("focus", function() {
+        var alumnos = Alloy.Collections.Alumno;
+        alumnos.fetch();
+        if ("1" == Ti.App.Properties.getString("Ayuda")) {
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar los alumnos pertenecientes a la clase " + data.Nombre,
+                buttonNames: [ "OK" ],
+                cancel: 0
+            });
+            alertDialog.show();
+        }
     });
     $.WinAlumnos.addEventListener("close", function() {
         $.destroy();

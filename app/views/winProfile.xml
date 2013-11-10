@@ -11,7 +11,7 @@
 			</TableViewRow>	
 			<TableViewRow height="40dp">		
 				<Label class="labelAlumno" >2o Apellido</Label>
-				<TextField class="textboxAlumno" editable="false" top ="18%" id="txtApellido2"></TextField>
+				<TextField class="textboxAlumno" editable="false" id="txtApellido2"></TextField>
 			</TableViewRow>	
 			<TableViewRow height="40dp">		
 				<Label class="labelAlumno" >Direccion</Label>
@@ -33,11 +33,8 @@
 				<Label class="labelAlumno" >Ayuda activa</Label>
 				<Switch enabled="true"  left="80%" id="chkAyuda"/>	
 			</TableViewRow>	
-			<TableViewRow height="40dp">		
-				<Label id="lblError" class="textboxAlumno"  visible="false"/>
-			</TableViewRow>
 		</TableView>	
-		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
+		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar"></Button>
 		<Button class="button" top="85%" left="42%" id="btnAlta" title="Enviar a nube" onClick="Alta"></Button>
 	</Window>
 </Alloy>

@@ -17,9 +17,9 @@
 			        <Label class="textboxAlumno" id="lblAviso"/>
 	        </TableViewRow>
        	</TableView>
-        <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarExamen"></Button>
-        <Button class="button" top="10dp" id="btnEnviar" title="Enviar" onClick="EnviarExamen"></Button>
-        <Button class="button" top="20dp" visible="false" id="btnEnviarTodos" title="EnviarTodos" onClick="EnviarExamenTodos"></Button>
+        <Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="Guardar"></Button>
+        <Button class="button" top="10dp" id="btnEnviar" title="Enviar" onClick="EnviarAnotacion"></Button>
+        <Button class="button" top="20dp" visible="false" id="btnEnviarTodos" title="EnviarTodos" onClick="EnviarAnotacionTodos"></Button>
         <Button class="button" top="-90dp" id="cancel" title="Cancelar" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
         <Button class="button" top="-100dp" id="done" title="Hecho" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
     </Window>

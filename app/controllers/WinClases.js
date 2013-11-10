@@ -11,8 +11,7 @@ $.WinClases.setRightNavButton($.addClase);
 //-----------------------------------------
 
 
-var clases = Alloy.Collections.Clase;
-clases.fetch();
+
 
 //Funciones--------------------------
 
@@ -41,7 +40,22 @@ function NuevaClase (){
     
 }
 
-
+$.WinClases.addEventListener('focus',function(e){
+    // Ti.API.info('ENTRO EN EL FOCUS');
+    $.WinClases.title = data.Nombre;
+    var clases = Alloy.Collections.Clase;
+	clases.fetch();
+    if (Ti.App.Properties.getString('Ayuda')=='1'){
+        //Creamos la ayuda que saldrá en caso de estar activada
+            var alertDialog = Ti.UI.createAlertDialog({
+                title: "Ayuda",
+                message: "En esta pantalla se pueden visualizar las clases pertenecientes a "+data.Nombre+". Se puede acceder a los diferentes alumnos.",
+                buttonNames: ['OK'],
+                cancel:0
+            });
+            alertDialog.show();
+    }
+});
 
 //-----------------------------------------
 
@@ -58,19 +72,7 @@ $.TablaClases.addEventListener('delete', function(e)
     clases.fetch();
 });
 
-$.WinClases.addEventListener('focus',function(e){
-    // Ti.API.info('ENTRO EN EL FOCUS');
-    if (Ti.App.Properties.getString('Ayuda')=='1'){
-        //Creamos la ayuda que saldrá en caso de estar activada
-            var alertDialog = Ti.UI.createAlertDialog({
-                title: "Ayuda",
-                message: "En esta pantalla se pueden visualizar los grupos pertenecientes a "+data.Nombre+". A través de esta tabla se puede acceder a los diferentes Alumnos de cada grupo.",
-                buttonNames: ['OK'],
-                cancel:0
-            });
-            alertDialog.show();
-    }
-});
+
 
 //--------------------------------
 

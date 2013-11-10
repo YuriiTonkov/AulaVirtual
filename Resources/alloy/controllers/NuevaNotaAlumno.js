@@ -1,5 +1,23 @@
 function Controller() {
-    function GuardarExamen() {
+    function refreshScreen() {
+        if (void 0 == data.IdClase) if (void 0 == data.IdAsignatura) ; else {
+            $.btnEnviarTodos.visible = true;
+            $.btnEnviar.visible = false;
+        } else {
+            $.btnEnviarTodos.visible = true;
+            $.btnEnviar.visible = false;
+        }
+        if (void 0 == data.IdAnotacion) ; else {
+            var anotacion = Alloy.Collections.Anotacion;
+            anotacion.fetch();
+            var model = anotacion.get(data.IdAnotacion);
+            var datos = model.toJSON();
+            $.dateTextField.text = datos.Fecha;
+            $.txtTitulo.value = datos.Titulo;
+            $.txtObservaciones.value = datos.Comentario;
+        }
+    }
+    function Guardar() {
         if (void 0 == data.IdAnotacion) if (void 0 == data.IdClase) if (void 0 == data.IdAsignatura) {
             var Anotacion = Alloy.createModel("Anotacion", {
                 Fecha: $.dateTextField.text,
@@ -12,7 +30,7 @@ function Controller() {
             Anotacion.save();
             coleccionAnotaciones.fetch();
             data.IdAnotacion = Anotacion.get("IdAnotacion");
-            $.lblAviso.text = "Se ha creado la anotacion.";
+            alert("Se ha creado la anotacion.");
         } else {
             var Anotacion = Alloy.createModel("Anotacion", {
                 Fecha: $.dateTextField.text,
@@ -24,8 +42,8 @@ function Controller() {
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            data.IdAnotacion = Anotacion.IdAnotacion;
-            $.lblAviso.text = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.get("IdAnotacion");
+            alert("Se ha creado la anotacion.");
         } else {
             var Anotacion = Alloy.createModel("Anotacion", {
                 Fecha: $.dateTextField.text,
@@ -37,24 +55,30 @@ function Controller() {
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
             coleccionAnotaciones.fetch();
-            data.IdAnotacion = Anotacion.IdAnotacion;
-            $.lblAviso.text = "Se ha creado la anotacion.";
+            data.IdAnotacion = Anotacion.get("IdAnotacion");
+            alert("Se ha creado la anotacion.");
         } else {
+            var anotacion = Alloy.Collections.Anotacion;
+            anotacion.fetch();
+            var model = anotacion.get(data.IdAnotacion);
             model.set({
                 Fecha: $.dateTextField.text,
                 Comentario: $.txtObservaciones.value,
                 Titulo: $.txtTitulo.value
             });
             model.save();
-            $.lblAviso.text = "Se ha actualizado la anotacion.";
+            alert("Se ha actualizado la anotacion.");
         }
     }
-    function EnviarExamen() {
+    function EnviarAnotacion() {
+        Enviar(data.IdAlumno);
+    }
+    function Enviar(idAlumno) {
         var alumnos = Alloy.Collections.Alumno;
         alumnos.fetch();
-        var alumno = alumnos.get(data.IdAlumno);
+        var alumno = alumnos.get(idAlumno);
         var datos = alumno.toJSON();
-        (datos.UsuarioCloud = 1) && Cloud.Users.query({
+        void 0 != datos.UsuarioCloud ? Cloud.Users.query({
             where: {
                 email: datos.Email
             }
@@ -69,43 +93,34 @@ function Controller() {
                     Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
                 }
             }, function(e) {
-                e.success ? $.lblAviso.text = "Se ha enviado la anotacion." : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-            }) : $.lblAviso.text = "El alumno no está registrado." : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+                e.success ? alert("Se ha enviado la anotacion.") : alert("Ups, algo ha fallado:\n" + (e.error && e.message || JSON.stringify(e)));
+            }) : alert("El alumno no existe en la nube") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        }) : void 0 != datos.Email && Cloud.Emails.send({
+            template: "Note",
+            recipients: datos.Email,
+            titulo: $.txtTitulo.value,
+            texto: $.txtObservaciones.value
+        }, function(e) {
+            e.success ? alert("Se ha enviado la nota por correo.") : alert("Ups, hubo un problema:" + e.message);
         });
     }
-    function EnviarExamenTodos() {
+    function EnviarAnotacionTodos() {
         var alumno = Alloy.Collections.Alumno;
         alumno.fetch();
-        var datos;
-        if (void 0 == data.IdClase) {
-            var model = alumno.where({
-                IdAsignatura: data.IdAsignatura
+        var datos, model;
+        if (void 0 != data.IdAsignatura) model = alumno.where({
+            Asignatura: data.IdAsignatura
+        }); else {
+            model = alumno.where({
+                Clase: data.IdClase
             });
-            datos = model.toJSON();
-        } else {
-            var model = alumno.where({
-                IdClase: data.IdClase
-            });
-            datos = model.toJSON();
+            alert(model.length);
         }
-        for (var i = 0; i > datos.length; i++) (datos.UsuarioCloud = 1) && Cloud.Users.query({
-            where: {
-                email: datos[0].Email
-            }
-        }, function(e) {
-            e.success ? Cloud.Messages.create({
-                to_ids: e.users[0].id,
-                body: $.txtObservaciones.value,
-                subject: $.txtTitulo.value,
-                custom_fields: {
-                    IdTipo: 2,
-                    Fecha: $.dateTextField.text,
-                    Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
-                }
-            }, function(e) {
-                e.success ? alert("Enviado!") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-            }) : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-        });
+        for (var i = 0; model.length > i; i++) {
+            datos = model[i].toJSON();
+            alert(datos.IdAlumno);
+            Enviar(datos.IdAlumno);
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "NuevaNotaAlumno";
@@ -258,14 +273,14 @@ function Controller() {
         title: "Guardar"
     });
     $.__views.winNuevaNota.add($.__views.btnGuardar);
-    GuardarExamen ? $.__views.btnGuardar.addEventListener("click", GuardarExamen) : __defers["$.__views.btnGuardar!click!GuardarExamen"] = true;
+    Guardar ? $.__views.btnGuardar.addEventListener("click", Guardar) : __defers["$.__views.btnGuardar!click!Guardar"] = true;
     $.__views.btnEnviar = Ti.UI.createButton({
         top: "10dp",
         id: "btnEnviar",
         title: "Enviar"
     });
     $.__views.winNuevaNota.add($.__views.btnEnviar);
-    EnviarExamen ? $.__views.btnEnviar.addEventListener("click", EnviarExamen) : __defers["$.__views.btnEnviar!click!EnviarExamen"] = true;
+    EnviarAnotacion ? $.__views.btnEnviar.addEventListener("click", EnviarAnotacion) : __defers["$.__views.btnEnviar!click!EnviarAnotacion"] = true;
     $.__views.btnEnviarTodos = Ti.UI.createButton({
         top: "20dp",
         visible: "false",
@@ -273,7 +288,7 @@ function Controller() {
         title: "EnviarTodos"
     });
     $.__views.winNuevaNota.add($.__views.btnEnviarTodos);
-    EnviarExamenTodos ? $.__views.btnEnviarTodos.addEventListener("click", EnviarExamenTodos) : __defers["$.__views.btnEnviarTodos!click!EnviarExamenTodos"] = true;
+    EnviarAnotacionTodos ? $.__views.btnEnviarTodos.addEventListener("click", EnviarAnotacionTodos) : __defers["$.__views.btnEnviarTodos!click!EnviarAnotacionTodos"] = true;
     $.__views.cancel = Ti.UI.createButton({
         top: "-90dp",
         id: "cancel",
@@ -294,22 +309,6 @@ function Controller() {
     var data = [];
     data = arg1;
     $.winNuevaNota.setRightNavButton($.btnGuardar);
-    if (void 0 == data.IdClase) if (void 0 == data.IdAsignatura) ; else {
-        $.btnEnviarTodos.visible = true;
-        $.btnEnviar.visible = false;
-    } else {
-        $.btnEnviarTodos.visible = true;
-        $.btnEnviar.visible = false;
-    }
-    if (void 0 == data.IdAnotacion) ; else {
-        var anotacion = Alloy.Collections.Anotacion;
-        anotacion.fetch();
-        var model = anotacion.get(data.IdAnotacion);
-        var datos = model.toJSON();
-        $.dateTextField.text = datos.Fecha;
-        $.txtTitulo.value = datos.Titulo;
-        $.txtObservaciones.value = datos.Comentario;
-    }
     $.txtTitulo.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
             title: "Introduzca el titulo",
@@ -381,9 +380,37 @@ function Controller() {
         $.dateTextField.text = dateValue.getMonth() + 1 + "/" + dateValue.getDate() + "/" + dateValue.getFullYear();
         picker_view.animate(slide_out);
     });
-    __defers["$.__views.btnGuardar!click!GuardarExamen"] && $.__views.btnGuardar.addEventListener("click", GuardarExamen);
-    __defers["$.__views.btnEnviar!click!EnviarExamen"] && $.__views.btnEnviar.addEventListener("click", EnviarExamen);
-    __defers["$.__views.btnEnviarTodos!click!EnviarExamenTodos"] && $.__views.btnEnviarTodos.addEventListener("click", EnviarExamenTodos);
+    $.winNuevaNota.addEventListener("focus", function() {
+        refreshScreen();
+    });
+    var validationCallback = function(errors) {
+        if (errors.length > 0) {
+            for (var i = 0; errors.length > i; i++) Ti.API.debug(errors[i].message);
+            alert(errors[0].message);
+        } else Guardar();
+    };
+    var returnCallback = function() {
+        validator.run([ {
+            id: "nameField",
+            value: $.dateTextField.value,
+            display: "Nombre",
+            rules: "required"
+        }, {
+            id: "surname1Field",
+            value: $.txtTitulo.value,
+            display: "Apellido1",
+            rules: "required|max_length[50]"
+        }, {
+            id: "surname2Field",
+            value: $.txtObservaciones.value,
+            display: "Apellido2",
+            rules: "required|max_length[500]"
+        } ], validationCallback);
+    };
+    $.btnGuardar.addEventListener("click", returnCallback);
+    __defers["$.__views.btnGuardar!click!Guardar"] && $.__views.btnGuardar.addEventListener("click", Guardar);
+    __defers["$.__views.btnEnviar!click!EnviarAnotacion"] && $.__views.btnEnviar.addEventListener("click", EnviarAnotacion);
+    __defers["$.__views.btnEnviarTodos!click!EnviarAnotacionTodos"] && $.__views.btnEnviarTodos.addEventListener("click", EnviarAnotacionTodos);
     _.extend($, exports);
 }
 
