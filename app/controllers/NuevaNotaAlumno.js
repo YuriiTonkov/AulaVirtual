@@ -39,7 +39,7 @@ function Guardar(){
 	if (data.IdAnotacion == undefined){
 		if (data.IdClase == undefined){
 			if (data.IdAsignatura == undefined){
-			var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAlumno:data.IdAlumno, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
+			var Anotacion = Alloy.createModel("Anotacion",{Fecha:$.dateTextField.text, IdAlumno:data.IdAlumno, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
@@ -47,7 +47,7 @@ function Guardar(){
             data.IdAnotacion = Anotacion.get("IdAnotacion");
             alert("Se ha creado la anotacion.");
           } else {
-          	var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdAsignatura:data.IdAsignatura, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
+          	var Anotacion = Alloy.createModel("Anotacion",{Fecha:$.dateTextField.text, IdAsignatura:data.IdAsignatura, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
@@ -57,7 +57,7 @@ function Guardar(){
           }
 		}
 		else{
-			var Anotacion = Alloy.createModel('Anotacion',{Fecha:$.dateTextField.text, IdClase:data.IdClase, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
+			var Anotacion = Alloy.createModel("Anotacion",{Fecha:$.dateTextField.text, IdClase:data.IdClase, Comentario:$.txtObservaciones.value, Titulo:$.txtTitulo.value});
             var coleccionAnotaciones = Alloy.Collections.Anotacion;
             coleccionAnotaciones.add(Anotacion);
             Anotacion.save();
@@ -110,7 +110,7 @@ function Enviar(idAlumno){
 	        			to_ids: e.users[0].id,
 				        body: $.txtObservaciones.value,
 				        subject: $.txtTitulo.value,
-				        custom_fields:{IdTipo:2, Fecha:$.dateTextField.text, Profesor: Ti.App.Properties.getString('Nombre') + ' ' + Ti.App.Properties.getString('Apellido1') +' '+ Ti.App.Properties.getString('Apellido2')}
+				        custom_fields:{IdTipo:2, Fecha:$.dateTextField.text, Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") +" "+ Ti.App.Properties.getString("Apellido2")}
 				        
 			        }, function (e) {
 			            if (e.success) {
@@ -143,11 +143,10 @@ function Enviar(idAlumno){
             texto: $.txtObservaciones.value
         }, function (e) {
             if (e.success) {
-                alert("Se ha enviado la nota por correo a " + datos.Nombre + " " + datos.Apellido1.');
+                alert("Se ha enviado la nota por correo a " + datos.Nombre + " " + datos.Apellido1);
             }
             else {
-                 alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" +
-			            ((e.error && e.message) || JSON.stringify(e)));
+                 alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + ((e.error && e.message) || JSON.stringify(e)));
             }
         });
 		}
@@ -179,12 +178,12 @@ function EnviarAnotacionTodos(){
 
 $.txtTitulo.addEventListener("click", function() {
 	var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduzca el titulo',
+            title: "Introduzca el titulo",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
-            buttonNames: ['Aceptar', 'Cancelar'],
-            cancel: 1,
+            buttonNames: ["Aceptar", "Cancelar"],
+            cancel: 1
              });
-        dialog.addEventListener('click', function(e){
+        dialog.addEventListener("click", function(e){
            if (e.index === e.source.cancel){
      
             }else{
@@ -196,12 +195,12 @@ $.txtTitulo.addEventListener("click", function() {
 
 $.txtObservaciones.addEventListener("click", function() {
 	var dialog = Ti.UI.createAlertDialog({
-            title: 'Introduzca el texto de la observación',
+            title: "Introduzca el texto de la observación",
             style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
-            buttonNames: ['Aceptar', 'Cancelar'],
+            buttonNames: ["Aceptar", "Cancelar"],
             cancel: 1,
              });
-        dialog.addEventListener('click', function(e){
+        dialog.addEventListener("click", function(e){
            if (e.index === e.source.cancel){
      
             }else{
@@ -237,14 +236,14 @@ selectionIndicator:"true"});
 picker_view.add(picker);
 picker_view.add(toolbar);
 
-$.dateTextField.addEventListener('click',function(){
+$.dateTextField.addEventListener("click",function(){
     $.txtObservaciones.blur();
     $.winNuevaNota.add(picker_view);
     picker_view.animate(slide_in);
 
 });
 
-$.txtObservaciones.addEventListener('click', function(){picker_view.animate(slide_out);});
+$.txtObservaciones.addEventListener("click", function(){picker_view.animate(slide_out);});
 
 
 
@@ -261,7 +260,7 @@ $.done.addEventListener("click", function() {
     $.dateTextField.text =  (dateValue.getMonth() + 1) + "/"+ dateValue.getDate() + "/"+ dateValue.getFullYear();
     picker_view.animate(slide_out);});
     
-$.winNuevaNota.addEventListener('focus',function(e){
+$.winNuevaNota.addEventListener("focus",function(e){
     
      refreshScreen();
 });
@@ -285,24 +284,24 @@ var validationCallback = function(errors) {
 var returnCallback = function() {
         validator.run([
                                 {
-                                        id: 'nameField',
+                                        id: "nameField",
                                     value: $.dateTextField.value,
-                                    display: 'Nombre',    
-                                    rules: 'required'
+                                    display: "Nombre",    
+                                    rules: "required"
                                 },
                                 {
-                                        id: 'surname1Field',
+                                        id: "surname1Field",
                                     value: $.txtTitulo.value,
-                                    display: 'Apellido1',    
-                                    rules: 'required|max_length[50]'
+                                    display: "Apellido1",    
+                                    rules: "required|max_length[50]"
                                 },
                                 {
-                                        id: 'surname2Field',
+                                        id: "surname2Field",
                                     value: $.txtObservaciones.value,
-                                    display: 'Apellido2',    
-                                    rules: 'required|max_length[500]'
+                                    display: "Apellido2",    
+                                    rules: "required|max_length[500]"
                                 }
                         ], validationCallback);        
 };
 
-$.btnGuardar.addEventListener('click', returnCallback);
+$.btnGuardar.addEventListener("click", returnCallback);

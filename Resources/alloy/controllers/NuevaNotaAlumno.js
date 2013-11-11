@@ -93,32 +93,28 @@ function Controller() {
                     Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
                 }
             }, function(e) {
-                e.success ? alert("Se ha enviado la anotacion.") : alert("Ups, algo ha fallado:\n" + (e.error && e.message || JSON.stringify(e)));
-            }) : alert("El alumno no existe en la nube") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+                e.success ? alert("Se ha enviado la anotacion a " + datos.Nombre + " " + datos.Apellido1) : alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + (e.error && e.message || JSON.stringify(e)));
+            }) : alert("El alumno " + datos.Nombre + " " + datos.Apellido1 + " no esta registrado en la nube") : alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + (e.error && e.message || JSON.stringify(e)));
         }) : void 0 != datos.Email && Cloud.Emails.send({
             template: "Note",
             recipients: datos.Email,
             titulo: $.txtTitulo.value,
             texto: $.txtObservaciones.value
         }, function(e) {
-            e.success ? alert("Se ha enviado la nota por correo.") : alert("Ups, hubo un problema:" + e.message);
+            e.success ? alert("Se ha enviado la nota por correo a " + datos.Nombre + " " + datos.Apellido1) : alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
     function EnviarAnotacionTodos() {
         var alumno = Alloy.Collections.Alumno;
         alumno.fetch();
         var datos, model;
-        if (void 0 != data.IdAsignatura) model = alumno.where({
+        model = void 0 != data.IdAsignatura ? alumno.where({
             Asignatura: data.IdAsignatura
-        }); else {
-            model = alumno.where({
-                Clase: data.IdClase
-            });
-            alert(model.length);
-        }
+        }) : alumno.where({
+            Clase: data.IdClase
+        });
         for (var i = 0; model.length > i; i++) {
             datos = model[i].toJSON();
-            alert(datos.IdAlumno);
             Enviar(datos.IdAlumno);
         }
     }
