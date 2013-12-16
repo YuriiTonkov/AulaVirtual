@@ -1,7 +1,13 @@
 <Alloy>	
-			<Window id="WinCrearAsignatura" title="Asignaturas">	
-				<TableView dataCollection="Asignatura"  dataFilter="filtrado" class="form" id="TablaAsignaturasAlumno">				
+			<Window id="WinCrearAsignatura" title="Gestión de Asignaturas">	
+				<TableView dataCollection="Asignatura"  dataFilter="filtrado" class="form" id="TablaAsignaturasAlumno">	
+					<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/05HeaderCrearAsignatura.png" height="70dp" ></ImageView>
+					</HeaderView>			
 					<Require src="AsignaturaAlumnoRow"/>
+					<FooterView>
+						<ImageView image="library/images/iphone/helpScreen/05FooterCrearAsignatura.png" ></ImageView>
+					</FooterView>
 				</TableView>
 				<Button id="addAsignatura" title="Añadir" top="-50dp" onClick="NuevaAsignatura"></Button>
 			</Window>

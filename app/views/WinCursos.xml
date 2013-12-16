@@ -2,12 +2,12 @@
 			<Window id="WinCursos" title="Cursos">
 			<TableView dataCollection="Curso" dataFilter="filtrado" dataTransform="transform" id="TablaCursos" >
 				<HeaderView>
-						<ImageView image="library/images/iphone/helpScreen/02HeaderCursos.png" height="70dp" ></ImageView>
+					<ImageView image="library/images/iphone/helpScreen/02HeaderCursos.png" height="70dp" ></ImageView>
 				</HeaderView>
-					<Require src="CursoRow"/>
-					<FooterView>
-						<ImageView image="library/images/iphone/helpScreen/02FooterCursos.png" ></ImageView>
-					</FooterView>
+				<Require src="CursoRow"/>
+				<FooterView>
+					<ImageView image="library/images/iphone/helpScreen/02FooterCursos.png" ></ImageView>
+				</FooterView>
 				</TableView>
 			</Window>
 </Alloy>

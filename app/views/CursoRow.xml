@@ -1,5 +1,5 @@
 <Alloy>
-	<TableViewRow data ="{IdCurso}" hasDetail="true" id="tblCursosRow">
+	<TableViewRow data ="{IdCurso}" hasDetail="true" id="tblCursosRow"  >//  rightImage="/library/images/iphone/icons/iconoAddAsignatura.png"
 		<Label class="rowTitle" id="lblCurso" text="{Nombre}" textid="{IdCurso}"/>
 		<Label class="rowSubTitle" id="lblInfoClases" text="{Grupos}" textid="{IdCurso}"/>
 	</TableViewRow>
