@@ -71,20 +71,28 @@ function Controller() {
         }
     }
     function EnviarAnotacion() {
-        Enviar(data.IdAlumno);
+        EnviarAsync(data.IdAlumno, function(err) {
+            err ? alert("Ups, hubo un problema en el envío del mensaje: " + err.message) : alert("El mensaje se ha enviado con éxito.");
+        });
     }
-    function Enviar(idAlumno) {
-        var alumnos = Alloy.Collections.Alumno;
-        alumnos.fetch();
-        var alumno = alumnos.get(idAlumno);
-        var datos = alumno.toJSON();
-        void 0 != datos.UsuarioCloud ? Cloud.Users.query({
-            where: {
-                email: datos.Email
-            }
-        }, function(e) {
-            e.success ? e.users.length > 0 ? Cloud.Messages.create({
-                to_ids: e.users[0].id,
+    function EnviarAsync(idAlumno, callback2) {
+        async.waterfall([ function(callback) {
+            var alumnos = Alloy.Collections.Alumno;
+            alumnos.fetch();
+            var alumno = alumnos.get(idAlumno);
+            var dato = alumno.toJSON();
+            callback(null, dato);
+        }, function(arg1, callback) {
+            Cloud.Users.query({
+                where: {
+                    email: arg1.Email
+                }
+            }, function(e) {
+                e.success ? callback(null, e.users[0], arg1.Email) : callback(e.error);
+            });
+        }, function(arg2, arg3, callback) {
+            void 0 != arg2 ? Cloud.Messages.create({
+                to_ids: arg2.id,
                 body: $.txtObservaciones.value,
                 subject: $.txtTitulo.value,
                 custom_fields: {
@@ -93,19 +101,18 @@ function Controller() {
                     Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
                 }
             }, function(e) {
-                e.success ? alert("Se ha enviado la anotacion a " + datos.Nombre + " " + datos.Apellido1) : alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + (e.error && e.message || JSON.stringify(e)));
-            }) : alert("El alumno " + datos.Nombre + " " + datos.Apellido1 + " no esta registrado en la nube") : alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + (e.error && e.message || JSON.stringify(e)));
-        }) : void 0 != datos.Email && Cloud.Emails.send({
-            template: "Note",
-            recipients: datos.Email,
-            titulo: $.txtTitulo.value,
-            texto: $.txtObservaciones.value
-        }, function(e) {
-            e.success ? alert("Se ha enviado la nota por correo a " + datos.Nombre + " " + datos.Apellido1) : alert("Ups, algo ha fallado en el envío a " + datos.Nombre + " " + datos.Apellido1 + ":\n" + (e.error && e.message || JSON.stringify(e)));
+                e.success ? callback(null, null) : callback(e.error);
+            }) : callback({
+                name: "AlumnoNoEncontrado",
+                message: "El alumno " + arg3 + " no existe en la nube"
+            });
+        } ], function(err) {
+            err ? callback2(err) : callback2(null);
         });
     }
     function EnviarAnotacionTodos() {
         var alumno = Alloy.Collections.Alumno;
+        var alumnos = [];
         alumno.fetch();
         var datos, model;
         model = void 0 != data.IdAsignatura ? alumno.where({
@@ -115,8 +122,11 @@ function Controller() {
         });
         for (var i = 0; model.length > i; i++) {
             datos = model[i].toJSON();
-            Enviar(datos.IdAlumno);
+            alumnos.push(datos.IdAlumno);
         }
+        async.each(alumnos, EnviarAsync, function(err) {
+            err ? alert("Ups, algo ha fallado en el envío: " + err.message) : alert("El mensaje se ha enviado correctamente a todos los alumnos");
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "NuevaNotaAlumno";

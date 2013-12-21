@@ -88,7 +88,57 @@ function Guardar(){
     
 }
 function EnviarAnotacion(){
-	Enviar(data.IdAlumno);
+	EnviarAsync(data.IdAlumno, function(err){
+		if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
+		else {alert("El mensaje se ha enviado con éxito.");}
+	});
+}
+
+function EnviarAsync(idAlumno, callback2){
+	
+		async.waterfall([
+			function (callback) {
+			        var alumnos = Alloy.Collections.Alumno;
+					alumnos.fetch();
+					var alumno = alumnos.get(idAlumno);
+					var dato = alumno.toJSON();
+			      callback(null, dato);
+			   },
+			function (arg1, callback){
+				
+				Cloud.Users.query({
+			    where: {
+			        email: arg1.Email
+			    }}, function (e) {
+			            if (e.success) {
+			            	callback(null, e.users[0],arg1.Email);
+			            	}
+			            else {callback(e.error);}
+			     });
+			},
+			function (arg2,arg3, callback){
+				if (arg2!=undefined){
+				Cloud.Messages.create({
+	        			to_ids: arg2.id,
+				        body: $.txtObservaciones.value,
+				        subject: $.txtTitulo.value,
+				        custom_fields:{IdTipo:2, Fecha:$.dateTextField.text, Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") +" "+ Ti.App.Properties.getString("Apellido2")}
+			       },function (e) {
+			            if (e.success) {callback(null,null);}
+			            else {callback(e.error);}
+			     });
+			   } else{
+			   	
+			   	callback({name : "AlumnoNoEncontrado", message : "El alumno "+arg3+" no existe en la nube"});
+			   }
+			}],
+			function (err){
+				if (err) callback2(err);
+				else callback2(null);
+				
+			}
+		);
+	
 }
 
 function Enviar(idAlumno){
@@ -156,6 +206,7 @@ function Enviar(idAlumno){
 
 function EnviarAnotacionTodos(){
 	var alumno = Alloy.Collections.Alumno;
+	var alumnos =[];
 	alumno.fetch();
 	var datos,model;
 	if (data.IdAsignatura != undefined){
@@ -167,11 +218,17 @@ function EnviarAnotacionTodos(){
 		model = alumno.where({Clase:data.IdClase});
 		
 	}
+	
+	//preparamos el array que se le pasará a la funcion async.each
 	for (var i=0;i<model.length;i++){
 		datos = model[i].toJSON();
-		
-		Enviar(datos.IdAlumno);
+		alumnos.push(datos.IdAlumno);
    }
+   async.each(alumnos,EnviarAsync,function (err){
+				if (err) alert("Ups, algo ha fallado en el envío: " + err.message);
+				else alert("El mensaje se ha enviado correctamente a todos los alumnos");
+				
+			});
 }
 
 //Listeners ----------------------------
@@ -264,6 +321,7 @@ $.winNuevaNota.addEventListener("focus",function(e){
     
      refreshScreen();
 });
+
 
 //-----------PRUEBAS DE VALIDACION-----------------------
 

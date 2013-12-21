@@ -10,4 +10,6 @@ var validate = require("hdjs.validate");
 
 var validator = new validate.FormValidator();
 
+var async = require("async");
+
 Alloy.createController("index");
