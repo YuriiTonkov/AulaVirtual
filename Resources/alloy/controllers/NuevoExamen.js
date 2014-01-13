@@ -24,6 +24,84 @@ function Controller() {
             coleccionExamenes.fetch();
         }
     }
+    function Enviar() {
+        void 0 != ArrayAlumno.UsuarioCloud ? EnviarAsync(ArrayAlumno.IdAlumno, function(err) {
+            err ? alert("Ups, hubo un problema en el envío del mensaje: " + err.message) : alert("El mensaje se ha enviado con éxito.");
+        }) : EnviarMailAsync(ArrayAlumno.IdAlumno, function(err) {
+            err ? alert("Ups, hubo un problema en el envío del mensaje: " + err.message) : alert("El mensaje se ha enviado con éxito.");
+        });
+    }
+    function EnviarAsync(idAlumno, callback2) {
+        async.waterfall([ function(callback) {
+            var examen = Alloy.Collections.VW_Examen_Alumno;
+            examen.fetch();
+            var alumno = examen.get(data.IdExamen);
+            var dato = alumno.toJSON();
+            callback(null, dato);
+        }, function(arg1, callback) {
+            Cloud.Users.query({
+                where: {
+                    email: arg1.Email
+                }
+            }, function(e) {
+                e.success ? callback(null, e.users[0], arg1) : callback(e.error);
+            });
+        }, function(arg2, arg3, callback) {
+            void 0 != arg2 ? Cloud.Messages.create({
+                to_ids: arg2.id,
+                body: "El examen se ha evaluado con la calificacion de " + arg3.Nota.toString() + ". " + arg3.Descripcion,
+                subject: "Calificación del examen de " + arg3.Asignatura + " del" + arg3.FechaExamen,
+                custom_fields: {
+                    IdTipo: 1,
+                    Fecha: arg3.FechaExamen,
+                    Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") + " " + Ti.App.Properties.getString("Apellido2")
+                }
+            }, function(e) {
+                e.success ? callback(null, null) : callback(e.error);
+            }) : callback({
+                name: "AlumnoNoEncontrado",
+                message: "El alumno " + arg3.Email + " no existe en la nube"
+            });
+        } ], function(err) {
+            err ? callback2(err) : callback2(null);
+        });
+    }
+    function EnviarMailAsync(idAlumno, callback2) {
+        async.waterfall([ function(callback) {
+            var examen = Alloy.Collections.VW_Examen_Alumno;
+            examen.fetch();
+            var alumno = examen.get(data.IdExamen);
+            var dato = alumno.toJSON();
+            callback(null, dato);
+        }, function(arg1, callback) {
+            Cloud.Users.query({
+                where: {
+                    email: arg1.Email
+                }
+            }, function(e) {
+                e.success ? callback(null, e.users[0], arg1) : callback(e.error);
+            });
+        }, function(arg2, arg3, callback) {
+            if (void 0 != arg2) {
+                if (void 0 != arg3) {
+                    void 0 == arg3.Descripcion && (arg3.Descripcion = "");
+                    Cloud.Emails.send({
+                        template: "Note",
+                        recipients: arg3.Email,
+                        titulo: "Calificación del examen de " + arg3.ASIGNATURA + " del " + arg3.FechaExamen,
+                        texto: "El examen se ha evaluado con la calificacion de " + arg3.Nota.toString() + ". " + arg3.Descripcion
+                    }, function(e) {
+                        e.success ? alert("Se ha enviado la nota por correo a " + arg3.Email) : alert("Ups, algo ha fallado en el envío a " + arg3.Email + ":\n" + (e.error && e.message || JSON.stringify(e)));
+                    });
+                }
+            } else callback({
+                name: "AlumnoNoEncontrado",
+                message: "El alumno " + arg3 + " no existe en la nube"
+            });
+        } ], function(err) {
+            err ? callback2(err) : callback2(null);
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "NuevoExamen";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -31,6 +109,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.winNuevoExamen = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
@@ -149,6 +228,13 @@ function Controller() {
         id: "Marco"
     });
     $.__views.winNuevoExamen.add($.__views.Marco);
+    $.__views.btnEnviar = Ti.UI.createButton({
+        top: "10dp",
+        id: "btnEnviar",
+        title: "Enviar"
+    });
+    $.__views.winNuevoExamen.add($.__views.btnEnviar);
+    Enviar ? $.__views.btnEnviar.addEventListener("click", Enviar) : __defers["$.__views.btnEnviar!click!Enviar"] = true;
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",
@@ -183,6 +269,13 @@ function Controller() {
         $.txtNota.value = ArrayExamen.Nota;
         $.dateTextField.value = ArrayExamen.FechaExamen;
         $.txtPeso.value = ArrayExamen.Peso;
+        var colExamenAlumno = Alloy.Collections.VW_Examen_Alumno;
+        colExamenAlumno.fetch();
+        var modelExamenAlumno = colExamenAlumno.get(data.IdExamen);
+        var ArrayExamenAlumno = modelExamenAlumno.toJSON();
+        var colAlumno = Alloy.Collections.Alumno;
+        var modelAlumno = colAlumno.get(ArrayExamenAlumno.IdAlumno);
+        var ArrayAlumno = modelAlumno.toJSON();
     }
     $.txtNota.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
@@ -281,6 +374,7 @@ function Controller() {
         } ], validationCallback);
     };
     $.btnGuardar.addEventListener("click", returnCallback);
+    __defers["$.__views.btnEnviar!click!Enviar"] && $.__views.btnEnviar.addEventListener("click", Enviar);
     _.extend($, exports);
 }
 

@@ -16,6 +16,16 @@ if (data.IdExamen==undefined){
     $.txtNota.value = ArrayExamen.Nota;
     $.dateTextField.value = ArrayExamen.FechaExamen;
     $.txtPeso.value = ArrayExamen.Peso;
+    
+    var colExamenAlumno = Alloy.Collections.VW_Examen_Alumno;
+    colExamenAlumno.fetch();
+    var modelExamenAlumno = colExamenAlumno.get(data.IdExamen);
+    var ArrayExamenAlumno = modelExamenAlumno.toJSON();
+    
+    var colAlumno = Alloy.Collections.Alumno;
+    var modelAlumno = colAlumno.get(ArrayExamenAlumno.IdAlumno);
+    var ArrayAlumno = modelAlumno.toJSON();
+    
 }
 
 
@@ -37,6 +47,123 @@ function GuardarExamen(){
      }
     
 }
+
+function Enviar(){
+	if (ArrayAlumno.UsuarioCloud!=undefined){
+		EnviarAsync(ArrayAlumno.IdAlumno, function(err){
+			if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
+			else {alert("El mensaje se ha enviado con éxito.");}
+		});
+	} else{
+		EnviarMailAsync(ArrayAlumno.IdAlumno, function(err){
+			if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
+			else {alert("El mensaje se ha enviado con éxito.");}
+		});
+	}
+}
+
+function EnviarAsync(idAlumno, callback2){
+	
+		async.waterfall([
+			function (callback) {
+			        var examen = Alloy.Collections.VW_Examen_Alumno;
+					examen.fetch();
+					var alumno = examen.get(data.IdExamen);
+					var dato = alumno.toJSON();
+			      callback(null, dato);
+			   },
+			function (arg1, callback){
+				
+				Cloud.Users.query({
+			    where: {
+			        email: arg1.Email
+			    }}, function (e) {
+			            if (e.success) {
+			            	callback(null, e.users[0],arg1);
+			            	}
+			            else {callback(e.error);}
+			     });
+			},
+			function (arg2,arg3, callback){
+				if (arg2!=undefined){
+				Cloud.Messages.create({
+	        			to_ids: arg2.id,
+				        body: "El examen se ha evaluado con la calificacion de " + arg3.Nota.toString() + ". " + arg3.Descripcion,
+				        subject: "Calificación del examen de " + arg3.Asignatura + " del" + arg3.FechaExamen,
+				        custom_fields:{IdTipo:1, Fecha:arg3.FechaExamen, Profesor: Ti.App.Properties.getString("Nombre") + " " + Ti.App.Properties.getString("Apellido1") +" "+ Ti.App.Properties.getString("Apellido2")}
+			       },function (e) {
+			            if (e.success) {callback(null,null);}
+			            else {callback(e.error);}
+			     });
+			   } else{
+			   	
+			   	callback({name : "AlumnoNoEncontrado", message : "El alumno "+arg3.Email+" no existe en la nube"});
+			   }
+			}],
+			function (err){
+				if (err) callback2(err);
+				else callback2(null);
+				
+			}
+		);
+	
+}
+
+
+function EnviarMailAsync(idAlumno, callback2){
+	
+		async.waterfall([
+			function (callback) {
+			         var examen = Alloy.Collections.VW_Examen_Alumno;
+					examen.fetch();
+					var alumno = examen.get(data.IdExamen);
+					var dato = alumno.toJSON();
+			      callback(null, dato);
+			   },
+			function (arg1, callback){
+				
+				Cloud.Users.query({
+			    where: {
+			        email: arg1.Email
+			    }}, function (e) {
+			            if (e.success) {
+			            	callback(null, e.users[0],arg1);
+			            	}
+			            else {callback(e.error);}
+			     });
+			},
+			function (arg2,arg3, callback){
+				if (arg2!=undefined){
+					if (arg3 != undefined){
+						if (arg3.Descripcion == undefined) arg3.Descripcion ="";
+						Cloud.Emails.send({
+	            		template: "Note",
+	            		recipients: arg3.Email,
+	            		titulo: "Calificación del examen de " + arg3.ASIGNATURA + " del " + arg3.FechaExamen,
+	            		texto: "El examen se ha evaluado con la calificacion de " + arg3.Nota.toString() + ". " + arg3.Descripcion
+	        		}, function (e) {
+	            		if (e.success) {
+	                		alert("Se ha enviado la nota por correo a " + arg3.Email);
+	            		}
+	            		else {
+	                 		alert("Ups, algo ha fallado en el envío a " + arg3.Email + ":\n" + ((e.error && e.message) || JSON.stringify(e)));
+	            		}
+	        			});
+					}
+			   } else{
+			   	
+			   	callback({name : "AlumnoNoEncontrado", message : "El alumno "+arg3+" no existe en la nube"});
+			   }
+			}],
+			function (err){
+				if (err) callback2(err);
+				else callback2(null);
+				
+			}
+		);
+	
+}
+
 //---------------Listeners
 
 $.txtNota.addEventListener("click", function(){

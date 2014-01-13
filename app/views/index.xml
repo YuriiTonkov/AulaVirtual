@@ -11,7 +11,8 @@
 	<Collection src="Asignatura">
 	<Collection src="VW_Clases_Favoritas">
 	<Collection src="VW_Asignaturas_Favoritas">
-		<Collection src="Anotacion">
+	<Collection src="Anotacion">
+	<Collection src="VW_Examen_Alumno">
 	<TabGroup id="GrupoTab" class="mainWindow">
 		<Require src="TabPrincipal"/>
 		<Require src="tabFavoritos"/>

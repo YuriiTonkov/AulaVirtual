@@ -1,5 +1,6 @@
 <Alloy>  
     <Window id="winNuevoExamen" class="Window">
+    	
     	<TableView id="Marco">
 			<TableViewRow height="40dp">
 		        <Label class="labelAlumno">Fecha Examen:</Label>
@@ -14,6 +15,7 @@
 		        <TextField class="textboxAlumno" editable = "false" id="txtPeso"/>
 		     </TableViewRow>
 		</TableView>
+		<Button class="button" top="10dp" id="btnEnviar" title="Enviar" onClick="Enviar"></Button>
         <Button class="button" top="-50dp" id="btnGuardar" title="Guardar"></Button>
         <Button class="button" top="-90dp" id="cancel" title="Cancelar" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>
         <Button class="button" top="-100dp" id="done" title="Hecho" style="Titanium.UI.iPhone.SystemButtonStyle.BORDERED"></Button>

@@ -87,11 +87,19 @@ function Guardar(){
            
     
 }
+
 function EnviarAnotacion(){
-	EnviarAsync(data.IdAlumno, function(err){
-		if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
-		else {alert("El mensaje se ha enviado con éxito.");}
-	});
+	if (datos.UsuarioCloud!=undefined){
+		EnviarAsync(data.IdAlumno, function(err){
+			if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
+			else {alert("El mensaje se ha enviado con éxito.");}
+		});
+	} else {
+		EnviarMailAsync(data.IdAlumno, function(err){
+			if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
+			else {alert("El mensaje se ha enviado con éxito.");}
+		});
+	}
 }
 
 function EnviarAsync(idAlumno, callback2){
@@ -127,6 +135,59 @@ function EnviarAsync(idAlumno, callback2){
 			            if (e.success) {callback(null,null);}
 			            else {callback(e.error);}
 			     });
+			   } else{
+			   	
+			   	callback({name : "AlumnoNoEncontrado", message : "El alumno "+arg3+" no existe en la nube"});
+			   }
+			}],
+			function (err){
+				if (err) callback2(err);
+				else callback2(null);
+				
+			}
+		);
+	
+}
+
+function EnviarMailAsync(idAlumno, callback2){
+	
+		async.waterfall([
+			function (callback) {
+			        var alumnos = Alloy.Collections.Alumno;
+					alumnos.fetch();
+					var alumno = alumnos.get(idAlumno);
+					var dato = alumno.toJSON();
+			      callback(null, dato);
+			   },
+			function (arg1, callback){
+				
+				Cloud.Users.query({
+			    where: {
+			        email: arg1.Email
+			    }}, function (e) {
+			            if (e.success) {
+			            	callback(null, e.users[0],arg1.Email);
+			            	}
+			            else {callback(e.error);}
+			     });
+			},
+			function (arg2,arg3, callback){
+				if (arg2!=undefined){
+					if (arg3 != undefined){
+						Cloud.Emails.send({
+	            		template: "Note",
+	            		recipients: arg3,
+	            		titulo: $.txtTitulo.value,
+	            		texto: $.txtObservaciones.value
+	        		}, function (e) {
+	            		if (e.success) {
+	                		alert("Se ha enviado la nota por correo a " + arg3);
+	            		}
+	            		else {
+	                 		alert("Ups, algo ha fallado en el envío a " + arg3 + ":\n" + ((e.error && e.message) || JSON.stringify(e)));
+	            		}
+	        			});
+					}
 			   } else{
 			   	
 			   	callback({name : "AlumnoNoEncontrado", message : "El alumno "+arg3+" no existe en la nube"});
@@ -207,6 +268,7 @@ function Enviar(idAlumno){
 function EnviarAnotacionTodos(){
 	var alumno = Alloy.Collections.Alumno;
 	var alumnos =[];
+	var alumnosMail = [];
 	alumno.fetch();
 	var datos,model;
 	if (data.IdAsignatura != undefined){
@@ -222,13 +284,22 @@ function EnviarAnotacionTodos(){
 	//preparamos el array que se le pasará a la funcion async.each
 	for (var i=0;i<model.length;i++){
 		datos = model[i].toJSON();
-		alumnos.push(datos.IdAlumno);
+		if (datos.UsuarioCloud!=undefined)
+			alumnos.push(datos.IdAlumno);
+		else alumnosMail.push(datos.IdAlumno);
    }
-   async.each(alumnos,EnviarAsync,function (err){
+   if (alumnos!=[])
+   		async.each(alumnos,EnviarAsync,function (err){
 				if (err) alert("Ups, algo ha fallado en el envío: " + err.message);
-				else alert("El mensaje se ha enviado correctamente a todos los alumnos");
+				else alert("El mensaje se ha enviado correctamente a los alumnos");
 				
-			});
+				});
+	if (alumnosMail!=[])
+		async.each(alumnosMail,EnviarMailAsync,function (err){
+				if (err) alert("Ups, algo ha fallado en el envío del mail: " + err.message);
+				else alert("El mensaje se ha enviado correctamente los alumnos por Mail");
+				
+				});
 }
 
 //Listeners ----------------------------
