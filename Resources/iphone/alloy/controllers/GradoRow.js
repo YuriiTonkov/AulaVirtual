@@ -30,7 +30,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.lblGrado.addEventListener("click", function(e) {
-        console.debug("Añadimos el handler para el evento de click");
+        console.debug("Añadimos el handler para el evento de click Row");
         var tabCursosController = Alloy.createController("WinCursos", {
             IdGrado: e.source.textid,
             NombreGrado: e.source.text

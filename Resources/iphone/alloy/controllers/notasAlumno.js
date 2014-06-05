@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId187(e) {
+    function __alloyId197(e) {
         if (e && e.fromAdapter) return;
-        __alloyId187.opts || {};
-        var models = filtrado(__alloyId186);
+        __alloyId197.opts || {};
+        var models = filtrado(__alloyId196);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId183 = models[i];
-            __alloyId183.__transform = {};
-            var __alloyId185 = Alloy.createController("AnotacionRow", {
-                $model: __alloyId183,
+            var __alloyId193 = models[i];
+            __alloyId193.__transform = {};
+            var __alloyId195 = Alloy.createController("AnotacionRow", {
+                $model: __alloyId193,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId185.getViewEx({
+            rows.push(__alloyId195.getViewEx({
                 recurse: true
             }));
         }
@@ -69,8 +69,8 @@ function Controller() {
         id: "TablaAnotaciones"
     });
     $.__views.WinNotasAlumno.add($.__views.TablaAnotaciones);
-    var __alloyId186 = Alloy.Collections["Anotacion"] || Anotacion;
-    __alloyId186.on("fetch destroy change add remove reset", __alloyId187);
+    var __alloyId196 = Alloy.Collections["Anotacion"] || Anotacion;
+    __alloyId196.on("fetch destroy change add remove reset", __alloyId197);
     $.__views.addAnotacion = Ti.UI.createButton({
         id: "addAnotacion",
         title: "Nuevo",
@@ -79,7 +79,7 @@ function Controller() {
     $.__views.WinNotasAlumno.add($.__views.addAnotacion);
     NuevaAnotacion ? $.__views.addAnotacion.addEventListener("click", NuevaAnotacion) : __defers["$.__views.addAnotacion!click!NuevaAnotacion"] = true;
     exports.destroy = function() {
-        __alloyId186.off("fetch destroy change add remove reset", __alloyId187);
+        __alloyId196.off("fetch destroy change add remove reset", __alloyId197);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

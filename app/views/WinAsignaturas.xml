@@ -1,7 +1,13 @@
 <Alloy>	
 			<Window id="WinAsignaturasAlumno" title="Asignaturas">	
 				<TableView dataCollection="VW_Alumno_Asignatura_Asignatura" dataFilter="filtrado" id="TablaAsignaturasByAlumno">
+					<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/07HeaderAsignAsignaturaAlumno.png" height="70dp" ></ImageView>
+					</HeaderView>
 					<Require src="AsignaturaRow"/>
+					<FooterView>
+						<ImageView image="library/images/iphone/helpScreen/07FooterAsignAsignaturaAlumno.png" ></ImageView>
+					</FooterView>
 				</TableView>
 				<Button id="addAsignatura" title="Añadir" top="-50dp" onClick="NuevoAsignatura"></Button>
 			</Window>

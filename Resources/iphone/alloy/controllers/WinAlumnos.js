@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId87(e) {
+    function __alloyId89(e) {
         if (e && e.fromAdapter) return;
-        __alloyId87.opts || {};
-        var models = filtrado(__alloyId86);
+        __alloyId89.opts || {};
+        var models = filtrado(__alloyId88);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId81 = models[i];
-            __alloyId81.__transform = nombrecompleto(__alloyId81);
-            var __alloyId83 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId81,
+            var __alloyId83 = models[i];
+            __alloyId83.__transform = nombrecompleto(__alloyId83);
+            var __alloyId85 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId83,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId83.getViewEx({
+            rows.push(__alloyId85.getViewEx({
                 recurse: true
             }));
         }
@@ -44,28 +44,28 @@ function Controller() {
         title: "Alumnos"
     });
     $.__views.WinAlumnos && $.addTopLevelView($.__views.WinAlumnos);
-    $.__views.__alloyId80 = Ti.UI.createImageView({
+    $.__views.__alloyId82 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/04HeaderClase.png",
         height: "70dp",
-        id: "__alloyId80"
+        id: "__alloyId82"
     });
-    $.__views.__alloyId85 = Ti.UI.createImageView({
+    $.__views.__alloyId87 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/04FooterClase.png",
-        id: "__alloyId85"
+        id: "__alloyId87"
     });
     $.__views.TablaAlumnos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
-        headerView: $.__views.__alloyId80,
-        footerView: $.__views.__alloyId85,
+        headerView: $.__views.__alloyId82,
+        footerView: $.__views.__alloyId87,
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    var __alloyId86 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId86.on("fetch destroy change add remove reset", __alloyId87);
+    var __alloyId88 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId88.on("fetch destroy change add remove reset", __alloyId89);
     exports.destroy = function() {
-        __alloyId86.off("fetch destroy change add remove reset", __alloyId87);
+        __alloyId88.off("fetch destroy change add remove reset", __alloyId89);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -168,7 +168,8 @@ function Controller() {
     var __alloyId46 = [];
     $.__views.TituloSeccionTabla = Ti.UI.createTableViewSection({
         id: "TituloSeccionTabla",
-        headerTitle: "Datos Personales"
+        headerTitle: "Datos Personales",
+        height: "10dp"
     });
     __alloyId46.push($.__views.TituloSeccionTabla);
     $.__views.__alloyId47 = Ti.UI.createTableViewRow({
@@ -555,12 +556,17 @@ function Controller() {
         id: "txtTelefono2"
     });
     $.__views.__alloyId67.add($.__views.txtTelefono2);
+    $.__views.__alloyId70 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/06FooterNuevoAlumno.png",
+        id: "__alloyId70"
+    });
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
-        top: "10%",
+        top: "0dp",
         data: __alloyId46,
         headerView: $.__views.__alloyId45,
+        footerView: $.__views.__alloyId70,
         id: "Marco"
     });
     $.__views.winNuevoAlumno.add($.__views.Marco);

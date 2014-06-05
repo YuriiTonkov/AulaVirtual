@@ -1,8 +1,13 @@
 <Alloy>	
 			<Window id="WinAsignaturasAlumno" title="Asignaturas">	
 				<TableView dataCollection="VW_Alumno_Asignatura_Asignatura" class="form" dataTransform="nombrecompleto" dataFilter="filtrado" id="TablaAlumnosByAsignatura">
+					<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/03FooterClases.png" height="70dp" ></ImageView>
+					</HeaderView>
 					<Require src="AlumnosAsignaturaRow"/>
+					<FooterView>
+						<ImageView image="library/images/iphone/helpScreen/07HeaderAsignAsignaturaAlumno.png"></ImageView>
+					</FooterView>
 				</TableView>
-				
 			</Window>
 </Alloy>

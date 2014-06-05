@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId139(e) {
+    function __alloyId149(e) {
         if (e && e.fromAdapter) return;
-        __alloyId139.opts || {};
-        var models = __alloyId138.models;
+        __alloyId149.opts || {};
+        var models = __alloyId148.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId133 = models[i];
-            __alloyId133.__transform = {};
-            var __alloyId135 = Alloy.createController("GradoRow", {
-                $model: __alloyId133,
+            var __alloyId143 = models[i];
+            __alloyId143.__transform = {};
+            var __alloyId145 = Alloy.createController("GradoRow", {
+                $model: __alloyId143,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId135.getViewEx({
+            rows.push(__alloyId145.getViewEx({
                 recurse: true
             }));
         }
@@ -33,28 +33,28 @@ function Controller() {
         title: "Grados"
     });
     $.__views.winGrados && $.addTopLevelView($.__views.winGrados);
-    $.__views.__alloyId132 = Ti.UI.createImageView({
+    $.__views.__alloyId142 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/01HeaderGrados.png",
         height: "70dp",
-        id: "__alloyId132"
+        id: "__alloyId142"
     });
-    $.__views.__alloyId137 = Ti.UI.createImageView({
+    $.__views.__alloyId147 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/01FooterGrados.png",
-        id: "__alloyId137"
+        id: "__alloyId147"
     });
     $.__views.TablaGrados = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
-        headerView: $.__views.__alloyId132,
-        footerView: $.__views.__alloyId137,
+        headerView: $.__views.__alloyId142,
+        footerView: $.__views.__alloyId147,
         id: "TablaGrados"
     });
     $.__views.winGrados.add($.__views.TablaGrados);
-    var __alloyId138 = Alloy.Collections["Grado"] || Grado;
-    __alloyId138.on("fetch destroy change add remove reset", __alloyId139);
+    var __alloyId148 = Alloy.Collections["Grado"] || Grado;
+    __alloyId148.on("fetch destroy change add remove reset", __alloyId149);
     exports.destroy = function() {
-        __alloyId138.off("fetch destroy change add remove reset", __alloyId139);
+        __alloyId148.off("fetch destroy change add remove reset", __alloyId149);
     };
     _.extend($, $.__views);
     var grados = Alloy.Collections.Grado;
