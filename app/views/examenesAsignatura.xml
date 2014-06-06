@@ -1,0 +1,11 @@
+<Alloy>
+<Window id="examenesAsignaturas" class="container">
+		<Label class="label">Seleccione el examen</Label>
+		<TableView dataCollection="VW_Examen_Alumno" dataFilter="filtrado" id="TablaExamenes"  allowsSelection="true">
+			<TableViewRow  editable="true" data="{IdExamen}" id="ExamenRow">
+				<Label class="rowTitle" id="lblExamen" text="{FechaExamen}" textid="{IdExamen}"/>
+			</TableViewRow>
+		</TableView>
+		<Button class="button" id="btnEnviar" top="-50dp" title="Enviar" onClick="EnviarExamen"></Button>
+	</Window>
+</Alloy>

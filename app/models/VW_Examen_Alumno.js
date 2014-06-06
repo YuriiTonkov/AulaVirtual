@@ -3,6 +3,7 @@ exports.definition = {
 		columns: {
 		    "IdExamen": "integer",
 		    "IdAlumno": "integer",
+		    "IdAsignatura": "integer",
 		    "Nombre": "string",
 		    "Apellido1": "string",
 		    "Apellido2": "string",
@@ -12,7 +13,8 @@ exports.definition = {
 		    "Nota": "int",
 		    "Peso": "integer",
 		    "Descripcion": "string",
-		    "ASIGNATURA": "string"
+		    "ASIGNATURA": "string",
+		    "UsuarioCloud":"string"
 		},
 		adapter: {
 			type: "sql",

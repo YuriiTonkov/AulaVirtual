@@ -14,7 +14,8 @@ if (datos.Favorita==1){
     var buttons = [
         {title:'+', enabled:true},
         {title:'*', enabled:false},
-        {title:'@', enabled:true}];
+        {title:'@', enabled:true},
+        {title:'$', enabled:true}];
     $.btnBar.labels=buttons;
 }
 
@@ -31,7 +32,8 @@ $.btnBar.addEventListener("click", function(e){
 	        var buttons = [
 	        {title:'+', enabled:true},
 	        {title:'*', enabled:false},
-	        {title:'@', enabled:true}];
+	        {title:'@', enabled:true},
+	        {title:'$', enabled:true}];
 	        $.btnBar.labels=buttons;
 	        //Creamos aviso de que se ha guardado en favoritos
 	        var alertDialog = Ti.UI.createAlertDialog({
@@ -46,5 +48,10 @@ $.btnBar.addEventListener("click", function(e){
         	var tabAlumnosController = Alloy.createController("notasAlumno", {"IdAsignatura":data.IdAsignatura});
     		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
     		break;
+    	case 3:
+			var tabAlumnosController = Alloy.createController("examenesAsignatura", {"IdAsignatura":data.IdAsignatura});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+    		break;
     }
 });
+

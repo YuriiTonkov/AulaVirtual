@@ -51,3 +51,4 @@ $.TablaAlumnosByAsignatura.addEventListener('delete', function(e)
 $.WinAsignaturasAlumno.addEventListener('close', function() {
     $.destroy();
 });
+

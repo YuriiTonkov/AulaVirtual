@@ -27,14 +27,14 @@ function Controller() {
         id: "winCrearAsignatura"
     });
     $.__views.winCrearAsignatura && $.addTopLevelView($.__views.winCrearAsignatura);
-    $.__views.__alloyId11 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId12 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId11"
+        id: "__alloyId12"
     });
-    var __alloyId12 = [];
-    __alloyId12.push($.__views.__alloyId11);
-    $.__views.__alloyId13 = Ti.UI.createLabel({
+    var __alloyId13 = [];
+    __alloyId13.push($.__views.__alloyId12);
+    $.__views.__alloyId14 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -45,9 +45,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Nombre",
-        id: "__alloyId13"
+        id: "__alloyId14"
     });
-    $.__views.__alloyId11.add($.__views.__alloyId13);
+    $.__views.__alloyId12.add($.__views.__alloyId14);
     $.__views.txtNombreAsignatura = Ti.UI.createTextField({
         top: "15dp",
         width: "100%",
@@ -61,14 +61,14 @@ function Controller() {
         editable: "false",
         id: "txtNombreAsignatura"
     });
-    $.__views.__alloyId11.add($.__views.txtNombreAsignatura);
-    $.__views.__alloyId14 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId12.add($.__views.txtNombreAsignatura);
+    $.__views.__alloyId15 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId14"
+        id: "__alloyId15"
     });
-    __alloyId12.push($.__views.__alloyId14);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    __alloyId13.push($.__views.__alloyId15);
+    $.__views.__alloyId16 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -79,9 +79,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Descripcion",
-        id: "__alloyId15"
+        id: "__alloyId16"
     });
-    $.__views.__alloyId14.add($.__views.__alloyId15);
+    $.__views.__alloyId15.add($.__views.__alloyId16);
     $.__views.txtDescripcion = Ti.UI.createTextField({
         top: "15dp",
         width: "100%",
@@ -95,14 +95,14 @@ function Controller() {
         editable: "false",
         id: "txtDescripcion"
     });
-    $.__views.__alloyId14.add($.__views.txtDescripcion);
-    $.__views.__alloyId16 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId15.add($.__views.txtDescripcion);
+    $.__views.__alloyId17 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId16"
+        id: "__alloyId17"
     });
-    __alloyId12.push($.__views.__alloyId16);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    __alloyId13.push($.__views.__alloyId17);
+    $.__views.__alloyId18 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -113,21 +113,21 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Asignatura Optativa",
-        id: "__alloyId17"
+        id: "__alloyId18"
     });
-    $.__views.__alloyId16.add($.__views.__alloyId17);
+    $.__views.__alloyId17.add($.__views.__alloyId18);
     $.__views.swtOptativa = Ti.UI.createSwitch({
         title: "Optativa",
         value: "false",
         visible: "true",
         id: "swtOptativa"
     });
-    $.__views.__alloyId16.add($.__views.swtOptativa);
+    $.__views.__alloyId17.add($.__views.swtOptativa);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "10%",
-        data: __alloyId12,
+        data: __alloyId13,
         id: "Marco"
     });
     $.__views.winCrearAsignatura.add($.__views.Marco);

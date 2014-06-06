@@ -1,20 +1,20 @@
 function Controller() {
-    function __alloyId24() {
-        __alloyId24.opts || {};
-        var models = __alloyId23.models;
+    function __alloyId25() {
+        __alloyId25.opts || {};
+        var models = __alloyId24.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId20 = models[i];
-            __alloyId20.__transform = {};
-            var __alloyId21 = Ti.UI.createTableViewRow({
+            var __alloyId21 = models[i];
+            __alloyId21.__transform = {};
+            var __alloyId22 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
                 height: "40dp",
                 editable: "true",
-                data: "undefined" != typeof __alloyId20.__transform["IdAsignatura"] ? __alloyId20.__transform["IdAsignatura"] : __alloyId20.get("IdAsignatura")
+                data: "undefined" != typeof __alloyId21.__transform["IdAsignatura"] ? __alloyId21.__transform["IdAsignatura"] : __alloyId21.get("IdAsignatura")
             });
-            rows.push(__alloyId21);
-            var __alloyId22 = Ti.UI.createLabel({
+            rows.push(__alloyId22);
+            var __alloyId23 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "left",
@@ -23,10 +23,10 @@ function Controller() {
                     fontSize: 16,
                     fontFamily: "HelveticaNeue-UltraLight"
                 },
-                text: "undefined" != typeof __alloyId20.__transform["Nombre"] ? __alloyId20.__transform["Nombre"] : __alloyId20.get("Nombre"),
-                textid: "undefined" != typeof __alloyId20.__transform["IdAsignatura"] ? __alloyId20.__transform["IdAsignatura"] : __alloyId20.get("IdAsignatura")
+                text: "undefined" != typeof __alloyId21.__transform["Nombre"] ? __alloyId21.__transform["Nombre"] : __alloyId21.get("Nombre"),
+                textid: "undefined" != typeof __alloyId21.__transform["IdAsignatura"] ? __alloyId21.__transform["IdAsignatura"] : __alloyId21.get("IdAsignatura")
             });
-            __alloyId21.add(__alloyId22);
+            __alloyId22.add(__alloyId23);
         }
         $.__views.TablaAsignaturas.setData(rows);
     }
@@ -74,12 +74,12 @@ function Controller() {
         id: "winNuevaAsignatura"
     });
     $.__views.winNuevaAsignatura && $.addTopLevelView($.__views.winNuevaAsignatura);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.__alloyId20 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId19"
+        id: "__alloyId20"
     });
-    $.__views.winNuevaAsignatura.add($.__views.__alloyId19);
+    $.__views.winNuevaAsignatura.add($.__views.__alloyId20);
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
@@ -88,8 +88,8 @@ function Controller() {
         allowsSelection: "true"
     });
     $.__views.winNuevaAsignatura.add($.__views.TablaAsignaturas);
-    var __alloyId23 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId23.on("fetch destroy change add remove reset", __alloyId24);
+    var __alloyId24 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId24.on("fetch destroy change add remove reset", __alloyId25);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -98,7 +98,7 @@ function Controller() {
     $.__views.winNuevaAsignatura.add($.__views.btnGuardar);
     GuardarAsignatura ? $.__views.btnGuardar.addEventListener("click", GuardarAsignatura) : __defers["$.__views.btnGuardar!click!GuardarAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId23.off("fetch destroy change add remove reset", __alloyId24);
+        __alloyId24.off("fetch destroy change add remove reset", __alloyId25);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

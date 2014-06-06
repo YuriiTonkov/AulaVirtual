@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId85() {
-        __alloyId85.opts || {};
-        var models = filtrado(__alloyId84);
+    function __alloyId86() {
+        __alloyId86.opts || {};
+        var models = filtrado(__alloyId85);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId80 = models[i];
-            __alloyId80.__transform = nombrecompleto(__alloyId80);
-            var __alloyId81 = Alloy.createController("AlumnoRow", {
-                $model: __alloyId80
+            var __alloyId81 = models[i];
+            __alloyId81.__transform = nombrecompleto(__alloyId81);
+            var __alloyId82 = Alloy.createController("AlumnoRow", {
+                $model: __alloyId81
             });
-            rows.push(__alloyId81.getViewEx({
+            rows.push(__alloyId82.getViewEx({
                 recurse: true
             }));
         }
@@ -49,21 +49,21 @@ function Controller() {
         id: "TablaAlumnos"
     });
     $.__views.WinAlumnos.add($.__views.TablaAlumnos);
-    $.__views.__alloyId78 = Ti.UI.createImageView({
+    $.__views.__alloyId79 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/04HeaderClase.png",
         height: "70dp",
-        id: "__alloyId78"
+        id: "__alloyId79"
     });
-    $.__views.TablaAlumnos.headerView = $.__views.__alloyId78;
-    $.__views.__alloyId83 = Ti.UI.createImageView({
+    $.__views.TablaAlumnos.headerView = $.__views.__alloyId79;
+    $.__views.__alloyId84 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/04FooterClase.png",
-        id: "__alloyId83"
+        id: "__alloyId84"
     });
-    $.__views.TablaAlumnos.footerView = $.__views.__alloyId83;
-    var __alloyId84 = Alloy.Collections["Alumno"] || Alumno;
-    __alloyId84.on("fetch destroy change add remove reset", __alloyId85);
+    $.__views.TablaAlumnos.footerView = $.__views.__alloyId84;
+    var __alloyId85 = Alloy.Collections["Alumno"] || Alumno;
+    __alloyId85.on("fetch destroy change add remove reset", __alloyId86);
     exports.destroy = function() {
-        __alloyId84.off("fetch destroy change add remove reset", __alloyId85);
+        __alloyId85.off("fetch destroy change add remove reset", __alloyId86);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

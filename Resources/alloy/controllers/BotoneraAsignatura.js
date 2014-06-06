@@ -30,6 +30,11 @@ function Controller() {
         ns: "Alloy.Abstract"
     };
     __alloyId1.push(__alloyId4);
+    var __alloyId5 = {
+        title: "$",
+        ns: "Alloy.Abstract"
+    };
+    __alloyId1.push(__alloyId5);
     $.__views.btnBar = Ti.UI.createButtonBar({
         labels: __alloyId1,
         borderRadius: "5dp",
@@ -58,6 +63,9 @@ function Controller() {
         }, {
             title: "@",
             enabled: true
+        }, {
+            title: "$",
+            enabled: true
         } ];
         $.btnBar.labels = buttons;
     }
@@ -81,6 +89,9 @@ function Controller() {
             }, {
                 title: "@",
                 enabled: true
+            }, {
+                title: "$",
+                enabled: true
             } ];
             $.btnBar.labels = buttons;
             var alertDialog = Ti.UI.createAlertDialog({
@@ -94,6 +105,13 @@ function Controller() {
 
           case 2:
             var tabAlumnosController = Alloy.createController("notasAlumno", {
+                IdAsignatura: data.IdAsignatura
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+            break;
+
+          case 3:
+            var tabAlumnosController = Alloy.createController("examenesAsignatura", {
                 IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());

@@ -12,29 +12,29 @@ function Controller() {
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
-    var __alloyId6 = [];
-    var __alloyId7 = {
+    var __alloyId7 = [];
+    var __alloyId8 = {
         image: "/library/images/iphone/icons/iconoAddAlumno.png",
         ns: "Alloy.Abstract"
     };
-    __alloyId6.push(__alloyId7);
-    var __alloyId8 = {
+    __alloyId7.push(__alloyId8);
+    var __alloyId9 = {
         image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         ns: "Alloy.Abstract"
     };
-    __alloyId6.push(__alloyId8);
-    var __alloyId9 = {
+    __alloyId7.push(__alloyId9);
+    var __alloyId10 = {
         image: "/library/images/iphone/icons/iconoAddFavorito.png",
         ns: "Alloy.Abstract"
     };
-    __alloyId6.push(__alloyId9);
-    var __alloyId10 = {
+    __alloyId7.push(__alloyId10);
+    var __alloyId11 = {
         image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
         ns: "Alloy.Abstract"
     };
-    __alloyId6.push(__alloyId10);
+    __alloyId7.push(__alloyId11);
     $.__views.btnBar = Ti.UI.createButtonBar({
-        labels: __alloyId6,
+        labels: __alloyId7,
         height: "100%",
         width: "100%",
         id: "btnBar",

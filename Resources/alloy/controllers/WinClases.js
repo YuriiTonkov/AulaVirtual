@@ -1,16 +1,16 @@
 function Controller() {
-    function __alloyId109() {
-        __alloyId109.opts || {};
-        var models = filtrado(__alloyId108);
+    function __alloyId110() {
+        __alloyId110.opts || {};
+        var models = filtrado(__alloyId109);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId104 = models[i];
-            __alloyId104.__transform = NombreClase(__alloyId104);
-            var __alloyId105 = Alloy.createController("ClaseRow", {
-                $model: __alloyId104
+            var __alloyId105 = models[i];
+            __alloyId105.__transform = NombreClase(__alloyId105);
+            var __alloyId106 = Alloy.createController("ClaseRow", {
+                $model: __alloyId105
             });
-            rows.push(__alloyId105.getViewEx({
+            rows.push(__alloyId106.getViewEx({
                 recurse: true
             }));
         }
@@ -66,19 +66,19 @@ function Controller() {
         id: "TablaClases"
     });
     $.__views.WinClases.add($.__views.TablaClases);
-    $.__views.__alloyId102 = Ti.UI.createImageView({
+    $.__views.__alloyId103 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/03HeaderClases.png",
         height: "70dp",
-        id: "__alloyId102"
+        id: "__alloyId103"
     });
-    $.__views.TablaClases.headerView = $.__views.__alloyId102;
-    $.__views.__alloyId107 = Ti.UI.createImageView({
+    $.__views.TablaClases.headerView = $.__views.__alloyId103;
+    $.__views.__alloyId108 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/03FooterClases.png",
-        id: "__alloyId107"
+        id: "__alloyId108"
     });
-    $.__views.TablaClases.footerView = $.__views.__alloyId107;
-    var __alloyId108 = Alloy.Collections["Clase"] || Clase;
-    __alloyId108.on("fetch destroy change add remove reset", __alloyId109);
+    $.__views.TablaClases.footerView = $.__views.__alloyId108;
+    var __alloyId109 = Alloy.Collections["Clase"] || Clase;
+    __alloyId109.on("fetch destroy change add remove reset", __alloyId110);
     $.__views.addClase = Ti.UI.createButton({
         id: "addClase",
         title: "Nueva",
@@ -87,7 +87,7 @@ function Controller() {
     $.__views.WinClases.add($.__views.addClase);
     NuevaClase ? $.__views.addClase.addEventListener("click", NuevaClase) : __defers["$.__views.addClase!click!NuevaClase"] = true;
     exports.destroy = function() {
-        __alloyId108.off("fetch destroy change add remove reset", __alloyId109);
+        __alloyId109.off("fetch destroy change add remove reset", __alloyId110);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
