@@ -1,0 +1,105 @@
+function Controller() {
+    function __alloyId107(e) {
+        if (e && e.fromAdapter) return;
+        __alloyId107.opts || {};
+        var models = filtrado(__alloyId106);
+        var len = models.length;
+        var rows = [];
+        for (var i = 0; len > i; i++) {
+            var __alloyId101 = models[i];
+            __alloyId101.__transform = {};
+            var __alloyId103 = Alloy.createController("AsignaturaRow", {
+                $model: __alloyId101,
+                __parentSymbol: __parentSymbol
+            });
+            rows.push(__alloyId103.getViewEx({
+                recurse: true
+            }));
+        }
+        $.__views.TablaAsignaturasByAlumno.setData(rows);
+    }
+    function filtrado(collection) {
+        var coleccion_filtrada = collection.where({
+            Alumno: data.IdAlumno
+        });
+        return coleccion_filtrada;
+    }
+    function NuevoAsignatura() {
+        var tabAsignaturaController = Alloy.createController("NuevaAsignatura", {
+            IdAlumno: data.IdAlumno,
+            Nombre: data.Nombre
+        });
+        Alloy.Globals.GrupoTab.activeTab.open(tabAsignaturaController.getView());
+    }
+    require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "WinAsignaturas";
+    var __parentSymbol = arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    var $ = this;
+    var exports = {};
+    var __defers = {};
+    $.__views.WinAsignaturasAlumno = Ti.UI.createWindow({
+        barColor: "#e7effa",
+        translucent: "false",
+        backgroundColor: "e2effa",
+        id: "WinAsignaturasAlumno",
+        title: "Asignaturas"
+    });
+    $.__views.WinAsignaturasAlumno && $.addTopLevelView($.__views.WinAsignaturasAlumno);
+    $.__views.__alloyId100 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/07HeaderAsignAsignaturaAlumno.png",
+        height: "70dp",
+        id: "__alloyId100"
+    });
+    $.__views.__alloyId105 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/07FooterAsignAsignaturaAlumno.png",
+        id: "__alloyId105"
+    });
+    $.__views.TablaAsignaturasByAlumno = Ti.UI.createTableView({
+        style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+        backgroundImage: "backGround320x416Base.png",
+        top: "0dp",
+        headerView: $.__views.__alloyId100,
+        footerView: $.__views.__alloyId105,
+        id: "TablaAsignaturasByAlumno"
+    });
+    $.__views.WinAsignaturasAlumno.add($.__views.TablaAsignaturasByAlumno);
+    var __alloyId106 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId106.on("fetch destroy change add remove reset", __alloyId107);
+    $.__views.addAsignatura = Ti.UI.createButton({
+        id: "addAsignatura",
+        title: "Añadir",
+        top: "-50dp"
+    });
+    $.__views.WinAsignaturasAlumno.add($.__views.addAsignatura);
+    NuevoAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevoAsignatura) : __defers["$.__views.addAsignatura!click!NuevoAsignatura"] = true;
+    exports.destroy = function() {
+        __alloyId106.off("fetch destroy change add remove reset", __alloyId107);
+    };
+    _.extend($, $.__views);
+    var arg1 = arguments[0] || {};
+    var data = [];
+    data = arg1;
+    $.WinAsignaturasAlumno.title = data.Nombre;
+    $.WinAsignaturasAlumno.setRightNavButton($.addAsignatura);
+    var AsignaturasAlumno = Alloy.Collections.VW_Alumno_Asignatura_Asignatura;
+    AsignaturasAlumno.fetch();
+    $.TablaAsignaturasByAlumno.addEventListener("delete", function(e) {
+        var Asignaturas = Alloy.Collections.Alumno_Asignatura;
+        Asignaturas.fetch();
+        var model = Asignaturas.get(e.rowData.data);
+        model.destroy();
+        Asignaturas.remove(model);
+        Asignaturas.fetch();
+    });
+    $.WinAsignaturasAlumno.addEventListener("close", function() {
+        $.destroy();
+    });
+    __defers["$.__views.addAsignatura!click!NuevoAsignatura"] && $.__views.addAsignatura.addEventListener("click", NuevoAsignatura);
+    _.extend($, exports);
+}
+
+var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._;
+
+module.exports = Controller;

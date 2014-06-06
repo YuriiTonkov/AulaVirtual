@@ -1,6 +1,10 @@
 <Alloy>
 	<Window id="winNuevoAlumno" onSwipe="Arrastre" class="container">
-		<TableView top="10%" id="Marco">
+		<TableView id="Marco">
+			<HeaderView>
+				<ImageView image="library/images/iphone/helpScreen/06HeaderNuevoAlumno.png" height="70dp" ></ImageView>
+			</HeaderView>
+			<TableViewSection id="TituloSeccionTabla" headerTitle="Datos Personales" height="10dp">
 			<TableViewRow height="40dp">
 			 	<Label class="labelAlumno">Nombre</Label>
 				<TextField class="textboxAlumno" editable="false" id="txtNombre" ></TextField>
@@ -13,6 +17,26 @@
 				<Label class="labelAlumno" >2o Apellido</Label>
 				<TextField class="textboxAlumno" editable="false" id="txtApellido2"></TextField>
 			</TableViewRow>	
+			<TableViewRow height="40dp">
+				<Label class="labelAlumno">Nombre Padre</Label>
+				<TextField class="textboxAlumno" editable="false" id="txtPadre"></TextField>
+			</TableViewRow>	
+			<TableViewRow height="40dp">
+				<Label class="labelAlumno">Nombre Madre</Label>
+				<TextField class="textboxAlumno" editable="false" id="txtMadre"></TextField>
+			</TableViewRow>
+			</TableViewSection>
+			<TableViewSection id="TituloSeccionTabla" headerTitle="Datos de Contacto">
+			<TableViewRow height="40dp">
+				<Label class="labelAlumno">Email</Label>
+				<TextField class="textboxAlumno" editable="false"  id="txtEmail"></TextField>
+			</TableViewRow>	
+			<TableViewRow height="40dp">
+				<Label class="labelAlumno">Email2</Label>
+				<TextField class="textboxAlumno" editable="false" id="txtEmail2"></TextField>
+			</TableViewRow>	
+			</TableViewSection>
+			<TableViewSection id="TituloSeccionTabla" headerTitle="Localizacion">
 			<TableViewRow height="40dp">
 				<Label class="labelAlumno">Direccion</Label>
 				<TextField class="textboxAlumno"  editable="false" id="txtDireccion"></TextField>
@@ -28,25 +52,13 @@
 			<TableViewRow height="40dp">
 				<Label class="labelAlumno">Telefono2</Label>
 				<TextField class="textboxAlumno" editable="false" id="txtTelefono2"></TextField>
-			</TableViewRow>	
-			<TableViewRow height="40dp">
-				<Label class="labelAlumno">Email</Label>
-				<TextField class="textboxAlumno" editable="false"  id="txtEmail"></TextField>
-			</TableViewRow>	
-			<TableViewRow height="40dp">
-				<Label class="labelAlumno">Email2</Label>
-				<TextField class="textboxAlumno" editable="false" id="txtEmail2"></TextField>
-			</TableViewRow>	
-			<TableViewRow height="40dp">
-				<Label class="labelAlumno">Nombre Padre</Label>
-				<TextField class="textboxAlumno" editable="false" id="txtPadre"></TextField>
-			</TableViewRow>	
-			<TableViewRow height="40dp">
-				<Label class="labelAlumno">Nombre Madre</Label>
-				<TextField class="textboxAlumno" editable="false" id="txtMadre"></TextField>
 			</TableViewRow>
+			</TableViewSection>
+			<FooterView>
+				<ImageView image="library/images/iphone/helpScreen/06FooterNuevoAlumno.png"></ImageView>
+			</FooterView>
 		</TableView>
-		<ImageView  left="10%" id="imgAlumno" height="15%" width="16%" top="2%" onClick="sacarFoto"></ImageView>
+		<ImageView  left="10%" id="imgAlumno" height="15%" width="16%" top="2%" onClick="sacarFoto" defaultImage="library/images/iphone/defaultFotoAlumno.png"></ImageView>
 		<Button class="button" top="2%" borderRadius="5dp" left="40%" height="25dp" width="80dp" onClick="TomarAnotacion" id="btnAnotacion" title="Notas"></Button>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar"></Button>
 	</Window>
