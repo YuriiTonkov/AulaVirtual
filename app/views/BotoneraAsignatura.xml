@@ -1,11 +1,11 @@
 <Alloy>
-	<View  borderRadius="5dp" height="30dp" width="50dp" id="botones" class="container">
-		<ButtonBar borderRadius="5dp" height="100%" width="100%" id="btnBar">
+	<View  height="25dp" width="110dp" id="botones" class="container" >
+		<ButtonBar height="100%" width="100%" id="btnBar" tintColor="white" left="10">
 			<Labels>
-				<Label id="addAlumno">+</Label>
-				<Label id="favoritar">*</Label>
-				<Label id="anotacion">@</Label>
-				<Label id="notaExamen">$</Label>
+				<Label image="/library/images/iphone/icons/iconoAddAlumno.png" id="addAlumno"  ></Label>
+				<Label image="/library/images/iphone/icons/iconoAddFavorito.png" id="favoritar"></Label>
+				<Label image="/library/images/iphone/icons/iconoAddAlumnoCloud.png" id="anotacion"></Label>
+				<Label image="/library/images/iphone/icons/iconoMandarNotaClase.png" id="notaExamen"></Label>
 			</Labels>
 		</ButtonBar>
 	</View>

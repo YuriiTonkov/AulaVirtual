@@ -19,10 +19,10 @@ function Controller() {
         width: "100%",
         height: "40dp",
         textAlign: "left",
-        left: "10dp",
+        left: "16dp",
         font: {
-            fontFamily: "Helvetica",
-            fontSize: "12dp"
+            fontSize: 16,
+            fontFamily: "HelveticaNeue-UltraLight"
         },
         id: "lblAsignatura",
         text: "undefined" != typeof $model.__transform["nombrecompleto"] ? $model.__transform["nombrecompleto"] : $model.get("nombrecompleto"),

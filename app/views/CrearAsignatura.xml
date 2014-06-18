@@ -1,6 +1,9 @@
 <Alloy>
-	<Window id="winCrearAsignatura" class="container">
-		<TableView top="10%" id="Marco">
+	<Window id="winCrearAsignatura">
+		<TableView id="Marco">
+			<HeaderView>
+						<ImageView image="library/images/iphone/helpScreen/1.1.6CrearAsignaturaHeader.png" height="70dp" ></ImageView>
+			</HeaderView>
 			<TableViewRow height="40dp">
 				<Label class="labelAlumno" >Nombre</Label>
 				<TextField class="textboxAlumno" editable="false"  id="txtNombreAsignatura"></TextField>
@@ -10,9 +13,12 @@
 				<TextField class="textboxAlumno"  editable="false" id="txtDescripcion"></TextField>
 			</TableViewRow>	
 			<TableViewRow height="40dp">
-				<Label class="labelAlumno" >Asignatura Optativa</Label>
-				<Switch title="Optativa" value="false" visible="true" id="swtOptativa"/>
+				<Label class="estiloSwitch">Asignatura Optativa</Label>
+				<Switch title="Optativa" value="false" visible="true" id="swtOptativa" left="200dp"/>
 			</TableViewRow>
+			<FooterView>
+				<ImageView image="library/images/iphone/helpScreen/1.1.6CrearAsignaturaFooter.png" ></ImageView>
+			</FooterView>
 		</TableView>
 		<Button class="button" top="-50dp" id="btnGuardar" title="Guardar" onClick="GuardarAsignatura"></Button>
 	</Window>

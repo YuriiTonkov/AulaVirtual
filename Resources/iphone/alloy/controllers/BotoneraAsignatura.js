@@ -7,35 +7,39 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.botones = Ti.UI.createView({
-        backgroundColor: "white",
-        borderRadius: "5dp",
-        height: "30dp",
-        width: "50dp",
+        height: "25dp",
+        width: "110dp",
         id: "botones"
     });
     $.__views.botones && $.addTopLevelView($.__views.botones);
     var __alloyId1 = [];
     var __alloyId2 = {
-        title: "+",
+        image: "/library/images/iphone/icons/iconoAddAlumno.png",
         ns: "Alloy.Abstract"
     };
     __alloyId1.push(__alloyId2);
     var __alloyId3 = {
-        title: "*",
+        image: "/library/images/iphone/icons/iconoAddFavorito.png",
         ns: "Alloy.Abstract"
     };
     __alloyId1.push(__alloyId3);
     var __alloyId4 = {
-        title: "@",
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
         ns: "Alloy.Abstract"
     };
     __alloyId1.push(__alloyId4);
+    var __alloyId5 = {
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
+        ns: "Alloy.Abstract"
+    };
+    __alloyId1.push(__alloyId5);
     $.__views.btnBar = Ti.UI.createButtonBar({
         labels: __alloyId1,
-        borderRadius: "5dp",
         height: "100%",
         width: "100%",
-        id: "btnBar"
+        id: "btnBar",
+        tintColor: "white",
+        left: "10"
     });
     $.__views.botones.add($.__views.btnBar);
     exports.destroy = function() {};
@@ -50,13 +54,20 @@ function Controller() {
     var datos = model.toJSON();
     if (1 == datos.Favorita) {
         var buttons = [ {
-            title: "+",
+            image: "/library/images/iphone/icons/iconoAddAlumno.png",
+            width: 24,
             enabled: true
         }, {
-            title: "*",
+            image: "/library/images/iphone/icons/iconoAddFavorito.png",
+            width: 24,
             enabled: false
         }, {
-            title: "@",
+            image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
+            width: 24,
+            enabled: true
+        }, {
+            image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
+            width: 24,
             enabled: true
         } ];
         $.btnBar.labels = buttons;
@@ -73,19 +84,26 @@ function Controller() {
           case 1:
             colAsignatura.updateFavorito(data.IdAsignatura, 1);
             var buttons = [ {
-                title: "+",
+                image: "/library/images/iphone/icons/iconoAddAlumno.png",
+                width: 24,
                 enabled: true
             }, {
-                title: "*",
+                image: "/library/images/iphone/icons/iconoAddFavorito.png",
+                width: 24,
                 enabled: false
             }, {
-                title: "@",
+                image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
+                width: 24,
+                enabled: true
+            }, {
+                image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
+                width: 24,
                 enabled: true
             } ];
             $.btnBar.labels = buttons;
             var alertDialog = Ti.UI.createAlertDialog({
                 title: "Aviso",
-                message: "La Asignatura se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
+                message: "La Asignatura se ha guardado en favoritos. Podrá acceder a través de la pestaña Mis Asignaturas",
                 buttonNames: [ "OK" ],
                 cancel: 0
             });
@@ -94,6 +112,13 @@ function Controller() {
 
           case 2:
             var tabAlumnosController = Alloy.createController("notasAlumno", {
+                IdAsignatura: data.IdAsignatura
+            });
+            Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
+            break;
+
+          case 3:
+            var tabAlumnosController = Alloy.createController("examenesAsignatura", {
                 IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());

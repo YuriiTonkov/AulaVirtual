@@ -9,17 +9,17 @@ function Controller() {
     $.__views.DetailAlumno = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "white",
+        backgroundColor: "e2effa",
         id: "DetailAlumno"
     });
     $.__views.DetailAlumno && $.addTopLevelView($.__views.DetailAlumno);
-    $.__views.__alloyId18 = Ti.UI.createLabel({
+    $.__views.__alloyId23 = Ti.UI.createLabel({
         text: "Detalle de alumno",
         top: "2%",
         width: "20%",
-        id: "__alloyId18"
+        id: "__alloyId23"
     });
-    $.__views.DetailAlumno.add($.__views.__alloyId18);
+    $.__views.DetailAlumno.add($.__views.__alloyId23);
     exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);

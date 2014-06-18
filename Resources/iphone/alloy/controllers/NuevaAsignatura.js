@@ -1,21 +1,21 @@
 function Controller() {
-    function __alloyId24(e) {
+    function __alloyId29(e) {
         if (e && e.fromAdapter) return;
-        __alloyId24.opts || {};
-        var models = __alloyId23.models;
+        __alloyId29.opts || {};
+        var models = __alloyId28.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId20 = models[i];
-            __alloyId20.__transform = {};
-            var __alloyId21 = Ti.UI.createTableViewRow({
+            var __alloyId25 = models[i];
+            __alloyId25.__transform = {};
+            var __alloyId26 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
                 height: "40dp",
                 editable: "true",
-                data: "undefined" != typeof __alloyId20.__transform["IdAsignatura"] ? __alloyId20.__transform["IdAsignatura"] : __alloyId20.get("IdAsignatura")
+                data: "undefined" != typeof __alloyId25.__transform["IdAsignatura"] ? __alloyId25.__transform["IdAsignatura"] : __alloyId25.get("IdAsignatura")
             });
-            rows.push(__alloyId21);
-            var __alloyId22 = Ti.UI.createLabel({
+            rows.push(__alloyId26);
+            var __alloyId27 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "left",
@@ -24,10 +24,10 @@ function Controller() {
                     fontSize: 16,
                     fontFamily: "HelveticaNeue-UltraLight"
                 },
-                text: "undefined" != typeof __alloyId20.__transform["Nombre"] ? __alloyId20.__transform["Nombre"] : __alloyId20.get("Nombre"),
-                textid: "undefined" != typeof __alloyId20.__transform["IdAsignatura"] ? __alloyId20.__transform["IdAsignatura"] : __alloyId20.get("IdAsignatura")
+                text: "undefined" != typeof __alloyId25.__transform["Nombre"] ? __alloyId25.__transform["Nombre"] : __alloyId25.get("Nombre"),
+                textid: "undefined" != typeof __alloyId25.__transform["IdAsignatura"] ? __alloyId25.__transform["IdAsignatura"] : __alloyId25.get("IdAsignatura")
             });
-            __alloyId21.add(__alloyId22);
+            __alloyId26.add(__alloyId27);
         }
         $.__views.TablaAsignaturas.setData(rows);
     }
@@ -71,16 +71,16 @@ function Controller() {
     $.__views.winNuevaAsignatura = Ti.UI.createWindow({
         barColor: "#e7effa",
         translucent: "false",
-        backgroundColor: "white",
+        backgroundColor: "e2effa",
         id: "winNuevaAsignatura"
     });
     $.__views.winNuevaAsignatura && $.addTopLevelView($.__views.winNuevaAsignatura);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         text: "Seleccione la asignatura",
         top: "5%",
-        id: "__alloyId19"
+        id: "__alloyId24"
     });
-    $.__views.winNuevaAsignatura.add($.__views.__alloyId19);
+    $.__views.winNuevaAsignatura.add($.__views.__alloyId24);
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
@@ -89,8 +89,8 @@ function Controller() {
         allowsSelection: "true"
     });
     $.__views.winNuevaAsignatura.add($.__views.TablaAsignaturas);
-    var __alloyId23 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId23.on("fetch destroy change add remove reset", __alloyId24);
+    var __alloyId28 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId28.on("fetch destroy change add remove reset", __alloyId29);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -99,7 +99,7 @@ function Controller() {
     $.__views.winNuevaAsignatura.add($.__views.btnGuardar);
     GuardarAsignatura ? $.__views.btnGuardar.addEventListener("click", GuardarAsignatura) : __defers["$.__views.btnGuardar!click!GuardarAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId23.off("fetch destroy change add remove reset", __alloyId24);
+        __alloyId28.off("fetch destroy change add remove reset", __alloyId29);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

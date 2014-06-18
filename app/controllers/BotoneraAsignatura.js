@@ -12,10 +12,11 @@ var model = colAsignatura.get(data.IdAsignatura);
 var datos = model.toJSON();
 if (datos.Favorita==1){
     var buttons = [
-        {title:'+', enabled:true},
-        {title:'*', enabled:false},
-        {title:'@', enabled:true},
-        {title:'$', enabled:true}];
+       		{image:'/library/images/iphone/icons/iconoAddAlumno.png', width:24, enabled:true},
+   			{image:'/library/images/iphone/icons/iconoAddFavorito.png', width:24, enabled:false},
+    		{image:'/library/images/iphone/icons/iconoAddAlumnoCloud.png', width:24, enabled:true},
+    		{image:'/library/images/iphone/icons/iconoMandarNotaClase.png', width:24, enabled:true}
+    		];
     $.btnBar.labels=buttons;
 }
 
@@ -30,15 +31,16 @@ $.btnBar.addEventListener("click", function(e){
     	case 1:
     		colAsignatura.updateFavorito(data.IdAsignatura, 1);
 	        var buttons = [
-	        {title:'+', enabled:true},
-	        {title:'*', enabled:false},
-	        {title:'@', enabled:true},
-	        {title:'$', enabled:true}];
+        			{image:'/library/images/iphone/icons/iconoAddAlumno.png', width:24, enabled:true},
+   					{image:'/library/images/iphone/icons/iconoAddFavorito.png', width:24, enabled:false},
+    				{image:'/library/images/iphone/icons/iconoAddAlumnoCloud.png', width:24, enabled:true},
+    				{image:'/library/images/iphone/icons/iconoMandarNotaClase.png', width:24, enabled:true}
+    				];
 	        $.btnBar.labels=buttons;
 	        //Creamos aviso de que se ha guardado en favoritos
 	        var alertDialog = Ti.UI.createAlertDialog({
 	        title: "Aviso",
-	        message: "La Asignatura se ha guardado en favoritos. Podrá acceder a través de la pestaña FAVORITOS",
+	        message: "La Asignatura se ha guardado en favoritos. Podrá acceder a través de la pestaña Mis Asignaturas",
 	        buttonNames: ['OK'],
 	        cancel:0
 	    });
