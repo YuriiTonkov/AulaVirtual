@@ -68,7 +68,7 @@ function GuardarAlumnos(){
 $.TablaAlumnos.addEventListener('click',function(e){
 
    if(!e.row.selected) {
-      e.row.backgroundColor = '#003b6f';
+      e.row.backgroundColor = '#79b7d9';
       e.row.selected = 1;
    }
    else{

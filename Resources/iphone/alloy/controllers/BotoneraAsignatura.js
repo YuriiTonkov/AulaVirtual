@@ -111,14 +111,14 @@ function Controller() {
             break;
 
           case 2:
-            var tabAlumnosController = Alloy.createController("notasAlumno", {
+            var tabAlumnosController = Alloy.createController("examenesAsignatura", {
                 IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
             break;
 
           case 3:
-            var tabAlumnosController = Alloy.createController("examenesAsignatura", {
+            var tabAlumnosController = Alloy.createController("notasAlumno", {
                 IdAsignatura: data.IdAsignatura
             });
             Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());

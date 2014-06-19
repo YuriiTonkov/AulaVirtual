@@ -50,7 +50,7 @@ function Controller() {
         id: "__alloyId96"
     });
     $.__views.__alloyId101 = Ti.UI.createImageView({
-        image: "library/images/iphone/helpScreen/07HeaderAsignAsignaturaAlumno.png",
+        image: "library/images/iphone/helpScreen/1.1.18WinAlumnosAsignaturaFooter.png",
         id: "__alloyId101"
     });
     $.__views.TablaAlumnosByAsignatura = Ti.UI.createTableView({

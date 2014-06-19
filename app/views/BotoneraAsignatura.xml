@@ -4,8 +4,8 @@
 			<Labels>
 				<Label image="/library/images/iphone/icons/iconoAddAlumno.png" id="addAlumno"  ></Label>
 				<Label image="/library/images/iphone/icons/iconoAddFavorito.png" id="favoritar"></Label>
-				<Label image="/library/images/iphone/icons/iconoAddAlumnoCloud.png" id="anotacion"></Label>
-				<Label image="/library/images/iphone/icons/iconoMandarNotaClase.png" id="notaExamen"></Label>
+				<Label image="/library/images/iphone/icons/iconoAddAlumnoCloud.png" id="notaExamen"></Label>
+				<Label image="/library/images/iphone/icons/iconoMandarNotaClase.png" id="anotacion"></Label>
 			</Labels>
 		</ButtonBar>
 	</View>

@@ -1,10 +1,15 @@
 <Alloy>
-	<Window id="addAlumno" class="container">
-		<Label class="label" top="5%">Seleccione la asignatura</Label>
+	<Window id="addAlumno">
 		<TableView dataCollection="VW_Asignatura_Alumno_Left" dataTransform="nombrecompleto" id="TablaAlumnos"  allowsSelection="true">
+			<HeaderView>
+					<ImageView image="library/images/iphone/helpScreen/1.1.19.AddAlumno.png" height="70dp" ></ImageView>
+			</HeaderView>
 			<TableViewRow  editable="true" data="{IdAlumno}"  id="AlumnoRow">
 				<Label class="rowTitle" id="lblAlumno" text="{nombrecompleto}" textid="{IdAlumno}"/>
 			</TableViewRow>
+			<FooterView>
+					<ImageView image="library/images/iphone/helpScreen/1.1.19.AddAlumnoFooter.png"></ImageView>
+			</FooterView>
 		</TableView>
 		<Button class="button" id="btnGuardar" top="-50dp" title="Guardar" onClick="GuardarAlumnos"></Button>
 	</Window>

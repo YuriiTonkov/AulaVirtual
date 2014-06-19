@@ -16,6 +16,10 @@ if (datos.Favorita==1){
    			{image:'/library/images/iphone/icons/iconoAddFavorito.png', width:24, enabled:false},
     		{image:'/library/images/iphone/icons/iconoAddAlumnoCloud.png', width:24, enabled:true},
     		{image:'/library/images/iphone/icons/iconoMandarNotaClase.png', width:24, enabled:true}
+    		/*{title:'+', enabled:true},
+        	{title:'*', enabled:false},
+        	{title:'@', enabled:true},
+        	{title:'$', enabled:true}];*/
     		];
     $.btnBar.labels=buttons;
 }
@@ -46,14 +50,15 @@ $.btnBar.addEventListener("click", function(e){
 	    });
 	    alertDialog.show();
     		break;
-    	case 2:
-        	var tabAlumnosController = Alloy.createController("notasAlumno", {"IdAsignatura":data.IdAsignatura});
-    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
-    		break;
-    	case 3:
+     	case 2:
 			var tabAlumnosController = Alloy.createController("examenesAsignatura", {"IdAsignatura":data.IdAsignatura});
     		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());
     		break;
+       	case 3:
+        	var tabAlumnosController = Alloy.createController("notasAlumno", {"IdAsignatura":data.IdAsignatura});
+    		Alloy.Globals.GrupoTab.activeTab.open(tabAlumnosController.getView());  
+    		break;
+
     }
 });
 

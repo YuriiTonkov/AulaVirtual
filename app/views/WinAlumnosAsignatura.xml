@@ -6,7 +6,7 @@
 					</HeaderView>
 					<Require src="AlumnosAsignaturaRow"/>
 					<FooterView>
-						<ImageView image="library/images/iphone/helpScreen/07HeaderAsignAsignaturaAlumno.png"></ImageView>
+						<ImageView image="library/images/iphone/helpScreen/1.1.18WinAlumnosAsignaturaFooter.png"></ImageView>
 					</FooterView>
 				</TableView>
 			</Window>
