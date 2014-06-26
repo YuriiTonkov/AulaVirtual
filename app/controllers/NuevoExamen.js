@@ -23,6 +23,7 @@ if (data.IdExamen==undefined){
     var ArrayExamenAlumno = modelExamenAlumno.toJSON();
     
     var colAlumno = Alloy.Collections.Alumno;
+    colAlumno.fetch();
     var modelAlumno = colAlumno.get(ArrayExamenAlumno.IdAlumno);
     var ArrayAlumno = modelAlumno.toJSON();
     
@@ -49,7 +50,7 @@ function GuardarExamen(){
 }
 
 function Enviar(){
-	if (ArrayAlumno.UsuarioCloud!=undefined){
+	if (ArrayAlumno.UsuarioCloud!=null){
 		EnviarAsync(ArrayAlumno.IdAlumno, function(err){
 			if (err) {alert("Ups, hubo un problema en el envío del mensaje: "+ err.message);}
 			else {alert("El mensaje se ha enviado con éxito.");}

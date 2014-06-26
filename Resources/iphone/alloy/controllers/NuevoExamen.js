@@ -25,7 +25,7 @@ function Controller() {
         }
     }
     function Enviar() {
-        void 0 != ArrayAlumno.UsuarioCloud ? EnviarAsync(ArrayAlumno.IdAlumno, function(err) {
+        null != ArrayAlumno.UsuarioCloud ? EnviarAsync(ArrayAlumno.IdAlumno, function(err) {
             err ? alert("Ups, hubo un problema en el envío del mensaje: " + err.message) : alert("El mensaje se ha enviado con éxito.");
         }) : EnviarMailAsync(ArrayAlumno.IdAlumno, function(err) {
             err ? alert("Ups, hubo un problema en el envío del mensaje: " + err.message) : alert("El mensaje se ha enviado con éxito.");
@@ -274,6 +274,7 @@ function Controller() {
         var modelExamenAlumno = colExamenAlumno.get(data.IdExamen);
         var ArrayExamenAlumno = modelExamenAlumno.toJSON();
         var colAlumno = Alloy.Collections.Alumno;
+        colAlumno.fetch();
         var modelAlumno = colAlumno.get(ArrayExamenAlumno.IdAlumno);
         var ArrayAlumno = modelAlumno.toJSON();
     }

@@ -15,8 +15,9 @@ if (data.IdEvaluacion == undefined){
     var modelEvaluacion = colEvaluaciones.get(data.IdEvaluacion);
     var ArrayEvaluacion = modelEvaluacion.toJSON();
     $.txtNombreEvaluacion.value = ArrayEvaluacion.Nombre;
-    $.lblFecha.text = ArrayEvaluacion.FechaInicio;
+    $.lblFecha.value = ArrayEvaluacion.FechaInicio;
     $.txtPeso.value = ArrayEvaluacion.Peso;
+    $.txtNota.value = ArrayEvaluacion.Calificacion;
 }
   
     
@@ -35,7 +36,7 @@ function GuardarEvaluacion(){
             }
         else
             {
-                var Evaluacion = Alloy.createModel('Evaluacion',{Nombre:$.txtNombreEvaluacion.value, AlumnoAsignatura:data.AlumnoAsignatura, Nota:$.txtNota.text, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.text});
+                var Evaluacion = Alloy.createModel('Evaluacion',{Nombre:$.txtNombreEvaluacion.value, AlumnoAsignatura:data.AlumnoAsignatura, Calificacion:$.txtNota.value, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.value});
                 coleccionEvaluaciones.add(Evaluacion);
                 Evaluacion.save();
                 coleccionEvaluaciones.fetch();
@@ -44,7 +45,7 @@ function GuardarEvaluacion(){
     }else{
         coleccionEvaluaciones.fetch();
         var modelEvaluacion = coleccionEvaluaciones.get(data.IdEvaluacion);
-        modelEvaluacion.set({Nombre:$.txtNombreEvaluacion.value, Calificacion:$.txtNota.text, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.text});
+        modelEvaluacion.set({Nombre:$.txtNombreEvaluacion.value, Calificacion:$.txtNota.value, Peso:$.txtPeso.value, FechaInicio:$.lblFecha.value});
         modelEvaluacion.save();
         coleccionEvaluaciones.fetch();
     }

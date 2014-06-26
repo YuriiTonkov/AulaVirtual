@@ -10,9 +10,9 @@ function Controller() {
             var Evaluacion = Alloy.createModel("Evaluacion", {
                 Nombre: $.txtNombreEvaluacion.value,
                 AlumnoAsignatura: data.AlumnoAsignatura,
-                Nota: $.txtNota.text,
+                Calificacion: $.txtNota.value,
                 Peso: $.txtPeso.value,
-                FechaInicio: $.lblFecha.text
+                FechaInicio: $.lblFecha.value
             });
             coleccionEvaluaciones.add(Evaluacion);
             Evaluacion.save();
@@ -23,9 +23,9 @@ function Controller() {
             var modelEvaluacion = coleccionEvaluaciones.get(data.IdEvaluacion);
             modelEvaluacion.set({
                 Nombre: $.txtNombreEvaluacion.value,
-                Calificacion: $.txtNota.text,
+                Calificacion: $.txtNota.value,
                 Peso: $.txtPeso.value,
-                FechaInicio: $.lblFecha.text
+                FechaInicio: $.lblFecha.value
             });
             modelEvaluacion.save();
             coleccionEvaluaciones.fetch();
@@ -234,8 +234,9 @@ function Controller() {
         var modelEvaluacion = colEvaluaciones.get(data.IdEvaluacion);
         var ArrayEvaluacion = modelEvaluacion.toJSON();
         $.txtNombreEvaluacion.value = ArrayEvaluacion.Nombre;
-        $.lblFecha.text = ArrayEvaluacion.FechaInicio;
+        $.lblFecha.value = ArrayEvaluacion.FechaInicio;
         $.txtPeso.value = ArrayEvaluacion.Peso;
+        $.txtNota.value = ArrayEvaluacion.Calificacion;
     }
     $.txtNombreEvaluacion.addEventListener("click", function() {
         var dialog = Ti.UI.createAlertDialog({
