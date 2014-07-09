@@ -117,14 +117,14 @@ function Controller() {
         id: "winNuevoExamen"
     });
     $.__views.winNuevoExamen && $.addTopLevelView($.__views.winNuevoExamen);
-    var __alloyId76 = [];
-    $.__views.__alloyId77 = Ti.UI.createTableViewRow({
+    var __alloyId79 = [];
+    $.__views.__alloyId80 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId77"
+        id: "__alloyId80"
     });
-    __alloyId76.push($.__views.__alloyId77);
-    $.__views.__alloyId78 = Ti.UI.createLabel({
+    __alloyId79.push($.__views.__alloyId80);
+    $.__views.__alloyId81 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -135,9 +135,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Fecha Examen:",
-        id: "__alloyId78"
+        id: "__alloyId81"
     });
-    $.__views.__alloyId77.add($.__views.__alloyId78);
+    $.__views.__alloyId80.add($.__views.__alloyId81);
     $.__views.dateTextField = Ti.UI.createTextField({
         top: "16dp",
         width: "100%",
@@ -151,14 +151,14 @@ function Controller() {
         editable: "false",
         id: "dateTextField"
     });
-    $.__views.__alloyId77.add($.__views.dateTextField);
-    $.__views.__alloyId79 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId80.add($.__views.dateTextField);
+    $.__views.__alloyId82 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId79"
+        id: "__alloyId82"
     });
-    __alloyId76.push($.__views.__alloyId79);
-    $.__views.__alloyId80 = Ti.UI.createLabel({
+    __alloyId79.push($.__views.__alloyId82);
+    $.__views.__alloyId83 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -169,9 +169,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Nota:",
-        id: "__alloyId80"
+        id: "__alloyId83"
     });
-    $.__views.__alloyId79.add($.__views.__alloyId80);
+    $.__views.__alloyId82.add($.__views.__alloyId83);
     $.__views.txtNota = Ti.UI.createTextField({
         top: "16dp",
         width: "100%",
@@ -185,14 +185,14 @@ function Controller() {
         editable: "false",
         id: "txtNota"
     });
-    $.__views.__alloyId79.add($.__views.txtNota);
-    $.__views.__alloyId81 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId82.add($.__views.txtNota);
+    $.__views.__alloyId84 = Ti.UI.createTableViewRow({
         backgroundColor: "white",
         height: "40dp",
-        id: "__alloyId81"
+        id: "__alloyId84"
     });
-    __alloyId76.push($.__views.__alloyId81);
-    $.__views.__alloyId82 = Ti.UI.createLabel({
+    __alloyId79.push($.__views.__alloyId84);
+    $.__views.__alloyId85 = Ti.UI.createLabel({
         width: "100%",
         height: "12dp",
         textAlign: "left",
@@ -203,9 +203,9 @@ function Controller() {
             fontFamily: "HelveticaNeue-UltraLight"
         },
         text: "Peso:",
-        id: "__alloyId82"
+        id: "__alloyId85"
     });
-    $.__views.__alloyId81.add($.__views.__alloyId82);
+    $.__views.__alloyId84.add($.__views.__alloyId85);
     $.__views.txtPeso = Ti.UI.createTextField({
         top: "16dp",
         width: "100%",
@@ -219,12 +219,12 @@ function Controller() {
         editable: "false",
         id: "txtPeso"
     });
-    $.__views.__alloyId81.add($.__views.txtPeso);
+    $.__views.__alloyId84.add($.__views.txtPeso);
     $.__views.Marco = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
-        data: __alloyId76,
+        data: __alloyId79,
         id: "Marco"
     });
     $.__views.winNuevoExamen.add($.__views.Marco);

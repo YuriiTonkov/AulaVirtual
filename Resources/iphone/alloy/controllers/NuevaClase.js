@@ -27,12 +27,12 @@ function Controller() {
         id: "winNuevaClase"
     });
     $.__views.winNuevaClase && $.addTopLevelView($.__views.winNuevaClase);
-    $.__views.__alloyId30 = Ti.UI.createImageView({
+    $.__views.__alloyId33 = Ti.UI.createImageView({
         top: "25dp",
         image: "library/images/iphone/helpScreen/0301HeaderNuevaClase.png",
-        id: "__alloyId30"
+        id: "__alloyId33"
     });
-    $.__views.winNuevaClase.add($.__views.__alloyId30);
+    $.__views.winNuevaClase.add($.__views.__alloyId33);
     $.__views.txtNombreClase = Ti.UI.createTextField({
         backgroundColor: "white",
         width: "80%",
@@ -43,12 +43,12 @@ function Controller() {
         id: "txtNombreClase"
     });
     $.__views.winNuevaClase.add($.__views.txtNombreClase);
-    $.__views.__alloyId31 = Ti.UI.createImageView({
+    $.__views.__alloyId34 = Ti.UI.createImageView({
         top: "110dp",
         image: "library/images/iphone/helpScreen/0301FooterNuevaClase.png",
-        id: "__alloyId31"
+        id: "__alloyId34"
     });
-    $.__views.winNuevaClase.add($.__views.__alloyId31);
+    $.__views.winNuevaClase.add($.__views.__alloyId34);
     $.__views.btnGuardar = Ti.UI.createButton({
         top: "-50dp",
         id: "btnGuardar",

@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId226(e) {
+    function __alloyId229(e) {
         if (e && e.fromAdapter) return;
-        __alloyId226.opts || {};
-        var models = filtrado(__alloyId225);
+        __alloyId229.opts || {};
+        var models = filtrado(__alloyId228);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId220 = models[i];
-            __alloyId220.__transform = {};
-            var __alloyId222 = Alloy.createController("AsignaturaAlumnoRow", {
-                $model: __alloyId220,
+            var __alloyId223 = models[i];
+            __alloyId223.__transform = {};
+            var __alloyId225 = Alloy.createController("AsignaturaAlumnoRow", {
+                $model: __alloyId223,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId222.getViewEx({
+            rows.push(__alloyId225.getViewEx({
                 recurse: true
             }));
         }
@@ -46,26 +46,26 @@ function Controller() {
         title: "Gestión de Asignaturas"
     });
     $.__views.WinCrearAsignatura && $.addTopLevelView($.__views.WinCrearAsignatura);
-    $.__views.__alloyId219 = Ti.UI.createImageView({
+    $.__views.__alloyId222 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/05HeaderCrearAsignatura.png",
         height: "70dp",
-        id: "__alloyId219"
+        id: "__alloyId222"
     });
-    $.__views.__alloyId224 = Ti.UI.createImageView({
+    $.__views.__alloyId227 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/05FooterCrearAsignatura.png",
-        id: "__alloyId224"
+        id: "__alloyId227"
     });
     $.__views.TablaAsignaturasAlumno = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
-        headerView: $.__views.__alloyId219,
-        footerView: $.__views.__alloyId224,
+        headerView: $.__views.__alloyId222,
+        footerView: $.__views.__alloyId227,
         id: "TablaAsignaturasAlumno"
     });
     $.__views.WinCrearAsignatura.add($.__views.TablaAsignaturasAlumno);
-    var __alloyId225 = Alloy.Collections["Asignatura"] || Asignatura;
-    __alloyId225.on("fetch destroy change add remove reset", __alloyId226);
+    var __alloyId228 = Alloy.Collections["Asignatura"] || Asignatura;
+    __alloyId228.on("fetch destroy change add remove reset", __alloyId229);
     $.__views.addAsignatura = Ti.UI.createButton({
         id: "addAsignatura",
         title: "Añadir",
@@ -74,7 +74,7 @@ function Controller() {
     $.__views.WinCrearAsignatura.add($.__views.addAsignatura);
     NuevaAsignatura ? $.__views.addAsignatura.addEventListener("click", NuevaAsignatura) : __defers["$.__views.addAsignatura!click!NuevaAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId225.off("fetch destroy change add remove reset", __alloyId226);
+        __alloyId228.off("fetch destroy change add remove reset", __alloyId229);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

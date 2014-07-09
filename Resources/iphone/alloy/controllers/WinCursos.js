@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId135(e) {
+    function __alloyId138(e) {
         if (e && e.fromAdapter) return;
-        __alloyId135.opts || {};
-        var models = filtrado(__alloyId134);
+        __alloyId138.opts || {};
+        var models = filtrado(__alloyId137);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId129 = models[i];
-            __alloyId129.__transform = transform(__alloyId129);
-            var __alloyId131 = Alloy.createController("CursoRow", {
-                $model: __alloyId129,
+            var __alloyId132 = models[i];
+            __alloyId132.__transform = transform(__alloyId132);
+            var __alloyId134 = Alloy.createController("CursoRow", {
+                $model: __alloyId132,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId131.getViewEx({
+            rows.push(__alloyId134.getViewEx({
                 recurse: true
             }));
         }
@@ -56,28 +56,28 @@ function Controller() {
         title: "Cursos"
     });
     $.__views.WinCursos && $.addTopLevelView($.__views.WinCursos);
-    $.__views.__alloyId128 = Ti.UI.createImageView({
+    $.__views.__alloyId131 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/02HeaderCursos.png",
         height: "70dp",
-        id: "__alloyId128"
+        id: "__alloyId131"
     });
-    $.__views.__alloyId133 = Ti.UI.createImageView({
+    $.__views.__alloyId136 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/02FooterCursos.png",
-        id: "__alloyId133"
+        id: "__alloyId136"
     });
     $.__views.TablaCursos = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
-        headerView: $.__views.__alloyId128,
-        footerView: $.__views.__alloyId133,
+        headerView: $.__views.__alloyId131,
+        footerView: $.__views.__alloyId136,
         id: "TablaCursos"
     });
     $.__views.WinCursos.add($.__views.TablaCursos);
-    var __alloyId134 = Alloy.Collections["Curso"] || Curso;
-    __alloyId134.on("fetch destroy change add remove reset", __alloyId135);
+    var __alloyId137 = Alloy.Collections["Curso"] || Curso;
+    __alloyId137.on("fetch destroy change add remove reset", __alloyId138);
     exports.destroy = function() {
-        __alloyId134.off("fetch destroy change add remove reset", __alloyId135);
+        __alloyId137.off("fetch destroy change add remove reset", __alloyId138);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

@@ -20,33 +20,33 @@ function Controller() {
     Alloy.Collections.instance("VW_Asignaturas_Favoritas");
     Alloy.Collections.instance("Anotacion");
     Alloy.Collections.instance("VW_Examen_Alumno");
-    var __alloyId199 = [];
-    $.__views.__alloyId200 = Alloy.createController("TabPrincipal", {
-        id: "__alloyId200"
+    var __alloyId202 = [];
+    $.__views.__alloyId203 = Alloy.createController("TabPrincipal", {
+        id: "__alloyId203"
     });
-    __alloyId199.push($.__views.__alloyId200.getViewEx({
+    __alloyId202.push($.__views.__alloyId203.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId202 = Alloy.createController("tabFavoritos", {
-        id: "__alloyId202"
+    $.__views.__alloyId205 = Alloy.createController("tabFavoritos", {
+        id: "__alloyId205"
     });
-    __alloyId199.push($.__views.__alloyId202.getViewEx({
+    __alloyId202.push($.__views.__alloyId205.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId204 = Alloy.createController("TabAsignaturasFavoritas", {
-        id: "__alloyId204"
+    $.__views.__alloyId207 = Alloy.createController("TabAsignaturasFavoritas", {
+        id: "__alloyId207"
     });
-    __alloyId199.push($.__views.__alloyId204.getViewEx({
+    __alloyId202.push($.__views.__alloyId207.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId206 = Alloy.createController("TabConfiguracion", {
-        id: "__alloyId206"
+    $.__views.__alloyId209 = Alloy.createController("TabConfiguracion", {
+        id: "__alloyId209"
     });
-    __alloyId199.push($.__views.__alloyId206.getViewEx({
+    __alloyId202.push($.__views.__alloyId209.getViewEx({
         recurse: true
     }));
     $.__views.GrupoTab = Ti.UI.createTabGroup({
-        tabs: __alloyId199,
+        tabs: __alloyId202,
         id: "GrupoTab"
     });
     $.__views.GrupoTab && $.addTopLevelView($.__views.GrupoTab);

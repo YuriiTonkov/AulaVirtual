@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId140(e) {
+    function __alloyId143(e) {
         if (e && e.fromAdapter) return;
-        __alloyId140.opts || {};
-        var models = filtrado(__alloyId139);
+        __alloyId143.opts || {};
+        var models = filtrado(__alloyId142);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId136 = models[i];
-            __alloyId136.__transform = {};
-            var __alloyId138 = Alloy.createController("EvaluacionRow", {
-                $model: __alloyId136,
+            var __alloyId139 = models[i];
+            __alloyId139.__transform = {};
+            var __alloyId141 = Alloy.createController("EvaluacionRow", {
+                $model: __alloyId139,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId138.getViewEx({
+            rows.push(__alloyId141.getViewEx({
                 recurse: true
             }));
         }
@@ -54,8 +54,8 @@ function Controller() {
         id: "TablaEvaluaciones"
     });
     $.__views.WinEvaluacionesAlumno.add($.__views.TablaEvaluaciones);
-    var __alloyId139 = Alloy.Collections["Evaluacion"] || Evaluacion;
-    __alloyId139.on("fetch destroy change add remove reset", __alloyId140);
+    var __alloyId142 = Alloy.Collections["Evaluacion"] || Evaluacion;
+    __alloyId142.on("fetch destroy change add remove reset", __alloyId143);
     $.__views.addEvaluacion = Ti.UI.createButton({
         id: "addEvaluacion",
         title: "Nueva",
@@ -64,7 +64,7 @@ function Controller() {
     $.__views.WinEvaluacionesAlumno.add($.__views.addEvaluacion);
     NuevoEvaluacion ? $.__views.addEvaluacion.addEventListener("click", NuevoEvaluacion) : __defers["$.__views.addEvaluacion!click!NuevoEvaluacion"] = true;
     exports.destroy = function() {
-        __alloyId139.off("fetch destroy change add remove reset", __alloyId140);
+        __alloyId142.off("fetch destroy change add remove reset", __alloyId143);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};

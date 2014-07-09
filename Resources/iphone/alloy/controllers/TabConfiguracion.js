@@ -6,12 +6,12 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.__alloyId84 = Alloy.createController("winProfile", {
-        id: "__alloyId84",
+    $.__views.__alloyId87 = Alloy.createController("winProfile", {
+        id: "__alloyId87",
         __parentSymbol: __parentSymbol
     });
     $.__views.TabConfiguracion = Ti.UI.createTab({
-        window: $.__views.__alloyId84.getViewEx({
+        window: $.__views.__alloyId87.getViewEx({
             recurse: true
         }),
         title: "Configuracion",

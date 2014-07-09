@@ -1,11 +1,17 @@
 <Alloy>
-	<Window id="winNuevaAsignatura" class="container">
-		<Label class="label" top="5%">Seleccione la asignatura</Label>
+	<Window id="winNuevaAsignatura" title="Seleccione la asignatura" >
 		<TableView dataCollection="VW_Asignatura_Alumno_Left" id="TablaAsignaturas"  allowsSelection="true">
+			<HeaderView>
+				<ImageView image="library/images/iphone/helpScreen/1.1.13NuevaAsignaturaHeader.png" height="70dp" ></ImageView>
+			</HeaderView>
 			<TableViewRow  editable="true" data="{IdAsignatura}"  id="AsignaturaRow">
 				<Label class="rowTitle" id="lblAsignatura" text="{Nombre}" textid="{IdAsignatura}"/>
 			</TableViewRow>
+			<FooterView>
+					<ImageView image="library/images/iphone/helpScreen/1.1.13NuevaAsignaturaFooter.png" ></ImageView>
+			</FooterView>
 		</TableView>
 		<Button class="button" id="btnGuardar" top="-50dp" title="Guardar" onClick="GuardarAsignatura"></Button>
 	</Window>
 </Alloy>
+

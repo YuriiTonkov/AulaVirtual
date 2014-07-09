@@ -1,21 +1,21 @@
 function Controller() {
-    function __alloyId29(e) {
+    function __alloyId32(e) {
         if (e && e.fromAdapter) return;
-        __alloyId29.opts || {};
-        var models = __alloyId28.models;
+        __alloyId32.opts || {};
+        var models = __alloyId31.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId25 = models[i];
-            __alloyId25.__transform = {};
-            var __alloyId26 = Ti.UI.createTableViewRow({
+            var __alloyId26 = models[i];
+            __alloyId26.__transform = {};
+            var __alloyId27 = Ti.UI.createTableViewRow({
                 backgroundColor: "white",
                 height: "40dp",
                 editable: "true",
-                data: "undefined" != typeof __alloyId25.__transform["IdAsignatura"] ? __alloyId25.__transform["IdAsignatura"] : __alloyId25.get("IdAsignatura")
+                data: "undefined" != typeof __alloyId26.__transform["IdAsignatura"] ? __alloyId26.__transform["IdAsignatura"] : __alloyId26.get("IdAsignatura")
             });
-            rows.push(__alloyId26);
-            var __alloyId27 = Ti.UI.createLabel({
+            rows.push(__alloyId27);
+            var __alloyId28 = Ti.UI.createLabel({
                 width: "100%",
                 height: "40dp",
                 textAlign: "left",
@@ -24,10 +24,10 @@ function Controller() {
                     fontSize: 16,
                     fontFamily: "HelveticaNeue-UltraLight"
                 },
-                text: "undefined" != typeof __alloyId25.__transform["Nombre"] ? __alloyId25.__transform["Nombre"] : __alloyId25.get("Nombre"),
-                textid: "undefined" != typeof __alloyId25.__transform["IdAsignatura"] ? __alloyId25.__transform["IdAsignatura"] : __alloyId25.get("IdAsignatura")
+                text: "undefined" != typeof __alloyId26.__transform["Nombre"] ? __alloyId26.__transform["Nombre"] : __alloyId26.get("Nombre"),
+                textid: "undefined" != typeof __alloyId26.__transform["IdAsignatura"] ? __alloyId26.__transform["IdAsignatura"] : __alloyId26.get("IdAsignatura")
             });
-            __alloyId26.add(__alloyId27);
+            __alloyId27.add(__alloyId28);
         }
         $.__views.TablaAsignaturas.setData(rows);
     }
@@ -72,25 +72,31 @@ function Controller() {
         barColor: "#e7effa",
         translucent: "false",
         backgroundColor: "e2effa",
-        id: "winNuevaAsignatura"
+        id: "winNuevaAsignatura",
+        title: "Seleccione la asignatura"
     });
     $.__views.winNuevaAsignatura && $.addTopLevelView($.__views.winNuevaAsignatura);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
-        text: "Seleccione la asignatura",
-        top: "5%",
-        id: "__alloyId24"
+    $.__views.__alloyId25 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/1.1.13NuevaAsignaturaHeader.png",
+        height: "70dp",
+        id: "__alloyId25"
     });
-    $.__views.winNuevaAsignatura.add($.__views.__alloyId24);
+    $.__views.__alloyId30 = Ti.UI.createImageView({
+        image: "library/images/iphone/helpScreen/1.1.13NuevaAsignaturaFooter.png",
+        id: "__alloyId30"
+    });
     $.__views.TablaAsignaturas = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
+        headerView: $.__views.__alloyId25,
+        footerView: $.__views.__alloyId30,
         id: "TablaAsignaturas",
         allowsSelection: "true"
     });
     $.__views.winNuevaAsignatura.add($.__views.TablaAsignaturas);
-    var __alloyId28 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
-    __alloyId28.on("fetch destroy change add remove reset", __alloyId29);
+    var __alloyId31 = Alloy.Collections["VW_Asignatura_Alumno_Left"] || VW_Asignatura_Alumno_Left;
+    __alloyId31.on("fetch destroy change add remove reset", __alloyId32);
     $.__views.btnGuardar = Ti.UI.createButton({
         id: "btnGuardar",
         top: "-50dp",
@@ -99,7 +105,7 @@ function Controller() {
     $.__views.winNuevaAsignatura.add($.__views.btnGuardar);
     GuardarAsignatura ? $.__views.btnGuardar.addEventListener("click", GuardarAsignatura) : __defers["$.__views.btnGuardar!click!GuardarAsignatura"] = true;
     exports.destroy = function() {
-        __alloyId28.off("fetch destroy change add remove reset", __alloyId29);
+        __alloyId31.off("fetch destroy change add remove reset", __alloyId32);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
@@ -113,7 +119,7 @@ function Controller() {
             e.row.backgroundColor = "#fff";
             e.row.selected = 0;
         } else {
-            e.row.backgroundColor = "#003b6f";
+            e.row.backgroundColor = "#51b9db";
             e.row.selected = 1;
         }
     });

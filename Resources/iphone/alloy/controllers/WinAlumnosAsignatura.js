@@ -1,18 +1,18 @@
 function Controller() {
-    function __alloyId103(e) {
+    function __alloyId106(e) {
         if (e && e.fromAdapter) return;
-        __alloyId103.opts || {};
-        var models = filtrado(__alloyId102);
+        __alloyId106.opts || {};
+        var models = filtrado(__alloyId105);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId97 = models[i];
-            __alloyId97.__transform = nombrecompleto(__alloyId97);
-            var __alloyId99 = Alloy.createController("AlumnosAsignaturaRow", {
-                $model: __alloyId97,
+            var __alloyId100 = models[i];
+            __alloyId100.__transform = nombrecompleto(__alloyId100);
+            var __alloyId102 = Alloy.createController("AlumnosAsignaturaRow", {
+                $model: __alloyId100,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId99.getViewEx({
+            rows.push(__alloyId102.getViewEx({
                 recurse: true
             }));
         }
@@ -44,28 +44,28 @@ function Controller() {
         title: "Asignaturas"
     });
     $.__views.WinAsignaturasAlumno && $.addTopLevelView($.__views.WinAsignaturasAlumno);
-    $.__views.__alloyId96 = Ti.UI.createImageView({
+    $.__views.__alloyId99 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/1.1.18WinAlumnosAsignatura.png",
         height: "70dp",
-        id: "__alloyId96"
+        id: "__alloyId99"
     });
-    $.__views.__alloyId101 = Ti.UI.createImageView({
+    $.__views.__alloyId104 = Ti.UI.createImageView({
         image: "library/images/iphone/helpScreen/1.1.18WinAlumnosAsignaturaFooter.png",
-        id: "__alloyId101"
+        id: "__alloyId104"
     });
     $.__views.TablaAlumnosByAsignatura = Ti.UI.createTableView({
         style: Ti.UI.iPhone.TableViewStyle.GROUPED,
         backgroundImage: "backGround320x416Base.png",
         top: "0dp",
-        headerView: $.__views.__alloyId96,
-        footerView: $.__views.__alloyId101,
+        headerView: $.__views.__alloyId99,
+        footerView: $.__views.__alloyId104,
         id: "TablaAlumnosByAsignatura"
     });
     $.__views.WinAsignaturasAlumno.add($.__views.TablaAlumnosByAsignatura);
-    var __alloyId102 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
-    __alloyId102.on("fetch destroy change add remove reset", __alloyId103);
+    var __alloyId105 = Alloy.Collections["VW_Alumno_Asignatura_Asignatura"] || VW_Alumno_Asignatura_Asignatura;
+    __alloyId105.on("fetch destroy change add remove reset", __alloyId106);
     exports.destroy = function() {
-        __alloyId102.off("fetch destroy change add remove reset", __alloyId103);
+        __alloyId105.off("fetch destroy change add remove reset", __alloyId106);
     };
     _.extend($, $.__views);
     var arg1 = arguments[0] || {};
