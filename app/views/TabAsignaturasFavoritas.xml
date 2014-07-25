@@ -1,5 +1,5 @@
 <Alloy>
 	<Tab title="Mis asignaturas" icon="KS_nav_Exams.png">
-		<Require src="WinAsignaturasFav">
+		<Require src="WinAsignaturasFav"/>
 	</Tab>
 </Alloy>

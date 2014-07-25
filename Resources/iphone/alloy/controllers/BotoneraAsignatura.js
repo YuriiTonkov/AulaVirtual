@@ -1,9 +1,20 @@
+function __processArg(obj, key) {
+    var arg = null;
+    if (obj) {
+        arg = obj[key] || null;
+        delete obj[key];
+    }
+    return arg;
+}
+
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "BotoneraAsignatura";
-    arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    if (arguments[0]) {
+        __processArg(arguments[0], "__parentSymbol");
+        __processArg(arguments[0], "$model");
+        __processArg(arguments[0], "__itemTemplate");
+    }
     var $ = this;
     var exports = {};
     $.__views.botones = Ti.UI.createView({
@@ -14,23 +25,19 @@ function Controller() {
     $.__views.botones && $.addTopLevelView($.__views.botones);
     var __alloyId1 = [];
     var __alloyId2 = {
-        image: "/library/images/iphone/icons/iconoAddAlumno.png",
-        ns: "Alloy.Abstract"
+        image: "/library/images/iphone/icons/iconoAddAlumno.png"
     };
     __alloyId1.push(__alloyId2);
     var __alloyId3 = {
-        image: "/library/images/iphone/icons/iconoAddFavorito.png",
-        ns: "Alloy.Abstract"
+        image: "/library/images/iphone/icons/iconoAddFavorito.png"
     };
     __alloyId1.push(__alloyId3);
     var __alloyId4 = {
-        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
-        ns: "Alloy.Abstract"
+        image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png"
     };
     __alloyId1.push(__alloyId4);
     var __alloyId5 = {
-        image: "/library/images/iphone/icons/iconoMandarNotaClase.png",
-        ns: "Alloy.Abstract"
+        image: "/library/images/iphone/icons/iconoMandarNotaClase.png"
     };
     __alloyId1.push(__alloyId5);
     $.__views.btnBar = Ti.UI.createButtonBar({

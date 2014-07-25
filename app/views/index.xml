@@ -1,18 +1,18 @@
 <Alloy>
-	<Collection src="Grado">
-	<Collection src="Curso">
-	<Collection src="Clase">
-	<Collection src="Alumno">
-	<Collection src="VW_Alumno_Asignatura_Asignatura">
-	<Collection src="VW_Asignatura_Alumno_Left">
-	<Collection src="Alumno_Asignatura">
-	<Collection src="Evaluacion">
-	<Collection src="Examen">
-	<Collection src="Asignatura">
-	<Collection src="VW_Clases_Favoritas">
-	<Collection src="VW_Asignaturas_Favoritas">
-	<Collection src="Anotacion">
-	<Collection src="VW_Examen_Alumno">
+	<Collection src="Grado"/>
+	<Collection src="Curso"/>
+	<Collection src="Clase"/>
+	<Collection src="Alumno"/>
+	<Collection src="VW_Alumno_Asignatura_Asignatura"/>
+	<Collection src="VW_Asignatura_Alumno_Left"/>
+	<Collection src="Alumno_Asignatura"/>
+	<Collection src="Evaluacion"/>
+	<Collection src="Examen"/>
+	<Collection src="Asignatura"/>
+	<Collection src="VW_Clases_Favoritas"/>
+	<Collection src="VW_Asignaturas_Favoritas"/>
+	<Collection src="Anotacion"/>
+	<Collection src="VW_Examen_Alumno"/>
 	<TabGroup id="GrupoTab" class="mainWindow">
 		<Require src="TabPrincipal"/>
 		<Require src="tabFavoritos"/>
