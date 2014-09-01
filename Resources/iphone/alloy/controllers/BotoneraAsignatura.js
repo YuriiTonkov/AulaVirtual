@@ -69,7 +69,7 @@ function Controller() {
             width: 24,
             enabled: false
         }, {
-            image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
+            image: "/library/images/iphone/icons/iconoCrearExamen.png",
             width: 24,
             enabled: true
         }, {
@@ -99,7 +99,7 @@ function Controller() {
                 width: 24,
                 enabled: false
             }, {
-                image: "/library/images/iphone/icons/iconoAddAlumnoCloud.png",
+                image: "/library/images/iphone/icons/iconoCrearExamen.png",
                 width: 24,
                 enabled: true
             }, {

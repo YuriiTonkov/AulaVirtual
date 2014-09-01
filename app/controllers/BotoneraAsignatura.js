@@ -14,7 +14,7 @@ if (datos.Favorita==1){
     var buttons = [
        		{image:'/library/images/iphone/icons/iconoAddAlumno.png', width:24, enabled:true},
    			{image:'/library/images/iphone/icons/iconoAddFavorito.png', width:24, enabled:false},
-    		{image:'/library/images/iphone/icons/iconoAddAlumnoCloud.png', width:24, enabled:true},
+    		{image:'/library/images/iphone/icons/iconoCrearExamen.png', width:24, enabled:true},
     		{image:'/library/images/iphone/icons/iconoMandarNotaClase.png', width:24, enabled:true}
     		/*{title:'+', enabled:true},
         	{title:'*', enabled:false},
@@ -37,7 +37,7 @@ $.btnBar.addEventListener("click", function(e){
 	        var buttons = [
         			{image:'/library/images/iphone/icons/iconoAddAlumno.png', width:24, enabled:true},
    					{image:'/library/images/iphone/icons/iconoAddFavorito.png', width:24, enabled:false},
-    				{image:'/library/images/iphone/icons/iconoAddAlumnoCloud.png', width:24, enabled:true},
+    				{image:'/library/images/iphone/icons/iconoCrearExamen.png', width:24, enabled:true},
     				{image:'/library/images/iphone/icons/iconoMandarNotaClase.png', width:24, enabled:true}
     				];
 	        $.btnBar.labels=buttons;
